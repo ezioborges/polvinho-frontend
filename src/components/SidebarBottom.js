@@ -1,11 +1,13 @@
+import newElement from "../utils/newElement.js";
+
 const SidebarBottom = () => {
-    const sidebarBottomContent = document.createElement('div');
-    const changePassword = document.createElement('div');
-    const finishSection = document.createElement('div');
-    const passwordLogo = document.createElement('img');
-    const passwordText = document.createElement('p');
-    const sectionLogo = document.createElement('img');
-    const sectionText = document.createElement('p');
+    const sidebarBottomContent = newElement('div');
+    const changePassword = newElement('div');
+    const finishSection = newElement('div');
+    const passwordLogo = newElement('img');
+    const passwordText = newElement('p');
+    const sectionLogo = newElement('img');
+    const sectionText = newElement('p');
 
     passwordText.textContent = 'Trocar Senha';
     sectionText.textContent = 'Encerrar Seção';

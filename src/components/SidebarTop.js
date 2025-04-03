@@ -1,14 +1,16 @@
+import newElement from "../utils/newElement.js";
+
 const SidebarTop = () => {
-    const sidebarTopContent = document.createElement('div');
-    const sidebarTitle = document.createElement('div');
-    const polvoLogo = document.createElement('img');
-    const sidebarNav = document.createElement('div');
-    const sidebarDashboard = document.createElement('div');
-    const dashboardLogo = document.createElement('img');
-    const dashboardText = document.createElement('p');
-    const sidebarDiscipline = document.createElement('div');
-    const disciplineLogo = document.createElement('img');
-    const disciplineText = document.createElement('p');
+    const sidebarTopContent = newElement('div');
+    const sidebarTitle = newElement('div');
+    const polvoLogo = newElement('img');
+    const sidebarNav = newElement('div');
+    const sidebarDashboard = newElement('div');
+    const dashboardLogo = newElement('img');
+    const dashboardText = newElement('p');
+    const sidebarDiscipline = newElement('div');
+    const disciplineLogo = newElement('img');
+    const disciplineText = newElement('p');
 
     // Configurações de texto
     const sidebarH1 = document.createElement('h1');
