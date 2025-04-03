@@ -1,0 +1,76 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    width: 15.6%;
+    height: 100%;
+}
+
+.sidebar-top-content {
+    width: 100%;
+    height: 21.6%;
+}
+
+.sidebar-bottom-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 11.8%;
+}
+
+.sidebar-logo {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.polvo-logo {
+    margin-left: 2rem;
+    width: 1.282rem;
+    height: 1.437rem;
+}
+
+.sidebar-h1 {
+    color: var(--indigo-50);
+    margin-left: .35rem;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.sidebar-menu-text {
+    font-weight: 400;
+    margin-left: .35rem;
+    color: var(--indigo-50);
+    font-size: 1.2rem;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 60%;
+}
+
+.sidebar-dashboard {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 36.2%;
+}
+
+.sidebar-dashboard:hover {
+    background-color: var(--indigo-900);
+    cursor: pointer;
+}
+
+.menu-logo {
+    margin-left: 2rem;
+    width: 1.313rem;
+    height: 1.313rem;
+}
