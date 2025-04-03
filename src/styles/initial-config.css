@@ -33,4 +33,56 @@
     width: 100%;
     height: 100vh;
     background-color: var(--indigo-950);
+    display: flex;
+}
+
+
+.title1 { /* título */
+    font-weight: 600;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+
+.title2 { /* títulos principais da página */
+    font-weight: bold;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+.title3 { /* títulos de dialogs */
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.title4 { /* títulos de listas e parágrafos */
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.textXL {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.textLG {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.textMd {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.textMdBold {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.textSm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
