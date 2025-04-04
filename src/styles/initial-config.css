@@ -60,29 +60,29 @@
     font-size: 1.125rem;
     line-height: 1.75rem;
 }
-
-.textXL {
+ 
+.textXL { /* subtitulo grande para o título 2 */
     font-size: 1.5rem;
     line-height: 2rem;
 }
 
-.textLG {
+.textLG { /* subtitulo padrão para o título 2 */
     font-size: 1.125rem;
     line-height: 1.75rem;
 }
 
-.textMd {
+.textMd { /* texto base e botões */
     font-size: 1rem;
     line-height: 1.5rem;
 }
 
-.textMdBold {
+.textMdBold { /* palavras que precisam de destaque */
     font-weight: 600;
     font-size: 1rem;
     line-height: 1.5rem;
 }
 
-.textSm {
+.textSm { /* texto informativo */
     font-size: 0.875rem;
     line-height: 1.25rem;
 }

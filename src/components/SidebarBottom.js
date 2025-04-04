@@ -17,7 +17,7 @@ const SidebarBottom = () => {
     finishSection.classList.add('sidebar-dashboard');
     passwordText.classList.add('sidebar-menu-text');
     sectionText.classList.add('sidebar-menu-text');
-    // sectionLogo.classList.add('menu-logo');
+    sectionLogo.classList.add('menu-logo');
 
     passwordLogo.src = './assets/Password.png';
     passwordLogo.alt = 'Logo da senha';
