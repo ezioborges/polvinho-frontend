@@ -21,9 +21,18 @@
     margin-top: .3rem;
 }
 
+.discipline-bar:hover {
+    background-color: var(--neutral-200);
+    cursor: pointer;
+}
+
 .discipline-text {
     margin-left: 1rem;
-}
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--stone-900);
+}   
 
 .no-content {
     display: flex;

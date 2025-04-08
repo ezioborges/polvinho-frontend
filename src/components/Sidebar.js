@@ -8,7 +8,6 @@ export const Sidebar = () => {
 
     // Adiciona classes
     sidebarContent.classList.add('sidebar');
-    // sidebarBottomContent.classList.add('sidebar-bottom-content');
 
     // Adiciona o conteúdo do topo chamando a função sidebarTop
     const sidebarTopContent = SidebarTop();
