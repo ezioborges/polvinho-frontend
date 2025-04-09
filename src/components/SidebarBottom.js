@@ -1,3 +1,4 @@
+import { router } from "../router.js";
 import newElement from "../utils/newElement.js";
 
 const SidebarBottom = () => {
@@ -5,12 +6,17 @@ const SidebarBottom = () => {
     const changePassword = newElement('div');
     const finishSection = newElement('div');
     const passwordLogo = newElement('img');
-    const passwordText = newElement('p');
+    const passwordText = newElement('a');
     const sectionLogo = newElement('img');
-    const sectionText = newElement('p');
+    const sectionText = newElement('a');
 
     passwordText.textContent = 'Trocar Senha';
+    passwordText.href = '/change-password'
+    passwordText.onclick = (event) => router(event)
+
     sectionText.textContent = 'Encerrar Seção';
+    sectionText.href = '/finish-session'
+    sectionText.onclick = (event) => router(event)
     
     sidebarBottomContent.classList.add('sidebar-bottom-content');
     changePassword.classList.add('sidebar-dashboard');

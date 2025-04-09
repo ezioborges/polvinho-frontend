@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .sidebar {
     display: flex;
     flex-direction: column;

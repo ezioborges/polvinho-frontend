@@ -6,13 +6,14 @@ const Body = () => {
     const body = newElement('div');
     
     body.classList.add('body');
+    body.id = 'body'
+
 
     const titleContent = BodyTitle();
     const bodyContent = BodyContent();
 
     body.appendChild(titleContent);
     body.appendChild(bodyContent);
-
 
     return body;
 }

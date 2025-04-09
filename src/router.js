@@ -1,4 +1,4 @@
-const router = (event) => {
+export const router = (event) => {
   event = event || window.event;
   event.preventDefault();
   window.history.pushState({}, "", event.target.href);
@@ -9,6 +9,8 @@ const routes = {
   "/": "./src/pages/home.html",
   "/dashboard": "./src/pages/dashboard.html",
   "/disciplines": "./src/pages/disciplines.html",
+  "/change-password": "./src/pages/change-password.html",
+  "/finish-session": "./src/pages/finish-session.html",
 };
 
 const handleLocation = async () => {
@@ -16,9 +18,11 @@ const handleLocation = async () => {
   const route = routes[path] || routes[404];
   const html = await fetch(route).then((data) => data.text());
   document.querySelector("#main-content").innerHTML = html;
+  // aqui da pra chamar a '#body' pra poder fazer a renderização condicional;
 };
 
 window.onpopstate = handleLocation;
-window.router = router;
+// window.router = router;
 
 handleLocation();
+

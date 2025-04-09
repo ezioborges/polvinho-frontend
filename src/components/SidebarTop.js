@@ -1,3 +1,4 @@
+import { router } from "../router.js";
 import newElement from "../utils/newElement.js";
 
 const SidebarTop = () => {
@@ -7,16 +8,24 @@ const SidebarTop = () => {
     const sidebarNav = newElement('div');
     const sidebarDashboard = newElement('div');
     const dashboardLogo = newElement('img');
-    const dashboardText = newElement('p');
+    const dashboardText = newElement('a');
     const sidebarDiscipline = newElement('div');
     const disciplineLogo = newElement('img');
-    const disciplineText = newElement('p');
+    const disciplineText = newElement('a');
 
     // Configurações de texto
-    const sidebarH1 = document.createElement('h1');
+    const sidebarH1 = document.createElement('a');
     sidebarH1.textContent = "Polvo";
+    sidebarH1.href = '/';
+    sidebarH1.onclick = (event) => router(event)
+
     dashboardText.textContent = 'Dashboard';
+    dashboardText.href = '/dashboard'
+    dashboardText.onclick = (event) => router(event)
+
     disciplineText.textContent = "Disciplinas";
+    disciplineText.href = '/disciplines'
+    disciplineText.onclick = (event) => router(event)
 
     // Adiciona classes
     sidebarTopContent.classList.add('sidebar-top-content');
