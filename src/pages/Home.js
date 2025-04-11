@@ -4,13 +4,13 @@ import Title from "../components/Title.js";
 const Home = () => {
     const body = newElement('div');
     const divWelcome = newElement('div')
-    divWelcome.classList.add('div-welcome')
+    divWelcome.classList.add('body-content')
 
     const imgWelcome = newElement('img')
     imgWelcome.src = '../../assets/emocionado.jpg';
     imgWelcome.alt = 'Imagem de boas-vindas' 
     
-    const titleContent = Title('Home');
+    const titleContent = Title('Home', 'Bem vindo, Aluno');
 
     divWelcome.appendChild(imgWelcome)
     

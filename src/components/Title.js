@@ -1,16 +1,16 @@
 import newElement from "../utils/newElement.js";
 import textGenerator from "../utils/textGenerator.js";
 
-export const Title = (local) => {
+export const Title = (title, subtitle) => {
     const content  = newElement('div');
 
-    const title = textGenerator('title1', local);
-    const subtitle = textGenerator('textXL', 'Bem Vindo, Aluno!');
+    const titleTop = textGenerator('title1', title);
+    const subtitleTop = textGenerator('textXL', subtitle);
 
     content.classList.add('title-content');
 
-    content.appendChild(title);
-    content.appendChild(subtitle);
+    content.appendChild(titleTop);
+    content.appendChild(subtitleTop);
 
     return content;
 }

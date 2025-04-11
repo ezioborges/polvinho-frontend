@@ -5,7 +5,7 @@ import newElement from "../utils/newElement.js"
 const Dashboard = () => {
     const dashBody = newElement('div');
     
-    const titleContent = Title('Dashboard');
+    const titleContent = Title('Dashboard', 'Bem vindo, Aluno');
     const bodyContent = DashboardContent();
 
     dashBody.appendChild(titleContent);
