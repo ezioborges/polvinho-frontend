@@ -1,6 +1,6 @@
-import newBody from "./components/newBody.js";
 import { Sidebar } from "./components/Sidebar.js";
 import { router } from "./router.js";
+import newElement from "./utils/newElement.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const sidebarLinks = document.querySelectorAll('#sidebar a');
@@ -14,13 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
 const App = () => {
     // Captura a div raiz com o id app
     const app = document.querySelector('#app');
-    console.log("🚀 ~ App ~ app:", app)
+    const bodyContent = newElement('div')
+    bodyContent.classList.add('body')
+    bodyContent.id = 'main-content'
 
     const sidebar = Sidebar();
-    const body = newBody();
 
     app.appendChild(sidebar);
-    app.appendChild(body);
+    app.appendChild(bodyContent);
 
     return app;
 } 

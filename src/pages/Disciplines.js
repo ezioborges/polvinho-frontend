@@ -1,13 +1,11 @@
 import newElement from "../utils/newElement.js"
-import BodyContent from "./BodyContent.js";
-import { BodyTitle } from "./BodyTitle.js";
+import BodyContent from "../components/BodyContent.js";
+import { BodyTitle } from "../components/BodyTitle.js";
 
-const Body = () => {
+const Home = () => {
     const body = newElement('div');
     
     body.classList.add('body');
-    body.id = 'body'
-
 
     const titleContent = BodyTitle();
     const bodyContent = BodyContent();
@@ -18,4 +16,4 @@ const Body = () => {
     return body;
 }
 
-export default Body;
+export default Home;

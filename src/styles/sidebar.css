@@ -6,7 +6,6 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* border: 1px solid red; */
     width: 15.6%;
     height: 100%;
 }
