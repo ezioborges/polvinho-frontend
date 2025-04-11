@@ -1,10 +1,17 @@
-import newElement from "../utils/newElement.js";
+import DashboardContent from "../components/DashboardContent.js";
+import Title from "../components/Title.js";
+import newElement from "../utils/newElement.js"
 
 const Dashboard = () => {
-    const dashContent = newElement('div')
-    dashContent.textContent = "Aqui vai ser o Dash"
+    const dashBody = newElement('div');
+    
+    const titleContent = Title('Dashboard');
+    const bodyContent = DashboardContent();
 
-    return dashContent;
+    dashBody.appendChild(titleContent);
+    dashBody.appendChild(bodyContent);
+
+    return dashBody;
 }
 
 export default Dashboard;
