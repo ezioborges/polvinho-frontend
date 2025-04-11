@@ -4,7 +4,7 @@ import textGenerator from "../utils/textGenerator.js";
 import BodyWithoutContent from "./BodyWithoutContent.js";
 import DisciplineBar from "./DisciplineBar.js";
 
-const BodyContent = () => {
+const DashboardContent = () => {
     const disciplines = Object.values(disciplinesArr)
     const content = newElement('div');
 
@@ -29,4 +29,4 @@ const BodyContent = () => {
     }
 }
 
-export default BodyContent;
+export default DashboardContent;

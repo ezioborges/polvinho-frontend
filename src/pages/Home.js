@@ -1,5 +1,5 @@
 import newElement from "../utils/newElement.js"
-import { BodyTitle } from "../components/BodyTitle.js";
+import Title from "../components/Title.js";
 
 const Home = () => {
     const body = newElement('div');
@@ -10,7 +10,7 @@ const Home = () => {
     imgWelcome.src = '../../assets/emocionado.jpg';
     imgWelcome.alt = 'Imagem de boas-vindas' 
     
-    const titleContent = BodyTitle();
+    const titleContent = Title('Home');
 
     divWelcome.appendChild(imgWelcome)
     
