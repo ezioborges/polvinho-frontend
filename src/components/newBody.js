@@ -1,14 +1,12 @@
-import newElement from "../utils/newElement.js";
-import Home from "./Home.js";
-
 const newBody = () => {
-    const bodyContent = newElement('div')
-    bodyContent.id = 'main-content'
+    const bodyContent = document.querySelector('#main-content')
+    // const home = document.querySelector('#home')
     bodyContent.classList.add('body')
-
-    const homeComponent = Home();
-    bodyContent.appendChild(homeComponent)
-
+    
+    // const homeComponent = Home();
+    // bodyContent.appendChild(homeComponent)
+    
+    // console.log("🚀 ~ newBody ~ home:", home)
     console.log("🚀 ~ newBody ~ bodyContent:", bodyContent)
     return bodyContent;
 }

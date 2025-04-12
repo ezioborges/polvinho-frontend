@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 const App = () => {
     // Captura a div raiz com o id app
     const app = document.querySelector('#app');
-    console.log("🚀 ~ App ~ app:", app)
 
     const sidebar = Sidebar();
     const body = newBody();
