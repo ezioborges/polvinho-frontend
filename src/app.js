@@ -3,7 +3,19 @@ import { router } from "./router.js";
 import newElement from "./utils/newElement.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-    const sidebarLinks = document.querySelectorAll('a');
+    const mainContent = document.querySelector('#main-content'); // Certifique-se que este é o container correto para as disciplinas
+    if (mainContent) {
+      mainContent.addEventListener('click', (event) => {
+        const linkElement = event.target.closest('a.link-content');
+        if (linkElement) {
+          event.preventDefault();
+          window.location.hash = linkElement.getAttribute('href');
+          handleLocation();
+        }
+      });
+    }
+    
+    const sidebarLinks = document.querySelectorAll('#sidebar a');
 
     sidebarLinks.forEach(link => {
         link.addEventListener('click', router)

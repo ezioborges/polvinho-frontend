@@ -2,9 +2,10 @@ import { router } from "../router.js";
 import { tableText } from "../utils/disciplineBar.js";
 import newElement from "../utils/newElement.js";
 
-const disciplineBarDisc = (name, date, type) => {
+const disciplineBarDisc = (name, date, type, id) => {
     const linkContent = newElement('a')
-    linkContent.href = '/arroz'
+    linkContent.onclick = (event) => router(event)
+    linkContent.href = `/disciplines/${id}`
     linkContent.classList.add('link-content')
     const divContent = newElement('div')
     divContent.classList.add('discipline-bar-table')

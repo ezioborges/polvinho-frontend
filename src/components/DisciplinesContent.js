@@ -34,8 +34,8 @@ const DisciplinesContent = () => {
         return disciplineBody
     } 
 
-    displinesArr.forEach(({name, date, type}) => {
-        disciplineBody.appendChild(disciplineBarDisc(name, date, type))
+    displinesArr.forEach(({name, date, type, id}) => {
+        disciplineBody.appendChild(disciplineBarDisc(name, date, type, id))
     })
 
     return disciplineContent;

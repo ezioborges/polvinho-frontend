@@ -9,34 +9,55 @@ const routes = {
   "/": "./pages/Home.js",
   "/dashboard": "./pages/Dashboard.js",
   "/disciplines": "./pages/Disciplines.js",
-  "/arroz": "./pages/Exam.js"
+  "/disciplines/:id": "./pages/Exam.js"
 };
 
 const handleLocation = async () => {
   const hashPath = window.location.hash;
   const path = hashPath.slice(1) || "/"; // Remove o '#' inicial, se existir, ou usa '/' como padrão
-  const route =
-    routes[path] ||
-    (() => {
-      document.querySelector("#main-content").innerHTML =
-        "<h1>Página não encontrada</h1>";
-    });
+
+  let matchedRoute = null;
+  let params = null;
+
+  for (const routePattern in routes) {
+    const regexPath = routePattern.replace(/:\w+/g, '(\\w+)'); // Converte a rota dinâmica para uma regex
+    const regex = new RegExp(`^${regexPath}$`);
+    const match = path.match(regex);
+
+    if (match) {
+      matchedRoute = routes[routePattern];
+      params = {};
+      const paramNames = routePattern.match(/:\w+/g);
+      if (paramNames) {
+        paramNames.forEach((name, index) => {
+          params[name.slice(1)] = match[index + 1]; // Extrai o valor do parâmetro
+        });
+      }
+      break; // Encontrou uma rota correspondente
+    }
+  }
+
+  const route = matchedRoute || (() => {
+    document.querySelector("#main-content").innerHTML =
+      "<h1>Página não encontrada</h1>";
+  });
 
   if (typeof route === "string" && route.endsWith(".js")) {
     try {
       const module = await import(route);
-      document.querySelector("#main-content").innerHTML = ""; // Limpa o conteúdo
+      document.querySelector("#main-content").innerHTML = "";
       if (module.default && typeof module.default === "function") {
-        const content = module.default(); // Chama a função do componente
+        // Passe os parâmetros para o componente, se necessário
+        const content = module.default(params);
         if (content instanceof HTMLElement) {
-          document.querySelector("#main-content").appendChild(content); // Adiciona o elemento retornado
+          document.querySelector("#main-content").appendChild(content);
         } else {
           console.warn(`O componente em ${route} não retornou um HTMLElement.`);
         }
       } else {
         console.warn(`O módulo ${route} não exportou uma função default.`);
       }
-      console.log(`Módulo ${route} importado e (se aplicável) executado.`);
+      console.log(`Módulo ${route} importado e (se aplicável) executado com parâmetros:`, params);
     } catch (error) {
       console.error("Erro ao importar o módulo:", error);
       document.querySelector("#main-content").innerHTML =
