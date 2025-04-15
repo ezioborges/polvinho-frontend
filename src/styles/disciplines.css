@@ -1,17 +1,53 @@
-.discipline-table {
-    border: 1px solid red;
+.discipline-title-table {
     width: 100%;
-    height: 100%;
+    height: 80vh;
 }
 
-.discipline-table th {
-    width: 33%;
-    padding: .5rem;
-    border: 1px solid red;
+.discipline-header {
+    display: flex;    
+    justify-content: space-around;
+    align-items: center;
+    padding: .6rem;
+    height: 3.5rem;
 }
 
-.discipline-table td {
-    width: 33%;
-    border: 1px solid green;
-    text-align: center;
+
+.discipline-bar-table {
+    background-color: var(--neutral-100);
+    border: 1px solid var(--neutral-200);
+    border-radius: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .6rem;
+    height: 3.5rem;
+    width: 90%;
+    margin-bottom: .5rem;
+}
+
+.discipline-bar-table:hover {
+   background-color: var(--neutral-200); 
+   cursor: pointer;
+}
+
+.type-body-right {
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    width: 5.183rem;
+    height: 1.25rem;
+    margin-right: 9.1rem;
+    padding: .25rem;
+    background-color: var(--indigo-500);
+}
+
+.name-body-left {
+    margin-left: 9rem;
+}
+
+.link-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

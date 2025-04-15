@@ -14,7 +14,7 @@ const SidebarTop = () => {
     const disciplineText = newElement('a');
 
     // Configurações de texto
-    const sidebarH1 = document.createElement('a');
+    const sidebarH1 = newElement('a');
     sidebarH1.textContent = "Polvo";
     sidebarH1.href = '/';
     sidebarH1.onclick = (event) => router(event)
@@ -51,8 +51,8 @@ const SidebarTop = () => {
     disciplineLogo.classList.add('menu-logo');
 
     // Monta a estrutura
-    sidebarTitle.appendChild(polvoLogo);
-    sidebarTitle.appendChild(sidebarH1);
+    sidebarTitle.appendChild(polvoLogo)
+    sidebarTitle.appendChild(sidebarH1)
 
     sidebarDashboard.appendChild(dashboardLogo);
     sidebarDashboard.appendChild(dashboardText);

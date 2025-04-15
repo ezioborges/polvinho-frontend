@@ -2,12 +2,14 @@ export const router = (event) => {
   event = event || window.event;
   event.preventDefault();
   window.location.hash = event.target.href.slice(window.location.origin.length); // Atualiza o hash
+  handleLocation()
 };
 
 const routes = {
   "/": "./pages/Home.js",
   "/dashboard": "./pages/Dashboard.js",
   "/disciplines": "./pages/Disciplines.js",
+  "/arroz": "./pages/Exam.js"
 };
 
 const handleLocation = async () => {

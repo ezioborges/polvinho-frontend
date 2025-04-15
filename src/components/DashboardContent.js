@@ -2,7 +2,7 @@ import disciplinesArr from "../data/disciplinesArr.js";
 import newElement from "../utils/newElement.js";
 import textGenerator from "../utils/textGenerator.js";
 import BodyWithoutContent from "./BodyWithoutContent.js";
-import DisciplineBar from "./DisciplineBar.js";
+import DisciplineBar from "./DisciplineBarDash.js";
 
 const DashboardContent = () => {
     const disciplines = Object.values(disciplinesArr)
