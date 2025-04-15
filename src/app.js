@@ -1,5 +1,4 @@
 import { Sidebar } from "./components/Sidebar.js";
-import { router } from "./router.js";
 import newElement from "./utils/newElement.js";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,15 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (linkElement) {
           event.preventDefault();
           window.location.hash = linkElement.getAttribute('href');
-          handleLocation();
         }
       });
     }
-    
+
     const sidebarLinks = document.querySelectorAll('#sidebar a');
 
     sidebarLinks.forEach(link => {
-        link.addEventListener('click', router)
+        link.addEventListener('click', (event) => {
+            event.preventDefault()
+            window.location.hash = event.target.getAttribute('href')
+        })
     });
     // handleLocation()
 });
