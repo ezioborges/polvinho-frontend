@@ -63,10 +63,6 @@ const handleLocation = async () => {
       document.querySelector("#main-content").innerHTML =
         "<h1>Erro ao carregar a página</h1>";
     }
-  } else if (typeof route === "string" && route.endsWith(".html")) {
-    const html = await fetch(route).then((data) => data.text());
-    document.querySelector("#main-content").innerHTML = html;
-    // Lógica para executar scripts dentro do HTML, se necessário.
   } else if (typeof route === "function") {
     route();
   }

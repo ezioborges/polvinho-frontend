@@ -1,11 +1,11 @@
-import { quizzesArr } from "../data/quizzesArr.js";
+import { quizzesData } from "../data/quizzesData.js";
 import { tableText } from "../utils/disciplineBar.js";
 import newElement from "../utils/newElement.js";
 import BodyWithoutContent from "./BodyWithoutContent.js";
 import disciplineBarDisc from "./DisciplineBarDisc.js";
 
 const DisciplinesContent = () => {
-    const displinesArr = Object.values(quizzesArr);
+    const displinesArr = Object.values(quizzesData);
     // console.log("🚀 ~ DisciplinesContent ~ displinesArr:", displinesArr)
     const disciplineContent = newElement('div');
     disciplineContent.classList.add('discipline-title-table')

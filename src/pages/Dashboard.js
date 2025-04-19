@@ -1,11 +1,11 @@
 import DashboardContent from "../components/DashboardContent.js";
-import Title from "../components/Title.js";
+import PageTitle from "../components/PageTitle.js";
 import newElement from "../utils/newElement.js"
 
 const Dashboard = () => {
     const dashBody = newElement('div');
     
-    const titleContent = Title('Dashboard', 'Bem vindo, Aluno');
+    const titleContent = PageTitle('Dashboard', 'Bem vindo, Aluno');
     const bodyContent = DashboardContent();
 
     dashBody.appendChild(titleContent);
