@@ -9,4 +9,5 @@
 
 .button-content:hover {
     background-color: var(--indigo-700);
+    cursor: pointer;
 }
