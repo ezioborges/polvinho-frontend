@@ -1,12 +1,12 @@
 import newElement from "../utils/newElement.js";
 
-const Button = (title, classTitle) => {
+const CancelButton = (title, classTitle) => {
     const buttonContent = newElement('button');
     buttonContent.textContent = title
-    buttonContent.classList.add('button-content')
+    buttonContent.classList.add('cancel-button-content')
     buttonContent.classList.add(classTitle)
     
     return buttonContent
 }
 
-export default Button;
+export default CancelButton;

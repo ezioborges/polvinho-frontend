@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"node --watch src/server.js"
+    "dev": "node --watch src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,8 @@
     "dotenv": "^16.4.7",
     "lint": "^0.8.19",
     "prettier": "^3.5.3"
+  },
+  "devDependencies": {
+    "prettier-plugin-organize-imports": "^4.1.0"
   }
 }
