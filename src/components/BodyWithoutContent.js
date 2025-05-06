@@ -1,11 +1,11 @@
 import newElement from "../utils/newElement.js";
 import textGenerator from "../utils/textGenerator.js";
 
-const BodyWithoutContent = () => {
+const BodyWithoutContent = (text) => {
     const content = newElement('div');
     const img = newElement('img');
 
-    const text = textGenerator('textMdBold', 'Nenhuma disciplina cadastrada');
+    const title = textGenerator('textMdBold', text);
 
     img.src = './assets/no-data.png';
     img.alt = 'Planilha vazia';
@@ -15,7 +15,7 @@ const BodyWithoutContent = () => {
     img.style.marginBottom = '1rem';
     
     content.appendChild(img);
-    content.appendChild(text);
+    content.appendChild(title);
 
     return content;
 }

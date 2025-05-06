@@ -9,7 +9,8 @@ const routes = {
   "/": "./pages/Home.js",
   "/dashboard": "./pages/Dashboard.js",
   "/disciplines": "./pages/Disciplines.js",
-  "/disciplines/:id": "./pages/Exam.js"
+  "/disciplines/:id": "./pages/Exam.js",
+  "/disciplines/:id/quiz": "./pages/Quiz.js",
 };
 
 const handleLocation = async () => {

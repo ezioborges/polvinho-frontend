@@ -11,7 +11,119 @@ export const quizzesData = [
         },
         attempts: 2,
         time: '60 min',
-        finish: '10 de março'
+        finish: '10 de março',
+        questions: [
+            {
+                questionId: 1,
+                question: 'Qual é a principal característica da poção Amortentia?',
+                alternativer: [
+                    { a: 'Induzir um amor verdadeiro e duradouro.' },
+                    { b: 'Causar uma forte obsessão e atração.' },
+                    { c: 'Aumentar a inteligência de quem a bebe.' },
+                    { d: 'Curar ferimentos graves.' },
+                ],
+                correctAnswer: { correct: 'Causar uma forte obsessão e atração.' }
+            },
+            {
+                questionId: 2,
+                question: 'Quais são os três cheiros distintos que Harry Potter sente ao inalar o aroma de Amortentia?',
+                alternativer: [
+                    { a: 'Torta de melaço, madeira de vassoura nova e grama recém-cortada.' },
+                    { b: 'Pergaminho velho, tinta e flores de lírio.' },
+                    { c: 'Bolo de abóbora, couro de dragão e poeira de estrelas.' },
+                    { d: 'Café, chocolate e hortelã fresca.' },
+                ],
+                correctAnswer: { correct: 'Torta de melaço, madeira de vassoura nova e grama recém-cortada.' }
+            },
+            {
+                questionId: 3,
+                question: 'O aroma da poção Amortentia é o mesmo para todas as pessoas?',
+                alternativer: [
+                    { a: 'Sim, ela sempre tem o mesmo cheiro adocicado e floral.' },
+                    { b: 'Não, o aroma é diferente para cada pessoa, remetendo ao que lhes atrai.' },
+                    { c: 'Depende da forma como a poção foi preparada.' },
+                    { d: 'Apenas bruxos e bruxas conseguem sentir o aroma da poção.' },
+                ],
+                correctAnswer: { correct: 'Não, o aroma é diferente para cada pessoa, remetendo ao que lhes atrai.' }
+            },
+            {
+                questionId: 4,
+                question: 'Qual a aparência da poçao Amortentia quando bem feita?',
+                alternativer: [
+                    { a: 'Um líquido verde borbulhante.' },
+                    { b: 'Um vapor espiralado de cor madrepérola.' },
+                    { c: 'Uma fumaça densa e escura.' },
+                    { d: 'Um líquido dourado e cintilante.' },
+                ],
+                correctAnswer: { correct: 'Um vapor espiralado de cor madrepérola.' }
+            },
+            {
+                questionId: 5,
+                question: 'Amortentia pode criar amor verdadeiro?',
+                alternativer: [
+                    { a: 'Sim, é a mais poderosa poção do amor existente.' },
+                    { b: 'Não, ela apenas causa uma forte paixão e obsessão.' },
+                    { c: 'Apenas se a pessoa que a bebe já tiver sentimentos pela outra.' },
+                    { d: 'Depende da quantidade ingerida da poção.' },
+                ],
+                correctAnswer: { correct: 'Não, ela apenas causa uma forte paixão e obsessão.' }
+            },
+            {
+                questionId: 6,
+                question: 'Em qual ocasião vemos Amortentia sendo mencionada nos livros de Harry Potter?',
+                alternativer: [
+                    { a: 'Durante as aulas de Herbologia.' },
+                    { b: 'Nas discussões sobre a história da magia.' },
+                    { c: 'Nas aulas de Poções, especialmente com o Professor Slughorn.' },
+                    { d: 'Nos encontros do Clube de Duelos.' },
+                ],
+                correctAnswer: { correct: 'Nas aulas de Poções, especialmente com o Professor Slughorn.' }
+            },
+            {
+                questionId: 7,
+                question: 'Quais cuidados devem ser tomados ao preparar ou lidar com Amortentia?',
+                alternativer: [
+                    { a: 'Usar luvas de pele de dragão para evitar queimaduras.' },
+                    { b: 'Manter a poção em um recipiente de prata para preservar suas propriedades.' },
+                    { c: 'Ter cautela devido ao seu poder e potencial para causar obsessão.' },
+                    { d: 'Agitar vigorosamente antes de usar para ativar seus efeitos.' },
+                ],
+                correctAnswer: { correct: 'Ter cautela devido ao seu poder e potencial para causar obsessão.' }
+            },
+            {
+                questionId: 8,
+                question: 'Quem menciona a Amortentia pela primeira vez para Harry, Ron e Hermione?',
+                alternativer: [
+                    { a: 'Professor Snape.' },
+                    { b: 'Professor Dumbledore.' },
+                    { c: 'Professor Slughorn.' },
+                    { d: 'Madame Pomfrey.' },
+                ],
+                correctAnswer: { correct: 'Professor Slughorn.' }
+            },
+            {
+                questionId: 9,
+                question: 'Qual é um dos ingredientes conhecidos para a preparação da Amortentia?',
+                alternativer: [
+                    { a: 'Pó de chifre de unicórnio.' },
+                    { b: 'Ovos de Cinífrago.' },
+                    { c: 'Cabelo de Veela.' },
+                    { d: 'Lágrimas de fênix.' },
+                ],
+                correctAnswer: { correct: 'Cabelo de Veela.' }
+            },
+            {
+                questionId: 10,
+                question: 'Qual o perigo de usar Amortentia em alguém?',
+                alternativer: [
+                    { a: 'Pode causar perda de memória.' },
+                    { b: 'Pode levar a um amor não correspondido e sofrimento.' },
+                    { c: 'Pode transformar a pessoa em um ser irracional.' },
+                    { d: 'Pode causar envelhecimento precoce.' },
+                ],
+                correctAnswer: { correct: 'Pode levar a um amor não correspondido e sofrimento.' }
+            },
+        ],
     },
     {
         id: 2,
@@ -25,7 +137,119 @@ export const quizzesData = [
         },
         attempts: 1,
         time: '60 min',
-        finish: '10 de março'
+        finish: '10 de março',
+        questions: [
+            {
+                questionId: 1,
+                question: 'Qual é a principal característica da poção Amortentia?',
+                alternativer: [
+                    { a: 'Induzir um amor verdadeiro e duradouro.' },
+                    { b: 'Causar uma forte obsessão e atração.' },
+                    { c: 'Aumentar a inteligência de quem a bebe.' },
+                    { d: 'Curar ferimentos graves.' },
+                ],
+                correctAnswer: { correct: 'Causar uma forte obsessão e atração.' }
+            },
+            {
+                questionId: 2,
+                question: 'Quais são os três cheiros distintos que Harry Potter sente ao inalar o aroma de Amortentia?',
+                alternativer: [
+                    { a: 'Torta de melaço, madeira de vassoura nova e grama recém-cortada.' },
+                    { b: 'Pergaminho velho, tinta e flores de lírio.' },
+                    { c: 'Bolo de abóbora, couro de dragão e poeira de estrelas.' },
+                    { d: 'Café, chocolate e hortelã fresca.' },
+                ],
+                correctAnswer: { correct: 'Torta de melaço, madeira de vassoura nova e grama recém-cortada.' }
+            },
+            {
+                questionId: 3,
+                question: 'O aroma da poção Amortentia é o mesmo para todas as pessoas?',
+                alternativer: [
+                    { a: 'Sim, ela sempre tem o mesmo cheiro adocicado e floral.' },
+                    { b: 'Não, o aroma é diferente para cada pessoa, remetendo ao que lhes atrai.' },
+                    { c: 'Depende da forma como a poção foi preparada.' },
+                    { d: 'Apenas bruxos e bruxas conseguem sentir o aroma da poção.' },
+                ],
+                correctAnswer: { correct: 'Não, o aroma é diferente para cada pessoa, remetendo ao que lhes atrai.' }
+            },
+            {
+                questionId: 4,
+                question: 'Qual a aparência da poçao Amortentia quando bem feita?',
+                alternativer: [
+                    { a: 'Um líquido verde borbulhante.' },
+                    { b: 'Um vapor espiralado de cor madrepérola.' },
+                    { c: 'Uma fumaça densa e escura.' },
+                    { d: 'Um líquido dourado e cintilante.' },
+                ],
+                correctAnswer: { correct: 'Um vapor espiralado de cor madrepérola.' }
+            },
+            {
+                questionId: 5,
+                question: 'Amortentia pode criar amor verdadeiro?',
+                alternativer: [
+                    { a: 'Sim, é a mais poderosa poção do amor existente.' },
+                    { b: 'Não, ela apenas causa uma forte paixão e obsessão.' },
+                    { c: 'Apenas se a pessoa que a bebe já tiver sentimentos pela outra.' },
+                    { d: 'Depende da quantidade ingerida da poção.' },
+                ],
+                correctAnswer: { correct: 'Não, ela apenas causa uma forte paixão e obsessão.' }
+            },
+            {
+                questionId: 6,
+                question: 'Em qual ocasião vemos Amortentia sendo mencionada nos livros de Harry Potter?',
+                alternativer: [
+                    { a: 'Durante as aulas de Herbologia.' },
+                    { b: 'Nas discussões sobre a história da magia.' },
+                    { c: 'Nas aulas de Poções, especialmente com o Professor Slughorn.' },
+                    { d: 'Nos encontros do Clube de Duelos.' },
+                ],
+                correctAnswer: { correct: 'Nas aulas de Poções, especialmente com o Professor Slughorn.' }
+            },
+            {
+                questionId: 7,
+                question: 'Quais cuidados devem ser tomados ao preparar ou lidar com Amortentia?',
+                alternativer: [
+                    { a: 'Usar luvas de pele de dragão para evitar queimaduras.' },
+                    { b: 'Manter a poção em um recipiente de prata para preservar suas propriedades.' },
+                    { c: 'Ter cautela devido ao seu poder e potencial para causar obsessão.' },
+                    { d: 'Agitar vigorosamente antes de usar para ativar seus efeitos.' },
+                ],
+                correctAnswer: { correct: 'Ter cautela devido ao seu poder e potencial para causar obsessão.' }
+            },
+            {
+                questionId: 8,
+                question: 'Quem menciona a Amortentia pela primeira vez para Harry, Ron e Hermione?',
+                alternativer: [
+                    { a: 'Professor Snape.' },
+                    { b: 'Professor Dumbledore.' },
+                    { c: 'Professor Slughorn.' },
+                    { d: 'Madame Pomfrey.' },
+                ],
+                correctAnswer: { correct: 'Professor Slughorn.' }
+            },
+            {
+                questionId: 9,
+                question: 'Qual é um dos ingredientes conhecidos para a preparação da Amortentia?',
+                alternativer: [
+                    { a: 'Pó de chifre de unicórnio.' },
+                    { b: 'Ovos de Cinífrago.' },
+                    { c: 'Cabelo de Veela.' },
+                    { d: 'Lágrimas de fênix.' },
+                ],
+                correctAnswer: { correct: 'Cabelo de Veela.' }
+            },
+            {
+                questionId: 10,
+                question: 'Qual o perigo de usar Amortentia em alguém?',
+                alternativer: [
+                    { a: 'Pode causar perda de memória.' },
+                    { b: 'Pode levar a um amor não correspondido e sofrimento.' },
+                    { c: 'Pode transformar a pessoa em um ser irracional.' },
+                    { d: 'Pode causar envelhecimento precoce.' },
+                ],
+                correctAnswer: { correct: 'Pode levar a um amor não correspondido e sofrimento.' }
+            },
+        ],
     },
     {
         id: 3,
@@ -39,7 +263,119 @@ export const quizzesData = [
         },
         attempts: 3,
         time: '60 min',
-        finish: '10 de março'
+        finish: '10 de março',
+        questions: [
+            {
+                questionId: 1,
+                question: 'Qual é a principal característica da poção Amortentia?',
+                alternativer: [
+                    { a: 'Induzir um amor verdadeiro e duradouro.' },
+                    { b: 'Causar uma forte obsessão e atração.' },
+                    { c: 'Aumentar a inteligência de quem a bebe.' },
+                    { d: 'Curar ferimentos graves.' },
+                ],
+                correctAnswer: { correct: 'Causar uma forte obsessão e atração.' }
+            },
+            {
+                questionId: 2,
+                question: 'Quais são os três cheiros distintos que Harry Potter sente ao inalar o aroma de Amortentia?',
+                alternativer: [
+                    { a: 'Torta de melaço, madeira de vassoura nova e grama recém-cortada.' },
+                    { b: 'Pergaminho velho, tinta e flores de lírio.' },
+                    { c: 'Bolo de abóbora, couro de dragão e poeira de estrelas.' },
+                    { d: 'Café, chocolate e hortelã fresca.' },
+                ],
+                correctAnswer: { correct: 'Torta de melaço, madeira de vassoura nova e grama recém-cortada.' }
+            },
+            {
+                questionId: 3,
+                question: 'O aroma da poção Amortentia é o mesmo para todas as pessoas?',
+                alternativer: [
+                    { a: 'Sim, ela sempre tem o mesmo cheiro adocicado e floral.' },
+                    { b: 'Não, o aroma é diferente para cada pessoa, remetendo ao que lhes atrai.' },
+                    { c: 'Depende da forma como a poção foi preparada.' },
+                    { d: 'Apenas bruxos e bruxas conseguem sentir o aroma da poção.' },
+                ],
+                correctAnswer: { correct: 'Não, o aroma é diferente para cada pessoa, remetendo ao que lhes atrai.' }
+            },
+            {
+                questionId: 4,
+                question: 'Qual a aparência da poçao Amortentia quando bem feita?',
+                alternativer: [
+                    { a: 'Um líquido verde borbulhante.' },
+                    { b: 'Um vapor espiralado de cor madrepérola.' },
+                    { c: 'Uma fumaça densa e escura.' },
+                    { d: 'Um líquido dourado e cintilante.' },
+                ],
+                correctAnswer: { correct: 'Um vapor espiralado de cor madrepérola.' }
+            },
+            {
+                questionId: 5,
+                question: 'Amortentia pode criar amor verdadeiro?',
+                alternativer: [
+                    { a: 'Sim, é a mais poderosa poção do amor existente.' },
+                    { b: 'Não, ela apenas causa uma forte paixão e obsessão.' },
+                    { c: 'Apenas se a pessoa que a bebe já tiver sentimentos pela outra.' },
+                    { d: 'Depende da quantidade ingerida da poção.' },
+                ],
+                correctAnswer: { correct: 'Não, ela apenas causa uma forte paixão e obsessão.' }
+            },
+            {
+                questionId: 6,
+                question: 'Em qual ocasião vemos Amortentia sendo mencionada nos livros de Harry Potter?',
+                alternativer: [
+                    { a: 'Durante as aulas de Herbologia.' },
+                    { b: 'Nas discussões sobre a história da magia.' },
+                    { c: 'Nas aulas de Poções, especialmente com o Professor Slughorn.' },
+                    { d: 'Nos encontros do Clube de Duelos.' },
+                ],
+                correctAnswer: { correct: 'Nas aulas de Poções, especialmente com o Professor Slughorn.' }
+            },
+            {
+                questionId: 7,
+                question: 'Quais cuidados devem ser tomados ao preparar ou lidar com Amortentia?',
+                alternativer: [
+                    { a: 'Usar luvas de pele de dragão para evitar queimaduras.' },
+                    { b: 'Manter a poção em um recipiente de prata para preservar suas propriedades.' },
+                    { c: 'Ter cautela devido ao seu poder e potencial para causar obsessão.' },
+                    { d: 'Agitar vigorosamente antes de usar para ativar seus efeitos.' },
+                ],
+                correctAnswer: { correct: 'Ter cautela devido ao seu poder e potencial para causar obsessão.' }
+            },
+            {
+                questionId: 8,
+                question: 'Quem menciona a Amortentia pela primeira vez para Harry, Ron e Hermione?',
+                alternativer: [
+                    { a: 'Professor Snape.' },
+                    { b: 'Professor Dumbledore.' },
+                    { c: 'Professor Slughorn.' },
+                    { d: 'Madame Pomfrey.' },
+                ],
+                correctAnswer: { correct: 'Professor Slughorn.' }
+            },
+            {
+                questionId: 9,
+                question: 'Qual é um dos ingredientes conhecidos para a preparação da Amortentia?',
+                alternativer: [
+                    { a: 'Pó de chifre de unicórnio.' },
+                    { b: 'Ovos de Cinífrago.' },
+                    { c: 'Cabelo de Veela.' },
+                    { d: 'Lágrimas de fênix.' },
+                ],
+                correctAnswer: { correct: 'Cabelo de Veela.' }
+            },
+            {
+                questionId: 10,
+                question: 'Qual o perigo de usar Amortentia em alguém?',
+                alternativer: [
+                    { a: 'Pode causar perda de memória.' },
+                    { b: 'Pode levar a um amor não correspondido e sofrimento.' },
+                    { c: 'Pode transformar a pessoa em um ser irracional.' },
+                    { d: 'Pode causar envelhecimento precoce.' },
+                ],
+                correctAnswer: { correct: 'Pode levar a um amor não correspondido e sofrimento.' }
+            },
+        ],
     },
     {
         id: 4,
@@ -53,7 +389,119 @@ export const quizzesData = [
         },
         attempts: 1,
         time: '60 min',
-        finish: '10 de março'
+        finish: '10 de março',
+        questions: [
+            {
+                questionId: 1,
+                question: 'Qual é a principal característica da poção Amortentia?',
+                alternativer: [
+                    { a: 'Induzir um amor verdadeiro e duradouro.' },
+                    { b: 'Causar uma forte obsessão e atração.' },
+                    { c: 'Aumentar a inteligência de quem a bebe.' },
+                    { d: 'Curar ferimentos graves.' },
+                ],
+                correctAnswer: { correct: 'Causar uma forte obsessão e atração.' }
+            },
+            {
+                questionId: 2,
+                question: 'Quais são os três cheiros distintos que Harry Potter sente ao inalar o aroma de Amortentia?',
+                alternativer: [
+                    { a: 'Torta de melaço, madeira de vassoura nova e grama recém-cortada.' },
+                    { b: 'Pergaminho velho, tinta e flores de lírio.' },
+                    { c: 'Bolo de abóbora, couro de dragão e poeira de estrelas.' },
+                    { d: 'Café, chocolate e hortelã fresca.' },
+                ],
+                correctAnswer: { correct: 'Torta de melaço, madeira de vassoura nova e grama recém-cortada.' }
+            },
+            {
+                questionId: 3,
+                question: 'O aroma da poção Amortentia é o mesmo para todas as pessoas?',
+                alternativer: [
+                    { a: 'Sim, ela sempre tem o mesmo cheiro adocicado e floral.' },
+                    { b: 'Não, o aroma é diferente para cada pessoa, remetendo ao que lhes atrai.' },
+                    { c: 'Depende da forma como a poção foi preparada.' },
+                    { d: 'Apenas bruxos e bruxas conseguem sentir o aroma da poção.' },
+                ],
+                correctAnswer: { correct: 'Não, o aroma é diferente para cada pessoa, remetendo ao que lhes atrai.' }
+            },
+            {
+                questionId: 4,
+                question: 'Qual a aparência da poçao Amortentia quando bem feita?',
+                alternativer: [
+                    { a: 'Um líquido verde borbulhante.' },
+                    { b: 'Um vapor espiralado de cor madrepérola.' },
+                    { c: 'Uma fumaça densa e escura.' },
+                    { d: 'Um líquido dourado e cintilante.' },
+                ],
+                correctAnswer: { correct: 'Um vapor espiralado de cor madrepérola.' }
+            },
+            {
+                questionId: 5,
+                question: 'Amortentia pode criar amor verdadeiro?',
+                alternativer: [
+                    { a: 'Sim, é a mais poderosa poção do amor existente.' },
+                    { b: 'Não, ela apenas causa uma forte paixão e obsessão.' },
+                    { c: 'Apenas se a pessoa que a bebe já tiver sentimentos pela outra.' },
+                    { d: 'Depende da quantidade ingerida da poção.' },
+                ],
+                correctAnswer: { correct: 'Não, ela apenas causa uma forte paixão e obsessão.' }
+            },
+            {
+                questionId: 6,
+                question: 'Em qual ocasião vemos Amortentia sendo mencionada nos livros de Harry Potter?',
+                alternativer: [
+                    { a: 'Durante as aulas de Herbologia.' },
+                    { b: 'Nas discussões sobre a história da magia.' },
+                    { c: 'Nas aulas de Poções, especialmente com o Professor Slughorn.' },
+                    { d: 'Nos encontros do Clube de Duelos.' },
+                ],
+                correctAnswer: { correct: 'Nas aulas de Poções, especialmente com o Professor Slughorn.' }
+            },
+            {
+                questionId: 7,
+                question: 'Quais cuidados devem ser tomados ao preparar ou lidar com Amortentia?',
+                alternativer: [
+                    { a: 'Usar luvas de pele de dragão para evitar queimaduras.' },
+                    { b: 'Manter a poção em um recipiente de prata para preservar suas propriedades.' },
+                    { c: 'Ter cautela devido ao seu poder e potencial para causar obsessão.' },
+                    { d: 'Agitar vigorosamente antes de usar para ativar seus efeitos.' },
+                ],
+                correctAnswer: { correct: 'Ter cautela devido ao seu poder e potencial para causar obsessão.' }
+            },
+            {
+                questionId: 8,
+                question: 'Quem menciona a Amortentia pela primeira vez para Harry, Ron e Hermione?',
+                alternativer: [
+                    { a: 'Professor Snape.' },
+                    { b: 'Professor Dumbledore.' },
+                    { c: 'Professor Slughorn.' },
+                    { d: 'Madame Pomfrey.' },
+                ],
+                correctAnswer: { correct: 'Professor Slughorn.' }
+            },
+            {
+                questionId: 9,
+                question: 'Qual é um dos ingredientes conhecidos para a preparação da Amortentia?',
+                alternativer: [
+                    { a: 'Pó de chifre de unicórnio.' },
+                    { b: 'Ovos de Cinífrago.' },
+                    { c: 'Cabelo de Veela.' },
+                    { d: 'Lágrimas de fênix.' },
+                ],
+                correctAnswer: { correct: 'Cabelo de Veela.' }
+            },
+            {
+                questionId: 10,
+                question: 'Qual o perigo de usar Amortentia em alguém?',
+                alternativer: [
+                    { a: 'Pode causar perda de memória.' },
+                    { b: 'Pode levar a um amor não correspondido e sofrimento.' },
+                    { c: 'Pode transformar a pessoa em um ser irracional.' },
+                    { d: 'Pode causar envelhecimento precoce.' },
+                ],
+                correctAnswer: { correct: 'Pode levar a um amor não correspondido e sofrimento.' }
+            },
+        ],
     },
     {
         id: 5,
@@ -67,6 +515,118 @@ export const quizzesData = [
         },
         attempts: 2,
         time: '60 min',
-        finish: '10 de março'
+        finish: '10 de março',
+        questions: [
+            {
+                questionId: 1,
+                question: 'Qual é a principal característica da poção Amortentia?',
+                alternativer: [
+                    { a: 'Induzir um amor verdadeiro e duradouro.' },
+                    { b: 'Causar uma forte obsessão e atração.' },
+                    { c: 'Aumentar a inteligência de quem a bebe.' },
+                    { d: 'Curar ferimentos graves.' },
+                ],
+                correctAnswer: { correct: 'Causar uma forte obsessão e atração.' }
+            },
+            {
+                questionId: 2,
+                question: 'Quais são os três cheiros distintos que Harry Potter sente ao inalar o aroma de Amortentia?',
+                alternativer: [
+                    { a: 'Torta de melaço, madeira de vassoura nova e grama recém-cortada.' },
+                    { b: 'Pergaminho velho, tinta e flores de lírio.' },
+                    { c: 'Bolo de abóbora, couro de dragão e poeira de estrelas.' },
+                    { d: 'Café, chocolate e hortelã fresca.' },
+                ],
+                correctAnswer: { correct: 'Torta de melaço, madeira de vassoura nova e grama recém-cortada.' }
+            },
+            {
+                questionId: 3,
+                question: 'O aroma da poção Amortentia é o mesmo para todas as pessoas?',
+                alternativer: [
+                    { a: 'Sim, ela sempre tem o mesmo cheiro adocicado e floral.' },
+                    { b: 'Não, o aroma é diferente para cada pessoa, remetendo ao que lhes atrai.' },
+                    { c: 'Depende da forma como a poção foi preparada.' },
+                    { d: 'Apenas bruxos e bruxas conseguem sentir o aroma da poção.' },
+                ],
+                correctAnswer: { correct: 'Não, o aroma é diferente para cada pessoa, remetendo ao que lhes atrai.' }
+            },
+            {
+                questionId: 4,
+                question: 'Qual a aparência da poçao Amortentia quando bem feita?',
+                alternativer: [
+                    { a: 'Um líquido verde borbulhante.' },
+                    { b: 'Um vapor espiralado de cor madrepérola.' },
+                    { c: 'Uma fumaça densa e escura.' },
+                    { d: 'Um líquido dourado e cintilante.' },
+                ],
+                correctAnswer: { correct: 'Um vapor espiralado de cor madrepérola.' }
+            },
+            {
+                questionId: 5,
+                question: 'Amortentia pode criar amor verdadeiro?',
+                alternativer: [
+                    { a: 'Sim, é a mais poderosa poção do amor existente.' },
+                    { b: 'Não, ela apenas causa uma forte paixão e obsessão.' },
+                    { c: 'Apenas se a pessoa que a bebe já tiver sentimentos pela outra.' },
+                    { d: 'Depende da quantidade ingerida da poção.' },
+                ],
+                correctAnswer: { correct: 'Não, ela apenas causa uma forte paixão e obsessão.' }
+            },
+            {
+                questionId: 6,
+                question: 'Em qual ocasião vemos Amortentia sendo mencionada nos livros de Harry Potter?',
+                alternativer: [
+                    { a: 'Durante as aulas de Herbologia.' },
+                    { b: 'Nas discussões sobre a história da magia.' },
+                    { c: 'Nas aulas de Poções, especialmente com o Professor Slughorn.' },
+                    { d: 'Nos encontros do Clube de Duelos.' },
+                ],
+                correctAnswer: { correct: 'Nas aulas de Poções, especialmente com o Professor Slughorn.' }
+            },
+            {
+                questionId: 7,
+                question: 'Quais cuidados devem ser tomados ao preparar ou lidar com Amortentia?',
+                alternativer: [
+                    { a: 'Usar luvas de pele de dragão para evitar queimaduras.' },
+                    { b: 'Manter a poção em um recipiente de prata para preservar suas propriedades.' },
+                    { c: 'Ter cautela devido ao seu poder e potencial para causar obsessão.' },
+                    { d: 'Agitar vigorosamente antes de usar para ativar seus efeitos.' },
+                ],
+                correctAnswer: { correct: 'Ter cautela devido ao seu poder e potencial para causar obsessão.' }
+            },
+            {
+                questionId: 8,
+                question: 'Quem menciona a Amortentia pela primeira vez para Harry, Ron e Hermione?',
+                alternativer: [
+                    { a: 'Professor Snape.' },
+                    { b: 'Professor Dumbledore.' },
+                    { c: 'Professor Slughorn.' },
+                    { d: 'Madame Pomfrey.' },
+                ],
+                correctAnswer: { correct: 'Professor Slughorn.' }
+            },
+            {
+                questionId: 9,
+                question: 'Qual é um dos ingredientes conhecidos para a preparação da Amortentia?',
+                alternativer: [
+                    { a: 'Pó de chifre de unicórnio.' },
+                    { b: 'Ovos de Cinífrago.' },
+                    { c: 'Cabelo de Veela.' },
+                    { d: 'Lágrimas de fênix.' },
+                ],
+                correctAnswer: { correct: 'Cabelo de Veela.' }
+            },
+            {
+                questionId: 10,
+                question: 'Qual o perigo de usar Amortentia em alguém?',
+                alternativer: [
+                    { a: 'Pode causar perda de memória.' },
+                    { b: 'Pode levar a um amor não correspondido e sofrimento.' },
+                    { c: 'Pode transformar a pessoa em um ser irracional.' },
+                    { d: 'Pode causar envelhecimento precoce.' },
+                ],
+                correctAnswer: { correct: 'Pode levar a um amor não correspondido e sofrimento.' }
+            },
+        ],
     },
 ]

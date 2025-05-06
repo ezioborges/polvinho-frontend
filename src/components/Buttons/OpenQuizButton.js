@@ -1,4 +1,4 @@
-import { clickEventStartQuiz } from "../../utils/eventListeners.js";
+import { clickEventCancelButton, clickEventStartQuiz } from "../../utils/eventListeners.js";
 import newElement from "../../utils/newElement.js";
 
 const OpenQuizButton = (title, classTitle) => {
@@ -8,6 +8,7 @@ const OpenQuizButton = (title, classTitle) => {
     buttonContent.classList.add(classTitle)
 
     clickEventStartQuiz(buttonContent)
+    clickEventCancelButton(buttonContent)
 
     return buttonContent
 }

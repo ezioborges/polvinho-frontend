@@ -14,7 +14,7 @@ const DashboardContent = () => {
     title.style.marginBottom = '.5rem';
         
 
-    const noContent = BodyWithoutContent();
+    const noContent = BodyWithoutContent('Nenhuma disciplina cadastrada');
 
     content.appendChild(title);
 

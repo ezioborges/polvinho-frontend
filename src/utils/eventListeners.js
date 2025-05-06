@@ -7,11 +7,11 @@ export const clickEventButton = (event, func) => {
 
 export const clickEventCancelButton = (event) => {
     event.addEventListener("click", () => {
-        const dialogOvgerlay = document.querySelector('.dialog-overlay')
+        const dialogOverlay = document.querySelector('.dialog-overlay')
         const dialogContent = document.querySelector('.dialog-content')
 
-        if (dialogOvgerlay) {
-            dialogOvgerlay.remove()
+        if (dialogOverlay) {
+            dialogOverlay.remove()
         }
 
         if (dialogContent) {
@@ -22,6 +22,17 @@ export const clickEventCancelButton = (event) => {
 
 export const clickEventStartQuiz = (event) => {
     event.addEventListener("click", () => {
-        console.log('AQUI VAI SER O BOTÃO QUE INICIA O QUIZ');
+        const hash = window.location.hash
+        const hashId = hash.slice(-1)
+
+        if (hash.startsWith('#/disciplines/')) {
+            window.location.hash = `${hash}/quiz`
+        } else {
+            console.warn('O hash atual não corresponde ao formato esperado.')
+        }
+        console.log('aqui é valor do hash ===>', hash);
+        console.log('aqui é o valor do hashId ===>', hashId);
+
+
     })
 }
