@@ -1,4 +1,5 @@
 import { quizzesData } from "../../data/quizzesData.js";
+import { clickEventButton } from "../../utils/eventListeners.js";
 import { getQuizz } from "../../utils/getQuizz.js";
 import newElement from "../../utils/newElement.js";
 import textGenerator from "../../utils/textGenerator.js";
@@ -20,6 +21,8 @@ const ExamBody = () => {
     const resumeReturn = ExamDesc(resume)
     const testInfo = ExamInfo(quizz)
     const initButton = Button('Começar')
+
+    clickEventButton(initButton)
 
     bodyContent.appendChild(title)
     bodyContent.appendChild(resumeReturn)
