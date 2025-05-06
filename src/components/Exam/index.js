@@ -4,7 +4,8 @@ import { clickEventButton } from "../../utils/eventListeners.js";
 import { getQuizz } from "../../utils/getQuizz.js";
 import newElement from "../../utils/newElement.js";
 import textGenerator from "../../utils/textGenerator.js";
-import Button from "../Button.js";
+import InitQuizButton from "../Buttons/InitQuizButton.js";
+
 import InitQuiz from "../Dialogs/InitQuiz.js";
 import ExamDesc from "./ExamDesc.js";
 import ExamInfo from "./ExamInfo.js";
@@ -23,10 +24,9 @@ const ExamBody = () => {
     
     const resumeReturn = ExamDesc(resume)
     const testInfo = ExamInfo(quizz)
-    const initButton = Button('Começar', 'textMdBold')
+    const initButton = InitQuizButton('Começar', 'button-content', 'textMdBold')
 
-    clickEventButton(initButton, () =>
-        InitQuiz(title, text))
+    clickEventButton(initButton, () => InitQuiz(title, text))
 
     bodyContent.appendChild(titleResume)
     bodyContent.appendChild(resumeReturn)

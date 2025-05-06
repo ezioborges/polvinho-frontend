@@ -1,6 +1,6 @@
 import newElement from "../../utils/newElement.js";
-import Button from "../Button.js";
-import CancelButton from "../CancelButton.js";
+import CancelButton from "../Buttons/CancelButton.js";
+import OpenQuizButton from "../Buttons/OpenQuizButton.js";
 
 const InitQuiz = (title, text) => {
     const dialogOverlay = newElement('div')
@@ -13,7 +13,7 @@ const InitQuiz = (title, text) => {
     const cancelButton = CancelButton('Cancelar', 'textMd')
     cancelButton.style.marginRight = '1rem'
 
-    const startButton = Button('Começar', 'textMd')
+    const startButton = OpenQuizButton('Começar', 'textMd')
 
     dialogOverlay.classList.add('dialog-overlay')
     dialogContent.classList.add('dialog-content')
@@ -40,7 +40,6 @@ const InitQuiz = (title, text) => {
     document.body.appendChild(dialogOverlay);
     document.body.appendChild(dialogContent);
 
-    console.log('Aqui funcinou como planejado')
 };
 
 export default InitQuiz;
