@@ -10,7 +10,7 @@ const routes = {
   "/dashboard": "./pages/Dashboard.js",
   "/disciplines": "./pages/Disciplines.js",
   "/disciplines/:id": "./pages/Exam.js",
-  "/disciplines/:id/quiz": "./pages/Quiz.js",
+  "/disciplines/:id/quizz": "./pages/Quizz.js",
 };
 
 const handleLocation = async () => {

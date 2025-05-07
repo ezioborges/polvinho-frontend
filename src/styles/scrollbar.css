@@ -1,0 +1,32 @@
+/* Estiliza a barra de rolagem inteira */
+::-webkit-scrollbar {
+  width: 8px; /* Largura da barra de rolagem vertical */
+  height: 12px; /* Altura da barra de rolagem horizontal */
+}
+
+/* Estiliza a trilha da barra de rolagem */
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+/* Estiliza o "polegar" da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background: var(--stone-400);
+  border-radius: 10px;
+  border: 2px solid transparent; /* Adiciona uma borda transparente */
+  background-clip: padding-box; /* Garante que a borda não cubra o fundo */
+  box-sizing: border-box; /* Garante que o tamanho inclua a borda */
+}
+
+/* Estiliza o "polegar" no hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--stone-600);
+  border: 2px solid transparent; /* Mantém a borda transparente no hover */
+  background-clip: padding-box;
+  box-sizing: border-box; /* Garante que o tamanho não mude */
+}
+
+/* Não aparece as setas superior e inferior da barra */
+::-webkit-scrollbar-button {
+  display: none;
+}

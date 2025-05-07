@@ -26,7 +26,7 @@ export const clickEventStartQuiz = (event) => {
         const hashId = hash.slice(-1)
 
         if (hash.startsWith('#/disciplines/')) {
-            window.location.hash = `${hash}/quiz`
+            window.location.hash = `${hash}/quizz`
         } else {
             console.warn('O hash atual não corresponde ao formato esperado.')
         }
