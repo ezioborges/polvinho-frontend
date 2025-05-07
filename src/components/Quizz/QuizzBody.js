@@ -1,8 +1,6 @@
 import newElement from "../../utils/newElement.js";
 
 const QuizzBody = (questions) => {
-    console.log("🚀 ~ QuizzBody ~ questions:", questions)
-    // aqui é o html da aplicação
     const bodyContent = newElement('div')
     bodyContent.classList.add('quizz-body')
     

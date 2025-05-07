@@ -1,4 +1,5 @@
 import BodyWithoutContent from "../components/BodyWithoutContent.js";
+import QuizzAnswersStudent from "../components/Quizz/QuizzAnswersStudent.js";
 import QuizzBody from "../components/Quizz/QuizzBody.js";
 import QuizzTitle from "../components/Quizz/QuizzTilte.js";
 import { quizzesData } from "../data/quizzesData.js";
@@ -19,16 +20,25 @@ const Quizz = () => {
     const { name, discipline } = data
     const { questions } = data
 
-    const bodyContent  = newElement('div')
-    bodyContent.classList.add('quiz-component')
+    const bodyContent = newElement('div')
+    bodyContent.classList.add('all-content')
 
+    const bodyRigth  = newElement('div')
+    bodyRigth.classList.add('quiz-component')
+
+    // lado direito da tela
     const titleTest = QuizzTitle(name, discipline)
     const bodyTest = QuizzBody(questions)
+        
+    //lado esquerdo da tela
+    const bodyLeft = QuizzAnswersStudent()
 
-    
 
-    bodyContent.appendChild(titleTest)
-    bodyContent.appendChild(bodyTest)
+    bodyRigth.appendChild(titleTest)
+    bodyRigth.appendChild(bodyTest)
+
+    bodyContent.appendChild(bodyRigth)
+    bodyContent.appendChild(bodyLeft)
 
     return bodyContent
 }

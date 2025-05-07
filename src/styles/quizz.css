@@ -8,19 +8,21 @@
 }
 
 .quiz-component {
-    height: 85%;
+    height: 100%;
+    /* border: 1px solid red; */
+    width: 60%;
 }
 
-.title-area {
+.all-content {
+    display: flex;
     width: 100%;
-    height: 15%;
+    height: 93%;
 }
 
 .quizz-body {
-    width: 60%;
+    width: 100%;
     height: 80%;
     padding-top: 2rem;
-    /* background-color: brown; */
     overflow-y: scroll;
 }
 
@@ -48,7 +50,7 @@
     transform: translateY(-50%); /* Ajusta o alinhamento vertical */
     width: 1.5rem; /* Largura do círculo */
     height: 1.5rem; /* Altura do círculo */
-    border: 2px solid var(--stone-700); /* Borda do círculo */
+    border: 1px solid var(--stone-700); /* Borda do círculo */
     border-radius: 50%; /* Torna o marcador circular */
     display: flex;
     justify-content: center;
@@ -76,6 +78,7 @@
     justify-content: start;
     padding-left: 5rem;
     align-items: center;
+    color: var(--stone-700);
 }
 
 .question-title {
