@@ -13,19 +13,16 @@ const QuizzBody = (questions) => {
 
         const answersArea = newElement('div')
         answersArea.classList.add('answers-area')
-        // número da pergunta
-        const questionNumber = newElement('p')
-        questionNumber.textContent = `Pergunta: ${question.questionId}`
-        questionNumber.classList.add('question-number')
-        questionNumber.classList.add('textXL')
-        bodyContent.appendChild(questionNumber)
 
+        const questionTitleArea = newElement('div')
+        questionTitleArea.classList.add('question-title-area')
 
         // titulo de cada pergunta
         const questionTitle = newElement('p')
-        questionTitle.textContent = `${question.question}`
+        questionTitle.textContent = `Pergunta ${question.questionId}: ${question.question}`
         questionTitle.classList.add('question-title')
-        questionTitle.classList.add('textMd')
+        questionTitle.classList.add('textXL')
+        questionTitle.style.fontWeight = 'bold'
         bodyContent.appendChild(questionTitle)
 
         // lista para as alternativas
@@ -44,7 +41,6 @@ const QuizzBody = (questions) => {
             optionsList.appendChild(listItem)
         })
 
-        questionArea.appendChild(questionNumber)
         questionArea.appendChild(questionTitle)
 
         answersArea.appendChild(optionsList)

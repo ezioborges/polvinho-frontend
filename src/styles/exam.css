@@ -25,13 +25,17 @@
     border: 1px solid var(--neutral-200);
     border-radius: 10px;
     margin: 3rem 5rem 1rem 0;
-    height: 30rem;
-    width: 35%;
+    height: 45rem;
+    width: 25rem;
     box-shadow: 0px 2px 4px -1px #0000000F;
     box-shadow: 0px 4px 6px -1px #0000001A;
     padding: 2rem;
     display: flex;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .info-content {
@@ -46,4 +50,34 @@
 
 .quantity-color {
     color: var(--indigo-700);
+}
+
+.attempts-top {
+    width: 8.188rem;
+    height: 1.75rem;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    color: var(--stone-700);
+}
+
+.attempts-body {
+    display: flex;
+    justify-content: center;
+    min-width: 9.5rem;
+    height: 29rem;
+    margin-top: 3rem;
+}
+
+.attempt-item {
+    display: flex;
+    justify-content: space-around;
+}
+
+.attempts-list {
+    min-width: 20rem;
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
