@@ -1,4 +1,4 @@
-export const attemptsArr = [
+export const answersArr = [
     { id: 1, answers: 'A' },
     { id: 2, answers: 'C' },
     { id: 3, answers: 'D' },
@@ -9,4 +9,10 @@ export const attemptsArr = [
     { id: 8, answers: 'B' },
     { id: 9, answers: 'A' },
     { id: 10, answers: 'A' },
+];
+
+export const attemptsArr = [
+    { id: 1, score: 8, response: 'Gabarito'},
+    { id: 2, score: 8, response: 'Gabarito'},
+    { id: 3, score: 8, response: 'Gabarito'},
 ]

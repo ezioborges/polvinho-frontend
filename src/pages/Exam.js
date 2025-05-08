@@ -1,8 +1,8 @@
 import ExamBody from "../components/Exam/index.js";
-import InfoArea from "../components/Exam/InfoArea.js";
 import PageTitle from "../components/PageTitle.js";
 import { quizzesData } from "../data/quizzesData.js";
 import newElement from "../utils/newElement.js"
+import BoxArea from "../components/Exam/BoxArea.js";
 
 const Exam = () => {
     const hash = window.location.hash
@@ -18,7 +18,7 @@ const Exam = () => {
     const examContent = newElement('div')
     examContent.classList.add('exam-content') 
     
-    const attemptsArea = InfoArea('Suas tentativas')
+    const attemptsArea = BoxArea('Suas tentativas')
     // attemptsArea.classList.add('attempts-area')
     
     const title = PageTitle(name, discipline)

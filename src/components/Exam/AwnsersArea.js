@@ -1,22 +1,19 @@
 import newElement from "../../utils/newElement.js";
-import { attemptsArr } from "../../data/attemptsArr.js";
+import { answersArr } from "../../data/attemptsArr.js";
 import BodyWithoutContent from "../BodyWithoutContent.js";
 
-const AttempsArea = () => {
+const AwnsersArea = () => {
     const attemptsContent = newElement('div')
-    attemptsContent.classList.add('attempts-body')
+    attemptsContent.classList.add('attempts-body')    
 
-    console.log('attemptsArr', attemptsArr);
-    
-
-    if (!attemptsArr || attemptsArr.length === 0) {
+    if (!answersArr || answersArr.length === 0) {
         return BodyWithoutContent('ainda não há respostas computadas!')
     }
 
     const attemptsList = newElement('ul')
     attemptsList.classList.add('attempts-list')
 
-    attemptsArr.forEach((attempt) => {
+    answersArr.forEach((attempt) => {
         const attemptItem = newElement('li')
         attemptItem.classList.add('attempt-item')
 
@@ -39,4 +36,4 @@ const AttempsArea = () => {
     return attemptsContent;
 }
 
-export default AttempsArea;
+export default AwnsersArea;
