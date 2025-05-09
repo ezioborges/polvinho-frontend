@@ -18,20 +18,21 @@ const Exam = () => {
     const examContent = newElement('div')
     examContent.classList.add('exam-content') 
 
-    const AttemptsContent = newElement('div')
-    AttemptsContent.classList.add('attempts-content')
-    
-    const attemptsArea = InfoCard('Suas tentativas')
+    const infoCardContent = newElement('div')
+    infoCardContent.classList.add('info-card-content')
     
     const title = PageTitle(name, discipline)
     const body = ExamBody()
-
+    
+    const attemptsArea = InfoCard('Suas tentativas')
 
     examContent.appendChild(title)
     examContent.appendChild(body)
 
+    infoCardContent.appendChild(attemptsArea)
+
     bodyContent.appendChild(examContent)
-    bodyContent.appendChild(attemptsArea)
+    bodyContent.appendChild(infoCardContent)
 
     return bodyContent;
 }
