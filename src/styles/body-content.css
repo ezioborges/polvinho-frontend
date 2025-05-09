@@ -1,6 +1,9 @@
 .title-content {
-    width: 100%;
-    height: 9.1%;
+    width: 83%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6rem;
     margin: 3rem 0 1rem 5rem; 
 }
 

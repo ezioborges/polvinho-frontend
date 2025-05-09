@@ -1,0 +1,11 @@
+.timer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--stone-400);
+    border-radius: 5px;
+    padding: 0.063rem 0.25rem 0.063rem 0.25rem;
+    width: 5.125rem;
+    height: 2.5rem;
+    color: var(--stone-500)
+}
