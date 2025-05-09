@@ -13,8 +13,7 @@ const DisciplinesContent = () => {
     disciplineHeader.classList.add('discipline-header')
 
     const disciplineBody = newElement('div')
-    disciplineBody.classList.add('discipline-body')
-    
+
     const nameHeader = tableText('p', 'Nome', 'textSm', '--stone-500');
     const dateHeader = tableText('p', 'Data de Entrega', 'textSm', '--stone-500');
     const typeHeader = tableText('p', 'Tipo', 'textSm', '--stone-500');
