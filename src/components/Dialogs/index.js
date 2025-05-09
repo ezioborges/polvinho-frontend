@@ -2,7 +2,7 @@ import newElement from "../../utils/newElement.js";
 import CancelButton from "../Buttons/CancelButton.js";
 import OpenQuizButton from "../Buttons/OpenQuizButton.js";
 
-const InitQuiz = (title, text) => {
+const Dialog = (title, text) => {
     const dialogOverlay = newElement('div')
     const dialogContent = newElement('div')
     const dialogTitle = newElement('p')
@@ -42,4 +42,4 @@ const InitQuiz = (title, text) => {
 
 };
 
-export default InitQuiz;
+export default Dialog;

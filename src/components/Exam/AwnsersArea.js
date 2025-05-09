@@ -3,37 +3,37 @@ import { answersArr } from "../../data/attemptsArr.js";
 import BodyWithoutContent from "../BodyWithoutContent.js";
 
 const AwnsersArea = () => {
-    const attemptsContent = newElement('div')
-    attemptsContent.classList.add('attempts-body')    
+    const answersContent = newElement('div')
+    answersContent.classList.add('answers-body')    
 
     if (!answersArr || answersArr.length === 0) {
         return BodyWithoutContent('ainda não há respostas computadas!')
     }
 
-    const attemptsList = newElement('ul')
-    attemptsList.classList.add('attempts-list')
+    const answersList = newElement('ul')
+    answersList.classList.add('answers-list')
 
     answersArr.forEach((attempt) => {
-        const attemptItem = newElement('li')
-        attemptItem.classList.add('attempt-item')
+        const answersItem = newElement('li')
+        answersItem.classList.add('attempt-item')
 
-        const attemptQuestion = newElement('div')
-        attemptQuestion.classList.add('title3')
-        attemptQuestion.textContent = `Pergunta ${attempt.id}: `
+        const answersQuestion = newElement('div')
+        answersQuestion.classList.add('title3')
+        answersQuestion.textContent = `Pergunta ${attempt.id}: `
 
-        const attemptAnswer = newElement('div')
-        attemptAnswer.classList.add('title3')
-        attemptAnswer.textContent = `${attempt.answers}`
+        const testAnswer = newElement('div')
+        testAnswer.classList.add('title3')
+        testAnswer.textContent = `${attempt.answers}`
 
-        attemptItem.appendChild(attemptQuestion)
-        attemptItem.appendChild(attemptAnswer)
+        answersItem.appendChild(answersQuestion)
+        answersItem.appendChild(testAnswer)
 
-        attemptsList.appendChild(attemptItem)
+        answersList.appendChild(answersItem)
     })
 
-    attemptsContent.appendChild(attemptsList)
+    answersContent.appendChild(answersList)
 
-    return attemptsContent;
+    return answersContent;
 }
 
 export default AwnsersArea;

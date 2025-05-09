@@ -11,16 +11,7 @@ const BoxArea = (titleInfo) => {
     attemptsTop.classList.add('attempts-top')
 
     const title = textGenerator('textLG', titleInfo)
-
-    if (title.textContent === 'Respostas') {
-        const awnsers = AwnsersArea()
     
-        attemptsTop.appendChild(title)
-    
-        attemptsContent.appendChild(attemptsTop)
-        attemptsContent.appendChild(awnsers)
-    }
-
     if (title.textContent === 'Suas tentativas') {
         const attempts = AttemptsArea()
         attemptsTop.appendChild(title)
@@ -30,6 +21,15 @@ const BoxArea = (titleInfo) => {
         attemptsContent.appendChild(attempts)
     }    
 
+    if (title.textContent === 'Respostas') {
+        const awnsers = AwnsersArea()
+    
+        attemptsTop.appendChild(title)
+    
+        attemptsContent.appendChild(attemptsTop)
+        attemptsContent.appendChild(awnsers)
+    }
+    
     return attemptsContent;
 }
 

@@ -61,12 +61,12 @@
     color: var(--stone-700);
 }
 
-.attempts-body {
+.answers-body {
     display: flex;
     justify-content: center;
     min-width: 9.5rem;
     height: 35rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
 .attempt-item {
@@ -74,11 +74,24 @@
     justify-content: space-around;
 }
 
+.answers-list {
+    min-width: 20rem;
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
 .attempts-list {
     min-width: 20rem;
     height: 35rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    border: 1px solid red;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+
+.attempt-area-item {
+    padding: .5rem 1rem;
 }

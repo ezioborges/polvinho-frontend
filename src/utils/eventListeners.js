@@ -30,9 +30,5 @@ export const clickEventStartQuiz = (event) => {
         } else {
             console.warn('O hash atual não corresponde ao formato esperado.')
         }
-        console.log('aqui é valor do hash ===>', hash);
-        console.log('aqui é o valor do hashId ===>', hashId);
-
-
     })
 }

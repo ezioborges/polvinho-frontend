@@ -6,7 +6,6 @@ import disciplineBarDisc from "./DisciplineBarDisc.js";
 
 const DisciplinesContent = () => {
     const displinesArr = Object.values(quizzesData);
-    // console.log("🚀 ~ DisciplinesContent ~ displinesArr:", displinesArr)
     const disciplineContent = newElement('div');
     disciplineContent.classList.add('discipline-title-table')
 

@@ -6,7 +6,7 @@ import newElement from "../../utils/newElement.js";
 import textGenerator from "../../utils/textGenerator.js";
 import InitQuizButton from "../Buttons/InitQuizButton.js";
 
-import InitQuiz from "../Dialogs/InitQuiz.js";
+import Dialog from "../Dialogs/index.js";
 import ExamDesc from "./ExamDesc.js";
 import ExamInfo from "./ExamInfo.js";
 
@@ -26,7 +26,7 @@ const ExamBody = () => {
     const testInfo = ExamInfo(quizz)
     const initButton = InitQuizButton('Começar', 'button-content', 'textMdBold')
 
-    clickEventButton(initButton, () => InitQuiz(title, text))
+    clickEventButton(initButton, () => Dialog(title, text))
 
     bodyContent.appendChild(titleResume)
     bodyContent.appendChild(resumeReturn)

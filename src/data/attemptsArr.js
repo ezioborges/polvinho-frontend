@@ -12,7 +12,7 @@ export const answersArr = [
 ];
 
 export const attemptsArr = [
-    { id: 1, score: 8, response: 'Gabarito'},
+    { id: 1, score: 6, response: 'Gabarito'},
     { id: 2, score: 8, response: 'Gabarito'},
-    { id: 3, score: 8, response: 'Gabarito'},
+    { id: 3, score: 10, response: 'Gabarito'},
 ]

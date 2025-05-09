@@ -1,7 +1,6 @@
 import newElement from "../../utils/newElement.js";
 
 const ExamInfo = (quizz) => {
-    console.log('Aqui é quizz das info: ', quizz);
     const infoContent = newElement('div');
     infoContent.classList.add('info-content')
 
