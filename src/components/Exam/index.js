@@ -1,10 +1,10 @@
 import { initQuizDialog } from "../../data/dialogsContent.js";
 import { quizzesData } from "../../data/quizzesData.js";
-import { clickEventButton } from "../../utils/eventListeners.js";
+import { initTest } from "../../utils/eventListeners.js";
 import { getQuizz } from "../../utils/getQuizz.js";
 import newElement from "../../utils/newElement.js";
 import textGenerator from "../../utils/textGenerator.js";
-import InitQuizButton from "../Buttons/InitQuizButton.js";
+import QuizzButton from "../Buttons/QuizzButton.js";
 
 import Dialog from "../Dialogs/index.js";
 import ExamDesc from "./ExamDesc.js";
@@ -24,9 +24,10 @@ const ExamBody = () => {
     
     const resumeReturn = ExamDesc(resume)
     const testInfo = ExamInfo(quizz)
-    const initButton = InitQuizButton('Começar', 'button-content', 'textMdBold')
+    const initButton = QuizzButton('Começar', 'button-content', 'textMdBold')
+    initButton.onclick = initTest(initButton, title, text)
 
-    clickEventButton(initButton, () => Dialog(title, text))
+    // clickEventButton(initButton, () => Dialog(title, text))
 
     bodyContent.appendChild(titleResume)
     bodyContent.appendChild(resumeReturn)

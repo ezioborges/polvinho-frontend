@@ -1,12 +1,12 @@
+import Dialog from "../components/Dialogs/index.js";
 
-export const clickEventButton = (event, func) => {
-    event.addEventListener("click", 
-        () => func('Deseja começar agora?',
-            'Ao clicar no botão o quiz começará imediatamente e deve ser entregue para poder sair'));
-};
+export const initTest = (element, title, text) => {
+    element.addEventListener("click", 
+        () => Dialog(title, text)
+)};
 
-export const clickEventCancelButton = (event) => {
-    event.addEventListener("click", () => {
+export const clickEventCancelButton = (element) => {
+    element.addEventListener("click", () => {
         const dialogOverlay = document.querySelector('.dialog-overlay')
         const dialogContent = document.querySelector('.dialog-content')
 
@@ -20,10 +20,9 @@ export const clickEventCancelButton = (event) => {
     })
 }
 
-export const clickEventStartQuiz = (event) => {
-    event.addEventListener("click", () => {
+export const clickEventStartQuiz = (element) => {
+    element.addEventListener("click", () => {
         const hash = window.location.hash
-        const hashId = hash.slice(-1)
 
         if (hash.startsWith('#/disciplines/')) {
             window.location.hash = `${hash}/quizz`
@@ -31,4 +30,7 @@ export const clickEventStartQuiz = (event) => {
             console.warn('O hash atual não corresponde ao formato esperado.')
         }
     })
+
+
+    clickEventCancelButton(element)
 }
