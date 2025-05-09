@@ -10,8 +10,8 @@ const DashboardContent = () => {
 
     content.classList.add('body-content');
 
-    const title = textGenerator('title4', 'Disciplinas');
-    title.style.marginBottom = '.5rem';
+    const title = textGenerator('title3', 'Disciplinas');
+    title.style.margin = '3rem 0 1rem 0';
         
 
     const noContent = BodyWithoutContent('Nenhuma disciplina cadastrada');

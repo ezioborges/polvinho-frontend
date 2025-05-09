@@ -4,6 +4,7 @@ import newElement from "../utils/newElement.js"
 
 const Dashboard = () => {
     const dashBody = newElement('div');
+    dashBody.classList.add('dashboard-body');
     
     const titleContent = PageTitle('Dashboard', 'Bem vindo, Aluno');
     const bodyContent = DashboardContent();
