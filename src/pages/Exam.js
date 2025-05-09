@@ -2,7 +2,7 @@ import ExamBody from "../components/Exam/index.js";
 import PageTitle from "../components/PageTitle.js";
 import { quizzesData } from "../data/quizzesData.js";
 import newElement from "../utils/newElement.js"
-import BoxArea from "../components/Exam/BoxArea.js";
+import InfoCard from "../components/Exam/InfoCard.js";
 
 const Exam = () => {
     const hash = window.location.hash
@@ -17,9 +17,11 @@ const Exam = () => {
 
     const examContent = newElement('div')
     examContent.classList.add('exam-content') 
+
+    const AttemptsContent = newElement('div')
+    AttemptsContent.classList.add('attempts-content')
     
-    const attemptsArea = BoxArea('Suas tentativas')
-    // attemptsArea.classList.add('attempts-area')
+    const attemptsArea = InfoCard('Suas tentativas')
     
     const title = PageTitle(name, discipline)
     const body = ExamBody()

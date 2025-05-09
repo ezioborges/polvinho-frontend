@@ -1,11 +1,11 @@
 import newElement from "../../utils/newElement.js";
-import BoxArea from "../Exam/BoxArea.js";
+import InfoCard from "../Exam/InfoCard.js";
 
 const QuizzAnswersStudent = () => {
     const answersContent = newElement('div')
     answersContent.classList.add('answers-student-area')
 
-    const attemptsArea = BoxArea('Respostas')
+    const attemptsArea = InfoCard('Respostas')
 
     answersContent.appendChild(attemptsArea)
 

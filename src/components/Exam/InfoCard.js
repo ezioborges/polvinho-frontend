@@ -5,12 +5,12 @@ import QuizzButton from "../Buttons/QuizzButton.js";
 import AttemptsArea from "./AttemptsArea.js";
 import AwnsersArea from "./AwnsersArea.js";
 
-const BoxArea = (titleInfo) => {
-    const attemptsContent = newElement('div')
-    attemptsContent.classList.add('attempts-area')
+const InfoCard = (titleInfo) => {
+    const infoCardArea = newElement('div')
+    infoCardArea.classList.add('info-card-area')
 
     const attemptsTop = newElement('div')
-    attemptsTop.classList.add('attempts-top')
+    attemptsTop.classList.add('info-card-top')
 
     const title = textGenerator('textLG', titleInfo)
     
@@ -19,8 +19,8 @@ const BoxArea = (titleInfo) => {
         attemptsTop.appendChild(title)
         
         // aqui é o titulo
-        attemptsContent.appendChild(attemptsTop)
-        attemptsContent.appendChild(attempts)
+        infoCardArea.appendChild(attemptsTop)
+        infoCardArea.appendChild(attempts)
     }    
 
     if (title.textContent === 'Respostas') {
@@ -31,12 +31,12 @@ const BoxArea = (titleInfo) => {
         const finishTest = QuizzButton('Entregar', 'button-content', 'textMd')
         finishTest.onclick = initTest(finishTest, 'entrega do teste', 'Clicar apenas no botão de cancelar por enquanto!')
     
-        attemptsContent.appendChild(attemptsTop)
-        attemptsContent.appendChild(awnsers)
-        attemptsContent.appendChild(finishTest)
+        infoCardArea.appendChild(attemptsTop)
+        infoCardArea.appendChild(awnsers)
+        infoCardArea.appendChild(finishTest)
     }
     
-    return attemptsContent;
+    return infoCardArea;
 }
 
-export default BoxArea;
+export default InfoCard;
