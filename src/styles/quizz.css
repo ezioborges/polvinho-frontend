@@ -3,13 +3,14 @@
     flex-direction: column; /* Mantém os itens empilhados verticalmente */
     align-items: center; /* Centraliza os itens horizontalmente */
     list-style: none; /* Remove os marcadores padrão */
-    padding: 0;
     margin: 0;
 }
 
 .quiz-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
-    /* border: 1px solid red; */
     width: 60%;
 }
 
@@ -20,16 +21,18 @@
 }
 
 .quizz-body {
-    width: 100%;
-    height: 80%;
-    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 90%;
+    height: 89.82161594963274vh;
     overflow-y: scroll;
+    margin-left: 2rem;
 }
 
 .list-item {
     position: relative;
     align-self: center;
-    padding-left: 7.5rem; /* Espaço para o marcador circular */
     margin-bottom: 1rem; /* Espaçamento entre os itens */
     width: 33.313rem; /* Largura fixa */
     line-height: 1.5rem; /* Altura da linha para espaçamento entre linhas */
@@ -39,13 +42,14 @@
     min-height: 3rem; /* Permite que a altura se ajuste ao conteúdo */
     display: flex;
     align-items: center; /* Alinha o conteúdo à esquerda */
+    padding-left: 1rem;
 }
 
 .list-item::before {
     content: counter(list-item, lower-alpha);
     counter-increment: list-item;
     position: absolute;
-    left: 5rem; /* Posiciona o marcador à esquerda */
+    left: -1rem; /* Posiciona o marcador à esquerda */
     top: 50%; /* Centraliza verticalmente */
     transform: translateY(-50%); /* Ajusta o alinhamento vertical */
     width: 1.5rem; /* Largura do círculo */
@@ -65,12 +69,12 @@
 }
 
 .question-container {
-    width: 100%;
-    height: 80%;
+    width: 92.96%;
+    height: 41.55299055613851vh;
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
 }
-
 .question-number {
     width: 16rem;
     height: 1.75rem;
@@ -86,7 +90,6 @@
     min-height: 15%;
     display: flex;
     justify-content: start;
-    padding-left: 5rem;
     align-items: center;
     color: var(--stone-700);
 }
@@ -97,7 +100,7 @@
     justify-content: space-around;
     height: 7rem;
     width: 36.375rem;
-    margin-bottom: 2rem;
+    margin-bottom: .5rem;
 }
 
 .answers-area{
