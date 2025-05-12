@@ -2,7 +2,7 @@ import { clickEventCancelButton, clickEventStartQuiz } from "../../utils/eventLi
 import newElement from "../../utils/newElement.js";
 import QuizzButton from "../Buttons/QuizzButton.js";
 
-const Dialog = (title, text) => {
+const Dialog = (title, text, funcCancelButton, funcStartQuiz) => {
     const dialogOverlay = newElement('div')
     const dialogContent = newElement('div')
     const dialogTitle = newElement('p')
@@ -11,11 +11,11 @@ const Dialog = (title, text) => {
     const dialogTextsArea = newElement('div')
     
     const cancelButton = QuizzButton('Cancelar', 'cancel-button-content', 'textMd')
-    cancelButton.onclick = clickEventCancelButton(cancelButton)
+    cancelButton.onclick = funcCancelButton(cancelButton)
     cancelButton.style.marginRight = '1rem'
 
     const startButton = QuizzButton('Começar', 'button-content', 'textMd')
-    startButton.onclick = clickEventStartQuiz(startButton)
+    startButton.onclick = funcStartQuiz(startButton)
 
     dialogOverlay.classList.add('dialog-overlay')
     dialogContent.classList.add('dialog-content')

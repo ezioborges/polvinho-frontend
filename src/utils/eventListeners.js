@@ -1,8 +1,8 @@
 import Dialog from "../components/Dialogs/index.js";
 
-export const initTest = (element, title, text) => {
+export const initTest = (element, title, text, funcCancelButton, funcStartQuiz) => {
     element.addEventListener("click", 
-        () => Dialog(title, text)
+        () => Dialog(title, text, funcCancelButton, funcStartQuiz)
 )};
 
 export const clickEventCancelButton = (element) => {
