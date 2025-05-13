@@ -4,14 +4,16 @@
     align-items: center; /* Centraliza os itens horizontalmente */
     list-style: none; /* Remove os marcadores padrão */
     margin: 0;
+    width: 100%; /* Agora a largura será proporcional ao elemento pai */
+    max-width: inherit; /* Garante que a largura não ultrapasse a do pai */
 }
 
 .quiz-component {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    width: 60%;
+    height: 142.143906020558vh;
+    width: 45.82723279648609vw;
 }
 
 .all-content {
@@ -24,17 +26,15 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    width: 90%;
-    height: 89.82161594963274vh;
-    overflow-y: scroll;
-    margin-left: 2rem;
+    width: 45.82723279648609vw; /* Largura fixa do quizz-body */
 }
 
 .list-item {
     position: relative;
     align-self: center;
     margin-bottom: 1rem; /* Espaçamento entre os itens */
-    width: 33.313rem; /* Largura fixa */
+    width: 90%; /* Largura relativa ao pai */
+    max-width: 33.313rem; /* Limita a largura máxima */
     line-height: 1.5rem; /* Altura da linha para espaçamento entre linhas */
     word-wrap: break-word; /* Permite a quebra de palavras longas */
     overflow-wrap: break-word; /* Garante a quebra de palavras longas */
@@ -42,14 +42,14 @@
     min-height: 3rem; /* Permite que a altura se ajuste ao conteúdo */
     display: flex;
     align-items: center; /* Alinha o conteúdo à esquerda */
-    padding-left: 1rem;
+    padding-left: 2.8rem;
 }
 
 .list-item::before {
     content: counter(list-item, lower-alpha);
     counter-increment: list-item;
     position: absolute;
-    left: -1rem; /* Posiciona o marcador à esquerda */
+    left: 1rem; /* Posiciona o marcador à esquerda */
     top: 50%; /* Centraliza verticalmente */
     transform: translateY(-50%); /* Ajusta o alinhamento vertical */
     width: 1.5rem; /* Largura do círculo */
@@ -69,12 +69,14 @@
 }
 
 .question-container {
-    width: 92.96%;
-    height: 41.55299055613851vh;
+    width: 90%; /* Largura relativa ao pai */
+    max-width: 42.53294289897511vw; /* Limita a largura máxima */
+    height: 58.14977973568282vh;
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
 }
+
 .question-number {
     width: 16rem;
     height: 1.75rem;
@@ -97,21 +99,24 @@
 .question-area {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    height: 7rem;
-    width: 36.375rem;
+    justify-content: center;
+    align-items: flex-start;
+    height: 20vh;
+    width: 90%; /* Largura relativa ao pai */
+    max-width: 36.375rem; /* Limita a largura máxima */
     margin-bottom: .5rem;
-
+    padding: 1rem;
 }
 
-.answers-area{
-    width: 36.313rem;
+.answers-area {
+    width: 90%; /* Largura relativa ao pai */
+    max-width: 36.313rem; /* Limita a largura máxima */
     height: 15.75rem;
 }
 
 .answers-student-area {
     display: flex;
     justify-content: center;
-    width: 40%;
-    height: 57rem;   
+    width: 90%; /* Largura relativa ao pai */
+    height: 142.143906020558vh;
 }

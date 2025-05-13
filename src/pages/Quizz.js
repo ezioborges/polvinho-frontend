@@ -1,7 +1,6 @@
 import BodyWithoutContent from "../components/BodyWithoutContent.js";
 import QuizzAnswersStudent from "../components/Quizz/QuizzAnswersStudent.js";
 import QuizzBody from "../components/Quizz/QuizzBody.js";
-import QuizzTitle from "../components/Quizz/QuizzTilte.js";
 import { quizzesData } from "../data/quizzesData.js";
 import newElement from "../utils/newElement.js";
 
@@ -27,14 +26,12 @@ const Quizz = () => {
     bodyRigth.classList.add('quiz-component')
 
     // lado direito da tela
-    const titleTest = QuizzTitle(name, discipline)
-    const bodyTest = QuizzBody(questions)
+    const bodyTest = QuizzBody(questions, `Assunto: ${name}`, `Disciplina: ${discipline}`)
         
     //lado esquerdo da tela
     const bodyLeft = QuizzAnswersStudent()
 
 
-    bodyRigth.appendChild(titleTest)
     bodyRigth.appendChild(bodyTest)
 
     bodyContent.appendChild(bodyRigth)

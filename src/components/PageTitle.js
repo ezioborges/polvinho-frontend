@@ -3,9 +3,9 @@ import textGenerator from "../utils/textGenerator.js";
 import Timer from "./Timer.js";
 
 export const PageTitle = (title, subtitle) => {
-    const content  = newElement('div');
     
     const titleArea = newElement('div')
+    titleArea.classList.add('title-area')
 
 
     const titleTop = textGenerator('title1', title);
@@ -20,10 +20,9 @@ export const PageTitle = (title, subtitle) => {
     titleArea.appendChild(titleTop);
     titleArea.appendChild(subtitleTop);
 
-    content.appendChild(titleArea)
     // content.appendChild(timer)
 
-    return content;
+    return titleArea;
 }
 
 export default PageTitle;

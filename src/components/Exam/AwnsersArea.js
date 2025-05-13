@@ -3,9 +3,6 @@ import { answersArr } from "../../data/attemptsArr.js";
 import BodyWithoutContent from "../BodyWithoutContent.js";
 
 const AwnsersArea = () => {
-    const answersContent = newElement('div')
-    answersContent.classList.add('answers-body')    
-
     if (!answersArr || answersArr.length === 0) {
         return BodyWithoutContent('ainda não há respostas computadas!')
     }
@@ -31,9 +28,8 @@ const AwnsersArea = () => {
         answersList.appendChild(answersItem)
     })
 
-    answersContent.appendChild(answersList)
+    return answersList
 
-    return answersContent;
 }
 
 export default AwnsersArea;

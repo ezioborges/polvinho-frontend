@@ -1,8 +1,14 @@
-import newElement from "../../utils/newElement.js";
+import newElement from "../../utils/newElement.js"
+import PageTitle from "../PageTitle.js"
 
-const QuizzBody = (questions) => {
+const QuizzBody = (questions, title, subtitle) => {
     const bodyContent = newElement('div')
     bodyContent.classList.add('quizz-body')
+
+    const questionsList = newElement('div')
+
+    const bodyTitle = PageTitle(title, subtitle)
+
     
     questions.forEach((question) => {
         const questionContainer = newElement('div')
@@ -48,8 +54,11 @@ const QuizzBody = (questions) => {
         questionContainer.appendChild(questionArea)
         questionContainer.appendChild(answersArea)
 
-        bodyContent.appendChild(questionContainer)
+        questionsList.appendChild(questionContainer)
     })
+
+    bodyContent.appendChild(bodyTitle)
+    bodyContent.appendChild(questionsList)
 
     return bodyContent;
 }
