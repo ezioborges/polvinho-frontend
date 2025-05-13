@@ -5,14 +5,9 @@
     justify-content: space-between;
 }
 
-.exam-content {
-    width: 60%;
-    height: 100%;
-}
-
 .exam-body {
-    height: 23.7rem;
-    margin: 3rem 0 1rem 5rem;
+    width: 39.53147877013177vw;
+    height: 69.30983847283407vh;
 }
 
 .exam-desc {

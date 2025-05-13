@@ -1,9 +1,11 @@
 .body {
     width: 84.4%;
-    min-height: 90%;
+    height: 100vh;
     background-color: var(--neutral-50);
     border-radius: 2.5rem 0 0 2.5rem;
     overflow: scroll;
+    padding: 2.3rem 2rem  2.3rem 2rem;
+    box-sizing: border-box;
 }
 
 .dashboard-body {

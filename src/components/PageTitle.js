@@ -4,7 +4,6 @@ import Timer from "./Timer.js";
 
 export const PageTitle = (title, subtitle) => {
     const content  = newElement('div');
-    content.classList.add('title-content');
     
     const titleArea = newElement('div')
 
@@ -15,14 +14,14 @@ export const PageTitle = (title, subtitle) => {
     const subtitleTop = textGenerator('textXL', subtitle);
     subtitleTop.style.color = 'var(--stone-700)'
 
-    const timer = Timer() //usar display none pra sumir
+    // const timer = Timer() //usar display none pra sumir TODO
 
 
     titleArea.appendChild(titleTop);
     titleArea.appendChild(subtitleTop);
 
     content.appendChild(titleArea)
-    content.appendChild(timer)
+    // content.appendChild(timer)
 
     return content;
 }
