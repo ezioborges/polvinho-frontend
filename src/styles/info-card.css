@@ -1,22 +1,20 @@
 .info-card-area {
+    width: 23.42606149341142vw; /* Mantém a largura original */
+    height: 80.69309838472834vh; /* Mantém a altura original */
     background-color: var(--neutral-100);
     border: 1px solid var(--neutral-200);
     border-radius: 10px;
-    margin: 3rem 5rem 1rem 0;
-    height: 45rem;
-    box-shadow: 0px 2px 4px -1px #0000000F;
-    box-shadow: 0px 4px 6px -1px #0000001A;
+    box-shadow: 0px 2px 4px -1px #0000000F, 0px 4px 6px -1px #0000001A;
     padding: 2rem;
-    display: flex;
-    justify-content: center;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    z-index: 1000; /* Garante que o elemento fique acima de outros */
 }
 
 .info-card-top {
-    width: 8.188rem;
+    width: 23.42606149341142vw;
     height: 1.75rem;
     display: flex;
     justify-content: center;
@@ -28,4 +26,9 @@
     width: 40%;
     display: flex;
     justify-content: center;
+}
+
+.title-area {
+    align-self: flex-start;
+    padding-left: 3.75rem;
 }
