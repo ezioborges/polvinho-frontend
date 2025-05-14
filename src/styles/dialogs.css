@@ -26,6 +26,8 @@
     padding: 2rem;
 }
 
+.finish-dialog-content {}
+
 .dialog-button-area {
     display: flex;
     justify-content: flex-end;    

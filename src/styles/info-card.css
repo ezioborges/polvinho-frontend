@@ -1,4 +1,6 @@
 .info-card-area {
+    position: fixed;
+    right: 4rem;
     width: 23.42606149341142vw; /* Mantém a largura original */
     height: 80.69309838472834vh; /* Mantém a altura original */
     background-color: var(--neutral-100);
@@ -10,7 +12,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    z-index: 1000; /* Garante que o elemento fique acima de outros */
+    z-index: 998;
 }
 
 .info-card-top {

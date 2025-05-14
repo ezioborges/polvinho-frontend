@@ -13,7 +13,8 @@ const Dialog = (title, text, funcCancelButton, funcActionQuiz) => {
     cancelButton.onclick = funcCancelButton(cancelButton)
     cancelButton.style.marginRight = '1rem'
 
-    const startButton = QuizzButton('Finalizar', 'button-content', 'textMd')
+    const startButton = QuizzButton('Continuar', 'button-content', 'textMd')
+    startButton.id = 'start-button'
     startButton.onclick = funcActionQuiz(startButton)
 
     dialogOverlay.classList.add('dialog-overlay')

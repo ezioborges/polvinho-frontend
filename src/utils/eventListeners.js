@@ -36,6 +36,6 @@ export const clickEventStartQuiz = (element) => {
     clickEventCancelButton(element)
 }
 
-export const clickFinishTest = (element, title, text, link) => {
-    element.addEventListener('click', () => SendTestFinished(title, text, link))
+export const clickFinishTest = (element) => {
+    element.addEventListener('click', () => SendTestFinished())
 }
