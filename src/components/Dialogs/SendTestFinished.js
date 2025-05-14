@@ -2,11 +2,6 @@ import { clickEventCancelButton } from "../../utils/eventListeners.js";
 import newElement from "../../utils/newElement.js";
 
 const SendTestFinished = () => {
-    const FinishButton = document.querySelector('#start-button')
-    console.log("🚀 ~ SendTestFinished ~ FinishButton:", FinishButton)
-    if (FinishButton) {
-        clickEventCancelButton(FinishButton)
-    }
     const dialogContent = newElement('div');
     const titleDialog = newElement('p');
     const textDialog = newElement('p');
@@ -23,7 +18,7 @@ const SendTestFinished = () => {
     dialogContent.appendChild(textDialog);
     dialogContent.appendChild(resumeLink);
 
-    console.log('Aqui ta batendo');
+    console.log('será que fechou?');
     
 
 
