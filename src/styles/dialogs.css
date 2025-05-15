@@ -26,9 +26,30 @@
     padding: 2rem;
 }
 
-.finish-dialog-content {}
-
 .dialog-button-area {
     display: flex;
     justify-content: flex-end;    
+}
+
+.finish-dialog-content {
+    border: 1px solid red;
+    width: 500px;
+    height: 300px;
+    z-index: 1;
+}
+
+.finish-title-area {
+    display: flex;
+    align-items: center;
+}
+
+.link-to-resume {
+    padding: 15px 5px;
+    border-radius: 15px;
+}
+
+.link-to-resume:hover {
+    background-color: var(--neutral-300) !important;
+    padding: 15px 10px;
+    border-radius: 15px;
 }

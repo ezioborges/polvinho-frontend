@@ -1,5 +1,6 @@
 import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
+import newElement from "./newElement.js";
 
 export const initTestDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
     element.addEventListener("click", 
@@ -38,8 +39,14 @@ export const clickEventStartQuiz = (element) => {
 
 export const clickFinishTest = (element) => {
     element.addEventListener('click', () => {
-        SendTestFinished()
+        const dialogContent = document.querySelector('.dialog-content')
+
+        if (dialogContent) {
+            dialogContent.remove()
+
+            const finishTest = SendTestFinished()
+
+            document.body.appendChild(finishTest)
+        }
     })
-    
-    clickEventCancelButton(element)
 }
