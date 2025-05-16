@@ -11,6 +11,7 @@ const routes = {
   "/disciplines": "./pages/Disciplines.js",
   "/disciplines/:id": "./pages/Exam.js",
   "/disciplines/:id/quizz": "./pages/Quizz.js",
+  "/results": "./pages/Result.js",
 };
 
 const handleLocation = async () => {

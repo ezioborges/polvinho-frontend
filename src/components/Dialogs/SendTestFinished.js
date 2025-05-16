@@ -1,6 +1,26 @@
+import { router } from "../../router.js";
+import { clickEventCancelButton } from "../../utils/eventListeners.js";
 import newElement from "../../utils/newElement.js";
 
 const SendTestFinished = () => {
+    const buttonContent = newElement('div')
+    buttonContent.classList.add('finish-button-area')
+    
+    const closeButton = newElement('button')
+    closeButton.classList.add('finish-close-button')
+    closeButton.textContent = 'X'
+    closeButton.onclick = clickEventCancelButton(closeButton)
+    // Adiciona keyup para Enter e Escape
+    closeButton.addEventListener('keyup', (event) => {
+        if (event.key === 'Escape') {
+            closeButton.click(); // dispara o click para fechar
+        }
+    })
+
+    // Garante que o botão recebe foco ao abrir o dialog
+    setTimeout(() => closeButton.focus(), 0)
+
+
     const dialogContent = newElement('div')
     dialogContent.style.display = 'flex'
     dialogContent.style.alignItems = 'center'
@@ -23,7 +43,11 @@ const SendTestFinished = () => {
 
     const link = newElement('a')
     link.classList.add('link-to-resume')
-    link.href = 'criar-rota-do-gabarito'
+    link.href = '/results'
+    link.onclick = (event) => {
+        router(event);
+        closeButton.click(); // Fecha o dialog    
+    }
     link.textContent = 'Ver Gabarito'
     link.style.color = 'var(--indigo-700)'
     link.style.fontWeight = '600'
@@ -32,6 +56,9 @@ const SendTestFinished = () => {
     titleArea.appendChild(checkCircle)
     titleArea.appendChild(titleFinishTest)
 
+    buttonContent.appendChild(closeButton)
+
+    dialogContent.appendChild(buttonContent)
     dialogContent.appendChild(titleArea)
     dialogContent.appendChild(text)
     dialogContent.appendChild(link)
