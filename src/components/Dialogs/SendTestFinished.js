@@ -2,7 +2,7 @@ import { router } from "../../router.js";
 import { clickEventCancelButton } from "../../utils/eventListeners.js";
 import newElement from "../../utils/newElement.js";
 
-const SendTestFinished = () => {
+const SendTestFinished = (id) => {
     const buttonContent = newElement('div')
     buttonContent.classList.add('finish-button-area')
     
@@ -43,7 +43,7 @@ const SendTestFinished = () => {
 
     const link = newElement('a')
     link.classList.add('link-to-resume')
-    link.href = '/results'
+    link.href = `/disciplines/${id}/results`
     link.onclick = (event) => {
         router(event);
         closeButton.click(); // Fecha o dialog    

@@ -37,6 +37,11 @@ const InfoCard = (titleInfoParam) => {
         infoCardArea.appendChild(awnsers)
         infoCardArea.appendChild(finishTest)
     }
+
+    if (titleInfo.textContent === 'Nota') {
+        console.log('bateu nas notas');
+        
+    }
     
     return infoCardArea;
 }

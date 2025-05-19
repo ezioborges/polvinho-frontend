@@ -40,11 +40,15 @@ export const clickEventStartQuiz = (element) => {
 export const clickFinishTest = (element) => {
     element.addEventListener('click', () => {
         const dialogContent = document.querySelector('.dialog-content')
-
+        const hash = window.location.hash 
+        const match = hash.match(/#\/disciplines\/([^/]+)\/quizz/);
+        const hashId = match ? match[1] : null;
+        
+        
         if (dialogContent) {
             dialogContent.remove()
-
-            const finishTest = SendTestFinished()
+            
+            const finishTest = SendTestFinished(hashId)
 
             document.body.appendChild(finishTest)
         }
@@ -62,4 +66,9 @@ export const clickCloseFinishDialog = () => {
         if (dialogContent) {
             dialogContent.remove()
         }
+}
+
+export const clickResults = () => {
+    const hash = window.location.hash
+    console.log("🚀 testando a rota de resultados", hash)
 }
