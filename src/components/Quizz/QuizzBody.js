@@ -44,6 +44,7 @@ const QuizzBody = (questions, title, subtitle) => {
             text.textContent = alternative.answer
             listItem.classList.add('list-item')
             text.classList.add('textMd')
+            text.classList.add('list-text-awnser')
             listItem.appendChild(text)
             optionsList.appendChild(listItem)
 

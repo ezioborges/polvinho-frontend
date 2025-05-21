@@ -121,3 +121,7 @@
     width: 90%; /* Largura relativa ao pai */
     height: 142.143906020558vh;
 }
+
+.list-text-awnser {
+    color: var(--stone-700) !important;
+}

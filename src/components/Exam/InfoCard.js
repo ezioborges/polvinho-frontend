@@ -39,8 +39,20 @@ const InfoCard = (titleInfoParam) => {
     }
 
     if (titleInfo.textContent === 'Nota') {
-        console.log('bateu nas notas');
-        
+        const results = newElement('p')
+        results.textContent = `Nota: 5/10`
+        results.classList.add('title1')
+
+        const awnsers = AwnsersArea()
+
+        const desabledButton = newElement('button')
+        desabledButton.textContent = 'Entregue'
+        desabledButton.classList.add('desabled-button')
+        desabledButton.style.fontSize = '1.4rem'
+
+        infoCardArea.appendChild(results)
+        infoCardArea.appendChild(awnsers)
+        infoCardArea.appendChild(desabledButton)
     }
     
     return infoCardArea;

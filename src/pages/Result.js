@@ -20,12 +20,10 @@ const Results = () => {
 
     if (bodyTest.correctListItem.length > 0) {
         bodyTest.correctListItem.forEach((item) => {
-            item.style.backgroundColor = 'green'
-            item.style.color = 'white'
+            item.style.backgroundColor = 'rgba(209,250,229, 0.8)'
         })
     }
 
-    console.log("🚀 ~ Results ~ bodyTest:", bodyTest.correctListItem)
     const infoCard = InfoCard('Nota');
 
     resultsContent.appendChild(bodyTest.bodyContent)
