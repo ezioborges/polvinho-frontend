@@ -30,8 +30,10 @@
 
 .desabled-button {
     width: 8vw;
-    height: 5vh;
+    height: 6vh;
+    padding: 12px 28px;
     border: 1px solid var(--stone-400);
+    border-radius: 15px;
     color: var(--stone-400);
     cursor: not-allowed;
 }
