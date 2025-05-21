@@ -9,6 +9,7 @@ const QuizzBody = (questions, title, subtitle) => {
 
     const bodyTitle = PageTitle(title, subtitle)
 
+    const correctListItem = []
     
     questions.forEach((question) => {
         const questionContainer = newElement('div')
@@ -40,11 +41,15 @@ const QuizzBody = (questions, title, subtitle) => {
             const listItem = newElement('li')
             const text = newElement('p')
             text.style.color = 'var(--stone-700)'
-            text.textContent = alternative
+            text.textContent = alternative.answer
             listItem.classList.add('list-item')
             text.classList.add('textMd')
             listItem.appendChild(text)
             optionsList.appendChild(listItem)
+
+            if (alternative.isRigth === true) {
+                correctListItem.push(listItem)
+            }
         })
 
         questionArea.appendChild(questionTitle)
@@ -57,10 +62,11 @@ const QuizzBody = (questions, title, subtitle) => {
         questionsList.appendChild(questionContainer)
     })
 
+
     bodyContent.appendChild(bodyTitle)
     bodyContent.appendChild(questionsList)
 
-    return bodyContent;
+    return {bodyContent, correctListItem};
 }
 
 export default QuizzBody;

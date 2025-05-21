@@ -32,7 +32,6 @@
 }
 
 .finish-dialog-content {
-    border: 1px solid red;
     width: 500px;
     height: 300px;
     z-index: 1;

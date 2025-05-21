@@ -9,10 +9,8 @@ const Results = () => {
     const hashId = match ? match[1] : null;
 
     const data  = quizzesData.find(item => item.id == hashId)
-    const { name, discipline, questions, alternatives } = data
-    console.log("🚀 ~ Results ~ questions:", questions)
+    const { name, discipline, questions } = data
 
-    console.log('pra ver se vem certo', alternatives)
     //TENHO QUE QUE PEGAR AS QUESTÕES E DENTRO DAS QUESTÕES PRECISO PEGAR AS ALTERNATIVAS
 
     const resultsContent = newElement('div');
@@ -20,9 +18,17 @@ const Results = () => {
 
     const bodyTest = QuizzBody(questions, `Assunto: ${name}`, `Disciplina: ${discipline}`)
 
+    if (bodyTest.correctListItem.length > 0) {
+        bodyTest.correctListItem.forEach((item) => {
+            item.style.backgroundColor = 'green'
+            item.style.color = 'white'
+        })
+    }
+
+    console.log("🚀 ~ Results ~ bodyTest:", bodyTest.correctListItem)
     const infoCard = InfoCard('Nota');
 
-    resultsContent.appendChild(bodyTest)
+    resultsContent.appendChild(bodyTest.bodyContent)
     resultsContent.appendChild(infoCard);
 
     return resultsContent;
