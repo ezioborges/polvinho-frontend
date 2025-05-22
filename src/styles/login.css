@@ -1,0 +1,17 @@
+.login-content {
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-background {
+    background-color: var(--neutral-100);
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.logo-area {
+    width: 10vw;
+    height: 10vh;
+    padding: 5px;
+}

@@ -1,5 +1,4 @@
-export async function fetchUsers() {
-    const url = 'http://localhost:2424/users'
+export async function fetchUsers(url) {
     const response = await fetch(url)
     const data = await response.json()
     console.log('response', data)
