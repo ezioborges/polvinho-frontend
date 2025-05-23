@@ -1,4 +1,3 @@
-import { Sidebar } from "./components/Sidebar.js";
 import Login from "./pages/Login.js";
 import newElement from "./utils/newElement.js";
 
@@ -33,32 +32,28 @@ const App = () => {
     console.log("🚀 ~ App ~ link: #/ ===> ", link)
 
     
-    const bodyContent = newElement('div')
-    bodyContent.classList.add('body')
-    bodyContent.id = 'main-content'
+    // const bodyContent = newElement('div')
+    // bodyContent.classList.add('body')
+    // bodyContent.id = 'main-content'
 
-    const sidebar = Sidebar();
+    // const sidebar = Sidebar();
     
-    app.appendChild(sidebar);
-    app.appendChild(bodyContent);
-    
-    if (link === '#/') {
-        app.removeChild(sidebar);
-        app.removeChild(bodyContent);
+    // app.appendChild(sidebar);
+    // app.appendChild(bodyContent);
 
+    const loginContent = newElement('div')
+    loginContent.classList.add('login-content')
+    
         
         const login = Login()
         
-        bodyContent.classList.remove('body')
-        bodyContent.classList.add('login-content')
         
+        loginContent.appendChild(login)
         
-        bodyContent.appendChild(login)
-        
-        app.appendChild(bodyContent)
-    }
+        app.appendChild(loginContent)
 
-    return app;
+        return app;
+
 } 
 
 

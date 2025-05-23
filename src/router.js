@@ -7,6 +7,7 @@ export const router = (event) => {
 
 const routes = {
   "/": "./pages/Login.js",
+  "/home": ".pages/Home.hs",
   "/dashboard": "./pages/Dashboard.js",
   "/disciplines": "./pages/Disciplines.js",
   "/disciplines/:id": "./pages/Exam.js",
