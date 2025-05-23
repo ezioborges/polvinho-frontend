@@ -1,3 +1,4 @@
+import Home from "./pages/Home.js";
 import Login from "./pages/Login.js";
 import newElement from "./utils/newElement.js";
 
@@ -25,36 +26,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const App = () => {
-    // Captura a div raiz com o id app
     const app = document.querySelector('#app');
+    app.innerHTML = ""; // Limpa o conteúdo anterior
 
     const link = window.location.hash;
-    console.log("🚀 ~ App ~ link: #/ ===> ", link)
 
-    
-    // const bodyContent = newElement('div')
-    // bodyContent.classList.add('body')
-    // bodyContent.id = 'main-content'
+    if (link === "#/home") {
+        // Renderize a página Home aqui
+        const homeContent = Home()
+        app.appendChild(homeContent);
+    } else {
+        // Renderize a tela de login por padrão
+        const loginContent = newElement('div');
+        loginContent.classList.add('login-content');
+        const login = Login();
+        loginContent.appendChild(login);
+        app.appendChild(loginContent);
+    }
 
-    // const sidebar = Sidebar();
-    
-    // app.appendChild(sidebar);
-    // app.appendChild(bodyContent);
-
-    const loginContent = newElement('div')
-    loginContent.classList.add('login-content')
-    
-        
-        const login = Login()
-        
-        
-        loginContent.appendChild(login)
-        
-        app.appendChild(loginContent)
-
-        return app;
-
-} 
+    return app;
+}
 
 
 App();
+
+window.addEventListener('hashchange', () => {
+    App(); // Renderiza sempre que o hash mudar
+});

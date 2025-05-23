@@ -28,7 +28,6 @@ const Quizz = () => {
     // lado direito da tela
     const bodyTest = QuizzBody(questions, `Assunto: ${name}`, `Disciplina: ${discipline}`)
         
-    console.log("🚀 ~ Quizz ~ bodyTest:", bodyTest)
     //lado esquerdo da tela
     const bodyLeft = QuizzAnswersStudent()
 

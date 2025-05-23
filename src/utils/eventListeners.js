@@ -1,5 +1,7 @@
 import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
+import { users } from "../data/userMock.js";
+import { emailExists, passwordExists } from "../validations/credentialsExist.js";
 import newElement from "./newElement.js";
 
 export const initTestDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
@@ -71,4 +73,22 @@ export const clickCloseFinishDialog = () => {
 export const clickResults = () => {
     const hash = window.location.hash
     console.log("🚀 testando a rota de resultados", hash)
+}
+
+export const clickFormLogin = (element) => {
+    element.addEventListener('click', (event) => {
+        event.preventDefault()
+        // const credentialsInput = document.querySelector('#credentials')
+        
+        users.find(user => {
+            const credentialsInput = emailExists(user.email, user.registration)
+            const passwordInput = passwordExists(user.passwordHash)
+            if (credentialsInput && passwordInput) {
+                
+                return window.location.hash = '#/home' 
+            }
+
+            console.log('se bater aqui não veio ai');
+        })
+    })
 }

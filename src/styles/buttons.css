@@ -7,8 +7,13 @@
     border: 1px solid var(--indigo-500);
 }
 
+
+.button-content:hover {
+    background-color: var(--indigo-700);
+    cursor: pointer;
+}
+
 .button-form {
-    background-color: blue;
     width: 13.645833333333334vw;
     height: 2.5vw;
     align-self: center;
@@ -18,7 +23,7 @@
     border: 1px solid var(--indigo-500);
 }
 
-.button-content:hover {
+.button-form:hover {
     background-color: var(--indigo-700);
     cursor: pointer;
 }

@@ -1,4 +1,5 @@
 import FormButton from "../components/Buttons/FormButton.js"
+import { clickFormLogin } from "../utils/eventListeners.js"
 import newElement from "../utils/newElement.js"
 
 const Login = () => {
@@ -50,8 +51,9 @@ const Login = () => {
     changePasswordLink.style.cursor = 'pointer'
     changePasswordLink.style.textAlign = 'center'
 
-    const loginButton = FormButton('Entrar', 'button-form')
+    const loginButton = FormButton('Entrar', 'button-form', 'textMdBold')
     loginButton.textContent = 'Entrar'
+    clickFormLogin(loginButton)
 
     credentialsArea.appendChild(credentialsLabel)
     credentialsArea.appendChild(credentialsInput)

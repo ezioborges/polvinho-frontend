@@ -51,6 +51,6 @@
 }
 
 .credentials input:focus {
-    outline: none;
-    border: 1px solid var(--neutral-300);
+    outline: 2px solid var(--neutral-300);
+    transition: none;
 }
