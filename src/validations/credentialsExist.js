@@ -8,7 +8,8 @@ export const emailExists = (email, registration) => {
 
 export const passwordExists = (password) => {
     const passwordInput = document.querySelector('#password')
-    if (passwordInput.value == password) {
+    console.log('password ===> ', password)
+    if (String(passwordInput.value) === String(password)) {
         return true
     }
 }

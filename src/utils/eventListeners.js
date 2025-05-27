@@ -1,8 +1,5 @@
 import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
-import { users } from "../data/userMock.js";
-import { emailExists, passwordExists } from "../validations/credentialsExist.js";
-import newElement from "./newElement.js";
 
 export const initTestDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
     element.addEventListener("click", 
@@ -75,20 +72,41 @@ export const clickResults = () => {
     console.log("🚀 testando a rota de resultados", hash)
 }
 
-export const clickFormLogin = (element) => {
-    element.addEventListener('click', (event) => {
+export const clickFormLogin = async (element) => {
+    element.addEventListener('submit', async (event) => {
         event.preventDefault()
-        // const credentialsInput = document.querySelector('#credentials')
-        
-        users.find(user => {
-            const credentialsInput = emailExists(user.email, user.registration)
-            const passwordInput = passwordExists(user.passwordHash)
-            if (credentialsInput && passwordInput) {
-                
-                return window.location.hash = '#/home' 
-            }
+        const credentialsInput = document.querySelector('#credentials')
+        const passwordInput = document.querySelector('#password')  
 
-            console.log('se bater aqui não veio ai');
-        })
+        const emailOrRegistration = credentialsInput.value
+        const password = passwordInput.value       
+
+        const loginUrl = 'http://localhost:2424/login'
+
+        try {
+            const response = await fetch(loginUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', },
+                body: JSON.stringify({ 
+                    email: emailOrRegistration,
+                    password: password
+                })
+            })
+ 
+            const data = await response.json()
+
+            if (response.ok) {
+                console.log('Login bem sucedido ===> ', data);
+
+                localStorage.setItem('jwtToken', data.token);
+
+                window.location.hash = '#/home';
+                
+            } else {
+                console.error('Erro no login ', data.message);
+            }
+        } catch (error) {
+            throw new Error(`Erro ao buscar usuários: ${error.message}`);
+        }
     })
 }

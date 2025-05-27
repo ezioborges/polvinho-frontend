@@ -14,6 +14,7 @@ const Login = () => {
 
     const loginForm = newElement('form')
     loginForm.classList.add('login-form')
+    loginForm.id = 'login-form'
 
     const logo = newElement('img')
     logo.src = '../../assets/logo-lado.svg'
@@ -53,7 +54,10 @@ const Login = () => {
 
     const loginButton = FormButton('Entrar', 'button-form', 'textMdBold')
     loginButton.textContent = 'Entrar'
-    clickFormLogin(loginButton)
+    
+    // quando o evento é submit tenho que colocar o form dentro da função e não o botão
+    // porque o submit é do form e não do botão
+    clickFormLogin(loginForm)
 
     credentialsArea.appendChild(credentialsLabel)
     credentialsArea.appendChild(credentialsInput)
