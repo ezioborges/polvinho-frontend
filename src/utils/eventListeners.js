@@ -77,6 +77,8 @@ export const clickFormLogin = async (element) => {
         event.preventDefault()
         const credentialsInput = document.querySelector('#credentials')
         const passwordInput = document.querySelector('#password')  
+        const errorArea = document.querySelector('#error-area')
+        const errorMessage = document.querySelector('#error-message')
 
         const emailOrRegistration = credentialsInput.value
         const password = passwordInput.value       
@@ -94,15 +96,15 @@ export const clickFormLogin = async (element) => {
             })
  
             const data = await response.json()
-
-            if (response.ok) {
-                console.log('Login bem sucedido ===> ', data);
-
+            
+            if (response.ok) {  
                 localStorage.setItem('jwtToken', data.token);
-
+                
                 window.location.hash = '#/home';
                 
             } else {
+                errorArea.style.display = 'flex';
+                errorMessage.textContent = data.message || 'Erro ao fazer login. Verifique suas credenciais.';
                 console.error('Erro no login ', data.message);
             }
         } catch (error) {

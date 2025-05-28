@@ -54,19 +54,34 @@ const Login = () => {
 
     const loginButton = FormButton('Entrar', 'button-form', 'textMdBold')
     loginButton.textContent = 'Entrar'
+
+    const errorArea = newElement('div')
+    errorArea.id = 'error-area'
+    errorArea.style.display = 'none'
+    errorArea.classList.add('error-area')
+
+    const errorMessage = newElement('p')
+    errorMessage.id = 'error-message'
+    
+
+
     
     // quando o evento é submit tenho que colocar o form dentro da função e não o botão
     // porque o submit é do form e não do botão
     clickFormLogin(loginForm)
+
+    errorArea.appendChild(errorMessage)
 
     credentialsArea.appendChild(credentialsLabel)
     credentialsArea.appendChild(credentialsInput)
     passwordArea.appendChild(passwordLabel)
     passwordArea.appendChild(passwordInput)
 
+
     loginForm.appendChild(loginTitle)
     loginForm.appendChild(credentialsArea)
     loginForm.appendChild(passwordArea)
+    loginForm.appendChild(errorArea)
     loginForm.appendChild(changePasswordLink)
     loginForm.appendChild(loginButton)
     
