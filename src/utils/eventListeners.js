@@ -98,6 +98,8 @@ export const clickFormLogin = async (element) => {
             const data = await response.json()
             
             if (response.ok) {  
+                console.log('Login bem-sucedido', data.token);
+                
                 localStorage.setItem('jwtToken', data.token);
                 
                 window.location.hash = '#/home';

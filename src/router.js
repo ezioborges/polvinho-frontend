@@ -1,13 +1,13 @@
 export const router = (event) => {
   event = event || window.event;
   event.preventDefault();
-  window.location.hash = event.target.href.slice(window.location.origin.length); // Atualiza o hash
-  handleLocation()
+  window.location.hash = event.target.href.slice(window.location.origin.length);
+  handleLocation();
 };
 
 const routes = {
   "/": "./pages/Login.js",
-  "/home": ".pages/Home.js",
+  "/home": "./pages/Home.js",
   "/dashboard": "./pages/Dashboard.js",
   "/disciplines": "./pages/Disciplines.js",
   "/disciplines/:id": "./pages/Exam.js",
@@ -15,15 +15,15 @@ const routes = {
   "/disciplines/:id/results": "./pages/Result.js",
 };
 
-const handleLocation = async () => {
+export const handleLocation = async () => {
   const hashPath = window.location.hash;
-  const path = hashPath.slice(1) || "/"; // Remove o '#' inicial, se existir, ou usa '/' como padrão
+  const path = hashPath.slice(1) || "/";
 
   let matchedRoute = null;
   let params = null;
 
   for (const routePattern in routes) {
-    const regexPath = routePattern.replace(/:\w+/g, '(\\w+)'); // Converte a rota dinâmica para uma regex
+    const regexPath = routePattern.replace(/:\w+/g, '(\\w+)');
     const regex = new RegExp(`^${regexPath}$`);
     const match = path.match(regex);
 
@@ -33,48 +33,62 @@ const handleLocation = async () => {
       const paramNames = routePattern.match(/:\w+/g);
       if (paramNames) {
         paramNames.forEach((name, index) => {
-          params[name.slice(1)] = match[index + 1]; // Extrai o valor do parâmetro
+          params[name.slice(1)] = match[index + 1];
         });
       }
-      break; // Encontrou uma rota correspondente
+      break;
     }
   }
 
   const route = matchedRoute || (() => {
-    document.querySelector("#main-content").innerHTML =
-      "<h1>Página não encontrada</h1>";
+    const newMain = document.getElementById("main-body");
+    if (newMain) {
+      newMain.innerHTML = "<h1>Página não encontrada</h1>";
+    } else {
+      document.getElementById("main-content").innerHTML = "<h1>Página não encontrada</h1>";
+    }
   });
 
   if (typeof route === "string" && route.endsWith(".js")) {
     try {
       const module = await import(route);
-      document.querySelector("#main-content").innerHTML = "";
       if (module.default && typeof module.default === "function") {
-        // Passe os parâmetros para o componente, se necessário
         const content = module.default(params);
-        if (content instanceof HTMLElement) {
-          document.querySelector("#main-content").appendChild(content);
+
+        if (path === "/" || path === "/home") {
+          // Login e Home: limpa e renderiza na raiz
+          document.getElementById("main-content").innerHTML = "";
+          document.getElementById("main-content").appendChild(content);
         } else {
-          console.warn(`O componente em ${route} não retornou um HTMLElement.`);
+          // Outras rotas: limpa e renderiza só no #main-body
+          const newMain = document.getElementById("main-body");
+          if (newMain && content instanceof HTMLElement) {
+            newMain.innerHTML = "";
+            newMain.appendChild(content);
+          } else {
+            document.getElementById("main-content").innerHTML =
+              "<h1>Erro: container #main-body não encontrado!</h1>";
+          }
         }
       } else {
         console.warn(`O módulo ${route} não exportou uma função default.`);
       }
-      console.log(`Módulo ${route} importado e (se aplicável) executado com parâmetros:`, params);
     } catch (error) {
       console.error("Erro ao importar o módulo:", error);
-      document.querySelector("#main-content").innerHTML =
-        "<h1>Erro ao carregar a página</h1>";
+      const newMain = document.getElementById("main-body");
+      if (newMain) {
+        newMain.innerHTML = "<h1>Erro ao carregar a página</h1>";
+      } else {
+        document.getElementById("main-content").innerHTML = "<h1>Erro ao carregar a página</h1>";
+      }
     }
   } else if (typeof route === "function") {
     route();
   }
 };
 
-window.addEventListener("hashchange", handleLocation); // Escuta mudanças no hash
-window.addEventListener("load", handleLocation); // Para carregar a rota inicial
-
+window.addEventListener("hashchange", handleLocation);
+window.addEventListener("load", handleLocation);
 window.onpopstate = handleLocation;
-// window.router = router;
 
 handleLocation();

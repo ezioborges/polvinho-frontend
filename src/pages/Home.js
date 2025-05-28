@@ -1,13 +1,21 @@
+import { Sidebar } from "../components/Sidebar.js";
 import newElement from "../utils/newElement.js";
 
 const Home = () => {
-    const homeContent = newElement('div')
-    homeContent.classList.add('home-content')
-    homeContent.textContent = 'Em construção...'
-    homeContent.style.color = 'white'
-    homeContent.classList.add('textXL')
+    const bodyContent = newElement('div');
+    bodyContent.classList.add('home-content');
 
-    return homeContent
+    const homeBody = newElement('div');
+    homeBody.classList.add('body');
+    homeBody.id = 'main-body'
+
+
+    const sidebar = Sidebar();
+
+    bodyContent.appendChild(sidebar);
+    bodyContent.appendChild(homeBody);
+
+    return bodyContent;
 }
 
 export default Home;
