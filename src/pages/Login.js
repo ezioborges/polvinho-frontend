@@ -48,9 +48,9 @@ const Login = () => {
     passwordInput.id = 'password'
 
     const changePasswordLink = newElement('a')
+    changePasswordLink.classList.add('change-password-link')
+    changePasswordLink.classList.add('textMd')
     changePasswordLink.textContent = 'Esqueceu a senha ou deseja trocar?'
-    changePasswordLink.style.cursor = 'pointer'
-    changePasswordLink.style.textAlign = 'center'
 
     const loginButton = FormButton('Entrar', 'button-form', 'textMdBold')
     loginButton.textContent = 'Entrar'

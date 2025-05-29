@@ -13,9 +13,12 @@
 .exam-desc {
     width: 100%;
     height: 8rem;
+    padding-left: 3.75rem;
+    margin-top: 1rem;
 }
 .info-content {
     margin-bottom: 4rem;
+    padding-left: 3.75rem;
 }
 
 .li-exam {

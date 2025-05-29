@@ -105,6 +105,10 @@ export const clickFormLogin = async (element) => {
                 window.location.hash = '#/home';
                 
             } else {
+                credentialsInput.style.border = ' 2px solid var(--red-500)';
+                passwordInput.style.border = '2px solid var(--red-500)';
+                credentialsInput.value = '';
+                passwordInput.value = '';
                 errorArea.style.display = 'flex';
                 errorMessage.textContent = data.message || 'Erro ao fazer login. Verifique suas credenciais.';
                 console.error('Erro no login ', data.message);

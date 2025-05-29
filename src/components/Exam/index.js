@@ -23,19 +23,22 @@ const ExamBody = () => {
 
     const titleDiscipline =  PageTitle(data.name, data.discipline)
 
-    const titleResume = textGenerator('textLG', `Orientação do professor(a): ${name}`)
-    titleResume.style.color = 'var(--stone-700)'
-    
-    const resumeReturn = ExamDesc(resume)
+    const resumeReturn = ExamDesc(name, resume)
+
     const testInfo = ExamInfo(quizz)
+
+    const buttonArea = newElement('div')
+    buttonArea.style.paddingLeft = '3.75rem'
+
     const initButton = QuizzButton('Começar', 'button-content', 'textMdBold')
     initButton.onclick = initTestDialog(initButton, title, text, clickEventCancelButton, clickEventStartQuiz)
 
+    buttonArea.appendChild(initButton)
+
     bodyContent.appendChild(titleDiscipline)
-    bodyContent.appendChild(titleResume)
     bodyContent.appendChild(resumeReturn)
     bodyContent.appendChild(testInfo)
-    bodyContent.appendChild(initButton)
+    bodyContent.appendChild(buttonArea)
 
     return bodyContent;
 }
