@@ -1,6 +1,5 @@
 import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
-import { router } from "../router.js";
 
 export const initTestDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
     element.addEventListener("click", 
@@ -103,7 +102,7 @@ export const clickFormLogin = async (element) => {
                 
                 localStorage.setItem('jwtToken', data.token);
                 
-                window.location.hash = '#/home';
+                window.location.hash = '#/dashboard';
                 
             } else {
                 credentialsInput.style.border = ' 2px solid var(--red-500)';

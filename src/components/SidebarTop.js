@@ -16,7 +16,7 @@ const SidebarTop = () => {
     // Configurações de texto
     const sidebarH1 = newElement('a');
     sidebarH1.textContent = "Polvo";
-    sidebarH1.href = '/home';
+    sidebarH1.href = '/dashboard';
     sidebarH1.onclick = (event) => router(event)
 
     dashboardText.textContent = 'Dashboard';

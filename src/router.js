@@ -10,7 +10,6 @@ export const router = (event) => {
 
 const routes = {
     "/": "./pages/Login.js",
-    "/home": "./pages/Home.js",
     "/dashboard": "./pages/Dashboard.js",
     "/disciplines": "./pages/Disciplines.js",
     "/disciplines/:id": "./pages/Exam.js",
@@ -66,19 +65,19 @@ export const handleLocation = async () => {
             if (module.default && typeof module.default === "function") {
                 const content = module.default(params);
 
-                if (path === "/" || path === "/home") {
-                    // Login e Home: limpa e renderiza na raiz
+                if (path === "/" || path === "/dashboard") {
+                    // Login e Dashboard: limpa e renderiza na raiz
                     document.getElementById("main-content").innerHTML = "";
                     document.getElementById("main-content").appendChild(content);
                 } else {
                     // Outras rotas: garante que main-body existe
                     let newMain = document.getElementById("main-body");
                     if (!newMain) {
-                        // Renderiza a Home primeiro para criar main-body
-                        const homeModule = await import('./pages/Home.js');
-                        const homeContent = homeModule.default();
+                        // Renderiza a Dashboard primeiro para criar main-body
+                        const DashboardModule = await import('./pages/Dashboard.js');
+                        const DashboardContent = DashboardModule.default();
                         document.getElementById("main-content").innerHTML = "";
-                        document.getElementById("main-content").appendChild(homeContent);
+                        document.getElementById("main-content").appendChild(DashboardContent);
                         newMain = document.getElementById("main-body");
                     }
                     if (newMain && content instanceof HTMLElement) {
