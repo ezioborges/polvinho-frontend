@@ -1,5 +1,6 @@
 import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
+import { router } from "../router.js";
 
 export const initTestDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
     element.addEventListener("click", 
@@ -117,4 +118,10 @@ export const clickFormLogin = async (element) => {
             throw new Error(`Erro ao buscar usuários: ${error.message}`);
         }
     })
+}
+
+export const endSession = (event) => {
+    event.preventDefault();
+    localStorage.removeItem('jwtToken');
+    window.location.hash = '#/';
 }

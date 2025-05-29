@@ -1,4 +1,5 @@
 import { router } from "../router.js";
+import { endSession } from "../utils/eventListeners.js";
 import newElement from "../utils/newElement.js";
 
 const SidebarBottom = () => {
@@ -15,8 +16,7 @@ const SidebarBottom = () => {
     passwordText.onclick = (event) => router(event)
 
     sectionText.textContent = 'Encerrar Seção';
-    sectionText.href = '/finish-session'
-    sectionText.onclick = (event) => router(event)
+    sectionText.onclick = (event) => endSession(event)
     
     sidebarBottomContent.classList.add('sidebar-bottom-content');
     changePassword.classList.add('sidebar-dashboard');
