@@ -1,7 +1,10 @@
 export const router = (event) => {
   event = event || window.event;
   event.preventDefault();
-  window.location.hash = event.target.href.slice(window.location.origin.length);
+  const link = event.currentTarget || event.target.closest('a');
+  if (link && link.getAttribute('href')) {
+  window.location.hash = link.getAttribute('href');
+  }
   handleLocation();
 };
 
@@ -56,20 +59,28 @@ export const handleLocation = async () => {
         const content = module.default(params);
 
         if (path === "/" || path === "/home") {
-          // Login e Home: limpa e renderiza na raiz
-          document.getElementById("main-content").innerHTML = "";
-          document.getElementById("main-content").appendChild(content);
-        } else {
-          // Outras rotas: limpa e renderiza só no #main-body
-          const newMain = document.getElementById("main-body");
-          if (newMain && content instanceof HTMLElement) {
-            newMain.innerHTML = "";
-            newMain.appendChild(content);
-          } else {
-            document.getElementById("main-content").innerHTML =
-              "<h1>Erro: container #main-body não encontrado!</h1>";
-          }
-        }
+  // Login e Home: limpa e renderiza na raiz
+  document.getElementById("main-content").innerHTML = "";
+  document.getElementById("main-content").appendChild(content);
+} else {
+  // Outras rotas: garante que main-body existe
+  let newMain = document.getElementById("main-body");
+  if (!newMain) {
+    // Renderiza a Home primeiro para criar main-body
+    const homeModule = await import('./pages/Home.js');
+    const homeContent = homeModule.default();
+    document.getElementById("main-content").innerHTML = "";
+    document.getElementById("main-content").appendChild(homeContent);
+    newMain = document.getElementById("main-body");
+  }
+  if (newMain && content instanceof HTMLElement) {
+    newMain.innerHTML = "";
+    newMain.appendChild(content);
+  } else {
+    document.getElementById("main-content").innerHTML =
+      "<h1>Erro: container #main-body não encontrado!</h1>";
+  }
+}
       } else {
         console.warn(`O módulo ${route} não exportou uma função default.`);
       }

@@ -17,11 +17,11 @@ const ExamInfo = (quizz) => {
     attemptsSpan.innerHTML = `Tentativas: <span class="quantity-color">${quizz.attempts}</span>`
     attemptsSpan.classList.add('textLG')
 
-    const timeSpan = newElement('span');
+    const timeSpan = newElement('p');
     timeSpan.innerHTML = `Tempo Máximo: <span class="quantity-color">${quizz.time}</span>`
     timeSpan.classList.add('textLG')
 
-    const finishSpan = newElement('span');
+    const finishSpan = newElement('p');
     finishSpan.innerHTML = `Data de Entrega: <span class="quantity-color">${quizz.finish}</span>`
     finishSpan.classList.add('textLG')
 
