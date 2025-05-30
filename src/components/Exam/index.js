@@ -1,6 +1,6 @@
 import { initQuizDialog } from "../../data/dialogsContent.js";
 import { quizzesData } from "../../data/quizzesData.js";
-import { clickEventCancelButton, clickEventStartQuiz, initTestDialog } from "../../utils/eventListeners.js";
+import { clickEventCancelButton, clickEventStartQuiz, openDialog } from "../../utils/eventListeners.js";
 import { getQuizz } from "../../utils/getQuizz.js";
 import newElement from "../../utils/newElement.js";
 import textGenerator from "../../utils/textGenerator.js";
@@ -31,7 +31,7 @@ const ExamBody = () => {
     buttonArea.style.paddingLeft = '3.75rem'
 
     const initButton = QuizzButton('Começar', 'button-content', 'textMdBold')
-    initButton.onclick = initTestDialog(initButton, title, text, clickEventCancelButton, clickEventStartQuiz)
+    initButton.onclick = openDialog(initButton, title, text, clickEventCancelButton, clickEventStartQuiz)
 
     buttonArea.appendChild(initButton)
 

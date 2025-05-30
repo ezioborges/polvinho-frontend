@@ -1,10 +1,12 @@
 import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
 
-export const initTestDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
-    element.addEventListener("click", 
-        () => Dialog(title, text, funcCancelButton, funcStartQuiz)
-)};
+export const openDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
+    element.addEventListener('click', () => {
+        Dialog(title, text, funcCancelButton, funcStartQuiz)
+    })
+    
+}
 
 export const clickEventCancelButton = (element) => {
     element.addEventListener("click", () => {
@@ -125,7 +127,12 @@ export const clickFormLogin = async (element) => {
 }
 
 export const endSession = (event) => {
-    event.preventDefault();
-    localStorage.removeItem('jwtToken');
-    window.location.hash = '#/';
+    event.addEventListener('click', () => {
+        localStorage.removeItem('jwtToken');
+        window.location.hash = '#/';
+    })
+    
+    clickEventCancelButton(event)
+    
 }
+

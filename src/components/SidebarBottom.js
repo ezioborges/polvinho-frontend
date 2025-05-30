@@ -1,5 +1,5 @@
 import { router } from "../router.js";
-import { endSession } from "../utils/eventListeners.js";
+import { clickEventCancelButton, endSession, openDialog } from "../utils/eventListeners.js";
 import newElement from "../utils/newElement.js";
 
 const SidebarBottom = () => {
@@ -16,7 +16,7 @@ const SidebarBottom = () => {
     passwordText.onclick = (event) => router(event)
 
     sectionText.textContent = 'Encerrar Seção';
-    sectionText.onclick = (event) => endSession(event)
+    openDialog(sectionText, 'Tem certeza que deseja sair', 'Sua seção será finalizada, tornando necessário um novo Login.', clickEventCancelButton, endSession)
     
     sidebarBottomContent.classList.add('sidebar-bottom-content');
     changePassword.classList.add('sidebar-dashboard');

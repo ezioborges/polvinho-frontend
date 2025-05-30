@@ -1,5 +1,5 @@
 import { finishQuizDialog } from "../../data/dialogsContent.js";
-import { clickEventCancelButton , clickFinishTest, initTestDialog } from "../../utils/eventListeners.js";
+import { clickEventCancelButton , clickFinishTest, openDialog } from "../../utils/eventListeners.js";
 import newElement from "../../utils/newElement.js";
 import textGenerator from "../../utils/textGenerator.js";
 import QuizzButton from "../Buttons/QuizzButton.js";
@@ -31,7 +31,7 @@ const InfoCard = (titleInfoParam) => {
         attemptsTop.appendChild(titleInfo)
 
         const finishTest = QuizzButton('Entregar', 'button-content', 'textMd')
-        finishTest.onclick = initTestDialog(finishTest, title, text, clickEventCancelButton, clickFinishTest)
+        finishTest.onclick = openDialog(finishTest, title, text, clickEventCancelButton, clickFinishTest)
     
         infoCardArea.appendChild(attemptsTop)
         infoCardArea.appendChild(awnsers)
