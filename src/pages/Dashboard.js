@@ -5,7 +5,7 @@ import newElement from "../utils/newElement.js"
 
 const Dashboard = () => {
     const bodyContent = newElement('div');
-    bodyContent.classList.add('home-content');
+    bodyContent.classList.add('dash-content');
 
     const mainBody = newElement('div');
     mainBody.classList.add('body');

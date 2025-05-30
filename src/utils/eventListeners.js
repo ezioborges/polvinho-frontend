@@ -98,9 +98,14 @@ export const clickFormLogin = async (element) => {
             const data = await response.json()
             
             if (response.ok) {  
-                console.log('Login bem-sucedido', data.token);
+                console.log('Login bem-sucedido', data.user.role.toLowerCase());
+                const role = data.user.role.toLowerCase();
                 
                 localStorage.setItem('jwtToken', data.token);
+
+                if (role === 'admin') {
+                    return window.location.hash = '#/dashboard-admin';
+                }
                 
                 window.location.hash = '#/dashboard';
                 

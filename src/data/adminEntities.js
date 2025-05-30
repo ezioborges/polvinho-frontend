@@ -1,0 +1,1 @@
+export const entities = ['Alunos', 'Professores', 'Disciplinas']

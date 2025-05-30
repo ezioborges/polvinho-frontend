@@ -5,12 +5,13 @@
 
 .discipline-bar {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     border: 1px solid var(--neutral-200);
     border-radius: .5rem;
     width: 98.25%;
     height: 5.82726326742976vh;
-    padding: .6rem;
+    padding: 16px 20px;
     background-color: var(--neutral-100);
     margin-top: .4rem;
 }
