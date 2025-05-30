@@ -5,12 +5,15 @@ const BarItem = (entity, register) => {
     const item = newElement('div');
     item.classList.add('discipline-bar')
 
+    console.log('entity barItem ===> ', entity);
+    
+
     const title = textGenerator('textMd', entity);
     title.classList.add('discipline-text')
 
-    if (register === true) {
-        
+    if (register === true) {        
         const newRegister = newElement('a')
+        newRegister.href = `#/register/${entity}`
         newRegister.classList.add('new-register')
         newRegister.classList.add('textMd')
         newRegister.textContent = 'Novo Registro'

@@ -1,0 +1,36 @@
+.register-area {
+    display: flex;
+    width: 90%;
+    height: 100%;
+    margin-top: 2rem;
+    margin-left: 3.75rem;
+}
+.register-row {
+    width: 100%;
+}
+
+.label-input-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.input-area {
+    width: 90%;
+    height: 5.268935236004391vh;
+    margin-top: .4rem;
+    border-radius: 6px;
+    border: 1px solid var(--neutral-200);
+}
+
+.input-area:focus {
+    outline: 1px solid var(--indigo-500);
+    transition: none;
+}
+
+.button-area {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+}

@@ -1,1 +1,1 @@
-export const entities = ['Alunos', 'Professores', 'Disciplinas']
+export const entities = [{ entity: 'Aluno'}, { entity: 'Professore'}, { entity: 'Disciplina'}]
