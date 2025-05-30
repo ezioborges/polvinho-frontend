@@ -10,6 +10,7 @@ export const router = (event) => {
 
 const routes = {
     "/": "./pages/Login.js",
+    "/dashboard-admin":"./pages/Admin/Dashboard.js",
     "/dashboard": "./pages/Dashboard.js",
     "/disciplines": "./pages/Disciplines.js",
     "/disciplines/:id": "./pages/Exam.js",
@@ -65,7 +66,7 @@ export const handleLocation = async () => {
             if (module.default && typeof module.default === "function") {
                 const content = module.default(params);
 
-                if (path === "/" || path === "/dashboard") {
+                if (path === "/" || path === "/dashboard" || path === "/dashboard-admin") {
                     // Login e Dashboard: limpa e renderiza na raiz
                     document.getElementById("main-content").innerHTML = "";
                     document.getElementById("main-content").appendChild(content);
