@@ -15,9 +15,7 @@ const DashContent = () => {
 
     if(!entities.length) content.appendChild(noContent)
 
-    entities.forEach(({ entity }) => {
-        console.log('entity ===> ', entity);
-        
+    entities.forEach(({ entity }) => {        
         content.appendChild(BarItem(entity, true))
     })
 

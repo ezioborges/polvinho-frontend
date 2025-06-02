@@ -23,7 +23,9 @@ export const handleLocation = async () => {
     const hashPath = window.location.hash;
     const path = hashPath.slice(1) || "/";
 
-    const token = localStorage.getItem('jwtToken')
+    const userData = localStorage.getItem('userData')
+    const { token } = userData ? JSON.parse(userData) : {}
+    
 
     // verifica se o usuário tem token de acesso válido
     if (path !== "/" && !token) {

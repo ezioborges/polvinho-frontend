@@ -1,5 +1,6 @@
 import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
+import { fetchLogin } from "../data/fetchLogin.js";
 
 export const openDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
     element.addEventListener('click', () => {
@@ -80,30 +81,30 @@ export const clickFormLogin = async (element) => {
         const credentialsInput = document.querySelector('#credentials')
         const passwordInput = document.querySelector('#password')  
         const errorArea = document.querySelector('#error-area')
-        const errorMessage = document.querySelector('#error-message')
-
-        const emailOrRegistration = credentialsInput.value
-        const password = passwordInput.value       
+        const errorMessage = document.querySelector('#error-message')  
 
         const loginUrl = 'http://localhost:2424/login'
 
         try {
-            const response = await fetch(loginUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', },
-                body: JSON.stringify({ 
-                    email: emailOrRegistration,
-                    password: password
-                })
-            })
- 
-            const data = await response.json()
+            const response = await fetchLogin(loginUrl)            
             
+            const data = await response.json();
+            console.log('data ===> ', data.user);
+
+            const userData = {
+                token: data.token,
+                user: data.user
+            }
+            
+            console.log('userData ===> ', userData);
+            
+
             if (response.ok) {  
-                console.log('Login bem-sucedido', data.user.role.toLowerCase());
                 const role = data.user.role.toLowerCase();
+                console.log('role ===> ', role);
                 
-                localStorage.setItem('jwtToken', data.token);
+                
+                localStorage.setItem('userData', JSON.stringify(userData));
 
                 if (role === 'admin') {
                     return window.location.hash = '#/dashboard-admin';
@@ -128,7 +129,7 @@ export const clickFormLogin = async (element) => {
 
 export const endSession = (event) => {
     event.addEventListener('click', () => {
-        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('userData');
         window.location.hash = '#/';
     })
     

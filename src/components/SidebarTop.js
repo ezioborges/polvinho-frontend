@@ -2,6 +2,11 @@ import { router } from "../router.js";
 import newElement from "../utils/newElement.js";
 
 const SidebarTop = () => {
+    const userData = JSON.parse(localStorage.getItem('userData'))
+    const userRole = userData ? userData.user.role.toLowerCase() : null
+    
+    console.log('userData sidebar ===> ', userRole);
+
     const sidebarTopContent = newElement('div');
     const sidebarTitle = newElement('div');
     const polvoLogo = newElement('img');
@@ -16,15 +21,16 @@ const SidebarTop = () => {
     // Configurações de texto
     const sidebarH1 = newElement('a');
     sidebarH1.textContent = "Polvo";
-    sidebarH1.href = '/dashboard';
+    
+    sidebarH1.href = userData ? '/dashboard-admin' : '/dashboard';
     sidebarH1.onclick = (event) => router(event)
 
     dashboardText.textContent = 'Dashboard';
-    dashboardText.href = '/dashboard'
+    dashboardText.href = userData? '/dashboard-admin': '/dashboard'
     dashboardText.onclick = (event) => router(event)
 
     disciplineText.textContent = "Disciplinas";
-    disciplineText.href = '/disciplines'
+    disciplineText.href = userData ? '/disciplines-admin' :'/disciplines'
     disciplineText.onclick = (event) => router(event)
 
     // Adiciona classes
