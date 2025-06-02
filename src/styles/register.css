@@ -31,6 +31,23 @@
 
 .button-area {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding-top: 2rem;
+}
+
+.error-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding-left: 8rem;
+    width: 100%;
+    height: 25vh;
+}
+
+.error-message {
+    font-size: .8rem !important;
+    font-weight: bolder;
+    margin-bottom: .5rem;
 }

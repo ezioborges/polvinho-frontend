@@ -23,8 +23,8 @@ export const handleLocation = async () => {
     const hashPath = window.location.hash;
     const path = hashPath.slice(1) || "/";
 
-    const userData = localStorage.getItem('userData')
-    const { token } = userData ? JSON.parse(userData) : {}
+    const userLogin = localStorage.getItem('userLogin')
+    const { token } = userLogin ? JSON.parse(userLogin) : {}
     
 
     // verifica se o usuário tem token de acesso válido

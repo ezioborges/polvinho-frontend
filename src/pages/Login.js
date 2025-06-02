@@ -63,9 +63,6 @@ const Login = () => {
     const errorMessage = newElement('p')
     errorMessage.id = 'error-message'
     
-
-
-    
     // quando o evento é submit tenho que colocar o form dentro da função e não o botão
     // porque o submit é do form e não do botão
     clickFormLogin(loginForm)

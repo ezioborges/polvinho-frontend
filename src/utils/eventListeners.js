@@ -1,6 +1,8 @@
 import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
 import { fetchLogin } from "../data/fetchLogin.js";
+import { createUserValidation } from "./createUserValidation.js";
+import newElement from "./newElement.js";
 
 export const openDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
     element.addEventListener('click', () => {
@@ -91,12 +93,12 @@ export const clickFormLogin = async (element) => {
             const data = await response.json();
             console.log('data ===> ', data.user);
 
-            const userData = {
+            const userLogin = {
                 token: data.token,
                 user: data.user
             }
             
-            console.log('userData ===> ', userData);
+            console.log('userLogin ===> ', userLogin);
             
 
             if (response.ok) {  
@@ -104,7 +106,7 @@ export const clickFormLogin = async (element) => {
                 console.log('role ===> ', role);
                 
                 
-                localStorage.setItem('userData', JSON.stringify(userData));
+                localStorage.setItem('userLogin', JSON.stringify(userLogin));
 
                 if (role === 'admin') {
                     return window.location.hash = '#/dashboard-admin';
@@ -129,11 +131,88 @@ export const clickFormLogin = async (element) => {
 
 export const endSession = (event) => {
     event.addEventListener('click', () => {
-        localStorage.removeItem('userData');
+        localStorage.removeItem('userLogin');
+        localStorage.removeItem('newUser');
         window.location.hash = '#/';
     })
     
     clickEventCancelButton(event)
     
 }
+
+export const clickEventRegister = (element) => {
+    element.addEventListener('click', () => {
+        const userNameInput = document.querySelector('#input-name')
+        const userEmailInput = document.querySelector('#input-email')
+        const userRegisterInput = document.querySelector('#input-register')
+        const userDisciplineInput = document.querySelector('#input-discipline')
+        const userRoleInput = document.querySelector('#input-role')
+        const userPasswordInput = document.querySelector('#input-password')
+
+        const userName = userNameInput.value.trim();
+        const userEmail = userEmailInput.value.trim();
+        const userRegister = userRegisterInput.value.trim();
+        const userDiscipline = userDisciplineInput.value.trim();
+        const userRole = userRoleInput.value.trim();
+        const userPassword = userPasswordInput.value.trim();
+
+        const ValidUser = createUserValidation(userName, userEmail, userRegister, userDiscipline, userPassword) 
+        console.log('ValidUser ===> ', ValidUser);
+
+        if (ValidUser.valid) {        
+            const newUser = {
+                name: userName,
+                email: userEmail,
+                register: userRegister,
+                discipline: userDiscipline,
+                role: userRole,
+                password: userPassword
+            }
+    
+    
+            localStorage.setItem('newUser', JSON.stringify(newUser));
+    
+            console.log('clicou no botão depois de cadastrar = ', newUser);
+
+            userNameInput.value = '';
+            userEmailInput.value = '';
+            userRegisterInput.value = '';
+            userRoleInput.value = 'Aluno';
+            userDisciplineInput.value = 'Transfiguration'
+            userPasswordInput.value = '';
+
+
+        } else {
+            userNameInput.value = '';
+            userEmailInput.value = '';
+            userRegisterInput.value = '';
+            userRoleInput.value = 'Aluno';
+            userDisciplineInput.value = 'Transfiguration'
+            userPasswordInput.value = '';
+
+            userNameInput.style.border = '2px solid var(--red-500)';
+            userEmailInput.style.border = '2px solid var(--red-500)';
+            userRegisterInput.style.border = '2px solid var(--red-500)';
+            userPasswordInput.style.border = '2px solid var(--red-500)';
+            
+            const errorArea = document.querySelector('.error-area');
+            errorArea.innerHTML = ''; 
+
+            ValidUser.forEach(error => {               
+                const errorMessage = newElement('li');
+                const errorText = newElement('p')
+                errorText.textContent = error.message;
+                errorText.classList.add('error-message');
+                
+                errorMessage.appendChild(errorText);
+                
+                errorArea.appendChild(errorMessage);
+            });
+
+            localStorage.removeItem('newUser');
+            console.error('Erro ao cadastrar usuário: ', ValidUser);
+        }
+
+    }
+)}
 

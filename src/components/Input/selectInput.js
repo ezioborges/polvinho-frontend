@@ -1,7 +1,6 @@
 import newElement from "../../utils/newElement.js"
-import disciplinesArr from "../../data/disciplinesArr.js"
 
-const selectInput = (labelTitle, inputId) => {
+const selectInput = (labelTitle, inputId, arr) => {
     const selectInputArea = newElement('div')
     selectInputArea.classList.add('label-input-column')
 
@@ -14,7 +13,7 @@ const selectInput = (labelTitle, inputId) => {
     select.classList.add('input-area')
     select.id = inputId
 
-    disciplinesArr.forEach((discipline) => {
+    arr.forEach((discipline) => {
         const option = newElement('option')
         option.value = discipline
         option.textContent = discipline
