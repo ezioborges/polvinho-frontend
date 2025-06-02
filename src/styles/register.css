@@ -31,9 +31,53 @@
 
 .button-area {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 1px solid grey;
+}
+
+.error-list {
+    width: 100%;
+    padding-left: 3.75rem;
+    height: 13vh;
+}
+
+.success-toast {
+    position: absolute;
+    top: 700px;
+    right: 40px;
+    border-left: 5px solid var(--smerald-400);
+    border-radius: 6px;
+    width: 26.8vw;
+    height: 10.5vh;
+    padding: 12px 20px;
+    background-color: var(--smerald-100);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.success-toast.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.title-toast-area {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    box-sizing: border-box;
+}
+
+.title-toast-area p {
+    margin-left: .5rem;
+}
+
+.success-input {
+    border-radius: 6px;
+    border: 1px solid var(--neutral-200) !important;
 }
 
 .error-area {
@@ -41,9 +85,16 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    padding-left: 8rem;
-    width: 100%;
-    height: 25vh;
+    width: 80%;
+    margin-bottom: 3rem;
+}
+
+.error-area p {
+    color: var(--red-500);
+    font-size: .8rem;
+    font-weight: 500;
+    margin-top: .5rem;
+    margin-bottom: 0;
 }
 
 .error-message {

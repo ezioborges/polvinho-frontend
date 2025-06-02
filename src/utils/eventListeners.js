@@ -1,5 +1,6 @@
 import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
+import ToastBar from "../components/ToastBar/index.js";
 import { fetchLogin } from "../data/fetchLogin.js";
 import { createUserValidation } from "./createUserValidation.js";
 import newElement from "./newElement.js";
@@ -157,19 +158,32 @@ export const clickEventRegister = (element) => {
         const userPassword = userPasswordInput.value.trim();
 
         const ValidUser = createUserValidation(userName, userEmail, userRegister, userDiscipline, userPassword) 
-        console.log('ValidUser ===> ', ValidUser);
+        
+        if (ValidUser.length === 0) {
+            ToastBar({
+                iconParam: '../../assets/CheckCircle.svg',
+                titleParam: 'Sucesso!',
+                msgParam: 'Cadastro realizado com sucesso!'
+            })
 
-        if (ValidUser.valid) {        
+            setTimeout(() => {
+                const toastBar = document.querySelector('.success-toast')
+                if (toastBar) {
+                    toastBar.classList.add('hide')
+                    setTimeout(() => {
+                        toastBar.remove();
+                    }, 500)
+                }
+            }, 3000)
+
             const newUser = {
-                name: userName,
-                email: userEmail,
-                register: userRegister,
-                discipline: userDiscipline,
-                role: userRole,
-                password: userPassword
-            }
-    
-    
+            name: userName,
+            email: userEmail,
+            register: userRegister,
+            discipline: userDiscipline,
+            role: userRole,
+            password: userPassword
+        }    
             localStorage.setItem('newUser', JSON.stringify(newUser));
     
             console.log('clicou no botão depois de cadastrar = ', newUser);
@@ -180,7 +194,6 @@ export const clickEventRegister = (element) => {
             userRoleInput.value = 'Aluno';
             userDisciplineInput.value = 'Transfiguration'
             userPasswordInput.value = '';
-
 
         } else {
             userNameInput.value = '';
@@ -195,8 +208,8 @@ export const clickEventRegister = (element) => {
             userRegisterInput.style.border = '2px solid var(--red-500)';
             userPasswordInput.style.border = '2px solid var(--red-500)';
             
-            const errorArea = document.querySelector('.error-area');
-            errorArea.innerHTML = ''; 
+            const errorList = document.querySelector('.error-list');
+            errorList.innerHTML = ''; 
 
             ValidUser.forEach(error => {               
                 const errorMessage = newElement('li');
@@ -206,7 +219,7 @@ export const clickEventRegister = (element) => {
                 
                 errorMessage.appendChild(errorText);
                 
-                errorArea.appendChild(errorMessage);
+                errorList.appendChild(errorMessage);
             });
 
             localStorage.removeItem('newUser');

@@ -31,18 +31,23 @@ const Register = () => {
     const disciplineLabelInput = selectInput('Disciplina', 'input-discipline', disciplinesArr)
     const roleLabelInput = selectInput('Função', 'input-role', USER_ROLE)
 
-    const errorArea = newElement('ul')
+    const errorArea = newElement('div')
     errorArea.classList.add('error-area')
+
+    const errorList = newElement('ul')
+    errorList.classList.add('error-list')
 
     const buttonArea = newElement('div')
     buttonArea.classList.add('button-area')
 
     const registerButton = QuizzButton('Cadastrar', 'button-content', 'textMd')
+    registerButton.classList.add('register-button-position')  
     clickEventRegister(registerButton)
     
     registerButton.style.width = '19.2vw'
 
-    buttonArea.appendChild(errorArea)
+    errorArea.appendChild(errorList)
+
     buttonArea.appendChild(registerButton)
 
 
@@ -59,6 +64,7 @@ const Register = () => {
 
     register.appendChild(title)
     register.appendChild(registerArea)
+    register.appendChild(errorArea)
     register.appendChild(buttonArea)
 
     return register

@@ -60,19 +60,6 @@
     transition: none;
 }
 
-.error-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.error-area p {
-    color: var(--red-500);
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
 .change-password-link {
     cursor: pointer;
     text-align: center;
