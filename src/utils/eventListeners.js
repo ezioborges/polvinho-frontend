@@ -2,6 +2,7 @@ import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
 import ToastBar from "../components/ToastBar/index.js";
 import { fetchLogin } from "../data/fetchLogin.js";
+import { env } from "../env/index.js";
 import { createUserValidation } from "./createUserValidation.js";
 import newElement from "./newElement.js";
 
@@ -86,7 +87,7 @@ export const clickFormLogin = async (element) => {
         const errorArea = document.querySelector('#error-area')
         const errorMessage = document.querySelector('#error-message')  
 
-        const loginUrl = 'http://localhost:2424/login'
+        const loginUrl = env.LOGIN_URL
 
         try {
             const response = await fetchLogin(loginUrl)            
