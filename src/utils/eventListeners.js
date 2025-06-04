@@ -87,21 +87,15 @@ export const clickFormLogin = async (element) => {
         const errorArea = document.querySelector('#error-area')
         const errorMessage = document.querySelector('#error-message')  
 
-        const url = loginUrl || 'http://localhost:2424/login'
-
         try {
-            const response = await fetchLogin(url)
+            const response = await fetchLogin(loginUrl)
             
             const data = await response.json();
-            console.log('data ===> ', data.user);
 
             const userLogin = {
                 token: data.token,
                 user: data.user
-            }
-            
-            console.log('userLogin ===> ', userLogin);
-            
+            }            
 
             if (response.ok) {  
                 const role = data.user.role.toLowerCase();
