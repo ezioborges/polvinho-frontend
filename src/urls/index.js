@@ -1,0 +1,1 @@
+export const loginUrl = 'https://polvinho-backend.onrender.com/login'

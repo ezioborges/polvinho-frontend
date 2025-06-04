@@ -2,6 +2,7 @@ import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
 import ToastBar from "../components/ToastBar/index.js";
 import { fetchLogin } from "../data/fetchLogin.js";
+import { loginUrl } from "../urls/index.js";
 import { createUserValidation } from "./createUserValidation.js";
 import newElement from "./newElement.js";
 
@@ -86,10 +87,10 @@ export const clickFormLogin = async (element) => {
         const errorArea = document.querySelector('#error-area')
         const errorMessage = document.querySelector('#error-message')  
 
-        const loginUrl = 'https://polvinho-backend.onrender.com/login'
+        const url = loginUrl || 'http://localhost:2424/login'
 
         try {
-            const response = await fetchLogin(loginUrl)            
+            const response = await fetchLogin(url)
             
             const data = await response.json();
             console.log('data ===> ', data.user);
