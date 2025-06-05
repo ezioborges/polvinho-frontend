@@ -173,14 +173,17 @@ export const clickEventRegister = async (element, roleFromHash) => {
                 name: userName,
                 email: userEmail,
                 registration: userRegister,
-                passwordHash: '123456',
+                passwordHash: 'Umtest@22',
                 role: roleFromHash, 
-                subjectName: userDiscipline,
+                subject: userDiscipline,
             }    
                 localStorage.setItem('newUser', JSON.stringify(newUser));
+
+                console.log('newUser ===> ', newUser);
+                
                 
     
-                const userRegistreted = await fetchCreateUser(urls.createUser, newUser)
+                await fetchCreateUser(urls.createUser, newUser)
     
                 userNameInput.value = '';
                 userEmailInput.value = '';
