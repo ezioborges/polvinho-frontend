@@ -1,1 +1,0 @@
-const fetchRegister = async (url) => {}

@@ -10,9 +10,6 @@ const ToastBar = ({ iconParam, titleParam, msgParam }) => {
 
         const registerInput = document.querySelector('#input-register')
         registerInput.classList.add('success-input');
-
-        const passwordInput = document.querySelector('#input-password')
-        passwordInput.classList.add('success-input')
        
 
         const successToast = newElement('div');

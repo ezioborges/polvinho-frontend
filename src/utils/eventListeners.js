@@ -1,10 +1,10 @@
 import Dialog from "../components/Dialogs/index.js";
 import SendTestFinished from "../components/Dialogs/SendTestFinished.js";
 import ToastBar from "../components/ToastBar/index.js";
-import { fetchLogin } from "../data/fetchLogin.js";
-import { loginUrl } from "../urls/index.js";
 import { createUserValidation } from "./createUserValidation.js";
 import newElement from "./newElement.js";
+import urls from '../urls/index.js'
+import { fetchCreateUser, fetchLogin } from "../data/fetchData.js";
 
 export const openDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
     element.addEventListener('click', () => {
@@ -79,7 +79,7 @@ export const clickResults = () => {
     console.log("🚀 testando a rota de resultados", hash)
 }
 
-export const clickFormLogin = async (element) => {
+export const clickFormLogin = (element) => {
     element.addEventListener('submit', async (event) => {
         event.preventDefault()
         const credentialsInput = document.querySelector('#credentials')
@@ -88,7 +88,7 @@ export const clickFormLogin = async (element) => {
         const errorMessage = document.querySelector('#error-message')  
 
         try {
-            const response = await fetchLogin(loginUrl)
+            const response = await fetchLogin(urls.loginUrl)
             
             const data = await response.json();
 
@@ -128,7 +128,7 @@ export const clickFormLogin = async (element) => {
 export const endSession = (event) => {
     event.addEventListener('click', () => {
         localStorage.removeItem('userLogin');
-        localStorage.removeItem('newUser');
+        localStorage.removeItem('jwtToken');
         window.location.hash = '#/';
     })
     
@@ -136,89 +136,86 @@ export const endSession = (event) => {
     
 }
 
-export const clickEventRegister = (element) => {
-    element.addEventListener('click', () => {
-        const userNameInput = document.querySelector('#input-name')
-        const userEmailInput = document.querySelector('#input-email')
-        const userRegisterInput = document.querySelector('#input-register')
-        const userDisciplineInput = document.querySelector('#input-discipline')
-        const userRoleInput = document.querySelector('#input-role')
-        const userPasswordInput = document.querySelector('#input-password')
-
-        const userName = userNameInput.value.trim();
-        const userEmail = userEmailInput.value.trim();
-        const userRegister = userRegisterInput.value.trim();
-        const userDiscipline = userDisciplineInput.value.trim();
-        const userRole = userRoleInput.value.trim();
-        const userPassword = userPasswordInput.value.trim();
-
-        const ValidUser = createUserValidation(userName, userEmail, userRegister, userDiscipline, userPassword) 
-        
-        if (ValidUser.length === 0) {
-            ToastBar({
-                iconParam: '../../assets/CheckCircle.svg',
-                titleParam: 'Sucesso!',
-                msgParam: 'Cadastro realizado com sucesso!'
-            })
-
-            setTimeout(() => {
-                const toastBar = document.querySelector('.success-toast')
-                if (toastBar) {
-                    toastBar.classList.add('hide')
-                    setTimeout(() => {
-                        toastBar.remove();
-                    }, 500)
-                }
-            }, 3000)
-
-            const newUser = {
-            name: userName,
-            email: userEmail,
-            register: userRegister,
-            discipline: userDiscipline,
-            role: userRole,
-            password: userPassword
-        }    
-            localStorage.setItem('newUser', JSON.stringify(newUser));
-    
-            console.log('clicou no botão depois de cadastrar = ', newUser);
-
-            userNameInput.value = '';
-            userEmailInput.value = '';
-            userRegisterInput.value = '';
-            userRoleInput.value = 'Aluno';
-            userDisciplineInput.value = 'Transfiguration'
-            userPasswordInput.value = '';
-
-        } else {
-            userNameInput.value = '';
-            userEmailInput.value = '';
-            userRegisterInput.value = '';
-            userRoleInput.value = 'Aluno';
-            userDisciplineInput.value = 'Transfiguration'
-            userPasswordInput.value = '';
-
-            userNameInput.style.border = '2px solid var(--red-500)';
-            userEmailInput.style.border = '2px solid var(--red-500)';
-            userRegisterInput.style.border = '2px solid var(--red-500)';
-            userPasswordInput.style.border = '2px solid var(--red-500)';
+export const clickEventRegister = async (element, roleFromHash) => {
+    element.addEventListener('click', async () => {
+        try {
             
-            const errorList = document.querySelector('.error-list');
-            errorList.innerHTML = ''; 
-
-            ValidUser.forEach(error => {               
-                const errorMessage = newElement('li');
-                const errorText = newElement('p')
-                errorText.textContent = error.message;
-                errorText.classList.add('error-message');
+            const userNameInput = document.querySelector('#input-name')
+            const userEmailInput = document.querySelector('#input-email')
+            const userRegisterInput = document.querySelector('#input-register')
+            const userDisciplineInput = document.querySelector('#input-subjects')
+    
+            const userName = userNameInput.value.trim();
+            const userEmail = userEmailInput.value.trim();
+            const userRegister = userRegisterInput.value.trim();
+            const userDiscipline = userDisciplineInput.value.trim();
+    
+            const ValidUser = createUserValidation(userName, userEmail, userRegister, userDiscipline) 
+            
+            if (ValidUser.length === 0) {
+                ToastBar({
+                    iconParam: '../../assets/CheckCircle.svg',
+                    titleParam: 'Sucesso!',
+                    msgParam: 'Cadastro realizado com sucesso!'
+                })
+    
+                setTimeout(() => {
+                    const toastBar = document.querySelector('.success-toast')
+                    if (toastBar) {
+                        toastBar.classList.add('hide')
+                        setTimeout(() => {
+                            toastBar.remove();
+                        }, 500)
+                    }
+                }, 3000)
+    
+                const newUser = {
+                name: userName,
+                email: userEmail,
+                registration: userRegister,
+                passwordHash: '123456',
+                role: roleFromHash, 
+                subjectName: userDiscipline,
+            }    
+                localStorage.setItem('newUser', JSON.stringify(newUser));
                 
-                errorMessage.appendChild(errorText);
+    
+                const userRegistreted = await fetchCreateUser(urls.createUser, newUser)
+    
+                userNameInput.value = '';
+                userEmailInput.value = '';
+                userRegisterInput.value = '';
+                userDisciplineInput.value = 'Transfiguration'
+    
+            } else {
+                userNameInput.value = '';
+                userEmailInput.value = '';
+                userRegisterInput.value = '';
+                userDisciplineInput.value = 'Transfiguration'
+    
+                userNameInput.style.border = '2px solid var(--red-500)';
+                userEmailInput.style.border = '2px solid var(--red-500)';
+                userRegisterInput.style.border = '2px solid var(--red-500)';
                 
-                errorList.appendChild(errorMessage);
-            });
-
-            localStorage.removeItem('newUser');
-            console.error('Erro ao cadastrar usuário: ', ValidUser);
+                const errorList = document.querySelector('.error-list');
+                errorList.innerHTML = ''; 
+    
+                ValidUser.forEach(error => {               
+                    const errorMessage = newElement('li');
+                    const errorText = newElement('p')
+                    errorText.textContent = error.message;
+                    errorText.classList.add('error-message');
+                    
+                    errorMessage.appendChild(errorText);
+                    
+                    errorList.appendChild(errorMessage);
+                });
+    
+                localStorage.removeItem('newUser');
+                console.error('Erro ao cadastrar usuário: ', ValidUser);
+            }
+        } catch (error) {
+            throw new Error(`Erro ao buscar usuários: ${error.message}`);
         }
 
     }

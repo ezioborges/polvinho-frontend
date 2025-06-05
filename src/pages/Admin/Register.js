@@ -4,11 +4,17 @@ import newElement from "../../utils/newElement.js";
 import textGenerator from "../../utils/textGenerator.js";
 import QuizzButton from "../../components/Buttons/QuizzButton.js"
 import { clickEventRegister } from "../../utils/eventListeners.js";
-import disciplinesArr from "../../data/disciplinesArr.js";
+import { fetchSubjects } from "../../data/fetchData.js";
+import urls from "../../urls/index.js";
 
-const Register = () => {
-    const USER_ROLE = ['Aluno', 'Professor']
+
+const Register = async () => {
     const register = newElement('div')
+    register.style.border = '1px solid red'
+
+    const roleFromHash = window.location.hash.split('/')[2].toLowerCase()
+
+    const subjects = await fetchSubjects(urls.disciplinesUrl)
 
     const firstRowRegister = newElement('div')
     firstRowRegister.classList.add('register-row')
@@ -26,11 +32,7 @@ const Register = () => {
     const nameLabelInput = InputArea('Nome Completo', 'input-name', `Digite o nome do ${entityName}`)
     const registerLabelInput = InputArea('Matrícula', 'input-register', `000000`)
     const emailLabelInput = InputArea('E-mail', 'input-email', 'email@email.com')
-    const passwordLabelInput = InputArea('Senha', 'input-password', '*********')
     
-    const disciplineLabelInput = selectInput('Disciplina', 'input-discipline', disciplinesArr)
-    const roleLabelInput = selectInput('Função', 'input-role', USER_ROLE)
-
     const errorArea = newElement('div')
     errorArea.classList.add('error-area')
 
@@ -42,9 +44,14 @@ const Register = () => {
 
     const registerButton = QuizzButton('Cadastrar', 'button-content', 'textMd')
     registerButton.classList.add('register-button-position')  
-    clickEventRegister(registerButton)
-    
     registerButton.style.width = '19.2vw'
+    clickEventRegister(registerButton, roleFromHash)
+
+    const subjectArray = []
+    subjects.forEach(subject => subjectArray.push(subject.name))
+    
+    const subjectsComponent = selectInput('Disciplinas', 'input-subjects', subjectArray)
+    
 
     errorArea.appendChild(errorList)
 
@@ -53,11 +60,9 @@ const Register = () => {
 
     firstRowRegister.appendChild(nameLabelInput)
     firstRowRegister.appendChild(registerLabelInput)
-    firstRowRegister.appendChild(roleLabelInput)
 
     secondRowRegister.appendChild(emailLabelInput)
-    secondRowRegister.appendChild(disciplineLabelInput)
-    secondRowRegister.appendChild(passwordLabelInput)
+    secondRowRegister.appendChild(subjectsComponent)
 
     registerArea.appendChild(firstRowRegister)
     registerArea.appendChild(secondRowRegister)

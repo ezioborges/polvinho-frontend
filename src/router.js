@@ -67,7 +67,7 @@ export const handleLocation = async () => {
         try {
             const module = await import(route);
             if (module.default && typeof module.default === "function") {
-                const content = module.default(params);
+                const content = await module.default(params);
 
                 if (path === "/" || path === "/dashboard" || path === "/dashboard-admin") {
                     // Login e Dashboard: limpa e renderiza na raiz

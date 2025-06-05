@@ -1,6 +1,6 @@
 import newElement from "../../utils/newElement.js"
 
-const selectInput = (labelTitle, inputId, arr) => {
+const selectInput = (labelTitle, inputId, arr) => {   
     const selectInputArea = newElement('div')
     selectInputArea.classList.add('label-input-column')
 
@@ -19,6 +19,7 @@ const selectInput = (labelTitle, inputId, arr) => {
         option.textContent = discipline
         select.appendChild(option)
     })
+    
 
     selectInputArea.appendChild(nameLabel)
     selectInputArea.appendChild(select)
