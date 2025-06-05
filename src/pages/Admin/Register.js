@@ -10,7 +10,6 @@ import urls from "../../urls/index.js";
 
 const Register = async () => {
     const register = newElement('div')
-    register.style.border = '1px solid red'
 
     const roleFromHash = window.location.hash.split('/')[2].toLowerCase()
 
