@@ -2,7 +2,7 @@ import disciplinesArr from "../data/disciplinesArr.js";
 import newElement from "../utils/newElement.js";
 import textGenerator from "../utils/textGenerator.js";
 import BodyWithoutContent from "./BodyWithoutContent.js";
-import DisciplineBar from "./DisciplineBarDash.js";
+import BarComponent from "./BarComponent.js";
 
 const DashboardContent = () => {
     const disciplines = Object.values(disciplinesArr)
@@ -23,7 +23,7 @@ const DashboardContent = () => {
         return content;
     } else {
         disciplines.forEach((item) => {
-            content.appendChild(DisciplineBar(item));
+            content.appendChild(BarComponent(item));
         })
         return content;
     }

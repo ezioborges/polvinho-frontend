@@ -67,10 +67,7 @@ export const getAllUsers = async (url) => {
         throw new Error('Erro ao buscar usuários');
     }
 
-    const data = await response.json();
-    console.log('data ===> ', data);
-    
+    const data = await response.json(); 
 
     return data;
-
 }

@@ -4,8 +4,10 @@ import urls from "../../urls/index.js";
 import newElement from "../../utils/newElement.js";
 
 const Students = async () => {
-    const studentArray = await getAllUsers('http://localhost:2424/users')
-    console.log('studentArray ===> ', studentArray)
+    const studentArray = await getAllUsers(urls.createUser);
+    const { users } = studentArray;
+    console.log('studentArray ===> ', users)
+    
     const studentsContent = newElement('div')
     
     const studentTitle = PageTitle('Alunos', 'Colocar a quantidade de alunos cadastrados aqui')

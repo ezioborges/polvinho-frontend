@@ -1,7 +1,7 @@
 import newElement from "../utils/newElement.js";
 import textGenerator from "../utils/textGenerator.js";
 
-const DisciplineBar = (disciplineName) => {
+const BarComponent = (disciplineName) => {
     const content = newElement('div');
 
     const name = newElement('p');
@@ -17,4 +17,4 @@ const DisciplineBar = (disciplineName) => {
     return content;
 }
 
-export default DisciplineBar;
+export default BarComponent;
