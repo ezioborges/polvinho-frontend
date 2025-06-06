@@ -32,14 +32,10 @@ export const fetchSubjects = async (url) => {
 }
 
 export const fetchCreateUser = async (url, userData) => {
-    console.log('pra ver se bate aqui', url);
-    console.log('USER que vem do fetch ===> ', userData);
-    
+   
     const userLogin = localStorage.getItem('userLogin');
-
     const token = userLogin ? JSON.parse(userLogin).token : null;
     
-    console.log("🚀 ~ fetchCreateUser ~ token:", token)
     const response = await fetch(url, {
         method: 'POST',
         headers: { 
@@ -53,4 +49,28 @@ export const fetchCreateUser = async (url, userData) => {
     const data = await response.json();
     console.log("🚀 ~ fetchCreateUser ~ data:", data)
     return data;
+}
+
+export const getAllUsers = async (url) => {
+    const userLogin = localStorage.getItem('userLogin')
+    const token = userLogin ? JSON.parse(userLogin).token : null;
+
+    const response  = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'constent-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+
+    if (!response.ok) {
+        throw new Error('Erro ao buscar usuários');
+    }
+
+    const data = await response.json();
+    console.log('data ===> ', data);
+    
+
+    return data;
+
 }

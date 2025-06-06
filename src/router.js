@@ -1,5 +1,3 @@
-import PageError from './pages/PageError.js';
-
 export const router = (event) => {
     event = event || window.event;
     event.preventDefault();
@@ -13,6 +11,7 @@ export const router = (event) => {
 const routes = {
     "/": "./pages/Login.js",
     "/dashboard-admin":"./pages/Admin/Dashboard.js",
+    "/students-admin": "./pages/Admin/Students.js",
     "/register/:entity":"./pages/Admin/Register.js",
     "/dashboard": "./pages/Dashboard.js",
     "/disciplines": "./pages/Disciplines.js",

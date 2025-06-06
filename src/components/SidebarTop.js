@@ -7,72 +7,93 @@ const SidebarTop = () => {
     
     console.log('userLogin sidebar ===> ', userRole);
 
-    const sidebarTopContent = newElement('div');
-    const sidebarTitle = newElement('div');
-    const polvoLogo = newElement('img');
-    const sidebarNav = newElement('div');
-    const sidebarDashboard = newElement('div');
-    const dashboardLogo = newElement('img');
-    const dashboardText = newElement('a');
-    const sidebarDiscipline = newElement('div');
-    const disciplineLogo = newElement('img');
-    const disciplineText = newElement('a');
+    if (userRole === 'admin') {
+        const sidebarTopContent = newElement('div');
+        sidebarTopContent.classList.add('sidebar-top-content');
 
-    // Configurações de texto
-    const sidebarH1 = newElement('a');
-    sidebarH1.textContent = "Polvo";
+        const sidebarTitle = newElement('div');
+        sidebarTitle.classList.add('sidebar-logo');
+
+        const polvoLogo = newElement('img');
+        polvoLogo.src = './assets/logo.png';
+        polvoLogo.alt = 'Logo do polvo';
+        polvoLogo.classList.add('polvo-logo');
+
+        const sidebarNav = newElement('div');
+        sidebarNav.classList.add('sidebar-nav');
+
+        const sidebarDashboard = newElement('div');
+        sidebarDashboard.classList.add('sidebar-dashboard');
+
+        const dashboardLogo = newElement('img');
+        dashboardLogo.src = './assets/House.png';
+        dashboardLogo.alt = 'Logo do dashboard';
+        dashboardLogo.classList.add('menu-logo');
+
+        const dashboardText = newElement('a');
+        dashboardText.textContent = 'Dashboard';
+        dashboardText.href = '/dashboard-admin'
+        dashboardText.onclick = (event) => router(event)
+        dashboardText.classList.add('sidebar-menu-text');
+
+
+        const sidebarDiscipline = newElement('div');
+        sidebarDiscipline.classList.add('sidebar-dashboard');
+
+        const disciplineLogo = newElement('img');
+        disciplineLogo.src = './assets/Books.png';
+        disciplineLogo.alt = 'Logo das disciplinas';
+        disciplineLogo.classList.add('menu-logo');
+
+        const disciplineText = newElement('a');
+        disciplineText.textContent = "Disciplinas";
+        disciplineText.href = '/disciplines-admin'
+        disciplineText.classList.add('sidebar-menu-text');
+        disciplineText.onclick = (event) => router(event)
+ 
     
-    sidebarH1.href = userLogin ? '/dashboard-admin' : '/dashboard';
-    sidebarH1.onclick = (event) => router(event)
+        // Configurações de texto
+        const sidebarH1 = newElement('a');
+        sidebarH1.textContent = "Polvo";
+        sidebarH1.href = '/dashboard-admin';
+        sidebarH1.classList.add('sidebar-h1');
+        sidebarH1.onclick = (event) => router(event)
 
-    dashboardText.textContent = 'Dashboard';
-    dashboardText.href = userLogin? '/dashboard-admin': '/dashboard'
-    dashboardText.onclick = (event) => router(event)
+        const sidebarStudent = newElement('div');
+        sidebarStudent.classList.add('sidebar-dashboard');
 
-    disciplineText.textContent = "Disciplinas";
-    disciplineText.href = userLogin ? '/disciplines-admin' :'/disciplines'
-    disciplineText.onclick = (event) => router(event)
+        const studentLogo = newElement('img');
+        studentLogo.classList.add('menu-logo');
+        studentLogo.src = '../../assets/student.png'
 
-    // Adiciona classes
-    sidebarTopContent.classList.add('sidebar-top-content');
-    sidebarTitle.classList.add('sidebar-logo');
-    sidebarNav.classList.add('sidebar-nav');
-    sidebarH1.classList.add('sidebar-h1');
-    sidebarDashboard.classList.add('sidebar-dashboard');
-    dashboardText.classList.add('sidebar-menu-text');
-    sidebarDiscipline.classList.add('sidebar-dashboard');
-    disciplineText.classList.add('sidebar-menu-text');
+        const studentText = newElement('a');
+        studentText.textContent = "Alunos";
+        studentText.href = '/students-admin'
+        studentText.classList.add('sidebar-menu-text');
+        studentText.onclick = (event) => router(event)
+    
+        sidebarTitle.appendChild(polvoLogo)
+        sidebarTitle.appendChild(sidebarH1)
+    
+        sidebarDashboard.appendChild(dashboardLogo);
+        sidebarDashboard.appendChild(dashboardText);
+    
+        sidebarDiscipline.appendChild(disciplineLogo);
+        sidebarDiscipline.appendChild(disciplineText);
 
-    // Adiciona ícones
-    polvoLogo.src = './assets/logo.png';
-    polvoLogo.alt = 'Logo do polvo';
-    polvoLogo.classList.add('polvo-logo');
+        sidebarStudent.appendChild(studentLogo)
+        sidebarStudent.appendChild(studentText)
+    
+        sidebarNav.appendChild(sidebarDashboard);
+        sidebarNav.appendChild(sidebarDiscipline);
+        sidebarNav.appendChild(sidebarStudent)
+    
+        sidebarTopContent.appendChild(sidebarTitle);
+        sidebarTopContent.appendChild(sidebarNav);
+    
+        return sidebarTopContent;
+    }
 
-    dashboardLogo.src = './assets/House.png';
-    dashboardLogo.alt = 'Logo do dashboard';
-    dashboardLogo.classList.add('menu-logo');
-
-    disciplineLogo.src = './assets/Books.png';
-    disciplineLogo.alt = 'Logo das disciplinas';
-    disciplineLogo.classList.add('menu-logo');
-
-    // Monta a estrutura
-    sidebarTitle.appendChild(polvoLogo)
-    sidebarTitle.appendChild(sidebarH1)
-
-    sidebarDashboard.appendChild(dashboardLogo);
-    sidebarDashboard.appendChild(dashboardText);
-
-    sidebarDiscipline.appendChild(disciplineLogo);
-    sidebarDiscipline.appendChild(disciplineText);
-
-    sidebarNav.appendChild(sidebarDashboard);
-    sidebarNav.appendChild(sidebarDiscipline);
-
-    sidebarTopContent.appendChild(sidebarTitle);
-    sidebarTopContent.appendChild(sidebarNav);
-
-    return sidebarTopContent;
 };
 
 export default SidebarTop;
