@@ -1,4 +1,3 @@
-import DashboardContent from "../components/DashboardContent.js";
 import PageTitle from "../components/PageTitle.js";
 import { Sidebar } from "../components/Sidebar.js";
 import newElement from "../utils/newElement.js"
@@ -17,10 +16,8 @@ const Dashboard = () => {
     const sidebar = Sidebar()
     
     const titleContent = PageTitle('Dashboard', 'Bem vindo, Aluno');
-    const dashContent = DashboardContent();
 
     dashBody.appendChild(titleContent);
-    dashBody.appendChild(dashContent);
     
     mainBody.appendChild(dashBody);
 
