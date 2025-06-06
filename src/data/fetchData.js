@@ -22,7 +22,8 @@ export const fetchSubjects = async (url) => {
     })
 
     if (!response.ok) {
-        throw new Error('Erro ao buscar disciplinas');
+
+        throw new Error('Nenhuma disciplina cadastrada');
     }
 
     const data = await response.json();

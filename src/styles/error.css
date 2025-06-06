@@ -1,0 +1,13 @@
+.error-page {
+    padding: 15px;
+}
+
+.octopus-image {
+    width: 30%;
+    height: 30%;
+}
+
+.img-area {
+    display: flex;
+    justify-content: center;
+}

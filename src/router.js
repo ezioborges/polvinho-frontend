@@ -1,3 +1,5 @@
+import PageError from './pages/PageError.js';
+
 export const router = (event) => {
     event = event || window.event;
     event.preventDefault();
@@ -17,6 +19,7 @@ const routes = {
     "/disciplines/:id": "./pages/Exam.js",
     "/disciplines/:id/quizz": "./pages/Quizz.js",
     "/disciplines/:id/results": "./pages/Result.js",
+    "/error": "./pages/PageError.js",
 };
 
 export const handleLocation = async () => {
@@ -97,12 +100,7 @@ export const handleLocation = async () => {
             }
         } catch (error) {
             console.error("Erro ao importar o módulo:", error);
-            const newMain = document.getElementById("main-body");
-            if (newMain) {
-                newMain.innerHTML = "<h1>Erro ao carregar a página</h1>";
-            } else {
-                document.getElementById("main-content").innerHTML = "<h1>Erro ao carregar a página</h1>";
-            }
+            window.location.hash = '/error'
         }
     } else if (typeof route === "function") {
         route();
