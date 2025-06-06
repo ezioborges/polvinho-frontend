@@ -9,7 +9,7 @@ const BarComponent = (disciplineName) => {
 
     const text = textGenerator('textMd', name.textContent);
 
-    content.classList.add('discipline-bar');
+    content.classList.add('bar-content');
     text.classList.add('discipline-text');
 
     content.appendChild(text);

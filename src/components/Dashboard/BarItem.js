@@ -3,7 +3,7 @@ import textGenerator from "../../utils/textGenerator.js";
 
 const BarItem = (entity, register) => {
     const item = newElement('div');
-    item.classList.add('discipline-bar')    
+    item.classList.add('bar-content')    
 
     const title = textGenerator('textMd', entity);
     title.classList.add('discipline-text')

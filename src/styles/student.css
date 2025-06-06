@@ -1,0 +1,42 @@
+.students-list {
+    margin-top: 50px;
+    height: 60vh;
+}
+
+.title-list-student {
+    color: var(--stone-700);
+}
+
+.headers-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 3vh;
+}
+
+.body-area {
+    height: 50vh;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.header-item {
+    color: var(--stone-500);
+    width: 100%;
+}
+
+.list-area {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.actions-area {
+    border: 1px solid green;
+    display: flex;
+}
+
+.student-box-area {
+    background-color: blue;
+    height: 100%;
+    width: 20vw;
+}
