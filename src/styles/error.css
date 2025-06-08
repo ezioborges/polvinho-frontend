@@ -11,3 +11,16 @@
     display: flex;
     justify-content: center;
 }
+
+.body-without-users {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.body-without-users img {
+    width: 50%;
+}

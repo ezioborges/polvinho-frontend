@@ -1,20 +1,30 @@
 import newElement from "../../utils/newElement.js";
 import { getAllUsers } from "../../data/fetchData.js";
 import urls from "../../urls/index.js";
+import { BodyWithoputUsers } from "../BodyWithoputUsers.js";
 
 const StudentList = async () => {
     const headersList = ['Matricula', 'Nome', 'Disciplinas', 'Ações'];
+    const { users } = await getAllUsers(urls.createUser);
+    const studentRole = 'aluno' 
 
-    const studentsArray = await getAllUsers(urls.createUser)
-    const { users } = studentsArray;
-    console.log('🚀 é daqui que vem mesmo:', users)
+    console.log('users ===> ', users)
 
-    const studentsListContent = newElement('div')
+    const studentArray = users.filter(user => user.role === 'aluno')
+
+    const studentAmount = studentArray.length
+
+    const bodyWithoutUsers =  BodyWithoputUsers()
+
+    const studentsListContent = newElement('div');
     studentsListContent.classList.add('students-list');
-       
+
+    const titleArea = newElement('div');
+    titleArea.classList.add('title-student-list-area');
+
     const titleList = newElement('p');
-    titleList.classList.add('title-list-student')
-    titleList.classList.add('title4');
+    titleList.classList.add('title-list-student');
+    titleList.classList.add('title2');
     titleList.textContent = 'Lista de Alunos';
 
     const headersArea = newElement('div');
@@ -24,84 +34,85 @@ const StudentList = async () => {
     bodyArea.classList.add('body-area');
 
     headersList.forEach((header) => {
-        const headerItem = newElement('p')
+        const headerItem = newElement('p');
         headerItem.classList.add('header-item');
         headerItem.textContent = header;
-        headerItem.classList.add('textSm')
-
-        headersArea.appendChild(headerItem)
-    })
+        headerItem.classList.add('textMd');
+        headersArea.appendChild(headerItem);
+    });
 
     const listContent = newElement('div');
     listContent.classList.add('list-area');
 
     users.forEach((user) => {
-        console.log('user ===> ', user);
-        
-        const listRow = newElement('div');
-        listRow.classList.add('bar-content');
+        if (user.role === studentRole) {              
+            const listRow = newElement('div');
+            listRow.classList.add('bar-content');
 
-        const studentRegisterArea = newElement('div');
-        studentRegisterArea.classList.add('student-box-area');
+            const studentRegisterArea = newElement('div');
+            studentRegisterArea.classList.add('student-box-area');
 
-        const studentNameArea = newElement('div');
-        studentNameArea.classList.add('student-box-area');
+            const studentNameArea = newElement('div');
+            studentNameArea.classList.add('student-box-area');
 
-        const studentSubjectsAmountArea = newElement('div');
-        studentSubjectsAmountArea.classList.add('student-box-area');
+            const studentSubjectsAmountArea = newElement('div');
+            studentSubjectsAmountArea.classList.add('student-box-area');
 
-        const studentActionsArea = newElement('div');
-        studentActionsArea.classList.add('student-box-area');
+            const studentActionsArea = newElement('div');
+            studentActionsArea.classList.add('student-box-area');
 
-        const studentRegister = newElement('p');
-        studentRegister.textContent = user.registration;
-        studentRegister.classList.add('textMd');
+            const actionsClickArea = newElement('div')
+            actionsClickArea.classList.add('actions-click-area');
 
-        const studentName = newElement('p')
-        studentName.textContent = user.name;
-        studentName.classList.add('textMd')
+            const studentRegister = newElement('p');
+            studentRegister.textContent = user.registration;
+            studentRegister.classList.add('textMd');
 
-        const studentSubjectsAmount = newElement('p')
-        studentSubjectsAmount.textContent = 'qtd subjects',
-        studentSubjectsAmount.classList.add('textMd')
+            const studentName = newElement('p');
+            studentName.textContent = user.name;
+            studentName.classList.add('textMd');
 
-        const actionsArea = newElement('div');
-        actionsArea.classList.add('actions-area');
+            const studentSubjectsAmount = newElement('p');
+            studentSubjectsAmount.textContent = user.subject.length > 0 ? user.subject.length : '0';
+            studentSubjectsAmount.classList.add('textMd');
 
-        const editArea = newElement('a');
-        editArea.classList.add('edit-area');
-        editArea.textContent = 'Editar';
-        editArea.classList.add('textSm')
-        editArea.href = `#/edit-area`;
+            const editArea = newElement('a');
+            editArea.classList.add('edit-area');
+            editArea.textContent = 'Editar';
+            editArea.classList.add('textSm');
+            editArea.href = `#/edit-area`;
 
-        const deleteArea = newElement('a');
-        deleteArea.classList.add('delete-area');
-        deleteArea.textContent = 'Excluir';
-        deleteArea.classList.add('textSm')
+            const deleteArea = newElement('a');
+            deleteArea.classList.add('delete-area');
+            deleteArea.textContent = 'Excluir';
+            deleteArea.classList.add('textSm');
+            deleteArea.href = `#/delete-area`;
 
-        actionsArea.appendChild(editArea)
-        actionsArea.appendChild(deleteArea)
+            actionsClickArea.appendChild(editArea);
+            actionsClickArea.appendChild(deleteArea);
 
-        studentRegisterArea.appendChild(studentRegister)
-        studentNameArea.appendChild(studentName)
-        studentSubjectsAmountArea.appendChild(studentSubjectsAmount)
-        studentActionsArea.appendChild(actionsArea)
+            studentActionsArea.appendChild(actionsClickArea);
 
-        listRow.appendChild(studentRegisterArea)
-        listRow.appendChild(studentNameArea)
-        listRow.appendChild(studentSubjectsAmountArea)
-        listRow.appendChild(actionsArea)
+            studentRegisterArea.appendChild(studentRegister);
+            studentNameArea.appendChild(studentName);
+            studentSubjectsAmountArea.appendChild(studentSubjectsAmount);
 
-        bodyArea.appendChild(listRow)
-    })
+            listRow.appendChild(studentRegisterArea);
+            listRow.appendChild(studentNameArea);
+            listRow.appendChild(studentSubjectsAmountArea);
+            listRow.appendChild(studentActionsArea);
 
-    listContent.appendChild(headersArea)
-    listContent.appendChild(bodyArea)
+            bodyArea.appendChild(listRow);
+        }
+    });
 
-    studentsListContent.appendChild(titleList);
-    studentsListContent.appendChild(listContent)
-    
+    titleArea.appendChild(titleList);
+    listContent.appendChild(headersArea);
+    studentAmount > 0 ? listContent.appendChild(bodyArea) : listContent.appendChild(bodyWithoutUsers);    
+    studentsListContent.appendChild(titleArea);
+    studentsListContent.appendChild(listContent);
+
     return studentsListContent;
-}
+};
 
 export default StudentList;
