@@ -5,7 +5,7 @@ import urls from "../../urls/index.js";
 import newElement from "../../utils/newElement.js";
 
 const Students = async () => {  
-    const { users } = await getAllUsers(urls.createUser)
+    const { users } = await getAllUsers(urls.users)
     
     const studentArray = users.filter(user => user.role === 'aluno')
 

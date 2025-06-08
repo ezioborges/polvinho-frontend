@@ -88,7 +88,7 @@ export const clickFormLogin = (element) => {
         const errorMessage = document.querySelector('#error-message')  
 
         try {
-            const response = await fetchLogin(urls.loginUrl)
+            const response = await fetchLogin(urls.login)
             
             const data = await response.json();
 
@@ -183,7 +183,7 @@ export const clickEventRegister = async (element, roleFromHash) => {
                 
                 
     
-                await fetchCreateUser(urls.createUser, newUser)
+                await fetchCreateUser(urls.users, newUser)
     
                 userNameInput.value = '';
                 userEmailInput.value = '';

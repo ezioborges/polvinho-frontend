@@ -1,4 +1,4 @@
-export const createUserValidation = (name, email, register, discipline, password) => {
+export const createUserValidation = (name, email, register, discipline) => {
     const errors = []
     if (!name) {
         errors.push({ valid: false, message: 'Nome é obrigatório.' });

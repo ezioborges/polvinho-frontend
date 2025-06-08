@@ -5,7 +5,7 @@ import { BodyWithoputUsers } from "../BodyWithoputUsers.js";
 
 const StudentList = async () => {
     const headersList = ['Matricula', 'Nome', 'Disciplinas', 'Ações'];
-    const { users } = await getAllUsers(urls.createUser);
+    const { users } = await getAllUsers(urls.users);
     const studentRole = 'aluno' 
 
     console.log('users ===> ', users)

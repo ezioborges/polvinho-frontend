@@ -44,10 +44,8 @@ export const fetchCreateUser = async (url, userData) => {
         },
         body: JSON.stringify(userData)
     });
-    console.log("🚀 ~ fetchCreateUser ~ response:", response)
 
     const data = await response.json();
-    console.log("🚀 ~ fetchCreateUser ~ data:", data)
     return data;
 }
 
