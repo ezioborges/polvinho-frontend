@@ -3,7 +3,7 @@ import PageTitle from "../PageTitle.js"
 import { Sidebar } from "../Sidebar.js"
 import DashContent from "./DashListItems.js"
 
-const DashboardMainContent = () => {
+const DashboardMainContent = async () => {
     const dashboardContent = newElement('div')
     dashboardContent.classList.add('dash-content')
 
@@ -17,7 +17,7 @@ const DashboardMainContent = () => {
     dashBody.classList.add('dashboard-body')
 
     const dashTitle = PageTitle('Dashboard', 'Bem vindo, Admin')
-    const dashContent = DashContent()
+    const dashContent = await DashContent()
 
     dashMainBody.appendChild(dashTitle)
     dashMainBody.appendChild(dashContent)

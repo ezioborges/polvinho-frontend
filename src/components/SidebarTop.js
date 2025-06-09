@@ -46,8 +46,8 @@ const SidebarTop = () => {
         disciplineLogo.classList.add('menu-logo');
 
         const disciplineText = newElement('a');
-        disciplineText.textContent = "Disciplinas";
-        disciplineText.href = '/disciplines-admin'
+        disciplineText.textContent = "Painel";
+        disciplineText.href = '/panel-admin'
         disciplineText.classList.add('sidebar-menu-text');
         disciplineText.onclick = (event) => router(event)
  

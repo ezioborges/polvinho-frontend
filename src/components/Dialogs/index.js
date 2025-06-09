@@ -23,6 +23,7 @@ const Dialog = (
 
     const startButton = QuizzButton(startTitle, 'button-content', 'textMd')
     startButton.style.backgroundColor = buttonColor
+    startButton.classList.add('start-button')
     startButton.style.border = `none`
     startButton.id = 'start-button'
     funcActionQuiz(startButton)

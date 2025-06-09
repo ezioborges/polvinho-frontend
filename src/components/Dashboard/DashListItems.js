@@ -4,7 +4,7 @@ import { entities } from "../../data/adminEntities.js"
 import BarItem from "./BarItem.js";
 import textGenerator from "../../utils/textGenerator.js";
 
-const DashContent = () => {
+const DashContent = async () => {
     const content = newElement('div')
 
     const title = textGenerator('title3', 'Entidades');

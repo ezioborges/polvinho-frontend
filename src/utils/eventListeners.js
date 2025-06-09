@@ -115,9 +115,7 @@ export const clickFormLogin = (element) => {
             }            
 
             if (response.ok) {  
-                const role = data.user.role.toLowerCase();
-                console.log('role ===> ', role);
-                
+                const role = data.user.role.toLowerCase();                
                 
                 localStorage.setItem('userLogin', JSON.stringify(userLogin));
 
