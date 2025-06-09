@@ -3,6 +3,13 @@
     height: 60vh;
 }
 
+.student-top-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1rem;
+}
+
 .title-list-student {
     color: var(--stone-700);
 }
