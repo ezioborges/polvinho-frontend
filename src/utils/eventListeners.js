@@ -5,6 +5,8 @@ import { createUserValidation } from "./createUserValidation.js";
 import newElement from "./newElement.js";
 import urls from '../urls/index.js'
 import { fetchCreateUser, fetchLogin } from "../data/fetchData.js";
+import { router } from "../router.js";
+import Panel from "../components/Panel/index.js";
 
 export const openDialog = (
             element, 
@@ -239,3 +241,21 @@ export const clickEventRegister = async (element, roleFromHash) => {
     }
 )}
 
+let isVisible = false
+export const panelDropdown = () => {
+    isVisible = !isVisible
+    const panel = document.querySelector('#panel-dropdown')
+
+    if(!isVisible) {
+        panel.classList.remove('panel-dropdown-open')
+        panel.classList.add('panel-dropdown-close')
+    } else {
+        const dropdown = Panel()
+        panel.innerHTML = ''
+        panel.appendChild(dropdown)
+        
+
+        panel.classList.remove('panel-dropdown-close')
+        panel.classList.add('panel-dropdown-open')
+    }
+}

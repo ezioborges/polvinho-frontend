@@ -1,0 +1,25 @@
+.panel-dropdown-close {
+    display: none;
+}
+
+.panel-dropdown-open {
+    display: flex;
+    justify-content: start;
+}
+
+.dropdown-items {
+    width: 100%;
+    display: flex;
+    padding-left: 2.188rem;
+    color: var(--indigo-50);
+}
+
+.dropdown-items:hover {
+    color: var(--yellow-200);
+}
+
+.panel-content{ 
+    width: 80%;
+    display: flex;
+    align-items: center;
+ }

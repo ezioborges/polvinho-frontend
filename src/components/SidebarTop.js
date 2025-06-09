@@ -1,14 +1,14 @@
 import { router } from "../router.js";
+import { panelDropdown } from "../utils/eventListeners.js";
 import newElement from "../utils/newElement.js";
 
 const SidebarTop = () => {
     const userLogin = JSON.parse(localStorage.getItem('userLogin'))
     const userRole = userLogin ? userLogin.user.role.toLowerCase() : null
-    
-    console.log('userLogin sidebar ===> ', userRole);
 
     if (userRole === 'admin') {
         const sidebarTopContent = newElement('div');
+        sidebarTopContent.id = 'sidebar-top'
         sidebarTopContent.classList.add('sidebar-top-content');
 
         const sidebarTitle = newElement('div');
@@ -45,51 +45,37 @@ const SidebarTop = () => {
         disciplineLogo.alt = 'Logo das disciplinas';
         disciplineLogo.classList.add('menu-logo');
 
-        const disciplineText = newElement('a');
+        const disciplineText = newElement('div');
         disciplineText.textContent = "Painel";
-        disciplineText.href = '/panel-admin'
         disciplineText.classList.add('sidebar-menu-text');
-        disciplineText.onclick = (event) => router(event)
- 
-    
+        disciplineText.onclick = (event) => panelDropdown(event)
+
+        
         // Configurações de texto
         const sidebarH1 = newElement('a');
         sidebarH1.textContent = "Polvo";
         sidebarH1.href = '/dashboard-admin';
         sidebarH1.classList.add('sidebar-h1');
         sidebarH1.onclick = (event) => router(event)
-
-        const sidebarStudent = newElement('div');
-        sidebarStudent.classList.add('sidebar-dashboard');
-
-        const studentLogo = newElement('img');
-        studentLogo.classList.add('menu-logo');
-        studentLogo.src = '../../assets/student.png'
-
-        const studentText = newElement('a');
-        studentText.textContent = "Alunos";
-        studentText.href = '/students-admin'
-        studentText.classList.add('sidebar-menu-text');
-        studentText.onclick = (event) => router(event)
-    
+        
         sidebarTitle.appendChild(polvoLogo)
         sidebarTitle.appendChild(sidebarH1)
-    
+        
         sidebarDashboard.appendChild(dashboardLogo);
         sidebarDashboard.appendChild(dashboardText);
     
         sidebarDiscipline.appendChild(disciplineLogo);
         sidebarDiscipline.appendChild(disciplineText);
-
-        sidebarStudent.appendChild(studentLogo)
-        sidebarStudent.appendChild(studentText)
-    
+        
         sidebarNav.appendChild(sidebarDashboard);
         sidebarNav.appendChild(sidebarDiscipline);
-        sidebarNav.appendChild(sidebarStudent)
-    
+
+        const panelDropdownDiv = newElement('div')
+        panelDropdownDiv.id = 'panel-dropdown'
+        
         sidebarTopContent.appendChild(sidebarTitle);
         sidebarTopContent.appendChild(sidebarNav);
+        sidebarTopContent.appendChild(panelDropdownDiv)
     
         return sidebarTopContent;
     }

@@ -5,7 +5,7 @@ const PageError = () => {
     const errorContent = newElement('div')
     errorContent.classList.add('error-page')
 
-    const errorMessage = SubjectsNotFound('Disciplinas não encontradas ou não cadastradas.', 'Entre em contato com o Admin')
+    const errorMessage = SubjectsNotFound('Erro de rota.', 'Da uma olhadinha no router')
 
     errorContent.appendChild(errorMessage)
 

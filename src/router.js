@@ -12,6 +12,8 @@ const routes = {
     "/": "./pages/Login.js",
     "/dashboard-admin":"./pages/Admin/Dashboard.js",
     "/students-admin": "./pages/Admin/Students.js",
+    "/professors-admin": "./pages/Admin/Professor.js",
+    "/subjects-admin": "./pages/Admin/Subjects.js",
     "/register/:entity":"./pages/Admin/Register.js",
     "/dashboard": "./pages/Dashboard.js",
     "/disciplines": "./pages/Disciplines.js",
