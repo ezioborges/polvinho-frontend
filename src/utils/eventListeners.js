@@ -6,9 +6,26 @@ import newElement from "./newElement.js";
 import urls from '../urls/index.js'
 import { fetchCreateUser, fetchLogin } from "../data/fetchData.js";
 
-export const openDialog = (element, title, text, funcCancelButton, funcStartQuiz) => {
+export const openDialog = (
+            element, 
+            title, 
+            text, 
+            cancelTitle, 
+            funcCancelButton,
+            startTitle, 
+            funcStartQuiz,
+            buttonColor
+) => {
     element.addEventListener('click', () => {
-        Dialog(title, text, funcCancelButton, funcStartQuiz)
+        Dialog(
+            title, 
+            text, 
+            cancelTitle, 
+            funcCancelButton,
+            startTitle, 
+            funcStartQuiz,
+            buttonColor
+        )
     })
     
 }

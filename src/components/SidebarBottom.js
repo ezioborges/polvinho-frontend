@@ -15,8 +15,17 @@ const SidebarBottom = () => {
     passwordText.href = '/change-password'
     passwordText.onclick = (event) => router(event)
 
-    sectionText.textContent = 'Encerrar Seção';
-    openDialog(sectionText, 'Tem certeza que deseja sair', 'Sua seção será finalizada, tornando necessário um novo Login.', clickEventCancelButton, endSession)
+    sectionText.textContent = 'Encerrar Sessão';
+    openDialog(
+        sectionText,
+        'Tem certeza que deseja sair',
+        'Sua sessão será finalizada, tornando necessário um novo Login.',
+        'Cancelar',
+        clickEventCancelButton,
+        'Sair', 
+        endSession,
+        'var(--red-500'
+    )
     
     sidebarBottomContent.classList.add('sidebar-bottom-content');
     changePassword.classList.add('sidebar-dashboard');

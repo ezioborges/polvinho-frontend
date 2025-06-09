@@ -1,7 +1,15 @@
 import newElement from "../../utils/newElement.js";
 import QuizzButton from "../Buttons/QuizzButton.js";
 
-const Dialog = (title, text, funcCancelButton, funcActionQuiz) => {
+const Dialog = (
+        title, 
+        text, 
+        cancelTitle, 
+        funcCancelButton,
+        startTitle, 
+        funcActionQuiz,
+        buttonColor = 'var(--indigo-500)' 
+) => {
     const dialogOverlay = newElement('div')
     const dialogContent = newElement('div')
     const dialogTitle = newElement('p')
@@ -9,13 +17,15 @@ const Dialog = (title, text, funcCancelButton, funcActionQuiz) => {
     const dialogButtonArea = newElement('div')
     const dialogTextsArea = newElement('div')
     
-    const cancelButton = QuizzButton('Cancelar', 'cancel-button-content', 'textMd')
-    cancelButton.onclick = funcCancelButton(cancelButton)
+    const cancelButton = QuizzButton(cancelTitle, 'cancel-button-content', 'textMd')
+    funcCancelButton(cancelButton)
     cancelButton.style.marginRight = '1rem'
 
-    const startButton = QuizzButton('Continuar', 'button-content', 'textMd')
+    const startButton = QuizzButton(startTitle, 'button-content', 'textMd')
+    startButton.style.backgroundColor = buttonColor
+    startButton.style.border = `none`
     startButton.id = 'start-button'
-    startButton.onclick = funcActionQuiz(startButton)
+    funcActionQuiz(startButton)
 
     dialogOverlay.classList.add('dialog-overlay')
     dialogContent.classList.add('dialog-content')

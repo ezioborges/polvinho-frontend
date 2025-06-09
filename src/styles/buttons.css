@@ -1,3 +1,8 @@
+button#start-button:hover {
+    background-color: blue;
+    cursor: pointer;
+}
+
 .button-content {
     width: 6.688rem;
     height: 3rem;
@@ -17,15 +22,16 @@
     width: 13.645833333333334vw;
     height: 2.5vw;
     align-self: center;
+    border: 1px solid var(--indigo-500);
     background-color: var(--indigo-500);
     border-radius: 9px;
     color: var(--neutral-50);
-    border: 1px solid var(--indigo-500);
 }
 
 .button-form:hover {
-    background-color: var(--indigo-700);
     cursor: pointer;
+    background-color: var(--indigo-700);
+    border: 1px solid var(--indigo-500);
 }
 
 .cancel-button-content {
