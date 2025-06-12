@@ -2,6 +2,7 @@ import newElement from "../../utils/newElement.js";
 import { getAllUsers } from "../../data/fetchData.js";
 import urls from "../../urls/index.js";
 import { BodyWithoputUsers } from "../BodyWithoputUsers.js";
+import { subjectsAmountDropdown } from "../../utils/eventListeners.js";
 
 const StudentList = async () => {
     const headersList = ['Matricula', 'Nome', 'Disciplinas', 'Ações'];
@@ -57,6 +58,8 @@ const StudentList = async () => {
 
             const studentSubjectsAmountArea = newElement('div');
             studentSubjectsAmountArea.classList.add('student-box-area');
+            studentSubjectsAmountArea.classList.add('student-subjects-amount');
+            subjectsAmountDropdown(studentSubjectsAmountArea)
 
             const studentActionsArea = newElement('div');
             studentActionsArea.classList.add('student-box-area');
@@ -88,13 +91,19 @@ const StudentList = async () => {
             deleteArea.classList.add('textSm');
             deleteArea.href = `#/delete-area`;
 
+            const subjectsDropdown = newElement('div')
+            subjectsDropdown.id = 'subjects-dropdown';
+
             actionsClickArea.appendChild(editArea);
             actionsClickArea.appendChild(deleteArea);
 
             studentActionsArea.appendChild(actionsClickArea);
 
             studentRegisterArea.appendChild(studentRegister);
+
             studentNameArea.appendChild(studentName);
+
+            studentSubjectsAmountArea.appendChild(subjectsDropdown);
             studentSubjectsAmountArea.appendChild(studentSubjectsAmount);
 
             listRow.appendChild(studentRegisterArea);

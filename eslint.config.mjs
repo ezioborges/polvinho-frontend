@@ -1,55 +1,45 @@
-import pluginJs from "@eslint/js";
-import globals from "globals";
-
-/** @type {import('eslint').Linter.Config[]} */
 export default [
-	{ languageOptions: { globals: globals.node } },
-	pluginJs.configs.recommended,
-	{
-		//created on https://eslint-config-generator.shubhdeepchhabra.in/
-		name: "polvinho-quiz-back-end",
-		ignores: ["./node_modules"],
-		rules: {
-			"accessor-pairs": "error",
-			"array-callback-return": "off",
-			"arrow-body-style": "off",
-			"block-scoped-var": "off",
-			camelcase: "error",
-			"capitalized-comments": "off",
-			complexity: "off",
-			"consistent-this": "error",
-			curly: "error",
-			"default-case": "error",
-			"default-case-last": "error",
-			"dot-notation": "error",
-			eqeqeq: "error",
-			"for-direction": "error",
-			"func-name-matching": "error",
-			"getter-return": "error",
-			"max-classes-per-file": "error",
-			"no-await-in-loop": "off",
-			yoda: "error",
-			"prefer-const": "error",
-			"operator-assignment": "error",
-			"no-var": "error",
-			"no-useless-return": "error",
-			"no-useless-rename": "error",
-			"no-useless-escape": "error",
-			"no-useless-constructor": "error",
-			"no-useless-catch": "off",
-			"no-unused-vars": "warn",
-			"no-unused-expressions": "warn",
-			"no-use-before-define": "error",
-			"no-unreachable": "error",
-			"no-setter-return": "error",
-			"no-self-compare": "error",
-			"no-self-assign": "error",
-			"no-duplicate-case": "error",
-			"no-duplicate-imports": "error",
-			"no-empty": "error",
-			"no-empty-function": "error",
-			"no-const-assign": "error",
-			"no-constructor-return": "error",
-		},
-	},
+  {
+    ignores: ['dist/', 'build/', 'node_modules/', 'public/', '*.cjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+      },
+    },
+    plugins: {
+      react: require('eslint-plugin-react'),
+      'react-hooks': require('eslint-plugin-react-hooks'),
+      '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
+      'jsx-a11y': require('eslint-plugin-jsx-a11y'),
+      prettier: require('eslint-plugin-prettier'),
+    },
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+      'prettier/prettier': [
+        'error',
+        {
+          semi: true,
+          trailingComma: 'all',
+          singleQuote: true,
+          printWidth: 80,
+          tabWidth: 2,
+          useTabs: false,
+          jsxSingleQuote: false,
+          bracketSpacing: true,
+        },
+      ],
+      'no-unused-vars': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_' },
+      ],
+      'no-console': 'warn',
+    },
+    settings: {
+      react: { version: 'detect' },
+    },
+  },
 ];

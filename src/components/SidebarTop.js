@@ -48,8 +48,7 @@ const SidebarTop = () => {
         const disciplineText = newElement('div');
         disciplineText.textContent = "Painel";
         disciplineText.classList.add('sidebar-menu-text');
-        disciplineText.onclick = (event) => panelDropdown(event)
-
+        
         
         // Configurações de texto
         const sidebarH1 = newElement('a');
@@ -63,9 +62,10 @@ const SidebarTop = () => {
         
         sidebarDashboard.appendChild(dashboardLogo);
         sidebarDashboard.appendChild(dashboardText);
-    
+        
         sidebarDiscipline.appendChild(disciplineLogo);
         sidebarDiscipline.appendChild(disciplineText);
+        panelDropdown(sidebarDiscipline)
         
         sidebarNav.appendChild(sidebarDashboard);
         sidebarNav.appendChild(sidebarDiscipline);

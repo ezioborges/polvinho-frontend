@@ -242,20 +242,44 @@ export const clickEventRegister = async (element, roleFromHash) => {
 )}
 
 let isVisible = false
-export const panelDropdown = () => {
-    isVisible = !isVisible
-    const panel = document.querySelector('#panel-dropdown')
+export const panelDropdown = (element) => {
+    element.addEventListener('click', () => {
+        isVisible = !isVisible
+        const panel = document.querySelector('#panel-dropdown')
+    
+        if(!isVisible) {
+            panel.classList.remove('panel-dropdown-open')
+            panel.classList.add('panel-dropdown-close')
+        } else {
+            const dropdown = Panel()
+            panel.innerHTML = ''
+            panel.appendChild(dropdown)
+            
+    
+            panel.classList.remove('panel-dropdown-close')
+            panel.classList.add('panel-dropdown-open')
+        }
+    })
+}
 
-    if(!isVisible) {
-        panel.classList.remove('panel-dropdown-open')
-        panel.classList.add('panel-dropdown-close')
-    } else {
-        const dropdown = Panel()
-        panel.innerHTML = ''
-        panel.appendChild(dropdown)
-        
+export const subjectsAmountDropdown = (element) => {
+    element.addEventListener('click', () => {
+        isVisible = !isVisible
+        const panelSubjects = document.querySelector('#subjects-dropdown')
+        if(!isVisible) {
+            panelSubjects.classList.remove('subjects-dropdown-open')
+            panelSubjects.classList.add('subjects-dropdown-close')
+        } else {
+            const subjectsDropdown = newElement('div')
+            subjectsDropdown.textContent = 'Disciplinas'
+            subjectsDropdown.classList.add('textMd')
 
-        panel.classList.remove('panel-dropdown-close')
-        panel.classList.add('panel-dropdown-open')
-    }
+            panelSubjects.innerHTML = ''
+            panelSubjects.appendChild(subjectsDropdown)
+
+            panelSubjects.classList.remove('subjects-dropdown-close')
+            panelSubjects.classList.add('subjects-dropdown-open')
+        }
+        console.log('clicou na quantidade de disciplinas ', isVisible)
+    })
 }

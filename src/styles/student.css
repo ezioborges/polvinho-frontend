@@ -56,3 +56,21 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.student-subjects-amount {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.student-subjects-amount p {
+    position: absolute;
+    padding: 0 5px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.student-subjects-amount p:hover {
+    background-color: var(--stone-400);
+}
