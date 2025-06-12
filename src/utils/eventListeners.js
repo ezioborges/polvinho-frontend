@@ -5,8 +5,8 @@ import { createUserValidation } from "./createUserValidation.js";
 import newElement from "./newElement.js";
 import urls from '../urls/index.js'
 import { fetchCreateUser, fetchLogin } from "../data/fetchData.js";
-import { router } from "../router.js";
-import Panel from "../components/Panel/index.js";
+import SidebarPanel from "../components/Panel/SidebarPanel.js";
+import SubjectsPanelList from "../components/Panel/SubjectsPanelList.js";
 
 export const openDialog = (
             element, 
@@ -251,7 +251,7 @@ export const panelDropdown = (element) => {
             panel.classList.remove('panel-dropdown-open')
             panel.classList.add('panel-dropdown-close')
         } else {
-            const dropdown = Panel()
+            const dropdown = SidebarPanel()
             panel.innerHTML = ''
             panel.appendChild(dropdown)
             
@@ -263,16 +263,14 @@ export const panelDropdown = (element) => {
 }
 
 export const subjectsAmountDropdown = (element) => {
-    element.addEventListener('click', () => {
+    element.addEventListener('click', async () => {
         isVisible = !isVisible
         const panelSubjects = document.querySelector('#subjects-dropdown')
         if(!isVisible) {
             panelSubjects.classList.remove('subjects-dropdown-open')
             panelSubjects.classList.add('subjects-dropdown-close')
         } else {
-            const subjectsDropdown = newElement('div')
-            subjectsDropdown.textContent = 'Disciplinas'
-            subjectsDropdown.classList.add('textMd')
+            const subjectsDropdown = await SubjectsPanelList()
 
             panelSubjects.innerHTML = ''
             panelSubjects.appendChild(subjectsDropdown)
@@ -280,6 +278,5 @@ export const subjectsAmountDropdown = (element) => {
             panelSubjects.classList.remove('subjects-dropdown-close')
             panelSubjects.classList.add('subjects-dropdown-open')
         }
-        console.log('clicou na quantidade de disciplinas ', isVisible)
     })
 }

@@ -15,7 +15,7 @@ export async function fetchLogin(url) {
     return response
 }
 
-export const fetchSubjects = async (url) => {
+export const getAllSubjects = async (url) => {
     const response = await fetch(url, {
         method: 'GET', 
         headers: { 'Content-Type': 'application/json' }

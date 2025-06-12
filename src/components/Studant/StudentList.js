@@ -9,8 +9,6 @@ const StudentList = async () => {
     const { users } = await getAllUsers(urls.users);
     const studentRole = 'aluno' 
 
-    console.log('users ===> ', users)
-
     const studentArray = users.filter(user => user.role === 'aluno')
 
     const studentAmount = studentArray.length
