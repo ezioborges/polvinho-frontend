@@ -4,7 +4,7 @@ import ToastBar from "../components/ToastBar/index.js";
 import { createUserValidation } from "./createUserValidation.js";
 import newElement from "./newElement.js";
 import urls from '../urls/index.js'
-import { fetchCreateUser, fetchLogin } from "../data/fetchData.js";
+import { fetchCreateUser, fetchLogin, getAllUsers } from "../data/fetchData.js";
 import SidebarPanel from "../components/Panel/SidebarPanel.js";
 import SubjectsPanelList from "../components/Panel/SubjectsPanelList.js";
 
@@ -262,21 +262,37 @@ export const panelDropdown = (element) => {
     })
 }
 
-export const subjectsAmountDropdown = (element) => {
+export const subjectsAmountDropdown = (element) => { 
     element.addEventListener('click', async () => {
-        isVisible = !isVisible
-        const panelSubjects = document.querySelector('#subjects-dropdown')
-        if(!isVisible) {
-            panelSubjects.classList.remove('subjects-dropdown-open')
-            panelSubjects.classList.add('subjects-dropdown-close')
+        const userId = element.dataset.userId; 
+
+        const panelSubjects = document.querySelector('#subjects-dropdown'); 
+
+        isVisible = !isVisible; 
+
+        if (!isVisible) {
+            panelSubjects.classList.remove('subjects-dropdown-open');
+            panelSubjects.classList.add('subjects-dropdown-close');
+            panelSubjects.innerHTML = ''; 
         } else {
-            const subjectsDropdown = await SubjectsPanelList()
+            const { users } = await getAllUsers(urls.users);
+            const currentUser = users.find(user => user._id === userId);
 
-            panelSubjects.innerHTML = ''
-            panelSubjects.appendChild(subjectsDropdown)
+            if (!currentUser) {
+                console.error(`Usuário com ID ${userId} não encontrado.`);
+                return;
+            }
 
-            panelSubjects.classList.remove('subjects-dropdown-close')
-            panelSubjects.classList.add('subjects-dropdown-open')
+            // Passa um ARRAY CONTENDO APENAS O USUÁRIO ATUAL para SubjectsPanelList
+            const panelList = await SubjectsPanelList([currentUser]); 
+
+            console.log('aqui ta vindo a panelList ===> ', panelList);
+            
+            panelSubjects.innerHTML = ''; 
+            panelSubjects.appendChild(panelList);
+
+            panelSubjects.classList.remove('subjects-dropdown-close');
+            panelSubjects.classList.add('subjects-dropdown-open');
         }
-    })
+    });
 }

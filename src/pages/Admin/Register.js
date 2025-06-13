@@ -4,7 +4,7 @@ import newElement from "../../utils/newElement.js";
 import textGenerator from "../../utils/textGenerator.js";
 import QuizzButton from "../../components/Buttons/QuizzButton.js"
 import { clickEventRegister } from "../../utils/eventListeners.js";
-import { fetchSubjects } from "../../data/fetchData.js";
+import { getAllSubjects } from "../../data/fetchData.js";
 import urls from "../../urls/index.js";
 
 
@@ -13,7 +13,7 @@ const Register = async () => {
 
     const roleFromHash = window.location.hash.split('/')[2].toLowerCase()
 
-    const subjects = await fetchSubjects(urls.subjects)
+    const subjects = await getAllSubjects(urls.subjects)
 
     const firstRowRegister = newElement('div')
     firstRowRegister.classList.add('register-row')

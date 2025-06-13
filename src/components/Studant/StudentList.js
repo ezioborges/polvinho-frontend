@@ -7,13 +7,12 @@ import { subjectsAmountDropdown } from "../../utils/eventListeners.js";
 const StudentList = async () => {
     const headersList = ['Matricula', 'Nome', 'Disciplinas', 'Ações'];
     const { users } = await getAllUsers(urls.users);
-    const studentRole = 'aluno' 
+    const studentRole = 'aluno'; 
 
-    const studentArray = users.filter(user => user.role === 'aluno')
+    const studentArray = users.filter(user => user.role === 'aluno');
+    const studentAmount = studentArray.length;
 
-    const studentAmount = studentArray.length
-
-    const bodyWithoutUsers =  BodyWithoputUsers()
+    const bodyWithoutUsers = BodyWithoputUsers();
 
     const studentsListContent = newElement('div');
     studentsListContent.classList.add('students-list');
@@ -43,6 +42,10 @@ const StudentList = async () => {
     const listContent = newElement('div');
     listContent.classList.add('list-area');
 
+    const globalSubjectsDropdownPanel = newElement('div');
+    globalSubjectsDropdownPanel.id = 'subjects-dropdown'; 
+    listContent.appendChild(globalSubjectsDropdownPanel);
+
     users.forEach((user) => {
         if (user.role === studentRole) {              
             const listRow = newElement('div');
@@ -57,7 +60,11 @@ const StudentList = async () => {
             const studentSubjectsAmountArea = newElement('div');
             studentSubjectsAmountArea.classList.add('student-box-area');
             studentSubjectsAmountArea.classList.add('student-subjects-amount');
-            subjectsAmountDropdown(studentSubjectsAmountArea)
+            
+            // Adiciona o ID do usuário no elemento
+            studentSubjectsAmountArea.dataset.userId = user._id; 
+            
+            subjectsAmountDropdown(studentSubjectsAmountArea); 
 
             const studentActionsArea = newElement('div');
             studentActionsArea.classList.add('student-box-area');
@@ -89,9 +96,6 @@ const StudentList = async () => {
             deleteArea.classList.add('textSm');
             deleteArea.href = `#/delete-area`;
 
-            const subjectsDropdown = newElement('div')
-            subjectsDropdown.id = 'subjects-dropdown';
-
             actionsClickArea.appendChild(editArea);
             actionsClickArea.appendChild(deleteArea);
 
@@ -101,8 +105,8 @@ const StudentList = async () => {
 
             studentNameArea.appendChild(studentName);
 
-            studentSubjectsAmountArea.appendChild(subjectsDropdown);
-            studentSubjectsAmountArea.appendChild(studentSubjectsAmount);
+            // Anexamos apenas o número de disciplinas, o painel global já foi criado acima.
+            studentSubjectsAmountArea.appendChild(studentSubjectsAmount); 
 
             listRow.appendChild(studentRegisterArea);
             listRow.appendChild(studentNameArea);
@@ -115,7 +119,12 @@ const StudentList = async () => {
 
     titleArea.appendChild(titleList);
     listContent.appendChild(headersArea);
-    studentAmount > 0 ? listContent.appendChild(bodyArea) : listContent.appendChild(bodyWithoutUsers);    
+    if (studentAmount > 0) {
+        listContent.appendChild(bodyArea);
+    } else {
+        listContent.appendChild(bodyWithoutUsers);
+    }
+    
     studentsListContent.appendChild(titleArea);
     studentsListContent.appendChild(listContent);
 

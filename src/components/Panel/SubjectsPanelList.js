@@ -1,28 +1,34 @@
 import { getAllSubjects } from "../../data/fetchData.js";
 import urls from "../../urls/index.js";
 import newElement from "../../utils/newElement.js";
-import { panelItem } from "./panelItem.js";
+import { panelItem } from "./panelItem.js"; 
 
-const SubjectsPanelList = async () => {
-    const allSubjects = await getAllSubjects(urls.subjects)
-    const subjects = allSubjects.map((subject) => subject.name)
+const SubjectsPanelList = async (usersArray) => {
+    // usersArray agora será um array com UM ÚNICO objeto de usuário: [currentUser]
+    console.log('usersArray recebido em SubjectsPanelList ===> ', usersArray);
 
-    console.log('subjects ===> ', subjects);
-    
+    const allSubjects = await getAllSubjects(urls.subjects);
+    console.log('allSubjects (todas as disciplinas) ===> ', allSubjects);  
 
-    const panelContetent = newElement('div') 
-    panelContetent.classList.add('subjects-panel-content')
+    const PanelContent = newElement('div');
+    PanelContent.classList.add('subjects-panel-content');
 
-    subjects.forEach((subject) => { 
-        const subjectsName = subject.replace(/\s+/g, "")
-        const item = panelItem(`#subject/${subject}`, subjectsName, 'subject-panel-list-item')
-        console.log('item ===> ', item);
+    usersArray.forEach((user) => { 
+        const userSubjectIds = user.subject; 
         
+        if (userSubjectIds && Array.isArray(userSubjectIds)) {
+            userSubjectIds.forEach(subjectId => {
+                const { name } = allSubjects.find(sub => sub._id === subjectId);
+                                
+                const item = panelItem(`#/subject-student/${user._id}`, name, 'subject-panel-list-item');
+                console.log('item criado ===> ', item);
 
-        panelContetent.appendChild(item)
-    })
+                PanelContent.appendChild(item);
+            });
+        } 
+    });
 
-    return panelContetent
-}
+    return PanelContent;
+};
 
 export default SubjectsPanelList;
