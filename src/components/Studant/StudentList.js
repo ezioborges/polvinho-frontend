@@ -42,9 +42,9 @@ const StudentList = async () => {
     const listContent = newElement('div');
     listContent.classList.add('list-area');
 
-    const globalSubjectsDropdownPanel = newElement('div');
-    globalSubjectsDropdownPanel.id = 'subjects-dropdown'; 
-    listContent.appendChild(globalSubjectsDropdownPanel);
+    // const globalSubjectsDropdownPanel = newElement('div');
+    // globalSubjectsDropdownPanel.id = 'subjects-dropdown'; 
+    // listContent.appendChild(globalSubjectsDropdownPanel);
 
     users.forEach((user) => {
         if (user.role === studentRole) {              
@@ -63,8 +63,14 @@ const StudentList = async () => {
             
             // Adiciona o ID do usuário no elemento
             studentSubjectsAmountArea.dataset.userId = user._id; 
+            studentSubjectsAmountArea.dataset.userRegistration = user.registration;
             
             subjectsAmountDropdown(studentSubjectsAmountArea); 
+
+            const studentDropdownList = newElement('div');
+            studentDropdownList.id = `user-register-${user.registration}`;
+            // studentDropdownList.id = 'subjects-dropdown'
+            listContent.appendChild(studentDropdownList)
 
             const studentActionsArea = newElement('div');
             studentActionsArea.classList.add('student-box-area');
@@ -111,6 +117,7 @@ const StudentList = async () => {
             listRow.appendChild(studentRegisterArea);
             listRow.appendChild(studentNameArea);
             listRow.appendChild(studentSubjectsAmountArea);
+            listRow.appendChild(studentDropdownList)
             listRow.appendChild(studentActionsArea);
 
             bodyArea.appendChild(listRow);

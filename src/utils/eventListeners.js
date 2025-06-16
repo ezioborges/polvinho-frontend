@@ -265,8 +265,11 @@ export const panelDropdown = (element) => {
 export const subjectsAmountDropdown = (element) => { 
     element.addEventListener('click', async () => {
         const userId = element.dataset.userId; 
+        const userRegistration = element.dataset.userRegistration;
 
-        const panelSubjects = document.querySelector('#subjects-dropdown'); 
+        console.log('register ===> ', userRegistration)
+
+        const panelSubjects = document.querySelector(`#user-register-${userRegistration}`); 
 
         isVisible = !isVisible; 
 
@@ -285,8 +288,6 @@ export const subjectsAmountDropdown = (element) => {
 
             // Passa um ARRAY CONTENDO APENAS O USUÁRIO ATUAL para SubjectsPanelList
             const panelList = await SubjectsPanelList([currentUser]); 
-
-            console.log('aqui ta vindo a panelList ===> ', panelList);
             
             panelSubjects.innerHTML = ''; 
             panelSubjects.appendChild(panelList);
