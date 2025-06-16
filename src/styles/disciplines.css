@@ -1,13 +1,19 @@
 
+/* TODO: depóis refatorar com @media 
+    os tamaanhos de tela estão mudando os posionamentos
+*/
 .subjects-dropdown-open {
-    transform: translateY(4rem) translateX(7rem);
+    transform: translateY(2rem) translateX(2rem);
     z-index: 1;
     display: flex;
 
 }
 
 .subjects-dropdown-close {
-    display: none;
+    transform: translateY(3rem) translateX(-7rem);
+    z-index: 1;
+    display: flex;
+    visibility: hidden;
 }
 
 .subjects-panel-content {

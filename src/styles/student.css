@@ -58,14 +58,13 @@
 }
 
 .student-subjects-amount {
-    position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-self: center;
+    transform: translateX(2rem);
 }
 
 .student-subjects-amount p {
-    position: absolute;
     padding: 0 5px;
     border-radius: 5px;
     z-index: 1;

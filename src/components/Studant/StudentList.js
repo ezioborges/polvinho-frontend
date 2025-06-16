@@ -69,6 +69,7 @@ const StudentList = async () => {
 
             const studentDropdownList = newElement('div');
             studentDropdownList.id = `user-register-${user.registration}`;
+            studentDropdownList.classList.add('student-box-area')
             // studentDropdownList.id = 'subjects-dropdown'
             listContent.appendChild(studentDropdownList)
 
