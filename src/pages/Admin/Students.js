@@ -1,6 +1,6 @@
 import createEntityButtonRoute from "../../components/Buttons/createEntityButtonRoute.js";
 import PageTitle from "../../components/PageTitle.js";
-import StudentList from "../../components/Studant/StudentList.js";
+import UserList from "../../components/Users/UserList.js";
 import { getAllUsers } from "../../data/fetchData.js";
 import urls from "../../urls/index.js";
 import newElement from "../../utils/newElement.js";
@@ -23,13 +23,13 @@ const Students = async () => {
     const changeToRegister = createEntityButtonRoute('Cadastrar', 'textLG', 'create-entity-button')
     changeToRegister.onclick = () => window.location.href = '#/register/aluno'
 
-    const studentsListTest = await StudentList();
+    const studentsList = await UserList(studentArray);
     
     topArea.appendChild(studentTitle)
     topArea.appendChild(changeToRegister)
 
     studentsContent.appendChild(topArea)
-    studentsContent.appendChild(studentsListTest)
+    studentsContent.appendChild(studentsList)
 
     return studentsContent;
 }

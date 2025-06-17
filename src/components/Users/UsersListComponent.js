@@ -1,53 +1,11 @@
-import newElement from "../../utils/newElement.js";
-import { getAllUsers } from "../../data/fetchData.js";
-import urls from "../../urls/index.js";
-import { BodyWithoputUsers } from "../BodyWithoputUsers.js";
 import { subjectsAmountDropdown } from "../../utils/eventListeners.js";
+import newElement from "../../utils/newElement.js";
 
-const StudentList = async () => {
-    const headersList = ['Matricula', 'Nome', 'Disciplinas', 'Ações'];
-    const { users } = await getAllUsers(urls.users);
-    const studentRole = 'aluno'; 
-
-    const studentArray = users.filter(user => user.role === 'aluno');
-    const studentAmount = studentArray.length;
-
-    const bodyWithoutUsers = BodyWithoputUsers();
-
-    const studentsListContent = newElement('div');
-    studentsListContent.classList.add('students-list');
-
-    const titleArea = newElement('div');
-    titleArea.classList.add('title-student-list-area');
-
-    const titleList = newElement('p');
-    titleList.classList.add('title-list-student');
-    titleList.classList.add('title2');
-    titleList.textContent = 'Lista de Alunos';
-
-    const headersArea = newElement('div');
-    headersArea.classList.add('headers-area');
-
+const UserListComponent = (users, listContent) => {
     const bodyArea = newElement('div');
     bodyArea.classList.add('body-area');
 
-    headersList.forEach((header) => {
-        const headerItem = newElement('p');
-        headerItem.classList.add('header-item');
-        headerItem.textContent = header;
-        headerItem.classList.add('textMd');
-        headersArea.appendChild(headerItem);
-    });
-
-    const listContent = newElement('div');
-    listContent.classList.add('list-area');
-
-    // const globalSubjectsDropdownPanel = newElement('div');
-    // globalSubjectsDropdownPanel.id = 'subjects-dropdown'; 
-    // listContent.appendChild(globalSubjectsDropdownPanel);
-
     users.forEach((user) => {
-        if (user.role === studentRole) {              
             const listRow = newElement('div');
             listRow.classList.add('bar-content');
 
@@ -72,6 +30,7 @@ const StudentList = async () => {
             studentDropdownList.classList.add('student-box-area')
             // studentDropdownList.id = 'subjects-dropdown'
             listContent.appendChild(studentDropdownList)
+            //TODO: essa listContent vem da StudentList (elemento pai)
 
             const studentActionsArea = newElement('div');
             studentActionsArea.classList.add('student-box-area');
@@ -122,21 +81,9 @@ const StudentList = async () => {
             listRow.appendChild(studentActionsArea);
 
             bodyArea.appendChild(listRow);
-        }
     });
 
-    titleArea.appendChild(titleList);
-    listContent.appendChild(headersArea);
-    if (studentAmount > 0) {
-        listContent.appendChild(bodyArea);
-    } else {
-        listContent.appendChild(bodyWithoutUsers);
-    }
-    
-    studentsListContent.appendChild(titleArea);
-    studentsListContent.appendChild(listContent);
+    return bodyArea
+}
 
-    return studentsListContent;
-};
-
-export default StudentList;
+export default UserListComponent;
