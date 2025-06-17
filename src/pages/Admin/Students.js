@@ -15,7 +15,7 @@ const Students = async () => {
     const studentsContent = newElement('div')
 
     const topArea = newElement('div')
-    topArea.classList.add('student-top-area')
+    topArea.classList.add('user-top-area')
     
     const studentTitle = PageTitle('Alunos', `${studentAmount} Cadastrados`)
     studentTitle.style.marginLeft = '-3.75rem'
