@@ -1,12 +1,12 @@
 const urls = {
-	login: 'https://polvinho-backend.onrender.com/login',
-	loginDev: 'http://localhost:2424/login',
+	loginProd: 'polvinho-backend.vercel.app/login',
+	login: 'http://localhost:2424/login',
 
-	users: 'https://polvinho-backend.onrender.com/users',
-	usersDev: 'http://localhost:2424/users',
+	usersProd: 'polvinho-backend.vercel.app/users',
+	users: 'http://localhost:2424/users',
 
-	subjects: 'https://polvinho-backend.onrender.com/subjects',
-	subjectsDev: 'http://localhost:2424/subjects',
+	subjectsProd: 'polvinho-backend.vercel.app/subjects',
+	subjects: 'http://localhost:2424/subjects',
 	// subjectById: 'http://localhost:2424/subjects/:subjectId',
 
 	// userSubjects: 'http://localhost:2424/users/:userId/subjects'

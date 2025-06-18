@@ -67,7 +67,7 @@ export const getAllUsers = async url => {
 };
 //TODO: depois separar as funções por entidade!!!
 export const getSubjectsById = async subjectId => {
-	const url = `https://polvinho-backend.onrender.com/subjects/${subjectId}`;
+	const url = `http://localhost:2424/subjects/${subjectId}`;
 
 	const userLogin = localStorage.getItem('userLogin');
 	const token = userLogin ? JSON.parse(userLogin).token : null;
@@ -90,7 +90,7 @@ export const getSubjectsById = async subjectId => {
 };
 
 export const userSubjectsData = async userId => {
-	const url = `https://polvinho-backend.onrender.com/users/${userId}/subjects`;
+	const url = `http://localhost:2424/users/${userId}/subjects`;
 	const userLogin = localStorage.getItem('userLogin');
 	const token = userLogin ? JSON.parse(userLogin).token : null;
 
