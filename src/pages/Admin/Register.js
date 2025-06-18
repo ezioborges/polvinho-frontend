@@ -1,77 +1,98 @@
-import selectInput from "../../components/Input/selectInput.js";
-import InputArea from "../../components/Input/textInput.js";
-import newElement from "../../utils/newElement.js";
-import textGenerator from "../../utils/textGenerator.js";
-import QuizzButton from "../../components/Buttons/QuizzButton.js"
-import { clickEventRegister } from "../../utils/eventListeners.js";
-import { getAllSubjects } from "../../data/fetchData.js";
-import urls from "../../urls/index.js";
-
+import QuizzButton from '../../components/Buttons/QuizzButton.js';
+import selectInput from '../../components/Input/selectInput.js';
+import InputArea from '../../components/Input/textInput.js';
+import { getAllSubjects } from '../../data/fetchData.js';
+import urls from '../../urls/index.js';
+import { clickEventRegister } from '../../utils/eventListeners.js';
+import newElement from '../../utils/newElement.js';
+import textGenerator from '../../utils/textGenerator.js';
+import SubjectsRegister from './SubjectsRegister.js';
 
 const Register = async () => {
-    const register = newElement('div')
+	const register = newElement('div');
 
-    const roleFromHash = window.location.hash.split('/')[2].toLowerCase()
+	const roleFromHash = window.location.hash.split('/')[2].toLowerCase();
+	console.log('🚀 ~ Register ~ roleFromHash:', roleFromHash);
 
-    const subjects = await getAllSubjects(urls.subjects)
+	const subjects = await getAllSubjects(urls.subjects);
 
-    const firstRowRegister = newElement('div')
-    firstRowRegister.classList.add('register-row')
+	const firstRowRegister = newElement('div');
+	firstRowRegister.classList.add('register-row');
 
-    const secondRowRegister = newElement('div')
-    secondRowRegister.classList.add('register-row')
+	if (roleFromHash === 'disciplina') {
+		const subjectRegister = SubjectsRegister();
 
-    const entityName = window.location.hash.split('/')[2]    
-    const title = textGenerator('title1', `Cadastro do ${entityName}`)
-    title.style.marginLeft = '3.75rem'
+		return subjectRegister;
+	}
 
-    const registerArea = newElement('div')
-    registerArea.classList.add('register-area')
+	const secondRowRegister = newElement('div');
+	secondRowRegister.classList.add('register-row');
 
-    const nameLabelInput = InputArea('Nome Completo', 'input-name', `Digite o nome do ${entityName}`)
-    const registerLabelInput = InputArea('Matrícula', 'input-register', `000000`)
-    const emailLabelInput = InputArea('E-mail', 'input-email', 'email@email.com')
-    
-    const errorArea = newElement('div')
-    errorArea.classList.add('error-area')
+	const entityName = window.location.hash.split('/')[2];
+	const title = textGenerator('title1', `Cadastro do ${entityName}`);
+	title.style.marginLeft = '3.75rem';
 
-    const errorList = newElement('ul')
-    errorList.classList.add('error-list')
+	const registerArea = newElement('div');
+	registerArea.classList.add('register-area');
 
-    const buttonArea = newElement('div')
-    buttonArea.classList.add('button-area')
+	const nameLabelInput = InputArea(
+		'Nome Completo',
+		'input-name',
+		`Digite o nome da ${entityName}`,
+	);
+	const registerLabelInput = InputArea(
+		'Matrícula',
+		'input-register',
+		`000000`,
+	);
+	const emailLabelInput = InputArea(
+		'E-mail',
+		'input-email',
+		'email@email.com',
+	);
 
-    const registerButton = QuizzButton('Cadastrar', 'button-content', 'textMd')
-    registerButton.classList.add('register-button-position')  
-    registerButton.style.width = '19.2vw'
-    clickEventRegister(registerButton, roleFromHash)
+	const errorArea = newElement('div');
+	errorArea.classList.add('error-area');
 
-    const subjectArray = []
-    subjects.forEach(subject => subjectArray.push(subject.name))
-    
-    const subjectsComponent = selectInput('Disciplinas', 'input-subjects', subjectArray)
-    
+	const errorList = newElement('ul');
+	errorList.classList.add('error-list');
 
-    errorArea.appendChild(errorList)
+	const buttonArea = newElement('div');
+	buttonArea.classList.add('button-area');
 
-    buttonArea.appendChild(registerButton)
+	const registerButton = QuizzButton('Cadastrar', 'button-content', 'textMd');
+	registerButton.classList.add('register-button-position');
+	registerButton.style.width = '19.2vw';
+	clickEventRegister(registerButton, roleFromHash);
 
+	const subjectArray = [];
+	subjects.forEach(subject => subjectArray.push(subject.name));
 
-    firstRowRegister.appendChild(nameLabelInput)
-    firstRowRegister.appendChild(registerLabelInput)
+	const subjectsComponent = selectInput(
+		'Disciplinas',
+		'input-subjects',
+		subjectArray,
+	);
 
-    secondRowRegister.appendChild(emailLabelInput)
-    secondRowRegister.appendChild(subjectsComponent)
+	errorArea.appendChild(errorList);
 
-    registerArea.appendChild(firstRowRegister)
-    registerArea.appendChild(secondRowRegister)
+	buttonArea.appendChild(registerButton);
 
-    register.appendChild(title)
-    register.appendChild(registerArea)
-    register.appendChild(errorArea)
-    register.appendChild(buttonArea)
+	firstRowRegister.appendChild(nameLabelInput);
+	firstRowRegister.appendChild(registerLabelInput);
 
-    return register
-}
+	secondRowRegister.appendChild(emailLabelInput);
+	secondRowRegister.appendChild(subjectsComponent);
+
+	registerArea.appendChild(firstRowRegister);
+	registerArea.appendChild(secondRowRegister);
+
+	register.appendChild(title);
+	register.appendChild(registerArea);
+	register.appendChild(errorArea);
+	register.appendChild(buttonArea);
+
+	return register;
+};
 
 export default Register;
