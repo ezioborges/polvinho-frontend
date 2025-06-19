@@ -3,7 +3,12 @@ import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
 import SidebarPanel from '../components/Panel/SidebarPanel.js';
 import SubjectsPanelList from '../components/Panel/SubjectsPanelList.js';
 import ToastBar from '../components/ToastBar/index.js';
-import { fetchCreateUser, fetchLogin, getAllUsers } from '../data/fetchData.js';
+import {
+	fetchCreateSubjects,
+	fetchCreateUser,
+	fetchLogin,
+	getAllUsers,
+} from '../data/fetchData.js';
 import urls from '../urls/index.js';
 import { createUserValidation } from './createUserValidation.js';
 import newElement from './newElement.js';
@@ -237,18 +242,27 @@ export const clickEventRegister = async (element, roleFromHash) => {
 	});
 };
 
+// TODO: criar as validações necessárias (Regras de négicio) para criação de disciplinas.
 export const createSubjects = element => {
-	element.addEventListener('click', () => {
-		const subjectNameInput = document.querySelector('#input-new-subject');
-		const subjectProfessorInput =
-			document.querySelector('#input-professor');
+	element.addEventListener('click', async () => {
+		try {
+			const subjectNameInput =
+				document.querySelector('#input-new-subject');
+			const subjectProfessorInput =
+				document.querySelector('#input-professor');
 
-		const subjectName = subjectNameInput.value.trim();
-		const subjectProfessor = subjectProfessorInput.value.trim();
-		console.log(
-			'🚀 ~ element.addEventListener ~ subjectProfessor:',
-			subjectProfessorInput.value,
-		);
+			const subjectName = subjectNameInput.value.trim();
+			const subjectProfessor = subjectProfessorInput.value.trim();
+
+			const newSubject = {
+				name: subjectName,
+				professor: subjectProfessor,
+			};
+
+			await fetchCreateSubjects(urls.subjects, newSubject);
+		} catch (error) {
+			console.error('Erro ao criar disciplina: ', error.message);
+		}
 	});
 };
 

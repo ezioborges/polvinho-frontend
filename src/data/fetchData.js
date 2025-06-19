@@ -45,6 +45,23 @@ export const fetchCreateUser = async (url, userData) => {
 	return data;
 };
 
+//TODO: implementar a autenticação para que apaenas ADMIN possam criar disciplinas
+export const fetchCreateSubjects = async (url, subjectsData) => {
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-type': 'application/json',
+		},
+		body: JSON.stringify(subjectsData),
+	});
+
+	const data = await response.json();
+
+	console.log('🚀 ~ createSubjects ~ data:', data);
+
+	return data;
+};
+
 export const getAllUsers = async url => {
 	const userLogin = localStorage.getItem('userLogin');
 	const token = userLogin ? JSON.parse(userLogin).token : null;
