@@ -25,7 +25,7 @@ export const getAllSubjects = async url => {
 
 	const data = await response.json();
 
-	return Array.isArray(data) ? data : data.subjects || [];
+	return data;
 };
 
 export const fetchCreateUser = async (url, userData) => {
