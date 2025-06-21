@@ -1,66 +1,65 @@
 .button-content {
-    width: 6.688rem;
-    height: 3rem;
-    background-color: var(--indigo-500);
-    border-radius: 9px;
-    color: var(--neutral-50);
-    border: 1px solid var(--indigo-500);
+	width: 6.688rem;
+	height: 3rem;
+	background-color: var(--indigo-500);
+	border-radius: 9px;
+	color: var(--neutral-50);
+	border: 1px solid var(--indigo-500);
 }
 
-
 .button-content:hover {
-    background-color: var(--indigo-700);
-    cursor: pointer;
+	background-color: var(--indigo-700);
+	cursor: pointer;
 }
 
 .button-form {
-    width: 13.645833333333334vw;
-    height: 2.5vw;
-    align-self: center;
-    border: 1px solid var(--indigo-500);
-    background-color: var(--indigo-500);
-    border-radius: 9px;
-    color: var(--neutral-50);
+	width: 16.375rem;
+	height: 3rem;
+	align-self: center;
+	border: 1px solid var(--indigo-500);
+	background-color: var(--indigo-500);
+	border-radius: 9px;
+	color: var(--neutral-50);
 }
 
 .button-form:hover {
-    cursor: pointer;
-    background-color: var(--indigo-700);
-    border: 1px solid var(--indigo-500);
+	cursor: pointer;
+	background-color: var(--indigo-700);
+	border: 1px solid var(--indigo-500);
 }
 
 .cancel-button-content {
-    width: 6.688rem;
-    height: 3rem;
-    background-color: var(--neutral-50);
-    border-radius: 9px;
-    color: var(--stone-400);
-    border: 1px solid var(--stone-400);
+	width: 6.688rem;
+	height: 3rem;
+	background-color: var(--neutral-50);
+	border-radius: 9px;
+	color: var(--stone-400);
+	border: 1px solid var(--stone-400);
 }
 
 .cancel-button-content:hover {
-    background-color: var(--neutral-300);
-    font-weight: bold;
-    color: rgb(236, 56, 56);
-    border: 1px solid rgb(236, 56, 56);
+	background-color: var(--neutral-300);
+	font-weight: bold;
+	color: rgb(236, 56, 56);
+	border: 1px solid rgb(236, 56, 56);
 }
 
 .desabled-button {
-    width: 8vw;
-    height: 6vh;
-    padding: 12px 28px;
-    border: 1px solid var(--stone-400);
-    border-radius: 15px;
-    color: var(--stone-400);
-    cursor: not-allowed;
+	width: 8vw;
+	height: 6vh;
+	padding: 12px 28px;
+	border: 1px solid var(--stone-400);
+	border-radius: 15px;
+	color: var(--stone-400);
+	cursor: not-allowed;
 }
 
 .create-entity-button {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1.75rem;
-    background-color: var(--indigo-500);
-    border: 1px solid var(--indigo-500);
-    border-radius: 6px;
-    color: var(--neutral-50);
+	display: flex;
+	align-items: center;
+	padding: 0.75rem 1.75rem;
+	background-color: var(--indigo-500);
+	border: 1px solid var(--indigo-500);
+	border-radius: 6px;
+	color: var(--neutral-50);
 }

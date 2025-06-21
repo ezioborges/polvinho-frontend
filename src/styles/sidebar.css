@@ -1,79 +1,83 @@
 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 15.6%;
-    height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 20vw;
+	height: 94vh;
+	padding: 1rem 0;
 }
 
 .sidebar-top-content {
-    width: 100%;
-    height: 21.6%;
+	width: 20vw;
+	height: 19.58650707290533vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .sidebar-bottom-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 100%;
-    height: 11.8%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 100%;
+	height: 11.8%;
 }
 
 .sidebar-logo {
-    width: 100%;
-    height: 40%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
+	width: 100%;
+	height: 40%;
+	display: flex;
+	justify-content: start;
+	align-items: center;
 }
 
 .polvo-logo {
-    margin-left: 2rem;
-    width: 1.282rem;
-    height: 1.437rem;
+	margin-left: 2rem;
+	width: 1.282rem;
+	height: 1.437rem;
 }
 
 .sidebar-h1 {
-    color: var(--indigo-50);
-    margin-left: .35rem;
-    font-weight: bold;
-    font-size: 1.4rem;
+	color: var(--indigo-50);
+	margin-left: 0.35rem;
+	font-weight: bold;
+	font-size: 1.4rem;
 }
 
 .sidebar-menu-text {
-    font-weight: 400;
-    margin-left: .35rem;
-    color: var(--indigo-50);
-    font-size: 1.2rem;
+	font-weight: 400;
+	margin-left: 0.35rem;
+	color: var(--indigo-50);
+	font-size: 1.2rem;
 }
 
 .sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 100%;
-    height: 60%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 60%;
 }
 
 .sidebar-dashboard {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    width: 100%;
-    height: 36.2%;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	width: 100%;
+	height: 36.2%;
+	padding: 0.51rem;
 }
 
 .sidebar-dashboard:hover {
-    background-color: var(--indigo-900);
-    cursor: pointer;
+	background-color: var(--indigo-900);
+	cursor: pointer;
 }
 
 .menu-logo {
-    margin-left: 2rem;
-    width: 1.313rem;
-    height: 1.313rem;
+	margin-left: 2rem;
+	width: 1.313rem;
+	height: 1.313rem;
 }

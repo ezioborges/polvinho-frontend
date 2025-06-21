@@ -1,19 +1,18 @@
 .dash-content {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 5rem;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: space-between;
+	font-size: 5rem;
 }
 
 .new-register {
-    color: var(--indigo-700);
-    z-index: 1000;
+	color: var(--indigo-700);
+	z-index: 1000;
 }
 
 .new-register:hover {
-    color: var(--indigo-950);
-    cursor: pointer;
-    text-decoration: underline;
+	color: var(--indigo-950);
+	cursor: pointer;
+	text-decoration: underline;
 }
