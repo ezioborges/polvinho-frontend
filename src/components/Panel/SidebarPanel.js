@@ -1,23 +1,33 @@
-import newElement from "../../utils/newElement.js";
-import { panelItem } from "./panelItem.js";
+import newElement from '../../utils/newElement.js';
+import { panelItem } from './panelItem.js';
 
 const SidebarPanel = () => {
-    const panelContent = newElement('div')
-    panelContent.classList.add('sidebar-panel-content')
-    
-    const entities = newElement('div');
+	const panelContent = newElement('div');
+	panelContent.classList.add('sidebar-panel-content');
 
-    const studentList = panelItem('#/students-admin', 'Alunos', 'dropdown-items')
-    const profList = panelItem('#/professors-admin', 'Professores', 'dropdown-items')
-    const subjectsList = panelItem('#/subjects-admin', 'Disciplinas', 'dropdown-items')
+	const entities = newElement('div');
 
-    entities.appendChild(studentList)
-    entities.appendChild(profList)
-    entities.appendChild(subjectsList)
+	const studentList = panelItem(
+		'#/students-admin',
+		'Alunos',
+		'dropdown-items',
+	);
+	const profList = panelItem(
+		'#/professors-admin',
+		'Professores',
+		'dropdown-items',
+	);
+	const subjectsList = panelItem(
+		'#/subjects-admin',
+		'Disciplinas',
+		'dropdown-items',
+	);
 
-    panelContent.appendChild(entities)
+	panelContent.appendChild(studentList);
+	panelContent.appendChild(profList);
+	panelContent.appendChild(subjectsList);
 
-    return panelContent;
-}
+	return panelContent;
+};
 
 export default SidebarPanel;

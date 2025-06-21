@@ -1,37 +1,41 @@
-import createEntityButtonRoute from "../../components/Buttons/createEntityButtonRoute.js";
-import PageTitle from "../../components/PageTitle.js";
-import UserList from "../../components/Users/UserList.js";
-import { getAllUsers } from "../../data/fetchData.js";
-import urls from "../../urls/index.js";
-import newElement from "../../utils/newElement.js";
+import createEntityButtonRoute from '../../components/Buttons/createEntityButtonRoute.js';
+import PageTitle from '../../components/PageTitle.js';
+import UserList from '../../components/Users/UserList.js';
+import { getAllUsers } from '../../data/fetchData.js';
+import urls from '../../urls/index.js';
+import newElement from '../../utils/newElement.js';
 
-const Students = async () => {  
-    const { users } = await getAllUsers(urls.users)
-    
-    const studentArray = users.filter(user => user.role === 'aluno')
+const Students = async () => {
+	const { users } = await getAllUsers(urls.users);
 
-    const studentAmount = studentArray.length
+	const studentArray = users.filter(user => user.role === 'aluno');
 
-    const studentsContent = newElement('div')
+	const studentAmount = studentArray.length;
 
-    const topArea = newElement('div')
-    topArea.classList.add('user-top-area')
-    
-    const studentTitle = PageTitle('Alunos', `${studentAmount} Cadastrados`)
-    studentTitle.style.marginLeft = '-3.75rem'
+	const studentsContent = newElement('div');
 
-    const changeToRegister = createEntityButtonRoute('Cadastrar', 'textLG', 'create-entity-button')
-    changeToRegister.onclick = () => window.location.href = '#/register/aluno'
+	const topArea = newElement('div');
+	topArea.classList.add('body-title-area');
 
-    const studentsList = await UserList(studentArray);
-    
-    topArea.appendChild(studentTitle)
-    topArea.appendChild(changeToRegister)
+	const studentTitle = PageTitle('Alunos', `${studentAmount} Cadastrados`);
 
-    studentsContent.appendChild(topArea)
-    studentsContent.appendChild(studentsList)
+	const changeToRegister = createEntityButtonRoute(
+		'Cadastrar',
+		'textLG',
+		'create-entity-button',
+	);
+	changeToRegister.onclick = () =>
+		(window.location.href = '#/register/aluno');
 
-    return studentsContent;
-}
+	const studentsList = await UserList(studentArray);
+
+	topArea.appendChild(studentTitle);
+	topArea.appendChild(changeToRegister);
+
+	studentsContent.appendChild(topArea);
+	studentsContent.appendChild(studentsList);
+
+	return studentsContent;
+};
 
 export default Students;

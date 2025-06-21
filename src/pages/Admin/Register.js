@@ -14,7 +14,7 @@ const Register = async () => {
 	const roleFromHash = window.location.hash.split('/')[2].toLowerCase();
 	console.log('🚀 ~ Register ~ roleFromHash:', roleFromHash);
 
-	const subjects = await getAllSubjects(urls.subjects);
+	const { subjects } = await getAllSubjects(urls.subjects);
 
 	const firstRowRegister = newElement('div');
 	firstRowRegister.classList.add('register-row');
@@ -29,7 +29,7 @@ const Register = async () => {
 	secondRowRegister.classList.add('register-row');
 
 	const entityName = window.location.hash.split('/')[2];
-	const title = textGenerator('title1', `Cadastro do ${entityName}`);
+	const title = textGenerator('title1', `Cadastro de ${entityName}`);
 	title.style.marginLeft = '3.75rem';
 
 	const registerArea = newElement('div');

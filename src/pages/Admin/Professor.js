@@ -15,7 +15,7 @@ const Professor = async () => {
 	const professorContent = newElement('div');
 
 	const professorTopArea = newElement('div');
-	professorTopArea.classList.add('user-top-area');
+	professorTopArea.classList.add('body-title-area');
 
 	const professorPageTitle = PageTitle(
 		'Professores',

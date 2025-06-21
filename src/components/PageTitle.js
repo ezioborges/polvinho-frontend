@@ -1,28 +1,23 @@
-import newElement from "../utils/newElement.js";
-import textGenerator from "../utils/textGenerator.js";
-import Timer from "./Timer.js";
+import newElement from '../utils/newElement.js';
+import textGenerator from '../utils/textGenerator.js';
 
 export const PageTitle = (title, subtitle) => {
-    
-    const titleArea = newElement('div')
-    titleArea.classList.add('title-area')
+	const titleArea = newElement('div');
 
+	const titleTop = textGenerator('title1', title);
+	titleTop.style.color = 'var(--stone-900)';
 
-    const titleTop = textGenerator('title1', title);
-    titleTop.style.color = 'var(--stone-900)'
-    
-    const subtitleTop = textGenerator('textXL', subtitle);
-    subtitleTop.style.color = 'var(--stone-700)'
+	const subtitleTop = textGenerator('textXL', subtitle);
+	subtitleTop.style.color = 'var(--stone-700)';
 
-    // const timer = Timer() //usar display none pra sumir TODO
+	// const timer = Timer() //usar display none pra sumir TODO
 
+	titleArea.appendChild(titleTop);
+	titleArea.appendChild(subtitleTop);
 
-    titleArea.appendChild(titleTop);
-    titleArea.appendChild(subtitleTop);
+	// content.appendChild(timer)
 
-    // content.appendChild(timer)
-
-    return titleArea;
-}
+	return titleArea;
+};
 
 export default PageTitle;

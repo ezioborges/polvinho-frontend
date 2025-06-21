@@ -14,13 +14,12 @@ const Subjects = async () => {
 	const subjectsContent = newElement('div');
 
 	const topArea = newElement('div');
-	topArea.classList.add('user-top-area');
+	topArea.classList.add('body-title-area');
 
 	const subjectsTitle = PageTitle(
 		'Disciplinas',
 		`${subjects.length} Cadastrados`,
 	);
-	subjectsTitle.style.marginLeft = '-3.75rem';
 
 	const changeToRegister = createEntityButtonRoute(
 		'Cadastrar',
@@ -32,9 +31,7 @@ const Subjects = async () => {
 
 	const listContent = newElement('div');
 	listContent.classList.add('list-area');
-
 	const titleListArea = newElement('div');
-	titleListArea.classList.add('title-student-list-area');
 
 	const titleList = newElement('p');
 	titleList.classList.add('title-list-student');

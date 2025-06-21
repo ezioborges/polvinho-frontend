@@ -32,9 +32,9 @@ const SubjectsRegister = () => {
 
 	RowRegister.appendChild(subjectNameLabelInput);
 	RowRegister.appendChild(subjectProfessorLabelInput);
-	RowRegister.appendChild(buttonArea);
 
 	registerCotent.appendChild(RowRegister);
+	registerCotent.appendChild(buttonArea);
 
 	return registerCotent;
 };

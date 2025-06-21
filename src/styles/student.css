@@ -1,75 +1,68 @@
-.students-list {
-    margin-top: 50px;
-    height: 60vh;
-}
-
-.user-top-area {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 1rem;
+.body-title-area {
+	display: flex;
+	width: 100%;
+	height: 10vh;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 1rem 2rem 0;
 }
 
 .title-list-student {
-    color: var(--stone-700);
+	color: var(--stone-700);
+	margin-bottom: 1.8rem;
 }
 
 .headers-area {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 95%;
-    height: 3vh;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 95%;
+	height: 3vh;
 }
 
 .body-area {
-    height: 50vh;
-    width: 100%;
-    overflow-y: scroll;
+	height: 57vh;
+	width: 100%;
+	overflow-y: scroll;
 }
 
 .header-item {
-    color: var(--stone-500);
-    width: 20vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 2rem;
-}
-
-.list-area {
-    margin-top: 4rem;
-    width: 100%;
+	color: var(--stone-500);
+	width: 20vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 2rem;
 }
 
 .student-box-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 20vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 20vw;
 }
 
 .actions-click-area {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .student-subjects-amount {
-    display: flex;
-    justify-content: end;
-    align-self: center;
-    transform: translateX(2rem);
+	display: flex;
+	justify-content: end;
+	align-self: center;
+	transform: translateX(2rem);
 }
 
 .student-subjects-amount p {
-    padding: 0 5px;
-    border-radius: 5px;
-    z-index: 1;
+	padding: 0 5px;
+	border-radius: 5px;
+	z-index: 1;
 }
 
 .student-subjects-amount p:hover {
-    background-color: var(--stone-400);
+	background-color: var(--stone-400);
 }

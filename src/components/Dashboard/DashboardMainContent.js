@@ -1,31 +1,41 @@
-import newElement from "../../utils/newElement.js"
-import PageTitle from "../PageTitle.js"
-import { Sidebar } from "../Sidebar.js"
-import DashContent from "./DashListItems.js"
+import newElement from '../../utils/newElement.js';
+import PageTitle from '../PageTitle.js';
+import { Sidebar } from '../Sidebar.js';
+import DashContent from './DashListItems.js';
 
 const DashboardMainContent = async () => {
-    const dashboardContent = newElement('div')
-    dashboardContent.classList.add('dash-content')
+	const userLogin = localStorage.getItem('userLogin');
+	const userObj = JSON.parse(userLogin);
+	const { name } = userObj.user;
 
-    const sidebar = Sidebar()
+	const dashboardContent = newElement('div');
+	dashboardContent.classList.add('dash-content');
 
-    const dashMainBody = newElement('div')
-    dashMainBody.classList.add('body')
-    dashMainBody.id = 'main-body'
+	const sidebar = Sidebar();
 
-    const dashBody = newElement('div')
-    dashBody.classList.add('dashboard-body')
+	const dashMainBody = newElement('div');
+	dashMainBody.classList.add('body');
+	dashMainBody.id = 'main-body';
 
-    const dashTitle = PageTitle('Dashboard', 'Bem vindo, Admin')
-    const dashContent = await DashContent()
+	const dashTitleArea = newElement('div');
+	dashTitleArea.classList.add('body-title-area');
 
-    dashMainBody.appendChild(dashTitle)
-    dashMainBody.appendChild(dashContent)
+	const dashBody = newElement('div');
+	dashBody.classList.add('dashboard-body');
 
-    dashboardContent.appendChild(sidebar)
-    dashboardContent.appendChild(dashMainBody)
+	const dashTitle = PageTitle('Dashboard', `Bem vindo, ${name}`);
 
-    return dashboardContent
-}
+	dashTitleArea.appendChild(dashTitle);
 
-export default DashboardMainContent
+	const dashContent = await DashContent();
+
+	dashMainBody.appendChild(dashTitleArea);
+	dashMainBody.appendChild(dashContent);
+
+	dashboardContent.appendChild(sidebar);
+	dashboardContent.appendChild(dashMainBody);
+
+	return dashboardContent;
+};
+
+export default DashboardMainContent;

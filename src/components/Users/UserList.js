@@ -8,22 +8,20 @@ import UsersListComponent from './UsersListComponent.js';
 const UserList = async userArray => {
 	const headersList = ['Matricula', 'Nome', 'Disciplinas', 'Ações'];
 	const { users } = await getAllUsers(urls.users);
+	const roleByLink = window.location.href.split('/')[4];
 
 	const userAmount = users.length;
 	// const studentAmount = studentArray.length;
 
 	const bodyWithoutUsers = BodyWithoputUsers();
 
-	const studentsListContent = newElement('div');
-	studentsListContent.classList.add('students-list');
-
-	const titleListArea = newElement('div');
-	titleListArea.classList.add('title-student-list-area');
-
 	const titleList = newElement('p');
 	titleList.classList.add('title-list-student');
 	titleList.classList.add('title2');
-	titleList.textContent = 'Lista de Alunos';
+	titleList.textContent =
+		roleByLink === 'professors-admin'
+			? 'Lista de Professores'
+			: 'Lista de Alunos';
 
 	const headersArea = newElement('div');
 	headersArea.classList.add('headers-area');
@@ -33,11 +31,10 @@ const UserList = async userArray => {
 	headerEntitiesList(headersList, headersArea);
 
 	const listContent = newElement('div');
-	listContent.classList.add('list-area');
 
 	const studentsList = UsersListComponent(userArray, listContent);
 
-	titleListArea.appendChild(titleList);
+	listContent.appendChild(titleList);
 	listContent.appendChild(headersArea);
 	if (userAmount > 0) {
 		listContent.appendChild(studentsList);
@@ -45,10 +42,7 @@ const UserList = async userArray => {
 		listContent.appendChild(bodyWithoutUsers);
 	}
 
-	studentsListContent.appendChild(titleListArea);
-	studentsListContent.appendChild(listContent);
-
-	return studentsListContent;
+	return listContent;
 };
 
 export default UserList;
