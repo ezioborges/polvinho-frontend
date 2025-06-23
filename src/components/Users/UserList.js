@@ -1,7 +1,7 @@
 import { getAllUsers } from '../../data/fetchData.js';
 import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
-import { BodyWithoputUsers } from '../BodyWithoputUsers.js';
+import BodyWithoutContent from '../BodyWithoutContent.js';
 import headerEntitiesList from '../Headers/headerEntitiesList.js';
 import UsersListComponent from './UsersListComponent.js';
 
@@ -11,9 +11,10 @@ const UserList = async userArray => {
 	const roleByLink = window.location.href.split('/')[4];
 
 	const userAmount = users.length;
-	// const studentAmount = studentArray.length;
 
-	const bodyWithoutUsers = BodyWithoputUsers();
+	const bodyWithoutContent = BodyWithoutContent(
+		'Não há pessoas cadastradas!',
+	);
 
 	const titleList = newElement('p');
 	titleList.classList.add('title-list-student');
@@ -26,20 +27,18 @@ const UserList = async userArray => {
 	const headersArea = newElement('div');
 	headersArea.classList.add('headers-area');
 
-	// TODO: vai se tornar o retorno da função de lista
-
 	headerEntitiesList(headersList, headersArea);
 
 	const listContent = newElement('div');
 
-	const studentsList = UsersListComponent(userArray, listContent);
+	const entitiesList = UsersListComponent(userArray, listContent);
 
-	listContent.appendChild(titleList);
-	listContent.appendChild(headersArea);
 	if (userAmount > 0) {
-		listContent.appendChild(studentsList);
+		listContent.appendChild(titleList);
+		listContent.appendChild(headersArea);
+		listContent.appendChild(entitiesList);
 	} else {
-		listContent.appendChild(bodyWithoutUsers);
+		listContent.appendChild(bodyWithoutContent);
 	}
 
 	return listContent;

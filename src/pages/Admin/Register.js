@@ -61,7 +61,6 @@ const Register = async () => {
 	buttonArea.classList.add('button-area');
 
 	const registerButton = QuizzButton('Cadastrar', 'button-content', 'textMd');
-	registerButton.classList.add('register-button-position');
 	registerButton.style.width = '19.2vw';
 	clickEventRegister(registerButton, roleFromHash);
 

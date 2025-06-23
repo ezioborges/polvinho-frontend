@@ -24,7 +24,6 @@ const SubjectsRegister = () => {
 	buttonArea.classList.add('button-area');
 
 	const registerButton = QuizzButton('Cadastrar', 'button-content', 'textMd');
-	registerButton.classList.add('register-button-position');
 	registerButton.style.width = '19.2vw';
 	createSubjects(registerButton, 'disciplina');
 

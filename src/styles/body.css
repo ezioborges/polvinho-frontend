@@ -3,7 +3,8 @@
 	height: 100vh;
 	background-color: var(--neutral-50);
 	border-radius: 2.5rem 0 0 2.5rem;
-	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	padding: 2.3rem 2rem 2.3rem 2rem;
 	box-sizing: border-box;
 }

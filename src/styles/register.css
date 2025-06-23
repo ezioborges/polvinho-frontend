@@ -1,13 +1,12 @@
 .register-area {
 	display: flex;
+	flex-direction: column;
 	width: 90%;
-	height: 100%;
 	margin-top: 2rem;
 	margin-left: 3.75rem;
 }
 .register-row {
 	width: 100%;
-	height: 60vh;
 	display: flex;
 }
 
@@ -16,6 +15,11 @@
 	flex-direction: column;
 	width: 100%;
 	margin-bottom: 2rem;
+}
+
+.select-label-register {
+	display: flex;
+	align-items: center;
 }
 
 .input-area {
@@ -32,6 +36,23 @@
 	transition: none;
 }
 
+.select-area {
+	width: 90%;
+	height: 8.7vh;
+	margin-top: 0.4rem;
+	background-color: var(--neutral-50);
+	border-radius: 6px;
+	border: none;
+	border-bottom: 1px solid var(--neutral-200);
+	padding: 0.75rem 0.5rem;
+}
+
+.select-area:focus {
+	border: none;
+	outline: none;
+	border-bottom: 1px solid var(--neutral-200);
+}
+
 .button-area {
 	display: flex;
 	align-items: center;
@@ -45,9 +66,9 @@
 }
 
 .success-toast {
-	position: absolute;
-	top: 700px;
-	right: 40px;
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
 	border-left: 5px solid var(--smerald-400);
 	border-radius: 6px;
 	width: 26.8vw;
