@@ -30,6 +30,7 @@ const UserList = async userArray => {
 	headerEntitiesList(headersList, headersArea);
 
 	const listContent = newElement('div');
+	listContent.id = 'list-content';
 
 	const entitiesList = UsersListComponent(userArray, listContent);
 

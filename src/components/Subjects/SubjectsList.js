@@ -56,7 +56,7 @@ const SubjectsList = async (subjectsArray, listContent) => {
 		deleteArea.classList.add('delete-area');
 		deleteArea.textContent = 'Excluir';
 		deleteArea.classList.add('textSm');
-		deleteArea.href = `#/delete-area`;
+		// TODO: colocar a função de deletar disci0plinas aqui
 
 		actionsClickArea.appendChild(editArea);
 		actionsClickArea.appendChild(deleteArea);

@@ -13,6 +13,7 @@ const Students = async () => {
 	const studentAmount = studentArray.length;
 
 	const studentsContent = newElement('div');
+	studentsContent.id = 'students-content';
 
 	const topArea = newElement('div');
 	topArea.classList.add('body-title-area');

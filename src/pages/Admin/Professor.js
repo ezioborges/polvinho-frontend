@@ -13,6 +13,7 @@ const Professor = async () => {
 	);
 
 	const professorContent = newElement('div');
+	professorContent.id = 'professor-content';
 
 	const professorTopArea = newElement('div');
 	professorTopArea.classList.add('body-title-area');

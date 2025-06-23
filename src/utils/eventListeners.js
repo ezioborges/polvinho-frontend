@@ -3,7 +3,7 @@ import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
 import SidebarPanel from '../components/Panel/SidebarPanel.js';
 import SubjectsPanelList from '../components/Panel/SubjectsPanelList.js';
 import ToastBar from '../components/ToastBar/index.js';
-import { fetchCreateSubjects } from '../data/fetchData.js';
+import { fetchCreateSubjects } from '../data/subjectsData.js';
 import { fetchCreateUser, fetchLogin, getAllUsers } from '../data/userData.js';
 import urls from '../urls/index.js';
 import { createUserValidation } from './createUserValidation.js';
@@ -178,16 +178,6 @@ export const clickEventRegister = async (element, roleFromHash) => {
 					titleParam: 'Sucesso!',
 					msgParam: 'Cadastro realizado com sucesso!',
 				});
-
-				setTimeout(() => {
-					const toastBar = document.querySelector('.success-toast');
-					if (toastBar) {
-						toastBar.classList.add('hide');
-						setTimeout(() => {
-							toastBar.remove();
-						}, 500);
-					}
-				}, 3000);
 
 				const newUser = {
 					name: userName,

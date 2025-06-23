@@ -1,4 +1,4 @@
-import { getAllSubjects } from '../../data/fetchData.js';
+import { getAllSubjects } from '../../data/subjectsData.js';
 import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 import { panelItem } from './panelItem.js';

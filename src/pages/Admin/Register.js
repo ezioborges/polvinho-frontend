@@ -1,7 +1,7 @@
 import QuizzButton from '../../components/Buttons/QuizzButton.js';
 import selectInput from '../../components/Input/selectInput.js';
 import InputArea from '../../components/Input/textInput.js';
-import { getAllSubjects } from '../../data/fetchData.js';
+import { getAllSubjects } from '../../data/subjectsData.js';
 import urls from '../../urls/index.js';
 import { clickEventRegister } from '../../utils/eventListeners.js';
 import newElement from '../../utils/newElement.js';

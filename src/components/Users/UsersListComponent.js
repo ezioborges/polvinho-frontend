@@ -1,3 +1,4 @@
+import { deleteUser } from '../../events/users.js';
 import { subjectsAmountDropdown } from '../../utils/eventListeners.js';
 import newElement from '../../utils/newElement.js';
 
@@ -5,7 +6,9 @@ const UserListComponent = (users, listContent) => {
 	const bodyArea = newElement('div');
 	bodyArea.classList.add('body-area');
 
-	users.forEach(user => {
+	const activeUsers = users.filter(user => user.isDeleted === false);
+
+	activeUsers.forEach(user => {
 		const listRow = newElement('div');
 		listRow.classList.add('bar-content');
 
@@ -57,10 +60,11 @@ const UserListComponent = (users, listContent) => {
 		editArea.href = `#/edit-area`;
 
 		const deleteArea = newElement('a');
+		deleteArea.id = `delete-user-${user._id}`;
 		deleteArea.classList.add('delete-area');
 		deleteArea.textContent = 'Excluir';
 		deleteArea.classList.add('textSm');
-		deleteArea.href = `#/delete-area`;
+		deleteUser(deleteArea);
 
 		actionsClickArea.appendChild(editArea);
 		actionsClickArea.appendChild(deleteArea);

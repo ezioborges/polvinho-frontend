@@ -50,3 +50,24 @@ export const getAllUsers = async url => {
 
 	return data;
 };
+
+export const deleteUserEvent = async url => {
+	const userLogin = localStorage.getItem('userLogin');
+	const token = userLogin ? JSON.parse(userLogin).token : null;
+
+	const response = await fetch(url, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${token}`,
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error('Erro ao deletar disciplina');
+	}
+
+	const data = await response.json();
+
+	return data;
+};

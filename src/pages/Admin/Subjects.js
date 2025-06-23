@@ -3,7 +3,7 @@ import createEntityButtonRoute from '../../components/Buttons/createEntityButton
 import headerEntitiesList from '../../components/Headers/headerEntitiesList.js';
 import PageTitle from '../../components/PageTitle.js';
 import SubjectsList from '../../components/Subjects/SubjectsList.js';
-import { getAllSubjects } from '../../data/fetchData.js';
+import { getAllSubjects } from '../../data/subjectsData.js';
 import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 
