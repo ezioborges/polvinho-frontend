@@ -1,4 +1,4 @@
-import { getAllUsers } from '../../data/fetchData.js';
+import { getAllUsers } from '../../data/userData.js';
 import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 import BodyWithoutContent from '../BodyWithoutContent.js';

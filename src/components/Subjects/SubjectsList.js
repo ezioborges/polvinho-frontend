@@ -1,4 +1,4 @@
-import { getAllUsers } from '../../data/fetchData.js';
+import { getAllUsers } from '../../data/userData.js';
 import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 
@@ -8,8 +8,6 @@ const SubjectsList = async (subjectsArray, listContent) => {
 
 	const { users } = await getAllUsers(urls.users);
 	const professors = users.filter(user => user.role === 'professor');
-
-	console.log('🚀 ~ SubjectsList ~ subjectsArray:', subjectsArray);
 
 	subjectsArray.forEach(subject => {
 		const listRow = newElement('div');

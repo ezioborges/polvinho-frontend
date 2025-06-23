@@ -1,7 +1,7 @@
 import createEntityButtonRoute from '../../components/Buttons/createEntityButtonRoute.js';
 import PageTitle from '../../components/PageTitle.js';
 import UserList from '../../components/Users/UserList.js';
-import { getAllUsers } from '../../data/fetchData.js';
+import { getAllUsers } from '../../data/userData.js';
 import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 

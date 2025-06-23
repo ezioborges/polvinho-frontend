@@ -12,7 +12,6 @@ const Register = async () => {
 	const register = newElement('div');
 
 	const roleFromHash = window.location.hash.split('/')[2].toLowerCase();
-	console.log('🚀 ~ Register ~ roleFromHash:', roleFromHash);
 
 	const { subjects } = await getAllSubjects(urls.subjects);
 

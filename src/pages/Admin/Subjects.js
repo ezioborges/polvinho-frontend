@@ -1,4 +1,4 @@
-import { BodyWithoputUsers } from '../../components/BodyWithoputUsers.js';
+import BodyWithoutContent from '../../components/BodyWithoutContent.js';
 import createEntityButtonRoute from '../../components/Buttons/createEntityButtonRoute.js';
 import headerEntitiesList from '../../components/Headers/headerEntitiesList.js';
 import PageTitle from '../../components/PageTitle.js';
@@ -47,7 +47,7 @@ const Subjects = async () => {
 	headerEntitiesList(headersList, headersArea);
 
 	const subjectsListItems = await SubjectsList(subjects, listContent);
-	const bodyWithoutUsers = BodyWithoputUsers();
+	const bodyWithoutUsers = BodyWithoutContent();
 
 	if (subjects.length > 0) {
 		listContent.appendChild(titleListArea);

@@ -3,12 +3,8 @@ import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
 import SidebarPanel from '../components/Panel/SidebarPanel.js';
 import SubjectsPanelList from '../components/Panel/SubjectsPanelList.js';
 import ToastBar from '../components/ToastBar/index.js';
-import {
-	fetchCreateSubjects,
-	fetchCreateUser,
-	fetchLogin,
-	getAllUsers,
-} from '../data/fetchData.js';
+import { fetchCreateSubjects } from '../data/fetchData.js';
+import { fetchCreateUser, fetchLogin, getAllUsers } from '../data/userData.js';
 import urls from '../urls/index.js';
 import { createUserValidation } from './createUserValidation.js';
 import newElement from './newElement.js';
@@ -290,8 +286,6 @@ export const subjectsAmountDropdown = element => {
 	element.addEventListener('click', async () => {
 		const userId = element.dataset.userId;
 		const userRegistration = element.dataset.userRegistration;
-
-		console.log('register ===> ', userRegistration);
 
 		const panelSubjects = document.querySelector(
 			`#user-register-${userRegistration}`,
