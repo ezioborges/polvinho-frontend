@@ -20,6 +20,7 @@ const UserEdit = async () => {
 	const editContent = newElement('div');
 
 	const title = textGenerator('title1', `Edição de ${role}`);
+	title.style.marginBottom = '2.4rem';
 
 	const firstRow = newElement('div');
 	firstRow.classList.add('register-row');
