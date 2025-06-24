@@ -6,6 +6,9 @@ const UserListComponent = (users, listContent) => {
 	const bodyArea = newElement('div');
 	bodyArea.classList.add('body-area');
 
+	const local = window.location.hash;
+	console.log('🚀 ~ UserListComponent ~ local:', local);
+
 	const activeUsers = users.filter(user => user.isDeleted === false);
 
 	activeUsers.forEach(user => {
@@ -57,7 +60,10 @@ const UserListComponent = (users, listContent) => {
 		editArea.classList.add('edit-area');
 		editArea.textContent = 'Editar';
 		editArea.classList.add('textSm');
-		editArea.href = `#/edit-area`;
+		editArea.href =
+			local === '#/aluno-admin'
+				? `#/edit/aluno/${user._id}`
+				: `#/edit/professor/${user._id}`;
 
 		const deleteArea = newElement('a');
 		deleteArea.id = `delete-user-${user._id}`;

@@ -9,7 +9,8 @@ const Professor = async () => {
 	const { users } = await getAllUsers(urls.users);
 
 	const ProfessorArray = users.filter(
-		user => user.role.toLowerCase() === 'professor',
+		user =>
+			user.role.toLowerCase() === 'professor' && user.isDeleted === false,
 	);
 
 	const professorContent = newElement('div');

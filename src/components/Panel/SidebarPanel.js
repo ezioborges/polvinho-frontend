@@ -7,13 +7,9 @@ const SidebarPanel = () => {
 
 	const entities = newElement('div');
 
-	const studentList = panelItem(
-		'#/students-admin',
-		'Alunos',
-		'dropdown-items',
-	);
+	const studentList = panelItem('#/aluno-admin', 'Alunos', 'dropdown-items');
 	const profList = panelItem(
-		'#/professors-admin',
+		'#/professor-admin',
 		'Professores',
 		'dropdown-items',
 	);

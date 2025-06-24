@@ -1,3 +1,5 @@
+import urls from '../urls/index.js';
+
 export async function fetchLogin(url) {
 	const credentialsInput = document.querySelector('#credentials');
 	const passwordInput = document.querySelector('#password');
@@ -51,6 +53,26 @@ export const getAllUsers = async url => {
 	return data;
 };
 
+export const getUserById = async userId => {
+	const userLogin = localStorage.getItem('userLogin');
+	const token = userLogin ? JSON.parse(userLogin).token : null;
+
+	const response = await fetch(`${urls.users}/${userId}`, {
+		method: 'GET',
+		headers: {
+			'constent-type': 'application/json',
+			Authorization: `Bearer ${token}`,
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error('Erro ao buscar usuário com ID', userId);
+	}
+
+	const data = await response.json();
+	return data;
+};
+
 export const deleteUserEvent = async url => {
 	const userLogin = localStorage.getItem('userLogin');
 	const token = userLogin ? JSON.parse(userLogin).token : null;
@@ -65,6 +87,28 @@ export const deleteUserEvent = async url => {
 
 	if (!response.ok) {
 		throw new Error('Erro ao deletar disciplina');
+	}
+
+	const data = await response.json();
+
+	return data;
+};
+
+export const updateUserEvent = async (url, userUpdated) => {
+	const userLogin = localStorage.getItem('userLogin');
+	const token = userLogin ? JSON.parse(userLogin).token : null;
+
+	const response = await fetch(url, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify(userUpdated),
+	});
+
+	if (!response.ok) {
+		throw new Error('Erro ao atualizar usuário', userUpdated);
 	}
 
 	const data = await response.json();

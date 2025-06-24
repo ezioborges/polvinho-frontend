@@ -1,5 +1,3 @@
-import { getAllUsers } from '../../data/userData.js';
-import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 import BodyWithoutContent from '../BodyWithoutContent.js';
 import headerEntitiesList from '../Headers/headerEntitiesList.js';
@@ -7,10 +5,7 @@ import UsersListComponent from './UsersListComponent.js';
 
 const UserList = async userArray => {
 	const headersList = ['Matricula', 'Nome', 'Disciplinas', 'Ações'];
-	const { users } = await getAllUsers(urls.users);
 	const roleByLink = window.location.href.split('/')[4];
-
-	const userAmount = users.length;
 
 	const bodyWithoutContent = BodyWithoutContent(
 		'Não há pessoas cadastradas!',
@@ -20,7 +15,7 @@ const UserList = async userArray => {
 	titleList.classList.add('title-list-student');
 	titleList.classList.add('title2');
 	titleList.textContent =
-		roleByLink === 'professors-admin'
+		roleByLink === 'professor-admin'
 			? 'Lista de Professores'
 			: 'Lista de Alunos';
 
@@ -34,7 +29,7 @@ const UserList = async userArray => {
 
 	const entitiesList = UsersListComponent(userArray, listContent);
 
-	if (userAmount > 0) {
+	if (userArray.length > 0) {
 		listContent.appendChild(titleList);
 		listContent.appendChild(headersArea);
 		listContent.appendChild(entitiesList);

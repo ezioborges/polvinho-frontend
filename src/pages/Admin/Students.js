@@ -8,7 +8,9 @@ import newElement from '../../utils/newElement.js';
 const Students = async () => {
 	const { users } = await getAllUsers(urls.users);
 
-	const studentArray = users.filter(user => user.role === 'aluno');
+	const studentArray = users.filter(
+		user => user.role === 'aluno' && user.isDeleted === false,
+	);
 
 	const studentAmount = studentArray.length;
 
