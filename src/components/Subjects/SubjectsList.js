@@ -1,4 +1,5 @@
 import { getAllUsers } from '../../data/userData.js';
+import { deleteSubjectEvent } from '../../events/subjects.js';
 import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 
@@ -47,16 +48,18 @@ const SubjectsList = async (subjectsArray, listContent) => {
 		actionsClickArea.classList.add('actions-click-area');
 
 		const editArea = newElement('a');
+		editArea.id = `${subject._id}`;
 		editArea.classList.add('edit-area');
 		editArea.textContent = 'Editar';
 		editArea.classList.add('textSm');
-		editArea.href = `#/edit-area`;
+		editArea.href = `#/edit/subject/${subject._id}`;
 
 		const deleteArea = newElement('a');
+		deleteArea.id = `${subject._id}`;
 		deleteArea.classList.add('delete-area');
 		deleteArea.textContent = 'Excluir';
 		deleteArea.classList.add('textSm');
-		// TODO: colocar a função de deletar disci0plinas aqui
+		deleteSubjectEvent(deleteArea);
 
 		actionsClickArea.appendChild(editArea);
 		actionsClickArea.appendChild(deleteArea);

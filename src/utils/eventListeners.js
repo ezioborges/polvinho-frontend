@@ -246,6 +246,15 @@ export const createSubjects = element => {
 			};
 
 			await fetchCreateSubjects(urls.subjects, newSubject);
+
+			ToastBar({
+				iconParam: '../../assets/CheckCircle.svg',
+				titleParam: 'Sucesso!',
+				msgParam: 'Disciplina criada com sucesso!',
+			});
+
+			document.querySelector('#input-new-subject').value = '';
+			document.querySelector('#input-professor').value = '';
 		} catch (error) {
 			console.error('Erro ao criar disciplina: ', error.message);
 		}

@@ -17,6 +17,7 @@ const routes = {
 	'/register/:entity': './pages/Admin/Register.js',
 	'/edit/aluno/:userId': './pages/Admin/UserEdit.js',
 	'/edit/professor/:userId': './pages/Admin/UserEdit.js',
+	'/edit/subject/:subjectId': './pages/Admin/SubjectEdit.js',
 	'/dashboard': './pages/Dashboard.js',
 	'/disciplines': './pages/Disciplines.js',
 	'/disciplines/:id': './pages/Exam.js',

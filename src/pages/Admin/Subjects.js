@@ -9,30 +9,35 @@ import newElement from '../../utils/newElement.js';
 
 const Subjects = async () => {
 	const { subjects } = await getAllSubjects(urls.subjects);
+	const subjectsArray = subjects.filter(
+		subject => subject.isDeleted === false,
+	);
 	const headersList = ['Nome', 'Professor', 'Quiz', 'Ações'];
 
 	const subjectsContent = newElement('div');
+	subjectsContent.id = 'subjects-content';
 
 	const topArea = newElement('div');
 	topArea.classList.add('body-title-area');
 
 	const subjectsTitle = PageTitle(
 		'Disciplinas',
-		`${subjects.length} Cadastrados`,
+		`${subjectsArray.length} Cadastrados`,
 	);
-
 	const changeToRegister = createEntityButtonRoute(
 		'Cadastrar',
 		'textLG',
 		'create-entity-button',
 	);
+	changeToRegister.id = 'button-change-to-register';
 	changeToRegister.onclick = () =>
 		(window.location.href = '#/register/disciplina');
 
 	const listContent = newElement('div');
 	listContent.classList.add('list-area');
-	const titleListArea = newElement('div');
 
+	const titleListArea = newElement('div');
+	titleListArea.id = 'title-list-area';
 	const titleList = newElement('p');
 	titleList.classList.add('title-list-student');
 	titleList.classList.add('title2');
@@ -46,7 +51,7 @@ const Subjects = async () => {
 
 	headerEntitiesList(headersList, headersArea);
 
-	const subjectsListItems = await SubjectsList(subjects, listContent);
+	const subjectsListItems = await SubjectsList(subjectsArray, listContent);
 	const bodyWithoutUsers = BodyWithoutContent();
 
 	if (subjects.length > 0) {
