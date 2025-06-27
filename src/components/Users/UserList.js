@@ -7,10 +7,6 @@ const UserList = async userArray => {
 	const headersList = ['Matricula', 'Nome', 'Disciplinas', 'Ações'];
 	const roleByLink = window.location.href.split('/')[4];
 
-	const bodyWithoutContent = BodyWithoutContent(
-		'Não há pessoas cadastradas!',
-	);
-
 	const titleList = newElement('p');
 	titleList.classList.add('title-list-student');
 	titleList.classList.add('title2');
@@ -29,12 +25,17 @@ const UserList = async userArray => {
 
 	const entitiesList = UsersListComponent(userArray, listContent);
 
+	if (!userArray || userArray.length === 0) {
+		const bodyWithoutContent = BodyWithoutContent(
+			'Não há pessoas cadastradas!',
+		);
+		listContent.appendChild(bodyWithoutContent);
+	}
+
 	if (userArray.length > 0) {
 		listContent.appendChild(titleList);
 		listContent.appendChild(headersArea);
 		listContent.appendChild(entitiesList);
-	} else {
-		listContent.appendChild(bodyWithoutContent);
 	}
 
 	return listContent;

@@ -7,7 +7,6 @@ const UserListComponent = (users, listContent) => {
 	bodyArea.classList.add('body-area');
 
 	const local = window.location.hash;
-	console.log('🚀 ~ UserListComponent ~ local:', local);
 
 	const activeUsers = users.filter(user => user.isDeleted === false);
 

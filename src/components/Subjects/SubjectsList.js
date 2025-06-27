@@ -3,7 +3,7 @@ import { deleteSubjectEvent } from '../../events/subjects.js';
 import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 
-const SubjectsList = async (subjectsArray, listContent) => {
+const SubjectsList = async subjectsArray => {
 	const bodyArea = newElement('div');
 	bodyArea.classList.add('body-area');
 

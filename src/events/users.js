@@ -33,8 +33,8 @@ export const deleteUser = async element => {
 				const studentArray = users.filter(
 					user => user.role === 'aluno',
 				);
-				const studentsList = await UserList(studentArray);
 				studentsContent.innerHTML = '';
+				const studentsList = await UserList(studentArray);
 				studentsContent.appendChild(topArea);
 				studentsContent.appendChild(studentsList);
 			}

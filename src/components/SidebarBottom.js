@@ -22,11 +22,11 @@ const SidebarBottom = () => {
 	sectionText.textContent = 'Encerrar Sessão';
 	openDialog(
 		sectionText,
-		'Tem certeza que deseja sair?',
-		'Sua sessão será finalizada, tornando necessário um novo Login.',
+		'Tem certeza?',
+		'Você irá encerrar sua sessão e precisará realizar login para entrar novamente.',
 		'Cancelar',
 		clickEventCancelButton,
-		'Sair',
+		'Encerrar',
 		endSession,
 		'var(--red-500',
 	);

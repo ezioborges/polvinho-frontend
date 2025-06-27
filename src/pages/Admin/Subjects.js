@@ -12,11 +12,11 @@ const Subjects = async () => {
 	const subjectsArray = subjects.filter(
 		subject => subject.isDeleted === false,
 	);
+
 	const headersList = ['Nome', 'Professor', 'Quiz', 'Ações'];
 
 	const subjectsContent = newElement('div');
 	subjectsContent.id = 'subjects-content';
-
 	const topArea = newElement('div');
 	topArea.classList.add('body-title-area');
 
@@ -51,15 +51,19 @@ const Subjects = async () => {
 
 	headerEntitiesList(headersList, headersArea);
 
-	const subjectsListItems = await SubjectsList(subjectsArray, listContent);
-	const bodyWithoutUsers = BodyWithoutContent();
+	const subjectsListItems = await SubjectsList(subjectsArray);
 
-	if (subjects.length > 0) {
+	if (!subjectsArray || subjectsArray.length === 0) {
+		const bodyWithoutContent = BodyWithoutContent(
+			'Não há disciplinas cadastradas!',
+		);
+		listContent.appendChild(bodyWithoutContent);
+	}
+
+	if (subjectsArray.length > 0) {
 		listContent.appendChild(titleListArea);
 		listContent.appendChild(headersArea);
 		listContent.appendChild(subjectsListItems);
-	} else {
-		listContent.appendChild(bodyWithoutUsers);
 	}
 
 	titleListArea.appendChild(titleList);

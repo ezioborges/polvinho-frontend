@@ -6,7 +6,6 @@ import {
 	getAllSubjects,
 	updateSubject,
 } from '../data/subjectsData.js';
-import { getUserById } from '../data/userData.js';
 import urls from '../urls/index.js';
 
 export const deleteSubjectEvent = element => {
@@ -14,7 +13,6 @@ export const deleteSubjectEvent = element => {
 		await deleteSubject(target.id);
 
 		const { subjects } = await getAllSubjects(urls.subjects);
-		console.log('🚀 ~ element.addEventListener ~ subjects:', subjects);
 
 		const subjectsArray = subjects.filter(
 			subject => subject.isDeleted === false,
@@ -30,7 +28,6 @@ export const deleteSubjectEvent = element => {
 		subjectsContent.innerHTML = '';
 		bodyTitleArea.innerHTML = '';
 		const subjectsListItems = await SubjectsList(subjectsArray);
-
 		const subjectsTitle = PageTitle(
 			'Disciplinas',
 			`${subjectsArray.length} Cadastrados`,
@@ -53,21 +50,10 @@ export const deleteSubjectEvent = element => {
 
 export const updateSubjectsEvent = (element, subject) => {
 	element.addEventListener('click', async () => {
-		const professor = await getUserById(subject.professor);
-		console.log(
-			'🚀 ~ element.addEventListener ~ professor:',
-			professor._id,
-		);
-
 		const updatedSubject = {
 			name: document.querySelector('#input-edit-subject').value,
 			professor: document.querySelector('#input-edit-professor').value,
 		};
-
-		console.log(
-			'🚀 ~ updateSubjectsEvent ~ updatedSubject:',
-			updatedSubject,
-		);
 
 		try {
 			await updateSubject(subject._id, updatedSubject);
