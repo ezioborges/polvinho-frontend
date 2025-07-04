@@ -2,6 +2,7 @@ import { getAllUsers } from '../../data/userData.js';
 import { deleteSubjectEvent } from '../../events/subjects.js';
 import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
+import BodyWithoutContent from '../BodyWithoutContent.js';
 
 const SubjectsList = async subjectsArray => {
 	const bodyArea = newElement('div');
@@ -79,6 +80,13 @@ const SubjectsList = async subjectsArray => {
 
 		bodyArea.appendChild(listRow);
 	});
+
+	if (!subjectsArray || subjectsArray.length === 0) {
+		const bodyWithoutContent = BodyWithoutContent(
+			'Não há pessoas cadastradas!',
+		);
+		bodyArea.appendChild(bodyWithoutContent);
+	}
 
 	return bodyArea;
 };

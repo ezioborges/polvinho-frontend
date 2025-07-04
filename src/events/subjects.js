@@ -1,3 +1,4 @@
+import BodyWithoutContent from '../components/BodyWithoutContent.js';
 import PageTitle from '../components/PageTitle.js';
 import SubjectsList from '../components/Subjects/SubjectsList.js';
 import ToastBar from '../components/ToastBar/index.js';
@@ -18,6 +19,10 @@ export const deleteSubjectEvent = element => {
 			subject => subject.isDeleted === false,
 		);
 
+		const bodyWithoutContent = BodyWithoutContent(
+			'Não há disciplinas cadastradas!',
+		);
+
 		const subjectsContent = document.querySelector('#subjects-content');
 		const bodyTitleArea = document.querySelector('.body-title-area');
 		const titleListArea = document.querySelector('#title-list-area');
@@ -27,7 +32,11 @@ export const deleteSubjectEvent = element => {
 
 		subjectsContent.innerHTML = '';
 		bodyTitleArea.innerHTML = '';
-		const subjectsListItems = await SubjectsList(subjectsArray);
+
+		const subjectsListItems = subjectsArray
+			? await SubjectsList(subjectsArray)
+			: bodyWithoutContent;
+
 		const subjectsTitle = PageTitle(
 			'Disciplinas',
 			`${subjectsArray.length} Cadastrados`,
@@ -49,6 +58,7 @@ export const deleteSubjectEvent = element => {
 };
 
 export const updateSubjectsEvent = (element, subject) => {
+	console.log('subject ===> ', subject._id);
 	element.addEventListener('click', async () => {
 		const updatedSubject = {
 			name: document.querySelector('#input-edit-subject').value,

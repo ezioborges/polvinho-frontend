@@ -12,7 +12,7 @@ export const getAllSubjects = async url => {
 
 	const data = await response.json();
 
-	return data;
+	return Array.isArray(data) ? data : [];
 };
 
 //TODO: implementar a autenticação para que apaenas ADMIN possam criar disciplinas
@@ -98,6 +98,8 @@ export const deleteSubject = async subjectId => {
 };
 
 export const updateSubject = async (subjectId, subjectUpdated) => {
+	console.log('subjectId ==> ', subjectId);
+	console.log('url ===> ', `${urls.subjects}/${subjectId}`);
 	try {
 		const userLogin = localStorage.getItem('userLogin');
 		const token = userLogin ? JSON.parse(userLogin).token : null;
