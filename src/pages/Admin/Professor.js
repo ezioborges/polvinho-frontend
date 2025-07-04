@@ -6,15 +6,17 @@ import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 
 const Professor = async () => {
-	const { users } = await getAllUsers(urls.users);
+	const usersData = await getAllUsers(urls.users);
+
+	const users = usersData.usersList;
+
+	const professorContent = newElement('div');
+	professorContent.id = 'professor-content';
 
 	const ProfessorArray = users.filter(
 		user =>
 			user.role.toLowerCase() === 'professor' && user.isDeleted === false,
 	);
-
-	const professorContent = newElement('div');
-	professorContent.id = 'professor-content';
 
 	const professorTopArea = newElement('div');
 	professorTopArea.classList.add('body-title-area');

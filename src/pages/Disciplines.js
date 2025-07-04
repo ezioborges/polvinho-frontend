@@ -1,18 +1,17 @@
-import DisciplinesContent from "../components/DisciplinesContent.js";
-import PageTitle from "../components/PageTitle.js";
-import newElement from "../utils/newElement.js"
+import DisciplinesContent from '../components/DisciplinesContent.js';
+import newElement from '../utils/newElement.js';
 
 const Disciplines = () => {
-    const disciplineContent = newElement('div');
-    disciplineContent.classList.add('discipline-content')
-    
-    const title = PageTitle('Nome da disciplina', 'Quizzes')
-    const disciplines = DisciplinesContent();
+	const disciplineContent = newElement('div');
+	disciplineContent.classList.add('discipline-content');
 
-    disciplineContent.appendChild(title)
-    disciplineContent.appendChild(disciplines)
+	const title = PageTitle('Nome da disciplina', 'Quizzes');
+	const disciplines = DisciplinesContent();
 
-    return disciplineContent;
-}
+	disciplineContent.appendChild(title);
+	disciplineContent.appendChild(disciplines);
+
+	return disciplineContent;
+};
 
 export default Disciplines;

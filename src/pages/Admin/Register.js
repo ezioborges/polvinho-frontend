@@ -13,7 +13,7 @@ const Register = async () => {
 
 	const roleFromHash = window.location.hash.split('/')[2].toLowerCase();
 
-	const { subjects } = await getAllSubjects(urls.subjects);
+	const subjects = await getAllSubjects(urls.subjects);
 
 	const firstRowRegister = newElement('div');
 	firstRowRegister.classList.add('register-row');

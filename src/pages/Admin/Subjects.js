@@ -8,15 +8,17 @@ import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 
 const Subjects = async () => {
-	const { subjects } = await getAllSubjects(urls.subjects);
+	const subjects = await getAllSubjects(urls.subjects);
+
+	const subjectsContent = newElement('div');
+	subjectsContent.id = 'subjects-content';
+
 	const subjectsArray = subjects.filter(
 		subject => subject.isDeleted === false,
 	);
 
 	const headersList = ['Nome', 'Professor', 'Quiz', 'Ações'];
 
-	const subjectsContent = newElement('div');
-	subjectsContent.id = 'subjects-content';
 	const topArea = newElement('div');
 	topArea.classList.add('body-title-area');
 

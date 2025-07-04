@@ -7,7 +7,9 @@ const SubjectsList = async subjectsArray => {
 	const bodyArea = newElement('div');
 	bodyArea.classList.add('body-area');
 
-	const { users } = await getAllUsers(urls.users);
+	const usersData = await getAllUsers(urls.users);
+
+	const users = usersData.usersList;
 	const professors = users.filter(user => user.role === 'professor');
 
 	subjectsArray.forEach(subject => {
@@ -30,7 +32,7 @@ const SubjectsList = async subjectsArray => {
 		const professorName = newElement('p');
 		professorName.textContent = findedProfessorName
 			? findedProfessorName.name
-			: 'Professor não encontrado';
+			: 'Professor não cadastrado';
 		professorName.classList.add('textMd');
 
 		const quizAmountArea = newElement('div');

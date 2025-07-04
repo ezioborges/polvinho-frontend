@@ -6,16 +6,16 @@ import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 
 const Students = async () => {
-	const { users } = await getAllUsers(urls.users);
+	const { usersList } = await getAllUsers(urls.users);
 
-	const studentArray = users.filter(
+	const studentsContent = newElement('div');
+	studentsContent.id = 'students-content';
+
+	const studentArray = usersList.filter(
 		user => user.role === 'aluno' && user.isDeleted === false,
 	);
 
 	const studentAmount = studentArray.length;
-
-	const studentsContent = newElement('div');
-	studentsContent.id = 'students-content';
 
 	const topArea = newElement('div');
 	topArea.classList.add('body-title-area');

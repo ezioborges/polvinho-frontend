@@ -1,7 +1,7 @@
 import newElement from '../../utils/newElement.js';
 import BodyWithoutContent from '../BodyWithoutContent.js';
 import headerEntitiesList from '../Headers/headerEntitiesList.js';
-import UsersListComponent from './UsersListComponent.js';
+import UserListComponent from './UserListComponent.js';
 
 const UserList = async userArray => {
 	const headersList = ['Matricula', 'Nome', 'Disciplinas', 'Ações'];
@@ -23,7 +23,7 @@ const UserList = async userArray => {
 	const listContent = newElement('div');
 	listContent.id = 'list-content';
 
-	const entitiesList = UsersListComponent(userArray, listContent);
+	const entitiesList = UserListComponent(userArray, listContent);
 
 	if (!userArray || userArray.length === 0) {
 		const bodyWithoutContent = BodyWithoutContent(

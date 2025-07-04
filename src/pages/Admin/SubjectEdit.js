@@ -7,9 +7,8 @@ import newElement from '../../utils/newElement.js';
 
 const SubjectEdit = async () => {
 	const subjectId = window.location.href.split('/')[6];
-	const { subject } = await getSubjectsById(subjectId);
+	const subject = await getSubjectsById(subjectId);
 	const professor = await getUserById(subject.professor);
-	console.log('🚀 ~ SubjectEdit ~ professor:', subject);
 
 	const editContent = newElement('div');
 
