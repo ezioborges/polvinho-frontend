@@ -13,7 +13,7 @@ export const deleteSubjectEvent = element => {
 	element.addEventListener('click', async ({ target }) => {
 		await deleteSubject(target.id);
 
-		const { subjects } = await getAllSubjects(urls.subjects);
+		const subjects = await getAllSubjects(urls.subjects);
 
 		const subjectsArray = subjects.filter(
 			subject => subject.isDeleted === false,

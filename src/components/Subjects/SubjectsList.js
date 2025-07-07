@@ -83,7 +83,7 @@ const SubjectsList = async subjectsArray => {
 
 	if (!subjectsArray || subjectsArray.length === 0) {
 		const bodyWithoutContent = BodyWithoutContent(
-			'Não há pessoas cadastradas!',
+			'Não há disciplinas cadastradas!',
 		);
 		bodyArea.appendChild(bodyWithoutContent);
 	}

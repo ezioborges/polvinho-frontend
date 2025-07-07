@@ -24,7 +24,9 @@ export const deleteUser = async element => {
 				msgParam: 'Usuário excluído com sucesso!',
 			});
 
-			const { users } = await getAllUsers(urls.users);
+			const usersDara = await getAllUsers(urls.users);
+
+			const users = usersDara.usersList;
 
 			if (headerUrl === 'aluno-admin') {
 				const studentsContent =
@@ -59,7 +61,7 @@ export const deleteUser = async element => {
 
 export const updateUser = async (element, userId, role) => {
 	element.addEventListener('click', async () => {
-		const { subjects } = await getAllSubjects(urls.subjects);
+		const subjects = await getAllSubjects(urls.subjects);
 
 		const subjectOption = document.querySelector(
 			'#select-edit-subjects',

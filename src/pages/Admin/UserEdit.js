@@ -13,9 +13,9 @@ const UserEdit = async () => {
 	const userId = window.location.hash.split('/')[3];
 	const user = await getUserById(userId);
 
-	const { subjects } = await getAllSubjects(urls.subjects);
+	const subjects = await getAllSubjects(urls.subjects);
 	const [subjectId] = user.subject;
-	const { subject } = await getSubjectsById(subjectId);
+	const subject = await getSubjectsById(subjectId);
 
 	const editContent = newElement('div');
 

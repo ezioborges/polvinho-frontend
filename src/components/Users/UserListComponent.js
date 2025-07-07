@@ -1,6 +1,7 @@
 import { deleteUser } from '../../events/users.js';
 import { subjectsAmountDropdown } from '../../utils/eventListeners.js';
 import newElement from '../../utils/newElement.js';
+import BodyWithoutContent from '../BodyWithoutContent.js';
 
 const UserListComponent = (users, listContent) => {
 	const bodyArea = newElement('div');
@@ -91,6 +92,13 @@ const UserListComponent = (users, listContent) => {
 
 		bodyArea.appendChild(listRow);
 	});
+
+	if (!activeUsers || activeUsers.length === 0) {
+		const bodyWithoutContent = BodyWithoutContent(
+			'Não há pessoas cadastradas!',
+		);
+		bodyArea.appendChild(bodyWithoutContent);
+	}
 
 	return bodyArea;
 };
