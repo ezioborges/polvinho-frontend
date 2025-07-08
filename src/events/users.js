@@ -1,15 +1,12 @@
 import {
 	createProfessorApi,
+	deleteProfessorApi,
 	getAllProfessorsApi,
 } from '../api/professorsFetch.js';
 import ToastBar from '../components/ToastBar/index.js';
 import UserList from '../components/Users/UserList.js';
 import { getAllSubjects } from '../data/subjectsData.js';
-import {
-	deleteUserEvent,
-	getAllUsers,
-	updateUserEvent,
-} from '../data/userData.js';
+import { getAllUsers, updateUserEvent } from '../data/userData.js';
 import urls from '../urls/index.js';
 
 export const createProfessor = async element => {
@@ -45,9 +42,11 @@ export const deleteUser = async element => {
 			const headerUrl = window.location.href.split('/')[4];
 			const userTargetId = event.target.id;
 			const userId = userTargetId.split('-')[2];
-			const urlDelete = `${urls.users}/${userId}`;
+			// const urlDelete = `${urls.professors}/${userId}`;
 
-			await deleteUserEvent(urlDelete);
+			// await deleteUserEvent(urlDelete);
+
+			await deleteProfessorApi(userId);
 
 			ToastBar({
 				iconParam: '../../assets/CheckCircle.svg',
@@ -59,7 +58,6 @@ export const deleteUser = async element => {
 			console.log('🚀 ~ users:', users);
 
 			const professors = await getAllProfessorsApi();
-			console.log('🚀 ~ professors:', professors);
 
 			// if (headerUrl === 'aluno-admin') {
 			// 	const studentsContent =
@@ -85,7 +83,6 @@ export const deleteUser = async element => {
 				professorContent.innerHTML = '';
 				professorContent.appendChild(topArea);
 				professorContent.appendChild(professorList);
-				console.log('ta batendo no delete');
 			}
 		} catch (error) {
 			console.error(error);
