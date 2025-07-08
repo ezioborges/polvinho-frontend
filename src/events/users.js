@@ -1,4 +1,7 @@
-import { createProfessorApi } from '../api/usersFetch.js';
+import {
+	createProfessorApi,
+	getAllProfessorsApi,
+} from '../api/professorsFetch.js';
 import ToastBar from '../components/ToastBar/index.js';
 import UserList from '../components/Users/UserList.js';
 import { getAllSubjects } from '../data/subjectsData.js';
@@ -11,18 +14,28 @@ import urls from '../urls/index.js';
 
 export const createProfessor = async element => {
 	element.addEventListener('click', async () => {
-		const newProfessor = {
-			name: document.querySelector('#input-professor-name').value,
-			email: document.querySelector('#input-professor-email').value,
-			registration: document.querySelector('#input-professor-register')
-				.value,
-			subject: document.querySelector('#input-professor-subjects').value,
-			role: 'professor',
-		};
+		try {
+			const newProfessor = {
+				name: document.querySelector('#input-professor-name').value,
+				email: document.querySelector('#input-professor-email').value,
+				registration: document.querySelector(
+					'#input-professor-register',
+				).value,
+				subject: document.querySelector('#input-professor-subjects')
+					.value,
+				role: 'professor',
+			};
 
-		console.log('newProfessor', newProfessor);
-		await createProfessorApi(newProfessor);
-		// console.log('🚀 ~ element.addEventListener ~ teste:', teste);
+			await createProfessorApi(newProfessor);
+
+			ToastBar({
+				iconParam: '../../assets/CheckCircle.svg',
+				titleParam: 'Sucesso',
+				msgParam: 'Professor(a) criado com sucesso!',
+			});
+		} catch (error) {
+			throw new Error('Erro ao criar professor');
+		}
 	});
 };
 
@@ -42,32 +55,37 @@ export const deleteUser = async element => {
 				msgParam: 'Usuário excluído com sucesso!',
 			});
 
-			const { users } = await getAllUsers(urls.users);
+			const users = await getAllUsers(urls.users);
+			console.log('🚀 ~ users:', users);
 
-			if (headerUrl === 'aluno-admin') {
-				const studentsContent =
-					document.querySelector('#students-content');
-				const topArea = document.querySelector('.body-title-area');
-				const studentArray = users.filter(
-					user => user.role === 'aluno',
-				);
-				studentsContent.innerHTML = '';
-				const studentsList = await UserList(studentArray);
-				studentsContent.appendChild(topArea);
-				studentsContent.appendChild(studentsList);
-			}
+			const professors = await getAllProfessorsApi();
+			console.log('🚀 ~ professors:', professors);
+
+			// if (headerUrl === 'aluno-admin') {
+			// 	const studentsContent =
+			// 		document.querySelector('#students-content');
+			// 	const topArea = document.querySelector('.body-title-area');
+			// 	const studentArray = users.filter(
+			// 		user => user.role === 'aluno',
+			// 	);
+			// 	studentsContent.innerHTML = '';
+			// 	const studentsList = await UserList(studentArray);
+			// 	studentsContent.appendChild(topArea);
+			// 	studentsContent.appendChild(studentsList);
+			// }
 
 			if (headerUrl === 'professor-admin') {
 				const professorContent =
 					document.querySelector('#professor-content');
 				const topArea = document.querySelector('.body-title-area');
-				const ProfessorArray = users.filter(
-					user => user.role.toLowerCase() === 'professor',
+				const ProfessorArray = professors.filter(
+					professor => professor.role.toLowerCase() === 'professor',
 				);
 				const professorList = await UserList(ProfessorArray);
 				professorContent.innerHTML = '';
 				professorContent.appendChild(topArea);
 				professorContent.appendChild(professorList);
+				console.log('ta batendo no delete');
 			}
 		} catch (error) {
 			console.error(error);

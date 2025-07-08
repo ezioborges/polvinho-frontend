@@ -2,7 +2,7 @@ const urls = {
 	loginProd: 'polvinho-backend.vercel.app/login',
 	login: 'http://localhost:2424/login',
 
-	createProfessor: 'http://localhost:2424/users/professors',
+	professors: 'http://localhost:2424/users/professors',
 
 	usersProd: 'polvinho-backend.vercel.app/users',
 	users: 'http://localhost:2424/users',
