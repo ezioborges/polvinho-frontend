@@ -4,10 +4,8 @@ import SidebarPanel from '../components/Panel/SidebarPanel.js';
 import SubjectsPanelList from '../components/Panel/SubjectsPanelList.js';
 import ToastBar from '../components/ToastBar/index.js';
 import { fetchCreateSubjects } from '../data/subjectsData.js';
-import { fetchCreateUser, fetchLogin, getAllUsers } from '../data/userData.js';
+import { fetchLogin, getAllUsers } from '../data/userData.js';
 import urls from '../urls/index.js';
-import { createUserValidation } from './createUserValidation.js';
-import newElement from './newElement.js';
 
 export const openDialog = (
 	element,
@@ -151,77 +149,11 @@ export const endSession = event => {
 	clickEventCancelButton(event);
 };
 
-export const clickEventRegister = async (element, roleFromHash) => {
+export const registerProfessor = async (element, roleFromHash) => {
 	element.addEventListener('click', async () => {
 		try {
-			const userNameInput = document.querySelector('#input-name');
-			const userEmailInput = document.querySelector('#input-email');
-			const userRegisterInput = document.querySelector('#input-register');
-			const userDisciplineInput =
-				document.querySelector('#input-subjects');
-
-			const userName = userNameInput.value.trim();
-			const userEmail = userEmailInput.value.trim();
-			const userRegister = userRegisterInput.value.trim();
-			const userDiscipline = userDisciplineInput.value.trim();
-
-			const ValidUser = createUserValidation(
-				userName,
-				userEmail,
-				userRegister,
-				userDiscipline,
-			);
-
-			if (ValidUser.length === 0) {
-				ToastBar({
-					iconParam: '../../assets/CheckCircle.svg',
-					titleParam: 'Sucesso!',
-					msgParam: 'Cadastro realizado com sucesso!',
-				});
-
-				const newUser = {
-					name: userName,
-					email: userEmail,
-					registration: userRegister,
-					passwordHash: 'Umtest@22',
-					role: roleFromHash,
-					subject: userDiscipline,
-				};
-				localStorage.setItem('newUser', JSON.stringify(newUser));
-
-				await fetchCreateUser(urls.users, newUser);
-
-				userNameInput.value = '';
-				userEmailInput.value = '';
-				userRegisterInput.value = '';
-				userDisciplineInput.value = 'Transfiguration';
-			} else {
-				userNameInput.value = '';
-				userEmailInput.value = '';
-				userRegisterInput.value = '';
-				userDisciplineInput.value = 'Transfiguration';
-
-				userNameInput.style.border = '2px solid var(--red-500)';
-				userEmailInput.style.border = '2px solid var(--red-500)';
-				userRegisterInput.style.border = '2px solid var(--red-500)';
-
-				const errorList = document.querySelector('.error-list');
-				errorList.innerHTML = '';
-
-				ValidUser.forEach(error => {
-					const errorMessage = newElement('li');
-					const errorText = newElement('p');
-					errorText.textContent = error.message;
-					errorText.classList.add('error-message');
-
-					errorMessage.appendChild(errorText);
-
-					errorList.appendChild(errorMessage);
-				});
-
-				localStorage.removeItem('newUser');
-				console.error('Erro ao cadastrar usuário: ', ValidUser);
-			}
+			console.log('roleFromHash ==>', roleFromHash);
+			console.log('element ==> ', element);
 		} catch (error) {
 			throw new Error(`Erro ao buscar usuários: ${error.message}`);
 		}

@@ -3,26 +3,35 @@ import selectInput from '../../components/Input/selectInput.js';
 import InputArea from '../../components/Input/textInput.js';
 import { getAllSubjects } from '../../data/subjectsData.js';
 import urls from '../../urls/index.js';
-import { clickEventRegister } from '../../utils/eventListeners.js';
+// import { clickEventRegister } from '../../utils/eventListeners.js';
 import newElement from '../../utils/newElement.js';
 import textGenerator from '../../utils/textGenerator.js';
+import ProfessorRegister from './ProfessorRegister.js';
 import SubjectsRegister from './SubjectsRegister.js';
 
 const Register = async () => {
 	const register = newElement('div');
 
-	const roleFromHash = window.location.hash.split('/')[2].toLowerCase();
+	const roleFromHash = window.location.hash.split('/')[2].toLocaleLowerCase();
 
-	const subjects = await getAllSubjects(urls.subjects);
-
-	const firstRowRegister = newElement('div');
-	firstRowRegister.classList.add('register-row');
+	console.log('roleFromHash', roleFromHash);
 
 	if (roleFromHash === 'disciplina') {
 		const subjectRegister = SubjectsRegister();
 
 		return subjectRegister;
 	}
+
+	if (roleFromHash === 'professor') {
+		const professorRegister = ProfessorRegister();
+
+		return professorRegister;
+	}
+
+	const subjects = await getAllSubjects(urls.subjects);
+
+	const firstRowRegister = newElement('div');
+	firstRowRegister.classList.add('register-row');
 
 	const secondRowRegister = newElement('div');
 	secondRowRegister.classList.add('register-row');
@@ -61,7 +70,7 @@ const Register = async () => {
 
 	const registerButton = QuizzButton('Cadastrar', 'button-content', 'textMd');
 	registerButton.style.width = '19.2vw';
-	clickEventRegister(registerButton, roleFromHash);
+	// clickEventRegister(registerButton, roleFromHash);
 
 	const subjectArray = [];
 	subjects.forEach(subject => subjectArray.push(subject.name));

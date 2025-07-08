@@ -1,3 +1,4 @@
+import { createProfessorApi } from '../api/usersFetch.js';
 import ToastBar from '../components/ToastBar/index.js';
 import UserList from '../components/Users/UserList.js';
 import { getAllSubjects } from '../data/subjectsData.js';
@@ -7,6 +8,23 @@ import {
 	updateUserEvent,
 } from '../data/userData.js';
 import urls from '../urls/index.js';
+
+export const createProfessor = async element => {
+	element.addEventListener('click', async () => {
+		const newProfessor = {
+			name: document.querySelector('#input-professor-name').value,
+			email: document.querySelector('#input-professor-email').value,
+			registration: document.querySelector('#input-professor-register')
+				.value,
+			subject: document.querySelector('#input-professor-subjects').value,
+			role: 'professor',
+		};
+
+		console.log('newProfessor', newProfessor);
+		await createProfessorApi(newProfessor);
+		// console.log('🚀 ~ element.addEventListener ~ teste:', teste);
+	});
+};
 
 export const deleteUser = async element => {
 	element.addEventListener('click', async event => {
