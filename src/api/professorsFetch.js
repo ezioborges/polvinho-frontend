@@ -37,9 +37,44 @@ export const getAllProfessorsApi = async () => {
 	return data;
 };
 
+export const getProfessorByIdApi = async professorId => {
+	const getByIdURL = `${urls.professors}/${professorId}`;
+
+	const response = await fetch(getByIdURL, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	const data = await response.json();
+
+	return data;
+};
+
+export const updateProfessorApi = async (professorId, professorData) => {
+	const updateURL = `${urls.professors}/${professorId}`;
+
+	console.log('🚀 ~ updateProfessorApi ~ updateURL:', updateURL);
+	const response = await fetch(updateURL, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(professorData),
+	});
+
+	if (!response.ok) {
+		throw new Error('Erro ao atualizar professor');
+	}
+
+	const data = await response.json();
+
+	return data;
+};
+
 export const deleteProfessorApi = async professorId => {
 	const deleteURL = `${urls.professors}/${professorId}`;
-	console.log('🚀 ~ deleteURL:', deleteURL);
 	const response = await fetch(deleteURL, {
 		method: 'DELETE',
 		headers: {

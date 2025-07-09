@@ -179,11 +179,14 @@ export const createSubjects = element => {
 
 			await fetchCreateSubjects(urls.subjects, newSubject);
 
-			ToastBar({
-				iconParam: '../../assets/CheckCircle.svg',
-				titleParam: 'Sucesso!',
-				msgParam: 'Disciplina criada com sucesso!',
-			});
+			ToastBar(
+				{
+					iconParam: '../../assets/CheckCircle.svg',
+					titleParam: 'Sucesso!',
+					msgParam: 'Disciplina criada com sucesso!',
+				},
+				'success-toast',
+			);
 
 			document.querySelector('#input-new-subject').value = '';
 			document.querySelector('#input-professor').value = '';

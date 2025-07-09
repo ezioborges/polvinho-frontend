@@ -1,10 +1,9 @@
 import newElement from '../../utils/newElement.js';
 import { toastBarTimer } from '../../utils/toastBarTimer.js';
 
-const ToastBar = ({ iconParam, titleParam, msgParam }) => {
+const ToastBar = ({ iconParam, titleParam, msgParam }, cssToast) => {
 	// Verifica se os parâmetros necessários foram fornecidos
 	const mainBody = document.querySelector('#main-body');
-	if (mainBody) mainBody.classList.add('toast-bar');
 
 	const nameInput = document.querySelector('#input-name');
 	if (nameInput) nameInput.classList.add('success-input');
@@ -15,8 +14,9 @@ const ToastBar = ({ iconParam, titleParam, msgParam }) => {
 	const registerInput = document.querySelector('#input-register');
 	if (registerInput) registerInput.classList.add('success-input');
 
-	const successToast = newElement('div');
-	successToast.classList.add('success-toast');
+	const responseToast = newElement('div');
+	responseToast.classList.add('toast');
+	responseToast.classList.add(cssToast);
 
 	const titleArea = newElement('div');
 	titleArea.classList.add('title-toast-area');
@@ -36,10 +36,10 @@ const ToastBar = ({ iconParam, titleParam, msgParam }) => {
 	titleArea.appendChild(icon);
 	titleArea.appendChild(title);
 
-	successToast.appendChild(titleArea);
-	successToast.appendChild(msg);
+	responseToast.appendChild(titleArea);
+	responseToast.appendChild(msg);
 
-	mainBody.appendChild(successToast);
+	mainBody.appendChild(responseToast);
 	toastBarTimer();
 };
 

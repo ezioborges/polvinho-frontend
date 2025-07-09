@@ -1,6 +1,6 @@
 export const toastBarTimer = () => {
 	setTimeout(() => {
-		const toastBar = document.querySelector('.success-toast');
+		const toastBar = document.querySelector('.toast');
 		if (toastBar) {
 			toastBar.classList.add('hide');
 			setTimeout(() => {
