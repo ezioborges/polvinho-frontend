@@ -55,7 +55,6 @@ export const getProfessorByIdApi = async professorId => {
 export const updateProfessorApi = async (professorId, professorData) => {
 	const updateURL = `${urls.professors}/${professorId}`;
 
-	console.log('🚀 ~ updateProfessorApi ~ updateURL:', updateURL);
 	const response = await fetch(updateURL, {
 		method: 'PUT',
 		headers: {

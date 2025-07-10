@@ -3,7 +3,7 @@ import QuizzButton from '../../components/Buttons/QuizzButton.js';
 import selectInput from '../../components/Input/selectInput.js';
 import InputArea from '../../components/Input/textInput.js';
 import { getAllSubjects } from '../../data/subjectsData.js';
-import { updateProfessor } from '../../events/users.js';
+import { updateUser } from '../../events/users.js';
 import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 import textGenerator from '../../utils/textGenerator.js';
@@ -62,7 +62,6 @@ const UserEdit = async () => {
 		'textMd',
 	);
 	registerButton.style.width = '19.2vw';
-	// updateUser(registerButton, userId, role);
 
 	if (userToEdit.role === 'professor') {
 		const title = textGenerator('title1', `Edição de ${userToEdit.role}`);
@@ -75,7 +74,26 @@ const UserEdit = async () => {
 		secondRow.appendChild(userSubject);
 
 		buttonArea.appendChild(registerButton);
-		updateProfessor(registerButton, userToEdit._id);
+		updateUser(registerButton, userToEdit.role, userToEdit._id);
+
+		editContent.appendChild(title);
+		editContent.appendChild(firstRow);
+		editContent.appendChild(secondRow);
+		editContent.appendChild(buttonArea);
+	}
+
+	if (userToEdit.role === 'aluno') {
+		const title = textGenerator('title1', `Edição de ${userToEdit.role}`);
+		title.style.marginBottom = '2.4rem';
+
+		firstRow.appendChild(userName);
+		firstRow.appendChild(userRegister);
+
+		secondRow.appendChild(userEmail);
+		secondRow.appendChild(userSubject);
+
+		buttonArea.appendChild(registerButton);
+		updateUser(registerButton, userToEdit.role, userToEdit._id);
 
 		editContent.appendChild(title);
 		editContent.appendChild(firstRow);
