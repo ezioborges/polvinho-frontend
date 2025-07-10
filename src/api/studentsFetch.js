@@ -17,3 +17,23 @@ export const getAllStudenstsApi = async () => {
 
 	return data;
 };
+
+export const createStudentApi = async studentData => {
+	const createStudentUrl = `${urls.students}`;
+
+	const response = await fetch(createStudentUrl, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(studentData),
+	});
+
+	if (!response.ok) {
+		throw new Error('Erro ao criar aluno');
+	}
+
+	const data = await response.json();
+
+	return data;
+};

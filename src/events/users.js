@@ -4,8 +4,10 @@ import {
 	getAllProfessorsApi,
 	updateProfessorApi,
 } from '../api/professorsFetch.js';
+import { createStudentApi } from '../api/studentsFetch.js';
 import ToastBar from '../components/ToastBar/index.js';
 import UserList from '../components/Users/UserList.js';
+import { resetUserInuts } from '../utils/resetUserInputs.js';
 
 export const createProfessor = async element => {
 	element.addEventListener('click', async () => {
@@ -125,8 +127,32 @@ export const updateProfessor = async (element, professorId) => {
 	});
 };
 
-export const createStudent = async element => {
+export const createUser = (element, userRole) => {
 	element.addEventListener('click', async () => {
-		console.log('cria aluno aqui!');
+		try {
+			const newStudent = {
+				name: document.querySelector('#input-user-name').value,
+				email: document.querySelector('#input-user-email').value,
+				registration: document.querySelector('#input-user-register')
+					.value,
+				subject: document.querySelector('#input-user-subjects').value,
+				role: userRole,
+			};
+
+			await createStudentApi(newStudent);
+
+			ToastBar(
+				{
+					iconParam: '../../assets/CheckCircle.svg',
+					titleParam: 'Sucesso',
+					msgParam: 'Professor(a) criado com sucesso!',
+				},
+				'success-toast',
+			);
+
+			resetUserInuts();
+		} catch (error) {
+			throw new Error('Erro ao criar aluno');
+		}
 	});
 };
