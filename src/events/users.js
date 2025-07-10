@@ -6,8 +6,6 @@ import {
 } from '../api/professorsFetch.js';
 import ToastBar from '../components/ToastBar/index.js';
 import UserList from '../components/Users/UserList.js';
-import { getAllUsers } from '../data/userData.js';
-import urls from '../urls/index.js';
 
 export const createProfessor = async element => {
 	element.addEventListener('click', async () => {
@@ -43,8 +41,10 @@ export const deleteUser = async element => {
 	element.addEventListener('click', async event => {
 		try {
 			const headerUrl = window.location.href.split('/')[4];
+			console.log('🚀 ~ headerUrl:', headerUrl);
 			const userTargetId = event.target.id;
 			const userId = userTargetId.split('-')[2];
+			console.log('🚀 ~ userId:', userId);
 
 			await deleteProfessorApi(userId);
 
@@ -56,9 +56,6 @@ export const deleteUser = async element => {
 				},
 				'success-toast',
 			);
-
-			const users = await getAllUsers(urls.users);
-			console.log('🚀 ~ users:', users);
 
 			const professors = await getAllProfessorsApi();
 
@@ -82,6 +79,7 @@ export const deleteUser = async element => {
 				const ProfessorArray = professors.filter(
 					professor => professor.role.toLowerCase() === 'professor',
 				);
+				console.log('🚀 ~ ProfessorArray:', ProfessorArray);
 				const professorList = await UserList(ProfessorArray);
 				professorContent.innerHTML = '';
 				professorContent.appendChild(topArea);
@@ -124,5 +122,11 @@ export const updateProfessor = async (element, professorId) => {
 			},
 			'success-toast',
 		);
+	});
+};
+
+export const createStudent = async element => {
+	element.addEventListener('click', async () => {
+		console.log('cria aluno aqui!');
 	});
 };

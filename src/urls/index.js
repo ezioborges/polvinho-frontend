@@ -1,11 +1,8 @@
 const urls = {
-	loginProd: 'polvinho-backend.vercel.app/login',
 	login: 'http://localhost:2424/login',
 
 	professors: 'http://localhost:2424/users/professors',
-
-	usersProd: 'polvinho-backend.vercel.app/users',
-	users: 'http://localhost:2424/users',
+	students: 'http://localhost:2424/users/students/',
 
 	subjectsProd: 'polvinho-backend.vercel.app/subjects',
 	subjects: 'http://localhost:2424/subjects',

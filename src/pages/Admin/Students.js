@@ -1,19 +1,17 @@
+import { getAllStudenstsApi } from '../../api/studentsFetch.js';
 import createEntityButtonRoute from '../../components/Buttons/createEntityButtonRoute.js';
 import PageTitle from '../../components/PageTitle.js';
 import UserList from '../../components/Users/UserList.js';
-import { getAllUsers } from '../../data/userData.js';
-import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 
 const Students = async () => {
-	const { usersList } = await getAllUsers(urls.users);
-
 	const studentsContent = newElement('div');
 	studentsContent.id = 'students-content';
 
-	const studentArray = usersList.filter(
-		user => user.role === 'aluno' && user.isDeleted === false,
-	);
+	const students = await getAllStudenstsApi();
+	console.log('🚀 ~ Students ~ students:', students);
+
+	const studentArray = students.filter(user => user.isDeleted === false);
 
 	const studentAmount = studentArray.length;
 
