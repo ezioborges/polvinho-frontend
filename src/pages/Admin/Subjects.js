@@ -33,7 +33,7 @@ const Subjects = async () => {
 	);
 	changeToRegister.id = 'button-change-to-register';
 	changeToRegister.onclick = () =>
-		(window.location.href = '#/register/subject');
+		(window.location.href = '#/register/disciplinas');
 
 	const listContent = newElement('div');
 	listContent.classList.add('list-area');

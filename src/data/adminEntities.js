@@ -3,5 +3,5 @@
 export const entities = [
 	{ entity: 'Aluno' },
 	{ entity: 'Professor' },
-	{ entity: 'Subject' },
+	{ entity: 'Disciplinas' },
 ];

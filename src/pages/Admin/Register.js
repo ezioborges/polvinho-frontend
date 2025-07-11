@@ -6,7 +6,7 @@ const Register = async () => {
 	const roleFromHash = window.location.hash.split('/')[2].toLocaleLowerCase();
 	console.log(roleFromHash);
 
-	if (roleFromHash === 'subject') {
+	if (roleFromHash === 'disciplinas') {
 		return SubjectsRegister();
 	}
 
