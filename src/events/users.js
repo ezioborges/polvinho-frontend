@@ -113,7 +113,6 @@ export const updateUser = (element, userRole, userId) => {
 			},
 			'success-toast',
 		);
-		console.log('userUpdated ===> ', userUpdated);
 	});
 };
 
@@ -121,10 +120,8 @@ export const deleteUser = async element => {
 	element.addEventListener('click', async event => {
 		try {
 			const headerUrl = window.location.href.split('/')[4];
-			console.log('🚀 ~ headerUrl:', headerUrl);
 			const userTargetId = event.target.id;
 			const userId = userTargetId.split('-')[2];
-			console.log('🚀 ~ userId:', userId);
 
 			await deleteProfessorApi(userId);
 
@@ -137,14 +134,8 @@ export const deleteUser = async element => {
 				'success-toast',
 			);
 
-<<<<<<< HEAD
-			const usersDara = await getAllUsers(urls.users);
-
-			const users = usersDara.usersList;
-=======
 			const professors = await getAllProfessorsApi();
 			const students = await getAllStudenstsApi();
->>>>>>> 00008fa94d6ca626bce1a60624dfe76790c22df4
 
 			if (headerUrl === 'aluno-admin') {
 				const studentsContent =
@@ -166,7 +157,6 @@ export const deleteUser = async element => {
 				const ProfessorArray = professors.filter(
 					professor => professor.role.toLowerCase() === 'professor',
 				);
-				console.log('🚀 ~ ProfessorArray:', ProfessorArray);
 				const professorList = await UserList(ProfessorArray);
 				professorContent.innerHTML = '';
 				professorContent.appendChild(topArea);
@@ -177,47 +167,3 @@ export const deleteUser = async element => {
 		}
 	});
 };
-<<<<<<< HEAD
-
-export const updateUser = async (element, userId, role) => {
-	element.addEventListener('click', async () => {
-		const subjects = await getAllSubjects(urls.subjects);
-
-		const subjectOption = document.querySelector(
-			'#select-edit-subjects',
-		).value;
-
-		const subjectId = subjects.find(
-			subject => subject.name === subjectOption,
-		);
-
-		const urlUpdate = `${urls.users}/${userId}`;
-
-		const userUpdated = {
-			name: document.querySelector('#input-edit-name').value,
-			email: document.querySelector('#input-edit-email').value,
-			subject: [subjectId._id],
-		};
-
-		try {
-			await updateUserEvent(urlUpdate, userUpdated);
-			ToastBar({
-				iconParam: '../../assets/CheckCircle.svg',
-				titleParam: 'Sucesso',
-				msgParam: 'Usuário atualizado com sucesso!',
-			});
-			setTimeout(() => {
-				window.location.hash = `#/${role}-admin`;
-			}, 2000);
-		} catch (error) {
-			ToastBar({
-				iconParam: '../../assets/ErrorCircle.svg',
-				titleParam: 'Erro',
-				msgParam: 'Erro ao atualizar usuário!',
-			});
-			console.error(error);
-		}
-	});
-};
-=======
->>>>>>> 00008fa94d6ca626bce1a60624dfe76790c22df4

@@ -9,7 +9,6 @@ const Students = async () => {
 	studentsContent.id = 'students-content';
 
 	const students = await getAllStudenstsApi();
-	console.log('🚀 ~ Students ~ students:', students);
 
 	const studentArray = students.filter(user => user.isDeleted === false);
 

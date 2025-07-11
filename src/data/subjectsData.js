@@ -98,8 +98,6 @@ export const deleteSubject = async subjectId => {
 };
 
 export const updateSubject = async (subjectId, subjectUpdated) => {
-	console.log('subjectId ==> ', subjectId);
-	console.log('url ===> ', `${urls.subjects}/${subjectId}`);
 	try {
 		const userLogin = localStorage.getItem('userLogin');
 		const token = userLogin ? JSON.parse(userLogin).token : null;

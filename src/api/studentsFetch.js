@@ -40,8 +40,6 @@ export const createStudentApi = async studentData => {
 
 export const updateStudentApi = async (studentId, studentData) => {
 	const updateStudentURL = `${urls.students}/${studentId}`;
-	console.log('🚀 ~ updateStudentApi ~ updateURL:', updateStudentURL);
-	console.log('aqui é o studentData ===> ', studentData);
 
 	const response = await fetch(updateStudentURL, {
 		method: 'PUT',
@@ -56,7 +54,6 @@ export const updateStudentApi = async (studentId, studentData) => {
 	}
 
 	const data = await response.json();
-	console.log('🚀 ~ updateStudentApi ~ data:', data);
 };
 
 export const deleteStudentApi = async studentId => {

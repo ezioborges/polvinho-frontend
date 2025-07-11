@@ -89,11 +89,6 @@ export const clickCloseFinishDialog = () => {
 	}
 };
 
-export const clickResults = () => {
-	const hash = window.location.hash;
-	console.log('🚀 testando a rota de resultados', hash);
-};
-
 export const clickFormLogin = element => {
 	element.addEventListener('submit', async event => {
 		event.preventDefault();
@@ -147,17 +142,6 @@ export const endSession = event => {
 	});
 
 	clickEventCancelButton(event);
-};
-
-export const registerProfessor = async (element, roleFromHash) => {
-	element.addEventListener('click', async () => {
-		try {
-			console.log('roleFromHash ==>', roleFromHash);
-			console.log('element ==> ', element);
-		} catch (error) {
-			throw new Error(`Erro ao buscar usuários: ${error.message}`);
-		}
-	});
 };
 
 // TODO: criar as validações necessárias (Regras de négicio) para criação de disciplinas.

@@ -58,7 +58,6 @@ export const deleteSubjectEvent = element => {
 };
 
 export const updateSubjectsEvent = (element, subject) => {
-	console.log('subject ===> ', subject._id);
 	element.addEventListener('click', async () => {
 		const updatedSubject = {
 			name: document.querySelector('#input-edit-subject').value,

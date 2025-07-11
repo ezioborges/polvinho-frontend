@@ -8,7 +8,6 @@ import newElement from '../../utils/newElement.js';
 const SubjectEdit = async () => {
 	const subjectId = window.location.href.split('/')[6];
 	const subject = await getSubjectsById(subjectId);
-	console.log('SubjectEdit subject ===> ', subject);
 	const professor = await getUserById(subject.professor);
 
 	const editContent = newElement('div');
