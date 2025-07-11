@@ -1,6 +1,8 @@
+import { getAllUsersApi } from '../api/users.js';
 import Dialog from '../components/Dialogs/index.js';
 import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
 import SidebarPanel from '../components/Panel/SidebarPanel.js';
+import SubjectsPanelList from '../components/Panel/SubjectsPanelList.js';
 import ToastBar from '../components/ToastBar/index.js';
 import { fetchCreateSubjects } from '../data/subjectsData.js';
 import { fetchLogin } from '../data/userData.js';
@@ -215,19 +217,20 @@ export const subjectsAmountDropdown = element => {
 			panelSubjects.classList.add('subjects-dropdown-close');
 			panelSubjects.innerHTML = '';
 		} else {
-			// const users  = await getAllUsers(urls.users);
-			// const currentUser = users.find(user => user._id === userId);
+			const users = await getAllUsersApi();
 
-			// if (!currentUser) {
-			// 	console.error(`Usuário com ID ${userId} não encontrado.`);
-			// 	return;
-			// }
+			const currentUser = users.find(user => user._id === userId);
+
+			if (!currentUser) {
+				console.error(`Usuário com ID ${userId} não encontrado.`);
+				return;
+			}
 
 			// Passa um ARRAY CONTENDO APENAS O USUÁRIO ATUAL para SubjectsPanelList
-			// const panelList = await SubjectsPanelList([currentUser]);
+			const panelList = await SubjectsPanelList(currentUser);
 
 			panelSubjects.innerHTML = '';
-			// panelSubjects.appendChild(panelList);
+			panelSubjects.appendChild(panelList);
 
 			panelSubjects.classList.remove('subjects-dropdown-close');
 			panelSubjects.classList.add('subjects-dropdown-open');
