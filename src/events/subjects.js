@@ -68,11 +68,14 @@ export const updateSubjectsEvent = (element, subject) => {
 		try {
 			await updateSubject(subject._id, updatedSubject);
 
-			ToastBar({
-				iconParam: '../../assets/CheckCircle.svg',
-				titleParam: 'Sucesso',
-				msgParam: 'Disciplina atualizada com sucesso!',
-			});
+			ToastBar(
+				{
+					iconParam: '../../assets/CheckCircle.svg',
+					titleParam: 'Sucesso',
+					msgParam: 'Disciplina atualizada com sucesso!',
+				},
+				'success-toast',
+			);
 
 			window.location.href = `#/subjects-admin`;
 		} catch (error) {

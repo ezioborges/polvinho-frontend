@@ -1,6 +1,5 @@
-import { getAllUsers } from '../../data/userData.js';
+import { getAllProfessorsApi } from '../../api/professorsFetch.js';
 import { deleteSubjectEvent } from '../../events/subjects.js';
-import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 import BodyWithoutContent from '../BodyWithoutContent.js';
 
@@ -8,10 +7,8 @@ const SubjectsList = async subjectsArray => {
 	const bodyArea = newElement('div');
 	bodyArea.classList.add('body-area');
 
-	const usersData = await getAllUsers(urls.users);
-
-	const users = usersData.usersList;
-	const professors = users.filter(user => user.role === 'professor');
+	const allProfessor = await getAllProfessorsApi();
+	const professors = allProfessor.filter(user => user.role === 'professor');
 
 	subjectsArray.forEach(subject => {
 		const listRow = newElement('div');

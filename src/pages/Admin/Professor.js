@@ -1,14 +1,13 @@
+import { getAllProfessorsApi } from '../../api/professorsFetch.js';
 import createEntityButtonRoute from '../../components/Buttons/createEntityButtonRoute.js';
 import PageTitle from '../../components/PageTitle.js';
 import UserList from '../../components/Users/UserList.js';
-import { getAllUsers } from '../../data/userData.js';
-import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 
 const Professor = async () => {
-	const usersData = await getAllUsers(urls.users);
+	const professors = await getAllProfessorsApi();
 
-	const users = usersData.usersList;
+	const users = professors;
 
 	const professorContent = newElement('div');
 	professorContent.id = 'professor-content';

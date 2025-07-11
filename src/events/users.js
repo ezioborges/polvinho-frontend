@@ -1,39 +1,157 @@
+import {
+	deleteProfessorApi,
+	getAllProfessorsApi,
+	updateProfessorApi,
+} from '../api/professorsFetch.js';
+import {
+	createStudentApi,
+	getAllStudenstsApi,
+	updateStudentApi,
+} from '../api/studentsFetch.js';
 import ToastBar from '../components/ToastBar/index.js';
 import UserList from '../components/Users/UserList.js';
-import { getAllSubjects } from '../data/subjectsData.js';
-import {
-	deleteUserEvent,
-	getAllUsers,
-	updateUserEvent,
-} from '../data/userData.js';
-import urls from '../urls/index.js';
+import { resetUserInuts } from '../utils/resetUserInputs.js';
+
+export const createUser = (element, userRole) => {
+	element.addEventListener('click', async () => {
+		try {
+			const newStudent = {
+				name: document.querySelector('#input-user-name').value,
+				email: document.querySelector('#input-user-email').value,
+				registration: document.querySelector('#input-user-register')
+					.value,
+				subject: document.querySelector('#input-user-subjects').value,
+				role: userRole,
+			};
+
+			await createStudentApi(newStudent);
+
+			ToastBar(
+				{
+					iconParam: '../../assets/CheckCircle.svg',
+					titleParam: 'Sucesso',
+					msgParam: 'Professor(a) criado com sucesso!',
+				},
+				'success-toast',
+			);
+
+			resetUserInuts();
+		} catch (error) {
+			throw new Error('Erro ao criar aluno');
+		}
+	});
+};
+
+export const updateProfessor = async (element, professorId) => {
+	element.addEventListener('click', async () => {
+		const professorUpdated = {
+			name: document.querySelector('#input-edit-name').value,
+			email: document.querySelector('#input-edit-email').value,
+			subject: document.querySelector('#select-edit-subjects').value,
+		};
+
+		const { name, email, subject } = professorUpdated;
+
+		if (!name || !email || !subject) {
+			ToastBar(
+				{
+					iconParam: '../../assets/Vector-error.png',
+					titleParam: 'Error',
+					msgParam: 'Preencha todos os campos obrigatórios!',
+				},
+				'error-toast',
+			);
+		}
+
+		await updateProfessorApi(professorId, professorUpdated);
+
+		ToastBar(
+			{
+				iconParam: '../../assets/CheckCircle.svg',
+				titleParam: 'Sucesso',
+				msgParam: 'Professor(a) atualizado com sucesso!',
+			},
+			'success-toast',
+		);
+	});
+};
+
+export const updateUser = (element, userRole, userId) => {
+	element.addEventListener('click', async () => {
+		const userUpdated = {
+			name: document.querySelector('#input-edit-name').value,
+			email: document.querySelector('#input-edit-email').value,
+			subject: document.querySelector('#select-edit-subjects').value,
+		};
+
+		const { name, email, subject } = userUpdated;
+
+		if (!name || !email || !subject) {
+			ToastBar(
+				{
+					iconParam: '../../assets/Vector-error.png',
+					titleParam: 'Error',
+					msgParam: 'Preencha todos os campos obrigatórios!',
+				},
+				'error-toast',
+			);
+		}
+
+		if (userRole === 'aluno') {
+			await updateStudentApi(userId, userUpdated);
+		}
+
+		if (userRole === 'professor') {
+			await updateProfessorApi(userId, userUpdated);
+		}
+
+		ToastBar(
+			{
+				iconParam: '../../assets/CheckCircle.svg',
+				titleParam: 'Sucesso',
+				msgParam: `${userRole}(a) atualizado com sucesso!`,
+			},
+			'success-toast',
+		);
+		console.log('userUpdated ===> ', userUpdated);
+	});
+};
 
 export const deleteUser = async element => {
 	element.addEventListener('click', async event => {
 		try {
 			const headerUrl = window.location.href.split('/')[4];
+			console.log('🚀 ~ headerUrl:', headerUrl);
 			const userTargetId = event.target.id;
 			const userId = userTargetId.split('-')[2];
-			const urlDelete = `${urls.users}/${userId}`;
+			console.log('🚀 ~ userId:', userId);
 
-			await deleteUserEvent(urlDelete);
+			await deleteProfessorApi(userId);
 
-			ToastBar({
-				iconParam: '../../assets/CheckCircle.svg',
-				titleParam: 'Sucesso',
-				msgParam: 'Usuário excluído com sucesso!',
-			});
+			ToastBar(
+				{
+					iconParam: '../../assets/CheckCircle.svg',
+					titleParam: 'Sucesso',
+					msgParam: 'Usuário excluído com sucesso!',
+				},
+				'success-toast',
+			);
 
+<<<<<<< HEAD
 			const usersDara = await getAllUsers(urls.users);
 
 			const users = usersDara.usersList;
+=======
+			const professors = await getAllProfessorsApi();
+			const students = await getAllStudenstsApi();
+>>>>>>> 00008fa94d6ca626bce1a60624dfe76790c22df4
 
 			if (headerUrl === 'aluno-admin') {
 				const studentsContent =
 					document.querySelector('#students-content');
 				const topArea = document.querySelector('.body-title-area');
-				const studentArray = users.filter(
-					user => user.role === 'aluno',
+				const studentArray = students.filter(
+					user => user.role.toLowerCase() === 'aluno',
 				);
 				studentsContent.innerHTML = '';
 				const studentsList = await UserList(studentArray);
@@ -45,9 +163,10 @@ export const deleteUser = async element => {
 				const professorContent =
 					document.querySelector('#professor-content');
 				const topArea = document.querySelector('.body-title-area');
-				const ProfessorArray = users.filter(
-					user => user.role.toLowerCase() === 'professor',
+				const ProfessorArray = professors.filter(
+					professor => professor.role.toLowerCase() === 'professor',
 				);
+				console.log('🚀 ~ ProfessorArray:', ProfessorArray);
 				const professorList = await UserList(ProfessorArray);
 				professorContent.innerHTML = '';
 				professorContent.appendChild(topArea);
@@ -58,6 +177,7 @@ export const deleteUser = async element => {
 		}
 	});
 };
+<<<<<<< HEAD
 
 export const updateUser = async (element, userId, role) => {
 	element.addEventListener('click', async () => {
@@ -99,3 +219,5 @@ export const updateUser = async (element, userId, role) => {
 		}
 	});
 };
+=======
+>>>>>>> 00008fa94d6ca626bce1a60624dfe76790c22df4

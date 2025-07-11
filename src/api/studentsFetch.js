@@ -1,0 +1,74 @@
+import urls from '../urls/index.js';
+
+export const getAllStudenstsApi = async () => {
+	const getallStudentsURL = `${urls.students}`;
+	const response = await fetch(getallStudentsURL, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error('Erro ao buscar alunos');
+	}
+
+	const data = await response.json();
+
+	return data;
+};
+
+export const createStudentApi = async studentData => {
+	const createStudentUrl = `${urls.students}`;
+
+	const response = await fetch(createStudentUrl, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(studentData),
+	});
+
+	if (!response.ok) {
+		throw new Error('Erro ao criar aluno');
+	}
+
+	const data = await response.json();
+
+	return data;
+};
+
+export const updateStudentApi = async (studentId, studentData) => {
+	const updateStudentURL = `${urls.students}/${studentId}`;
+	console.log('🚀 ~ updateStudentApi ~ updateURL:', updateStudentURL);
+	console.log('aqui é o studentData ===> ', studentData);
+
+	const response = await fetch(updateStudentURL, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(studentData),
+	});
+
+	if (!response.ok) {
+		throw new Error('Erro ao atualizar aluno');
+	}
+
+	const data = await response.json();
+	console.log('🚀 ~ updateStudentApi ~ data:', data);
+};
+
+export const deleteStudentApi = async studentId => {
+	const deleteStudentURL = `${urls.students}/${studentId}`;
+
+	const response = await fetch(deleteStudentURL, {
+		method: 'DELETE',
+		headers: { 'Content-Type': 'application/json' },
+	});
+	if (!response.ok) {
+		throw new Error('Erro ao deletar aluno');
+	}
+	const data = await response.json();
+	return data;
+};
