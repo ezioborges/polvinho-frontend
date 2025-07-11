@@ -1,5 +1,3 @@
-import urls from '../urls/index.js';
-
 export async function fetchLogin(url) {
 	const credentialsInput = document.querySelector('#credentials');
 	const passwordInput = document.querySelector('#password');
@@ -50,26 +48,6 @@ export const getAllUsers = async url => {
 
 	const data = await response.json();
 
-	return data;
-};
-
-export const getUserById = async userId => {
-	const userLogin = localStorage.getItem('userLogin');
-	const token = userLogin ? JSON.parse(userLogin).token : null;
-
-	const response = await fetch(`${urls.users}/${userId}`, {
-		method: 'GET',
-		headers: {
-			'constent-type': 'application/json',
-			Authorization: `Bearer ${token}`,
-		},
-	});
-
-	if (!response.ok) {
-		throw new Error('Erro ao buscar usuário com ID', userId);
-	}
-
-	const data = await response.json();
 	return data;
 };
 

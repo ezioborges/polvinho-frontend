@@ -96,29 +96,3 @@ export const deleteSubject = async subjectId => {
 
 	return data;
 };
-
-export const updateSubject = async (subjectId, subjectUpdated) => {
-	try {
-		const userLogin = localStorage.getItem('userLogin');
-		const token = userLogin ? JSON.parse(userLogin).token : null;
-
-		const response = await fetch(`${urls.subjects}/${subjectId}`, {
-			method: 'PUT',
-			headers: {
-				'Content-type': 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
-			body: JSON.stringify(subjectUpdated),
-		});
-
-		if (!response.ok) {
-			throw new Error('Erro ao atualizar disciplina');
-		}
-
-		const data = await response.json();
-
-		return data;
-	} catch (error) {
-		console.error('Erro ao atualizar disciplina: ', error.message);
-	}
-};

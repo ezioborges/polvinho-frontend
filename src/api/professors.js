@@ -47,6 +47,10 @@ export const getProfessorByIdApi = async professorId => {
 		},
 	});
 
+	if (!response.ok) {
+		throw new Error('Erro ao buscar professor pelo ID');
+	}
+
 	const data = await response.json();
 
 	return data;

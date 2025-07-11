@@ -4,8 +4,9 @@ import SubjectsRegister from './SubjectsRegister.js';
 
 const Register = async () => {
 	const roleFromHash = window.location.hash.split('/')[2].toLocaleLowerCase();
+	console.log(roleFromHash);
 
-	if (roleFromHash === 'disciplina') {
+	if (roleFromHash === 'subject') {
 		return SubjectsRegister();
 	}
 

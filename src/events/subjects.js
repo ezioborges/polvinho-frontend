@@ -1,13 +1,31 @@
+import { createSubject, updateSubject } from '../api/subjects.js';
 import BodyWithoutContent from '../components/BodyWithoutContent.js';
 import PageTitle from '../components/PageTitle.js';
 import SubjectsList from '../components/Subjects/SubjectsList.js';
 import ToastBar from '../components/ToastBar/index.js';
-import {
-	deleteSubject,
-	getAllSubjects,
-	updateSubject,
-} from '../data/subjectsData.js';
+import { deleteSubject, getAllSubjects } from '../data/subjectsData.js';
 import urls from '../urls/index.js';
+
+export const createSubjectEvent = element => {
+	element.addEventListener('click', () => {
+		const newSubjetc = {
+			name: document.querySelector('#input-new-subject').value,
+		};
+
+		createSubject(newSubjetc);
+
+		document.querySelector('#input-new-subject').value = '';
+
+		ToastBar(
+			{
+				iconParam: '../../assets/CheckCircle.png',
+				titleParam: 'Sucesso',
+				msgParam: 'Disciplçina adicionada com sucesso!',
+			},
+			'success-toast',
+		);
+	});
+};
 
 export const deleteSubjectEvent = element => {
 	element.addEventListener('click', async ({ target }) => {
@@ -49,22 +67,26 @@ export const deleteSubjectEvent = element => {
 		subjectsContent.appendChild(titleListArea);
 		subjectsContent.appendChild(subjectsListItems);
 
-		ToastBar({
-			iconParam: '../../assets/CheckCircle.svg',
-			titleParam: 'Sucesso',
-			msgParam: 'Disciplina excluída com sucesso!',
-		});
+		ToastBar(
+			{
+				iconParam: '../../assets/CheckCircle.svg',
+				titleParam: 'Sucesso',
+				msgParam: 'Disciplina excluída com sucesso!',
+			},
+			'success-toast',
+		);
 	});
 };
 
 export const updateSubjectsEvent = (element, subject) => {
 	element.addEventListener('click', async () => {
-		const updatedSubject = {
-			name: document.querySelector('#input-edit-subject').value,
-			professor: document.querySelector('#input-edit-professor').value,
-		};
-
 		try {
+			const updatedSubject = {
+				name: document.querySelector('#input-edit-subject').value,
+				professor: document.querySelector('#input-edit-professor')
+					.value,
+			};
+
 			await updateSubject(subject._id, updatedSubject);
 
 			ToastBar(

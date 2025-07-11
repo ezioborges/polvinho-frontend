@@ -41,6 +41,7 @@
 	align-items: center;
 	height: 100%;
 	width: 20vw;
+	z-index: 1;
 }
 
 .actions-click-area {
@@ -58,12 +59,11 @@
 	transform: translateX(2rem);
 }
 
-.student-subjects-amount p {
+.student-subjects-amount div {
 	padding: 0 5px;
 	border-radius: 5px;
-	z-index: 1;
 }
 
-.student-subjects-amount p:hover {
+.student-subjects-amount div:hover {
 	background-color: var(--stone-400);
 }

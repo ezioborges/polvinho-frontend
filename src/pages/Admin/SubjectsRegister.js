@@ -1,6 +1,6 @@
 import QuizzButton from '../../components/Buttons/QuizzButton.js';
 import InputArea from '../../components/Input/textInput.js';
-import { createSubjects } from '../../utils/eventListeners.js';
+import { createSubjectEvent } from '../../events/subjects.js';
 import newElement from '../../utils/newElement.js';
 
 const SubjectsRegister = () => {
@@ -25,7 +25,7 @@ const SubjectsRegister = () => {
 
 	const registerButton = QuizzButton('Cadastrar', 'button-content', 'textMd');
 	registerButton.style.width = '19.2vw';
-	createSubjects(registerButton, 'disciplina');
+	createSubjectEvent(registerButton, 'disciplina');
 
 	buttonArea.appendChild(registerButton);
 

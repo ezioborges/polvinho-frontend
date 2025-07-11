@@ -25,6 +25,11 @@ const UserListComponent = (users, listContent) => {
 		studentSubjectsAmountArea.classList.add('student-box-area');
 		studentSubjectsAmountArea.classList.add('student-subjects-amount');
 
+		const studentSubjectsAmount = newElement('div');
+		studentSubjectsAmount.textContent =
+			user.subject.length > 0 ? user.subject.length : '0';
+		studentSubjectsAmount.classList.add('textMd');
+
 		// Adiciona o ID do usuário no elemento
 		studentSubjectsAmountArea.dataset.userId = user._id;
 		studentSubjectsAmountArea.dataset.userRegistration = user.registration;
@@ -50,11 +55,6 @@ const UserListComponent = (users, listContent) => {
 		const studentName = newElement('p');
 		studentName.textContent = user.name;
 		studentName.classList.add('textMd');
-
-		const studentSubjectsAmount = newElement('p');
-		studentSubjectsAmount.textContent =
-			user.subject.length > 0 ? user.subject.length : '0';
-		studentSubjectsAmount.classList.add('textMd');
 
 		const editArea = newElement('a');
 		editArea.classList.add('edit-area');
