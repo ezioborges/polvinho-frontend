@@ -1,4 +1,4 @@
-import { getAllProfessorsApi } from '../../api/professorsFetch.js';
+import { getAllProfessorsApi } from '../../api/professors.js';
 import { deleteSubjectEvent } from '../../events/subjects.js';
 import newElement from '../../utils/newElement.js';
 import BodyWithoutContent from '../BodyWithoutContent.js';

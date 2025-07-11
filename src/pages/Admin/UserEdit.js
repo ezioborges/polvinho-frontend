@@ -1,4 +1,4 @@
-import { getProfessorByIdApi } from '../../api/professorsFetch.js';
+import { getProfessorByIdApi } from '../../api/professors.js';
 import QuizzButton from '../../components/Buttons/QuizzButton.js';
 import selectInput from '../../components/Input/selectInput.js';
 import InputArea from '../../components/Input/textInput.js';

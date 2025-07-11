@@ -2,12 +2,12 @@ import {
 	deleteProfessorApi,
 	getAllProfessorsApi,
 	updateProfessorApi,
-} from '../api/professorsFetch.js';
+} from '../api/professors.js';
 import {
 	createStudentApi,
 	getAllStudenstsApi,
 	updateStudentApi,
-} from '../api/studentsFetch.js';
+} from '../api/students.js';
 import ToastBar from '../components/ToastBar/index.js';
 import UserList from '../components/Users/UserList.js';
 import { resetUserInuts } from '../utils/resetUserInputs.js';

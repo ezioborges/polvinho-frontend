@@ -1,4 +1,4 @@
-import { getAllStudenstsApi } from '../../api/studentsFetch.js';
+import { getAllStudenstsApi } from '../../api/students.js';
 import createEntityButtonRoute from '../../components/Buttons/createEntityButtonRoute.js';
 import PageTitle from '../../components/PageTitle.js';
 import UserList from '../../components/Users/UserList.js';
