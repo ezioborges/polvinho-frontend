@@ -70,7 +70,7 @@ const UserListComponent = (users, listContent) => {
 		deleteArea.classList.add('delete-area');
 		deleteArea.textContent = 'Excluir';
 		deleteArea.classList.add('textSm');
-		deleteUser(deleteArea);
+		deleteUser(deleteArea, user.role);
 
 		actionsClickArea.appendChild(editArea);
 		actionsClickArea.appendChild(deleteArea);

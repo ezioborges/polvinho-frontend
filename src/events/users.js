@@ -6,6 +6,7 @@ import {
 } from '../api/professors.js';
 import {
 	createStudentApi,
+	deleteStudentApi,
 	getAllStudenstsApi,
 	updateStudentApi,
 } from '../api/students.js';
@@ -124,14 +125,20 @@ export const updateUser = (element, userRole, userId) => {
 	});
 };
 
-export const deleteUser = async element => {
+export const deleteUser = async (element, userRole) => {
 	element.addEventListener('click', async event => {
 		try {
 			const headerUrl = window.location.href.split('/')[4];
 			const userTargetId = event.target.id;
 			const userId = userTargetId.split('-')[2];
 
-			await deleteProfessorApi(userId);
+			if (userRole === 'professor') {
+				await deleteProfessorApi(userId);
+			}
+
+			if (userRole === 'aluno') {
+				await deleteStudentApi(userId);
+			}
 
 			ToastBar(
 				{

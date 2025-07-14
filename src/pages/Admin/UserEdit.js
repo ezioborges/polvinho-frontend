@@ -1,10 +1,9 @@
 import { getProfessorByIdApi } from '../../api/professors.js';
+import { getAllSubjectsApi } from '../../api/subjects.js';
 import QuizzButton from '../../components/Buttons/QuizzButton.js';
 import selectInput from '../../components/Input/selectInput.js';
 import InputArea from '../../components/Input/textInput.js';
-import { getAllSubjects } from '../../data/subjectsData.js';
 import { updateUser } from '../../events/users.js';
-import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 import textGenerator from '../../utils/textGenerator.js';
 
@@ -12,7 +11,7 @@ const UserEdit = async () => {
 	const userId = window.location.hash.split('/')[3];
 
 	const userToEdit = await getProfessorByIdApi(userId);
-	const subjects = await getAllSubjects(urls.subjects);
+	const subjects = await getAllSubjectsApi();
 
 	const editContent = newElement('div');
 
