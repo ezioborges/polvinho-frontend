@@ -1,14 +1,17 @@
+import { getAllSubjectsApi } from '../../api/subjects.js';
 import BodyWithoutContent from '../../components/BodyWithoutContent.js';
 import createEntityButtonRoute from '../../components/Buttons/createEntityButtonRoute.js';
 import headerEntitiesList from '../../components/Headers/headerEntitiesList.js';
 import PageTitle from '../../components/PageTitle.js';
 import SubjectsList from '../../components/Subjects/SubjectsList.js';
-import { getAllSubjects } from '../../data/subjectsData.js';
-import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 
 const Subjects = async () => {
-	const subjects = await getAllSubjects(urls.subjects);
+	const subjects = await getAllSubjectsApi();
+
+	if (!subjects || subjects.length === 0) {
+		console.log('Não há disciplinas cadastradas!');
+	}
 
 	const subjectsContent = newElement('div');
 	subjectsContent.id = 'subjects-content';

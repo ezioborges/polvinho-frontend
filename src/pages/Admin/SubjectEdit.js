@@ -1,14 +1,14 @@
 import { getAllProfessorsApi } from '../../api/professors.js';
+import { getSubjectByIdApi } from '../../api/subjects.js';
 import QuizzButton from '../../components/Buttons/QuizzButton.js';
 import selectInput from '../../components/Input/selectInput.js';
 import InputArea from '../../components/Input/textInput.js';
-import { getSubjectsById } from '../../data/subjectsData.js';
 import { updateSubjectsEvent } from '../../events/subjects.js';
 import newElement from '../../utils/newElement.js';
 
 const SubjectEdit = async () => {
 	const subjectId = window.location.href.split('/')[6];
-	const subject = await getSubjectsById(subjectId);
+	const subject = await getSubjectByIdApi(subjectId);
 	const allprofessors = await getAllProfessorsApi();
 
 	const professorArray = allprofessors.map(professor => professor.name);

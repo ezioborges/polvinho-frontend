@@ -5,8 +5,6 @@ const SidebarPanel = () => {
 	const panelContent = newElement('div');
 	panelContent.classList.add('sidebar-panel-content');
 
-	const entities = newElement('div');
-
 	const studentList = panelItem('#/aluno-admin', 'Alunos', 'dropdown-items');
 	const profList = panelItem(
 		'#/professor-admin',

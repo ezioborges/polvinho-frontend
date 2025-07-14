@@ -10,7 +10,7 @@ import {
 } from '../api/students.js';
 import ToastBar from '../components/ToastBar/index.js';
 import UserList from '../components/Users/UserList.js';
-import { resetUserInuts } from '../utils/resetUserInputs.js';
+import { resetProfessorInputs } from '../utils/resetUserInputs.js';
 
 export const createUser = (element, userRole) => {
 	element.addEventListener('click', async () => {
@@ -73,6 +73,8 @@ export const updateProfessor = async (element, professorId) => {
 			},
 			'success-toast',
 		);
+
+		resetProfessorInputs();
 	});
 };
 
@@ -99,10 +101,12 @@ export const updateUser = (element, userRole, userId) => {
 
 		if (userRole === 'aluno') {
 			await updateStudentApi(userId, userUpdated);
+			resetProfessorInputs();
 		}
 
 		if (userRole === 'professor') {
 			await updateProfessorApi(userId, userUpdated);
+			resetProfessorInputs();
 		}
 
 		ToastBar(

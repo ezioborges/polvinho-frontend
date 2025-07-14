@@ -1,13 +1,12 @@
+import { getAllSubjectsApi } from '../../api/subjects.js';
 import QuizzButton from '../../components/Buttons/QuizzButton.js';
 import selectInput from '../../components/Input/selectInput.js';
 import InputArea from '../../components/Input/textInput.js';
-import { getAllSubjects } from '../../data/subjectsData.js';
-import urls from '../../urls/index.js';
 import newElement from '../../utils/newElement.js';
 import textGenerator from '../../utils/textGenerator.js';
 
 const UserRegister = async (role, createUser) => {
-	const subjects = await getAllSubjects(urls.subjects);
+	const subjects = await getAllSubjectsApi();
 
 	const subjectArray = subjects.map(subject => subject.name);
 

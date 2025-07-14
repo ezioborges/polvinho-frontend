@@ -1,10 +1,13 @@
-import { createSubject, updateSubject } from '../api/subjects.js';
+import {
+	createSubject,
+	deleteSubjectApi,
+	getAllSubjectsApi,
+	updateSubject,
+} from '../api/subjects.js';
 import BodyWithoutContent from '../components/BodyWithoutContent.js';
 import PageTitle from '../components/PageTitle.js';
 import SubjectsList from '../components/Subjects/SubjectsList.js';
 import ToastBar from '../components/ToastBar/index.js';
-import { deleteSubject, getAllSubjects } from '../data/subjectsData.js';
-import urls from '../urls/index.js';
 
 export const createSubjectEvent = element => {
 	element.addEventListener('click', () => {
@@ -29,9 +32,9 @@ export const createSubjectEvent = element => {
 
 export const deleteSubjectEvent = element => {
 	element.addEventListener('click', async ({ target }) => {
-		await deleteSubject(target.id);
+		await deleteSubjectApi(target.id);
 
-		const subjects = await getAllSubjects(urls.subjects);
+		const subjects = await getAllSubjectsApi();
 
 		const subjectsArray = subjects.filter(
 			subject => subject.isDeleted === false,
