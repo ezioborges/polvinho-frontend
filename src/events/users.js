@@ -106,11 +106,13 @@ export const updateUser = (element, userRole, userId) => {
 
 		if (userRole === 'aluno') {
 			await updateStudentApi(userId, userUpdated);
+			window.location.hash = '#/aluno-admin';
 			resetProfessorInputs();
 		}
 
 		if (userRole === 'professor') {
 			await updateProfessorApi(userId, userUpdated);
+			window.location.hash = '#/professor-admin';
 			resetProfessorInputs();
 		}
 

@@ -6,6 +6,7 @@ const SidebarTop = () => {
 	const userLogin = JSON.parse(localStorage.getItem('userLogin'));
 	const userRole = userLogin ? userLogin.user.role.toLowerCase() : null;
 
+	// TODO: AQUI VOU TRABALHAR NA TELA DE PROFESSOR TBM!!!
 	if (userRole === 'admin') {
 		const sidebarTopContent = newElement('div');
 		sidebarTopContent.id = 'sidebar-top';

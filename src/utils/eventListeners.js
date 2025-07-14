@@ -115,6 +115,10 @@ export const clickFormLogin = element => {
 					return (window.location.hash = '#/dashboard-admin');
 				}
 
+				if (role === 'professor') {
+					return (window.location.hash = '');
+				}
+
 				window.location.hash = '#/dashboard';
 			} else {
 				credentialsInput.style.border = ' 2px solid var(--red-500)';
