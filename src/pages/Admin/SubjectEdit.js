@@ -35,7 +35,7 @@ const SubjectEdit = async () => {
 	const buttonArea = newElement('div');
 	buttonArea.classList.add('button-area');
 
-	const registerButton = QuizzButton('Cadastrar', 'button-content', 'textMd');
+	const registerButton = QuizzButton('Editar', 'button-content', 'textMd');
 	registerButton.style.width = '19.2vw';
 	updateSubjectsEvent(registerButton, subject);
 
