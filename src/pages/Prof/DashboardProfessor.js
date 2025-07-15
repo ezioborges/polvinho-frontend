@@ -1,10 +1,9 @@
+import PageTitle from '../../components/PageTitle.js';
+import { Sidebar } from '../../components/Sidebar.js';
 import newElement from '../../utils/newElement.js';
 import { userNameByLocalStorage } from '../../utils/userNameByLocalStorage.js';
-import PageTitle from '../PageTitle.js';
-import { Sidebar } from '../Sidebar.js';
-import DashContent from './DashListItems.js';
 
-const DashboardMainContent = async () => {
+const DashboardProfessor = async () => {
 	const userName = userNameByLocalStorage();
 
 	const dashboardContent = newElement('div');
@@ -24,12 +23,10 @@ const DashboardMainContent = async () => {
 
 	const dashTitle = PageTitle('Dashboard', `Bem vindo, ${userName}`);
 
+	// const dasContent =
+
 	dashTitleArea.appendChild(dashTitle);
-
-	const dashContent = await DashContent();
-
 	dashMainBody.appendChild(dashTitleArea);
-	dashMainBody.appendChild(dashContent);
 
 	dashboardContent.appendChild(sidebar);
 	dashboardContent.appendChild(dashMainBody);
@@ -37,4 +34,4 @@ const DashboardMainContent = async () => {
 	return dashboardContent;
 };
 
-export default DashboardMainContent;
+export default DashboardProfessor;

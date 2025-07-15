@@ -79,12 +79,14 @@ export const handleLocation = async () => {
 			if (module.default && typeof module.default === 'function') {
 				const content = await module.default(params);
 
-				if (
-					path === '/' ||
-					path === '/dashboard' ||
-					path === '/dashboard-admin'
-				) {
-					// Login e Dashboard: limpa e renderiza na raiz
+				if (path === '/') {
+					// Apenas Login: limpa e renderiza na raiz
+					document.getElementById('main-content').innerHTML = '';
+					document
+						.getElementById('main-content')
+						.appendChild(content);
+				} else if (path.includes('/dashboard')) {
+					// Qualquer dashboard: renderiza diretamente
 					document.getElementById('main-content').innerHTML = '';
 					document
 						.getElementById('main-content')
@@ -93,11 +95,15 @@ export const handleLocation = async () => {
 					// Outras rotas: garante que main-body existe
 					let newMain = document.getElementById('main-body');
 					if (!newMain) {
-						// Renderiza a Dashboard primeiro para criar main-body
-						const DashboardModule = await import(
-							'./pages/Dashboard.js'
-						);
-						const DashboardContent = DashboardModule.default();
+						// Determina qual dashboard carregar baseado na rota atual
+						let dashboardPath = './pages/Dashboard.js'; // padrão
+
+						// Você pode adicionar lógica aqui para determinar o dashboard correto
+						// baseado no role do usuário ou na rota
+
+						const DashboardModule = await import(dashboardPath);
+						const DashboardContent =
+							await DashboardModule.default();
 						document.getElementById('main-content').innerHTML = '';
 						document
 							.getElementById('main-content')
@@ -112,10 +118,6 @@ export const handleLocation = async () => {
 							'<h1>Erro: container #main-body não encontrado!</h1>';
 					}
 				}
-			} else {
-				console.warn(
-					`O módulo ${route} não exportou uma função default.`,
-				);
 			}
 		} catch (error) {
 			console.error('Erro ao importar o módulo:', error);
