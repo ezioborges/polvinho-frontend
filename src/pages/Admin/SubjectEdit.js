@@ -11,7 +11,11 @@ const SubjectEdit = async () => {
 	const subject = await getSubjectByIdApi(subjectId);
 	const allprofessors = await getAllProfessorsApi();
 
-	const professorArray = allprofessors.map(professor => professor.name);
+	const allProfessorArray = allprofessors.filter(
+		professor => professor.isDeleted === false,
+	);
+
+	const professorArray = allProfessorArray.map(professor => professor.name);
 
 	const editContent = newElement('div');
 

@@ -42,8 +42,11 @@ const UserEdit = async () => {
 	);
 	userEmail.querySelector('#input-edit-email').value = `${userToEdit.email}`;
 
-	const subjectsOptions = [];
-	subjects.forEach(subject => subjectsOptions.push(subject.name));
+	const subjectsList = subjects.filter(
+		subject => subject.isDeleted === false,
+	);
+	const subjectsOptions = subjectsList.map(subject => subject.name);
+
 	const userSubject = selectInput(
 		'Disciplinas',
 		'select-edit-subjects',
