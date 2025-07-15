@@ -1,7 +1,6 @@
-export const userNameByLocalStorage = () => {
+export const userDataByLocalStorage = () => {
 	const userLogin = localStorage.getItem('userLogin');
 	const userObj = JSON.parse(userLogin);
-	const { name } = userObj.user;
 
-	return name;
+	return userObj;
 };

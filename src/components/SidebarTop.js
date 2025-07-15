@@ -1,5 +1,5 @@
 import { panelDropdown } from '../utils/eventListeners.js';
-import { SidebarUserTop } from './SidebarTopProfessor.js';
+import { SidebarUserTop } from './SidebarUserTop.js';
 
 const SidebarTop = () => {
 	const userLogin = JSON.parse(localStorage.getItem('userLogin'));

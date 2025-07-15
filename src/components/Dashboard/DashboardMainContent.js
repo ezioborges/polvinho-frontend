@@ -1,11 +1,16 @@
+import { getAllSubjectsApi } from '../../api/subjects.js';
+import { entities } from '../../data/adminEntities.js';
 import newElement from '../../utils/newElement.js';
-import { userNameByLocalStorage } from '../../utils/userNameByLocalStorage.js';
+import { userDataByLocalStorage } from '../../utils/userDataByLocalStorage.js';
 import PageTitle from '../PageTitle.js';
 import { Sidebar } from '../Sidebar.js';
-import DashContent from './DashListItems.js';
 
-const DashboardMainContent = async () => {
-	const userName = userNameByLocalStorage();
+const DashboardMainContent = async dashContentParam => {
+	const {
+		user: { name, role },
+	} = userDataByLocalStorage();
+
+	const userRole = role.toLowerCase();
 
 	const dashboardContent = newElement('div');
 	dashboardContent.classList.add('dash-content');
@@ -22,14 +27,26 @@ const DashboardMainContent = async () => {
 	const dashBody = newElement('div');
 	dashBody.classList.add('dashboard-body');
 
-	const dashTitle = PageTitle('Dashboard', `Bem vindo, ${userName}`);
+	const dashTitle = PageTitle('Dashboard', `Bem vindo, ${name}`);
 
 	dashTitleArea.appendChild(dashTitle);
 
-	const dashContent = await DashContent();
-
 	dashMainBody.appendChild(dashTitleArea);
-	dashMainBody.appendChild(dashContent);
+	dashMainBody.appendChild(dashTitleArea);
+
+	if (userRole === 'admin') {
+		const dashContent = await dashContentParam(entities);
+		dashMainBody.appendChild(dashContent);
+	}
+
+	if (role === 'professor') {
+		const subjects = await getAllSubjectsApi();
+		const subjectsNameObject = subjects.map(subject => {
+			return { entity: subject.name };
+		});
+		const dashContent = await dashContentParam(subjectsNameObject);
+		dashMainBody.appendChild(dashContent);
+	}
 
 	dashboardContent.appendChild(sidebar);
 	dashboardContent.appendChild(dashMainBody);
