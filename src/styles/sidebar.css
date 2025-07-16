@@ -89,3 +89,14 @@ a {
 	width: 20vw;
 	height: 14vh;
 }
+
+.dropdown-prof-items {
+	width: 100%;
+	display: flex;
+	padding-left: 4.188rem;
+	color: var(--indigo-50);
+}
+
+.dropdown-prof-items:hover {
+	color: var(--yellow-200);
+}

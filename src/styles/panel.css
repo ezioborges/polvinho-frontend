@@ -35,8 +35,9 @@
 
 .sidebar-panel-prof-content {
 	display: flex;
-	flex-direction: row;
 	height: 2rem;
+	align-items: flex-start;
+	justify-content: center;
 }
 
 .drop-prof-logo {

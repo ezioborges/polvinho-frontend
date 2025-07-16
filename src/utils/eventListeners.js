@@ -115,7 +115,6 @@ export const clickFormLogin = element => {
 				}
 
 				if (role === 'professor') {
-					console.log('aqui ta batendo');
 					return (window.location.hash = '#/dashboard-professor');
 				}
 			} else {
@@ -147,7 +146,7 @@ export const endSession = event => {
 
 let isVisible = false;
 export const panelDropdown = (element, sidebarDropFunc) => {
-	element.addEventListener('click', () => {
+	element.addEventListener('click', async () => {
 		isVisible = !isVisible;
 		const panel = document.querySelector('#panel-dropdown');
 
@@ -155,7 +154,7 @@ export const panelDropdown = (element, sidebarDropFunc) => {
 			panel.classList.remove('panel-dropdown-open');
 			panel.classList.add('panel-dropdown-close');
 		} else {
-			const dropdown = sidebarDropFunc();
+			const dropdown = await sidebarDropFunc();
 			panel.innerHTML = '';
 			panel.appendChild(dropdown);
 

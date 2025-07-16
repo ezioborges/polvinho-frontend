@@ -3,7 +3,7 @@ import newElement from '../utils/newElement.js';
 import SidebarPanelAdmin from './Panel/SidebarPanelAdmin.js';
 import { SidebarPanelProf } from './Panel/SidebarPanelProf.js';
 
-export const SidebarUserTop = (userRole, subjectName, subjectFunc) => {
+export const SidebarUserTop = (userRole, subjectName, panelDropdown) => {
 	const sidebarTopContent = newElement('div');
 	sidebarTopContent.id = 'sidebar-top';
 	sidebarTopContent.classList.add('sidebar-top-content');
@@ -64,9 +64,10 @@ export const SidebarUserTop = (userRole, subjectName, subjectFunc) => {
 	sidebarDiscipline.appendChild(disciplineLogo);
 	sidebarDiscipline.appendChild(disciplineText);
 
-	if (userRole === 'admin') subjectFunc(sidebarDiscipline, SidebarPanelAdmin);
+	if (userRole === 'admin')
+		panelDropdown(sidebarDiscipline, SidebarPanelAdmin);
 	if (userRole === 'professor')
-		subjectFunc(sidebarDiscipline, SidebarPanelProf);
+		panelDropdown(sidebarDiscipline, SidebarPanelProf);
 
 	sidebarNav.appendChild(sidebarDashboard);
 	sidebarNav.appendChild(sidebarDiscipline);
