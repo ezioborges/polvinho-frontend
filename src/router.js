@@ -20,7 +20,6 @@ const routes = {
 	'/edit/aluno/:userId': './pages/Admin/UserEdit.js',
 	'/edit/professor/:userId': './pages/Admin/UserEdit.js',
 	'/edit/subject/:subjectId': './pages/Admin/SubjectEdit.js',
-	'/dashboard': './pages/Dashboard.js',
 	'/disciplines': './pages/Disciplines.js',
 	'/disciplines/:id': './pages/Exam.js',
 	'/disciplines/:id/quizz': './pages/Quizz.js',
@@ -33,10 +32,20 @@ export const handleLocation = async () => {
 	const path = hashPath.slice(1) || '/';
 
 	const userLogin = localStorage.getItem('userLogin');
-	const { token } = userLogin ? JSON.parse(userLogin) : {};
+	const user = userLogin ? JSON.parse(userLogin) : null;
+	const token = user?.token;
+
+	// DEBUG: Adicione estes logs temporários
+	console.log('=== DEBUG ROUTER ===');
+	console.log('path:', path);
+	console.log('userLogin:', userLogin);
+	console.log('user:', user);
+	console.log('token:', token);
+	console.log('===================');
 
 	// verifica se o usuário tem token de acesso válido
 	if (path !== '/' && !token) {
+		console.log('Redirecionando para login - token inválido');
 		window.location.hash = '/';
 		return;
 	}
@@ -96,20 +105,37 @@ export const handleLocation = async () => {
 					// Outras rotas: garante que main-body existe
 					let newMain = document.getElementById('main-body');
 					if (!newMain) {
-						// Determina qual dashboard carregar baseado na rota atual
-						let dashboardPath = './pages/Dashboard.js'; // padrão
+						// Determina qual dashboard carregar baseado no role do usuário
+						const userLogin = localStorage.getItem('userLogin');
+						const user = userLogin ? JSON.parse(userLogin) : null;
 
-						// Você pode adicionar lógica aqui para determinar o dashboard correto
-						// baseado no role do usuário ou na rota
+						let dashboardPath;
+						if (user?.role === 'admin') {
+							dashboardPath = './pages/Admin/Dashboard.js';
+						} else if (user?.role === 'professor') {
+							dashboardPath =
+								'./pages/Prof/DashboardProfessor.js';
+						} else {
+							// Se não tem role definido, redireciona para login
+							window.location.hash = '/';
+							return;
+						}
 
-						const DashboardModule = await import(dashboardPath);
-						const DashboardContent =
-							await DashboardModule.default();
-						document.getElementById('main-content').innerHTML = '';
-						document
-							.getElementById('main-content')
-							.appendChild(DashboardContent);
-						newMain = document.getElementById('main-body');
+						try {
+							const DashboardModule = await import(dashboardPath);
+							const DashboardContent =
+								await DashboardModule.default();
+							document.getElementById('main-content').innerHTML =
+								'';
+							document
+								.getElementById('main-content')
+								.appendChild(DashboardContent);
+							newMain = document.getElementById('main-body');
+						} catch (error) {
+							console.error('Erro ao carregar dashboard:', error);
+							window.location.hash = '/error';
+							return;
+						}
 					}
 					if (newMain && content instanceof HTMLElement) {
 						newMain.innerHTML = '';

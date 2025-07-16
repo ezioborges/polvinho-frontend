@@ -19,11 +19,24 @@ const ProfessorSubject = async () => {
 		'create-entity-button',
 	);
 
+	const subjectBody = newElement('div');
+	subjectBody.classList.add('subject-body');
+
+	//TODO: lembrar de criar um componente subjectBodySide para tratar a renderização das colunas
+	const subjectBodyLeft = newElement('div');
+	subjectBodyLeft.classList.add('subject-body-side');
+
+	const subjectBodyRight = newElement('div');
+	subjectBodyRight.classList.add('subject-body-side');
+
 	bodyTitleArea.appendChild(pageTitle);
 	bodyTitleArea.appendChild(changeToRegister);
 
-	content.appendChild(bodyTitleArea);
+	subjectBody.appendChild(subjectBodyLeft);
+	subjectBody.appendChild(subjectBodyRight);
 
+	content.appendChild(bodyTitleArea);
+	content.appendChild(subjectBody);
 	return content;
 };
 
