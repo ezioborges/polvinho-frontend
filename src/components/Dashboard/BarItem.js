@@ -1,30 +1,39 @@
 import newElement from '../../utils/newElement.js';
 import textGenerator from '../../utils/textGenerator.js';
 
-const BarItem = (entity, register) => {
-	const entityFormated = entity.toLowerCase();
-	const item = newElement('div');
-	item.classList.add('bar-content');
-
-	const title = textGenerator('textMd', entity);
-	title.classList.add('discipline-text');
+const BarItem = (item, register) => {
+	console.log('item ---> ', item);
+	const barItem = newElement('div');
+	barItem.classList.add('bar-content');
 
 	if (register === true) {
+		const title = textGenerator('textMd', item.entity);
+		title.classList.add('discipline-text');
 		const newRegister = newElement('a');
-		newRegister.href = `#/register/${entityFormated}`;
+		newRegister.href = `#/register/${item.entity}`;
 		newRegister.classList.add('new-register');
 		newRegister.classList.add('textMd');
 		newRegister.textContent = 'Novo Registro';
 
-		item.appendChild(title);
-		item.appendChild(newRegister);
+		barItem.appendChild(title);
+		barItem.appendChild(newRegister);
 
-		return item;
+		barItem.appendChild(title);
+		return barItem;
 	}
 
-	item.appendChild(title);
+	if (register === false) {
+		const title = textGenerator('textMd', item.entity);
+		title.classList.add('discipline-text');
 
-	return item;
+		barItem.onclick = () => {
+			window.location.hash = `#/subject/${item.id}`;
+		};
+
+		barItem.appendChild(title);
+
+		return barItem;
+	}
 };
 
 export default BarItem;

@@ -35,17 +35,8 @@ export const handleLocation = async () => {
 	const user = userLogin ? JSON.parse(userLogin) : null;
 	const token = user?.token;
 
-	// DEBUG: Adicione estes logs temporários
-	console.log('=== DEBUG ROUTER ===');
-	console.log('path:', path);
-	console.log('userLogin:', userLogin);
-	console.log('user:', user);
-	console.log('token:', token);
-	console.log('===================');
-
 	// verifica se o usuário tem token de acesso válido
 	if (path !== '/' && !token) {
-		console.log('Redirecionando para login - token inválido');
 		window.location.hash = '/';
 		return;
 	}

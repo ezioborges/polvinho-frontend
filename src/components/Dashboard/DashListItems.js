@@ -16,7 +16,6 @@ const DashListItems = async itemsArr => {
 	content.classList.add('dash-content-body');
 
 	const title = textGenerator('title3', 'Entidades');
-
 	content.appendChild(title);
 
 	const noContent = BodyWithoutContent('Nenhum conteúdo disponível');
@@ -24,14 +23,15 @@ const DashListItems = async itemsArr => {
 	if (!itemsArr.length) content.appendChild(noContent);
 
 	if (role === 'professor') {
-		itemsArr.forEach(({ entity }) => {
-			content.appendChild(BarItem(entity, false));
+		console.log('itemsArr ---> ', itemsArr);
+		itemsArr.forEach(item => {
+			content.appendChild(BarItem(item, false));
 		});
 	}
 
 	if (adminRole === 'admin') {
-		itemsArr.forEach(({ entity }) => {
-			content.appendChild(BarItem(entity, true));
+		itemsArr.forEach(item => {
+			content.appendChild(BarItem(item, true));
 		});
 	}
 

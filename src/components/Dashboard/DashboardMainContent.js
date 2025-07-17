@@ -42,7 +42,7 @@ const DashboardMainContent = async DashListItems => {
 	if (role === 'professor') {
 		const subjectsOfProfessor = await professorSubjects();
 		const subjectsNameObject = subjectsOfProfessor.map(subject => {
-			return { entity: subject.name };
+			return { id: subject._id, entity: subject.name };
 		});
 		const dashContent = await DashListItems(subjectsNameObject);
 		dashMainBody.appendChild(dashContent);
