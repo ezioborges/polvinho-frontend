@@ -1,9 +1,8 @@
-import DashboardMainContent from "../../components/Dashboard/DashboardMainContent.js";
+import DashListItems from '../../components/Dashboard/DashListItems.js';
+import DashboardMainContent from '../../components/Dashboard/DashboardMainContent.js';
 
 const DashboardAdmin = () => {
-    const dashboard = DashboardMainContent()
-
-    return dashboard
-}
+	return DashboardMainContent(DashListItems);
+};
 
 export default DashboardAdmin;

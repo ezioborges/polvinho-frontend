@@ -1,7 +1,7 @@
 import newElement from '../../utils/newElement.js';
 import { panelItem } from './panelItem.js';
 
-const SidebarPanel = () => {
+const SidebarPanelAdmin = () => {
 	const panelContent = newElement('div');
 	panelContent.classList.add('sidebar-panel-content');
 
@@ -24,4 +24,4 @@ const SidebarPanel = () => {
 	return panelContent;
 };
 
-export default SidebarPanel;
+export default SidebarPanelAdmin;

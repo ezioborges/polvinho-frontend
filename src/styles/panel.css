@@ -22,3 +22,33 @@
 	display: flex;
 	align-items: center;
 }
+
+.dropdown-prof-logo {
+	display: flex;
+	width: 25%;
+}
+
+.dropdown-prof-text {
+	display: flex;
+	width: 75%;
+}
+
+.sidebar-panel-prof-content {
+	display: flex;
+	height: 2rem;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.drop-prof-logo {
+	width: 1.313rem;
+	height: 1.313rem;
+	margin-left: 2.5rem;
+}
+
+.drop-prof-text {
+	width: 100%;
+	display: flex;
+	margin-left: 0.5rem;
+	color: var(--indigo-50);
+}

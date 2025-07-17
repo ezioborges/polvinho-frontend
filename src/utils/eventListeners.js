@@ -1,7 +1,6 @@
 import { getAllUsersApi } from '../api/users.js';
 import Dialog from '../components/Dialogs/index.js';
 import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
-import SidebarPanel from '../components/Panel/SidebarPanel.js';
 import SubjectsPanelList from '../components/Panel/SubjectsPanelList.js';
 import { fetchLogin } from '../data/userData.js';
 import urls from '../urls/index.js';
@@ -116,10 +115,8 @@ export const clickFormLogin = element => {
 				}
 
 				if (role === 'professor') {
-					return (window.location.hash = '');
+					return (window.location.hash = '#/dashboard-professor');
 				}
-
-				window.location.hash = '#/dashboard';
 			} else {
 				credentialsInput.style.border = ' 2px solid var(--red-500)';
 				passwordInput.style.border = '2px solid var(--red-500)';
@@ -148,8 +145,8 @@ export const endSession = event => {
 };
 
 let isVisible = false;
-export const panelDropdown = element => {
-	element.addEventListener('click', () => {
+export const panelDropdown = (element, sidebarDropFunc) => {
+	element.addEventListener('click', async () => {
 		isVisible = !isVisible;
 		const panel = document.querySelector('#panel-dropdown');
 
@@ -157,7 +154,7 @@ export const panelDropdown = element => {
 			panel.classList.remove('panel-dropdown-open');
 			panel.classList.add('panel-dropdown-close');
 		} else {
-			const dropdown = SidebarPanel();
+			const dropdown = await sidebarDropFunc();
 			panel.innerHTML = '';
 			panel.appendChild(dropdown);
 

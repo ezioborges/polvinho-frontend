@@ -12,6 +12,7 @@ const routes = {
 	'/': './pages/Login.js',
 	'/dashboard-admin': './pages/Admin/Dashboard.js',
 	'/dashboard-professor': './pages/Prof/DashboardProfessor.js',
+	'/subjects-professor/:subjectId': './pages/Prof/ProfessorSubjectPage.js',
 	'/aluno-admin': './pages/Admin/Students.js',
 	'/professor-admin': './pages/Admin/Professor.js',
 	'/subjects-admin': './pages/Admin/Subjects.js',
@@ -19,7 +20,6 @@ const routes = {
 	'/edit/aluno/:userId': './pages/Admin/UserEdit.js',
 	'/edit/professor/:userId': './pages/Admin/UserEdit.js',
 	'/edit/subject/:subjectId': './pages/Admin/SubjectEdit.js',
-	'/dashboard': './pages/Dashboard.js',
 	'/disciplines': './pages/Disciplines.js',
 	'/disciplines/:id': './pages/Exam.js',
 	'/disciplines/:id/quizz': './pages/Quizz.js',
@@ -32,10 +32,20 @@ export const handleLocation = async () => {
 	const path = hashPath.slice(1) || '/';
 
 	const userLogin = localStorage.getItem('userLogin');
-	const { token } = userLogin ? JSON.parse(userLogin) : {};
+	const user = userLogin ? JSON.parse(userLogin) : null;
+	const token = user?.token;
+
+	// DEBUG: Adicione estes logs temporários
+	console.log('=== DEBUG ROUTER ===');
+	console.log('path:', path);
+	console.log('userLogin:', userLogin);
+	console.log('user:', user);
+	console.log('token:', token);
+	console.log('===================');
 
 	// verifica se o usuário tem token de acesso válido
 	if (path !== '/' && !token) {
+		console.log('Redirecionando para login - token inválido');
 		window.location.hash = '/';
 		return;
 	}
@@ -79,12 +89,14 @@ export const handleLocation = async () => {
 			if (module.default && typeof module.default === 'function') {
 				const content = await module.default(params);
 
-				if (
-					path === '/' ||
-					path === '/dashboard' ||
-					path === '/dashboard-admin'
-				) {
-					// Login e Dashboard: limpa e renderiza na raiz
+				if (path === '/') {
+					// Apenas Login: limpa e renderiza na raiz
+					document.getElementById('main-content').innerHTML = '';
+					document
+						.getElementById('main-content')
+						.appendChild(content);
+				} else if (path.includes('/dashboard')) {
+					// Qualquer dashboard: renderiza diretamente
 					document.getElementById('main-content').innerHTML = '';
 					document
 						.getElementById('main-content')
@@ -93,16 +105,37 @@ export const handleLocation = async () => {
 					// Outras rotas: garante que main-body existe
 					let newMain = document.getElementById('main-body');
 					if (!newMain) {
-						// Renderiza a Dashboard primeiro para criar main-body
-						const DashboardModule = await import(
-							'./pages/Dashboard.js'
-						);
-						const DashboardContent = DashboardModule.default();
-						document.getElementById('main-content').innerHTML = '';
-						document
-							.getElementById('main-content')
-							.appendChild(DashboardContent);
-						newMain = document.getElementById('main-body');
+						// Determina qual dashboard carregar baseado no role do usuário
+						const userLogin = localStorage.getItem('userLogin');
+						const user = userLogin ? JSON.parse(userLogin) : null;
+
+						let dashboardPath;
+						if (user?.role === 'admin') {
+							dashboardPath = './pages/Admin/Dashboard.js';
+						} else if (user?.role === 'professor') {
+							dashboardPath =
+								'./pages/Prof/DashboardProfessor.js';
+						} else {
+							// Se não tem role definido, redireciona para login
+							window.location.hash = '/';
+							return;
+						}
+
+						try {
+							const DashboardModule = await import(dashboardPath);
+							const DashboardContent =
+								await DashboardModule.default();
+							document.getElementById('main-content').innerHTML =
+								'';
+							document
+								.getElementById('main-content')
+								.appendChild(DashboardContent);
+							newMain = document.getElementById('main-body');
+						} catch (error) {
+							console.error('Erro ao carregar dashboard:', error);
+							window.location.hash = '/error';
+							return;
+						}
 					}
 					if (newMain && content instanceof HTMLElement) {
 						newMain.innerHTML = '';
@@ -112,10 +145,6 @@ export const handleLocation = async () => {
 							'<h1>Erro: container #main-body não encontrado!</h1>';
 					}
 				}
-			} else {
-				console.warn(
-					`O módulo ${route} não exportou uma função default.`,
-				);
 			}
 		} catch (error) {
 			console.error('Erro ao importar o módulo:', error);
