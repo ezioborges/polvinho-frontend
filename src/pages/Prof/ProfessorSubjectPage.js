@@ -16,10 +16,12 @@ const ProfessorSubject = async () => {
 	const pageTitle = PageTitle(`${subject.name}`, 'Quizzes');
 
 	const changeToRegister = createEntityButtonRoute(
-		'Cadastrar',
+		'Adicionar Quiz',
 		'textLG',
 		'create-entity-button',
 	);
+	changeToRegister.onclick = () =>
+		(window.location.hash = '#/quiz/register-quiz');
 
 	const subjectBody = newElement('div');
 	subjectBody.classList.add('subject-body');

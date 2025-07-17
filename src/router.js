@@ -27,6 +27,7 @@ const routes = {
 	'/subject-professor/:subjectId': './pages/Prof/ProfessorSubjectPage.js',
 	'/quiz/:quizId': './pages/Prof/QuizPage.js',
 	'/quiz/quiz-answers/:quizId': './pages/Prof/QuizAnswers.js',
+	'/quiz/register-quiz': './pages/Prof/QuizRegister.js',
 };
 
 export const handleLocation = async () => {

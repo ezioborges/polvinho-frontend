@@ -27,6 +27,8 @@ export const StudentsResponseAndResumeList = async () => {
 		responseViewButton.classList.add('textMd');
 		responseViewButton.classList.add('action-area');
 		responseViewButton.style.color = 'var(--indigo-900)';
+		responseViewButton.onclick = () =>
+			(window.location.hash = `#/quiz/quiz-answers/${student._id}`);
 
 		const gradeArea = newElement('div');
 		gradeArea.textContent = '10/10';
