@@ -173,3 +173,43 @@
 	justify-content: start;
 	margin-top: 0.3rem;
 }
+
+.student-response-content {
+	height: 40vh;
+	overflow-y: scroll;
+	margin-top: 2rem;
+}
+
+.student-info {
+	display: flex;
+	justify-content: space-around;
+	width: 25%;
+	padding: 0.3rem;
+}
+
+.action-area {
+	display: flex;
+	justify-content: center;
+}
+
+.delete-button-content {
+	display: flex;
+	align-items: center;
+	height: 7vh;
+	margin-top: 2rem;
+}
+
+.delete-quiz-button {
+	border: 1px solid var(--red-500);
+	border-radius: 6px;
+	color: var(--red-500);
+	width: 11vw;
+	padding: 0.75rem 1.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.delete-quiz-button:hover {
+	background-color: rgba(240, 198, 198, 0.452);
+}

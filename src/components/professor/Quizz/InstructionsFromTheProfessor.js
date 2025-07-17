@@ -1,5 +1,5 @@
-import newElement from '../../utils/newElement.js';
-import textGenerator from '../../utils/textGenerator.js';
+import newElement from '../../../utils/newElement.js';
+import textGenerator from '../../../utils/textGenerator.js';
 
 export const instructionsFromTheProfessor = quizData => {
 	const {
