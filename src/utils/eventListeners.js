@@ -2,6 +2,7 @@ import { getAllUsersApi } from '../api/users.js';
 import Dialog from '../components/Dialogs/index.js';
 import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
 import SubjectsPanelList from '../components/Panel/SubjectsPanelList.js';
+import ToastBar from '../components/ToastBar/index.js';
 import { fetchLogin } from '../data/userData.js';
 import urls from '../urls/index.js';
 
@@ -72,6 +73,22 @@ export const clickFinishTest = element => {
 			document.body.appendChild(finishTest);
 		}
 	});
+};
+
+export const deleteQuizzButton = element => {
+	clickEventCancelButton(element);
+	element.addEventListener('click', () => {
+		ToastBar(
+			{
+				iconParam: '../../assets/CheckCircle.png',
+				titleParam: 'Quiz Deletado',
+				msgParam: 'O quiz foi deletado com sucesso.',
+			},
+			'success-toast',
+		);
+	});
+
+	console.log('Deletar Quiz clicado');
 };
 
 export const clickFormLogin = element => {

@@ -1,5 +1,6 @@
 import {
 	clickEventCancelButton,
+	deleteQuizzButton,
 	openDialog,
 } from '../../../utils/eventListeners.js';
 import newElement from '../../../utils/newElement.js';
@@ -18,8 +19,8 @@ export const DeleteQuiz = () => {
 		`Você irá eliminar o quiz "NOME DO QUIZ". Esta ação não pode ser desfeita.`,
 		'Cancelar',
 		clickEventCancelButton,
-		'mais pra from arrumar Eliminar',
-		clickEventCancelButton,
+		'Eliminar',
+		deleteQuizzButton,
 		'var(--red-500',
 	);
 
