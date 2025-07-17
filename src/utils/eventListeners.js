@@ -74,19 +74,6 @@ export const clickFinishTest = element => {
 	});
 };
 
-export const clickCloseFinishDialog = () => {
-	const dialogOverlay = document.querySelector('.dialog-overlay');
-	const dialogContent = document.querySelector('.dialog-content');
-
-	if (dialogOverlay) {
-		dialogOverlay.remove();
-	}
-
-	if (dialogContent) {
-		dialogContent.remove();
-	}
-};
-
 export const clickFormLogin = element => {
 	element.addEventListener('submit', async event => {
 		event.preventDefault();
