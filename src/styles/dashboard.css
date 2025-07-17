@@ -20,4 +20,12 @@
 .subject-body {
 	margin-top: 1.5rem;
 	display: flex;
+	justify-content: center;
+}
+
+.subject-body-side {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	width: 80%;
 }
