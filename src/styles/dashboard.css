@@ -18,13 +18,6 @@
 }
 
 .subject-body {
-	border: 1px solid red;
 	margin-top: 1.5rem;
 	display: flex;
-}
-
-.subject-body-side {
-	border: 1px solid green;
-	padding: 20px;
-	width: 100%;
 }

@@ -11,7 +11,7 @@ export const SidebarPanelProf = async () => {
 
 	subjectsOfProfessor.forEach(subject => {
 		const subjectItem = panelItem(
-			`#/subjects-professor/${subject._id}`,
+			`#/subject-professor/${subject._id}`,
 			`${subject.name}`,
 			'dropdown-prof-items',
 		);

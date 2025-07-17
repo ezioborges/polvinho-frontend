@@ -2,7 +2,6 @@ import newElement from '../../utils/newElement.js';
 import textGenerator from '../../utils/textGenerator.js';
 
 const BarItem = (item, register) => {
-	console.log('item ---> ', item);
 	const barItem = newElement('div');
 	barItem.classList.add('bar-content');
 
@@ -27,7 +26,7 @@ const BarItem = (item, register) => {
 		title.classList.add('discipline-text');
 
 		barItem.onclick = () => {
-			window.location.hash = `#/subject/${item.id}`;
+			window.location.hash = `#/subject-professor/${item.id}`;
 		};
 
 		barItem.appendChild(title);

@@ -23,7 +23,6 @@ const DashListItems = async itemsArr => {
 	if (!itemsArr.length) content.appendChild(noContent);
 
 	if (role === 'professor') {
-		console.log('itemsArr ---> ', itemsArr);
 		itemsArr.forEach(item => {
 			content.appendChild(BarItem(item, false));
 		});

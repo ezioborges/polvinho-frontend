@@ -10,21 +10,21 @@ export const router = event => {
 
 const routes = {
 	'/': './pages/Login.js',
+	'/aluno-admin': './pages/Admin/Students.js',
 	'/dashboard-admin': './pages/Admin/Dashboard.js',
 	'/dashboard-professor': './pages/Prof/DashboardProfessor.js',
-	'/subjects-professor/:subjectId': './pages/Prof/ProfessorSubjectPage.js',
-	'/aluno-admin': './pages/Admin/Students.js',
-	'/professor-admin': './pages/Admin/Professor.js',
-	'/subjects-admin': './pages/Admin/Subjects.js',
-	'/register/:entity': './pages/Admin/Register.js',
-	'/edit/aluno/:userId': './pages/Admin/UserEdit.js',
-	'/edit/professor/:userId': './pages/Admin/UserEdit.js',
-	'/edit/subject/:subjectId': './pages/Admin/SubjectEdit.js',
-	'/disciplines': './pages/Disciplines.js',
 	'/disciplines/:id': './pages/Exam.js',
+	'/disciplines': './pages/Disciplines.js',
 	'/disciplines/:id/quizz': './pages/Quizz.js',
 	'/disciplines/:id/results': './pages/Result.js',
+	'/edit/aluno/:userId': './pages/Admin/UserEdit.js',
+	'/edit/subject/:subjectId': './pages/Admin/SubjectEdit.js',
+	'/edit/professor/:userId': './pages/Admin/UserEdit.js',
 	'/error': './pages/PageError.js',
+	'/professor-admin': './pages/Admin/Professor.js',
+	'/register/:entity': './pages/Admin/Register.js',
+	'/subjects-admin': './pages/Admin/Subjects.js',
+	'/subject-professor/:subjectId': './pages/Prof/ProfessorSubjectPage.js',
 };
 
 export const handleLocation = async () => {
