@@ -25,6 +25,7 @@ const routes = {
 	'/register/:entity': './pages/Admin/Register.js',
 	'/subjects-admin': './pages/Admin/Subjects.js',
 	'/subject-professor/:subjectId': './pages/Prof/ProfessorSubjectPage.js',
+	'/quiz/:quizId': './pages/Prof/QuizPage.js',
 };
 
 export const handleLocation = async () => {

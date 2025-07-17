@@ -126,7 +126,7 @@
 	color: var(--stone-700) !important;
 }
 
-/* QUIZZES DO PROFESSOR */
+/* TODO: QUIZZES DO PROFESSOR */
 .quizzes-content {
 	background-color: var(--neutral-100);
 	border: 1px solid var(--neutral-200);
@@ -142,4 +142,34 @@
 .quizzes-content:hover {
 	background-color: var(--neutral-200);
 	cursor: pointer;
+}
+
+.instruction-content {
+	margin-top: -1rem;
+}
+
+.instructions-resume-area {
+	width: 60%;
+}
+
+.instructions-config-area {
+	margin-top: 1rem;
+	width: 50%;
+}
+
+.attempts-title {
+	font-weight: 600;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin-right: 0.5rem;
+}
+
+.attempts-amount {
+	color: var(--indigo-500);
+}
+
+.config-item {
+	display: flex;
+	justify-content: start;
+	margin-top: 0.3rem;
 }
