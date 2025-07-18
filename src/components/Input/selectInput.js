@@ -5,6 +5,7 @@ const selectInput = (labelTitle, inputId, arr) => {
 	selectInputArea.classList.add('label-input-column');
 
 	const questionIcon = newElement('img');
+	questionIcon.id = 'question-icon';
 	questionIcon.src = '../../../assets/Question.png';
 	questionIcon.alt = 'Icon de interrogação';
 	questionIcon.style.marginLeft = '.3rem';
@@ -26,7 +27,7 @@ const selectInput = (labelTitle, inputId, arr) => {
 		select.appendChild(option);
 	});
 
-	nameLabel.appendChild(questionIcon);
+	labelTitle === '' ? null : nameLabel.appendChild(questionIcon);
 
 	selectInputArea.appendChild(nameLabel);
 	selectInputArea.appendChild(select);

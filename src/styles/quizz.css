@@ -213,3 +213,73 @@
 .delete-quiz-button:hover {
 	background-color: rgba(240, 198, 198, 0.452);
 }
+
+.quiz-register-form {
+	margin-top: 2rem;
+}
+
+.quiz-register-first-row {
+	display: flex;
+}
+
+.quiz-register-second-row {
+	display: flex;
+}
+
+.quiz-register-third-row {
+	display: flex;
+}
+
+.quiz-register-fourth-row {
+	display: flex;
+	justify-content: center;
+	height: 28vh;
+}
+
+.quiz-register-description {
+	width: 95%;
+	border-radius: 6px;
+	border: 1px solid var(--neutral-200);
+	padding: 0.75rem 0.5rem;
+}
+
+.quiz-register-description:focus {
+	outline: 1px solid var(--indigo-500);
+	transition: none;
+}
+
+.quiz-register-buttons-area {
+	width: 98%;
+	margin-top: 2rem;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.quiz-register-generate-button {
+	background-color: var(--indigo-500);
+	color: var(--neutral-50);
+	border-radius: 6px;
+	padding: 0.75rem 1.75rem;
+	border: none;
+	margin-left: 0.75rem;
+}
+
+.quiz-register-save-draft-button {
+	border-radius: 6px;
+	padding: 0.75rem 1.75rem;
+	border: 1px solid var(--stone-400);
+	color: var(--stone-400);
+	background-color: var(--neutral-50);
+}
+
+.quiz-register-generate-button:hover {
+	cursor: pointer;
+	background-color: var(--indigo-700);
+}
+
+.quiz-register-save-draft-button:hover {
+	background-color: var(--stone-400);
+	color: var(--neutral-50);
+	border: 1px solid var(--neutral-50);
+}

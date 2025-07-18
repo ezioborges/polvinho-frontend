@@ -7,8 +7,9 @@ const urls = {
 
 	users: 'http://localhost:2424/users',
 
-	subjectsProd: 'polvinho-backend.vercel.app/subjects',
 	subjects: 'http://localhost:2424/subjects',
+
+	quizzes: 'http://localhost:2424/quizzes',
 };
 
 export default urls;
