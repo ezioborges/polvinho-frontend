@@ -16,7 +16,6 @@
 	align-items: center;
 	flex-direction: column;
 	width: 100%;
-	margin-bottom: 2rem;
 }
 
 .select-label-register {
@@ -26,7 +25,6 @@
 
 .input-area {
 	width: 90%;
-	height: 5.268935236004391vh;
 	margin-top: 0.4rem;
 	border-radius: 6px;
 	border: 1px solid var(--neutral-200);
@@ -40,7 +38,6 @@
 
 .select-area {
 	width: 90%;
-	height: 8.7vh;
 	margin-top: 0.4rem;
 	background-color: var(--neutral-50);
 	border-radius: 6px;

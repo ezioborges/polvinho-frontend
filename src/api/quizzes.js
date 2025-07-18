@@ -1,6 +1,6 @@
 import urls from '../urls/index.js';
 
-export const createQuizz = async quizData => {
+export const createQuiz = async quizData => {
 	const createQuizURL = `${urls.quizzes}`;
 
 	const response = await fetch(createQuizURL, {
@@ -10,6 +10,10 @@ export const createQuizz = async quizData => {
 		},
 		body: JSON.stringify(quizData),
 	});
+
+	if (!response.ok) {
+		throw new Error('Não foi possível criar o quiz');
+	}
 
 	const data = await response.json();
 

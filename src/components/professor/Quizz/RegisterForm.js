@@ -1,9 +1,19 @@
+import { SaveQuizAsDraft } from '../../../events/quizzes.js';
 import newElement from '../../../utils/newElement.js';
+import { professorSubjects } from '../../../utils/professorSubjects.js';
 import { questionsGenerateButton } from '../../Buttons/questionsGenerateButton.js';
 import selectInput from '../../Input/selectInput.js';
 import InputArea from '../../Input/textInput.js';
 
-export const RegisterForm = () => {
+export const RegisterForm = async () => {
+	const subjects = await professorSubjects();
+
+	const activeSubjects = subjects.filter(
+		subjects => subjects.isDeleted === false,
+	);
+
+	const subjectsNames = activeSubjects.map(subject => subject.name);
+
 	const form = newElement('form');
 	form.classList.add('quiz-register-form');
 
@@ -12,10 +22,7 @@ export const RegisterForm = () => {
 
 	const quizName = InputArea('', 'quiz-register-name', 'Nome do quiz');
 
-	const quizSubject = selectInput('', 'quiz-register-subject', [
-		'matemática',
-		'português',
-	]);
+	const quizSubject = selectInput('', 'quiz-register-subject', subjectsNames);
 
 	const secondRow = newElement('div');
 	secondRow.classList.add('quiz-register-second-row');
@@ -66,6 +73,7 @@ export const RegisterForm = () => {
 		'Guardar Rascunho',
 		'quiz-register-save-draft-button',
 	);
+	SaveQuizAsDraft(saveAsDraft);
 
 	firstRow.appendChild(quizName);
 	firstRow.appendChild(quizSubject);

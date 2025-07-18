@@ -220,20 +220,24 @@
 
 .quiz-register-first-row {
 	display: flex;
+	margin-bottom: 0.5rem;
 }
 
 .quiz-register-second-row {
 	display: flex;
+	margin-bottom: 0.5rem;
 }
 
 .quiz-register-third-row {
 	display: flex;
+	margin-bottom: 1rem;
 }
 
 .quiz-register-fourth-row {
 	display: flex;
 	justify-content: center;
 	height: 28vh;
+	margin-bottom: 0.5rem;
 }
 
 .quiz-register-description {
