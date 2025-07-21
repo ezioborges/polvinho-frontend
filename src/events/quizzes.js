@@ -1,5 +1,6 @@
 import { createQuizApi } from '../api/quizzes.js';
 import ToastBar from '../components/ToastBar/index.js';
+import { resetQuizInputs } from '../utils/resetUserInputs.js';
 import { userDataByLocalStorage } from '../utils/userDataByLocalStorage.js';
 
 export const SaveQuizAsDraft = element => {
@@ -37,6 +38,8 @@ export const SaveQuizAsDraft = element => {
 				},
 				'success-toast',
 			);
+
+			resetQuizInputs();
 
 			console.log('depois de criar o quiz');
 		} catch (error) {
