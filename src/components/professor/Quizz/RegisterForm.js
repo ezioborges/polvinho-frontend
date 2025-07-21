@@ -59,6 +59,7 @@ export const RegisterForm = async () => {
 	fourthRow.classList.add('quiz-register-fourth-row');
 
 	const registerDescription = newElement('textarea');
+	registerDescription.id = 'quiz-register-description';
 	registerDescription.classList.add('quiz-register-description');
 
 	const buttonsArea = newElement('div');

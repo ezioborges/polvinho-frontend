@@ -1,6 +1,6 @@
 import urls from '../urls/index.js';
 
-export const createQuiz = async quizData => {
+export const createQuizApi = async quizData => {
 	const createQuizURL = `${urls.quizzes}`;
 
 	const response = await fetch(createQuizURL, {
