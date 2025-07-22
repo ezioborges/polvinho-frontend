@@ -1,35 +1,21 @@
 import { createQuizApi } from '../api/quizzes.js';
 import ToastBar from '../components/ToastBar/index.js';
+import { createQuizUtil } from '../utils/newQuiz.js';
 import { resetQuizInputs } from '../utils/resetUserInputs.js';
 import { userDataByLocalStorage } from '../utils/userDataByLocalStorage.js';
+
+const {
+	user: { name },
+} = userDataByLocalStorage();
 
 export const SaveQuizAsDraft = element => {
 	element.addEventListener('click', async event => {
 		event.preventDefault();
 
-		const {
-			user: { name },
-		} = userDataByLocalStorage();
-
-		const newQuiz = {
-			professor: name,
-			subject: document.querySelector('#quiz-register-subject').value,
-			title: document.querySelector('#quiz-register-name').value,
-			maxAttempts: document.querySelector('#quiz-register-attempts')
-				.value,
-			timeMinutes: document.querySelector('#quiz-max-time').value,
-			releaseDate: document.querySelector('#quiz-register-release-date')
-				.value,
-			submissionDeadline: document.querySelector(
-				'#quiz-register-submission-date',
-			).value,
-			description: document.querySelector('#quiz-register-description')
-				.value,
-		};
+		const newQuiz = createQuizUtil(name);
 
 		try {
 			await createQuizApi(newQuiz);
-			console.log('antes do toast');
 			ToastBar(
 				{
 					iconParam: '../../assets/CheckCircle.png',
@@ -40,8 +26,6 @@ export const SaveQuizAsDraft = element => {
 			);
 
 			resetQuizInputs();
-
-			console.log('depois de criar o quiz');
 		} catch (error) {
 			ToastBar(
 				{
@@ -54,6 +38,24 @@ export const SaveQuizAsDraft = element => {
 			);
 
 			console.error('Erro ao criar quiz:', error.message);
+		}
+	});
+};
+
+export const CreateQuizQuestions = element => {
+	element.addEventListener('click', async event => {
+		event.preventDefault();
+		const newQuiz = createQuizUtil(name);
+		//TODO: criar validações
+
+		try {
+			// aqui preferi retornar o id na hora que crio o quiz para poder utilizar na rota
+			// isso me ajuda a passar o quiz através do id
+			const { quizId } = await createQuizApi(newQuiz);
+
+			window.location.hash = `#/quiz/create-question/${quizId}`;
+		} catch (error) {
+			throw new Error('Erro ao Criar quiz', error.message);
 		}
 	});
 };

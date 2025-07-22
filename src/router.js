@@ -28,15 +28,29 @@ const routes = {
 	'/quiz/:quizId': './pages/Prof/QuizPage.js',
 	'/quiz/quiz-answers/:quizId': './pages/Prof/QuizAnswers.js',
 	'/quiz/register-quiz': './pages/Prof/QuizRegister.js',
+	'/quiz/create-question/:quizId': './pages/Prof/createQuestion.js',
 };
 
 export const handleLocation = async () => {
 	const hashPath = window.location.hash;
 	const path = hashPath.slice(1) || '/';
 
+	// delay para que possa ver a rota antes de atualizar a página
+	await new Promise(resolve => setTimeout(resolve, 100));
+
 	const userLogin = localStorage.getItem('userLogin');
-	const user = userLogin ? JSON.parse(userLogin) : null;
-	const token = user?.token;
+	let user = null;
+	let token = null;
+
+	try {
+		if (userLogin) {
+			user = JSON.parse(userLogin);
+			token = user?.token;
+		}
+	} catch (error) {
+		console.error('Erro ao parsear userLogin:', error);
+		localStorage.removeItem('userLogin'); // Remove dados corrompidos
+	}
 
 	// verifica se o usuário tem token de acesso válido
 	if (path !== '/' && !token) {

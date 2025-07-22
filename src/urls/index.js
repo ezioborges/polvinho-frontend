@@ -10,6 +10,7 @@ const urls = {
 	subjects: 'http://localhost:2424/subjects',
 
 	quizzes: 'http://localhost:2424/quizzes',
+	quizById: 'http://localhost:2424/quizzes/quiz',
 };
 
 export default urls;

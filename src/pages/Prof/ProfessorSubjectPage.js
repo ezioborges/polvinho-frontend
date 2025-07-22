@@ -29,8 +29,8 @@ const ProfessorSubject = async () => {
 	bodyTitleArea.appendChild(pageTitle);
 	bodyTitleArea.appendChild(changeToRegister);
 
-	const subjectBodyLeft = await SubjectBodySide(true);
-	const subjectBodyRight = await SubjectBodySide(false);
+	const subjectBodyLeft = await SubjectBodySide(true, subject);
+	const subjectBodyRight = await SubjectBodySide(false, subject);
 
 	subjectBody.appendChild(subjectBodyLeft);
 	subjectBody.appendChild(subjectBodyRight);

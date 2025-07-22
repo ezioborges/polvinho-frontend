@@ -3,11 +3,17 @@ import textGenerator from '../../../utils/textGenerator.js';
 
 export const instructionsFromTheProfessor = quizData => {
 	const {
-		teacher: { name, resume },
-		attempts,
-		time,
-		date,
+		professorId: { name },
+		description,
+		maxAttempts,
+		timeMinutes,
+		submissionDeadline,
 	} = quizData;
+
+	const formatDate = date => {
+		return date.slice(0, 10).split('-').reverse().join('/');
+	};
+
 	const instructionContent = newElement('div');
 	instructionContent.classList.add('instruction-content');
 
@@ -19,7 +25,7 @@ export const instructionsFromTheProfessor = quizData => {
 	const instructionsResumeArea = newElement('div');
 	instructionsResumeArea.classList.add('instructions-resume-area');
 
-	const instructionResume = textGenerator('textMd', `${resume}`);
+	const instructionResume = textGenerator('textMd', `${description}`);
 
 	const instructionsConfigArea = newElement('div');
 	instructionsConfigArea.classList.add('instructions-config-area');
@@ -29,23 +35,23 @@ export const instructionsFromTheProfessor = quizData => {
 	const attemptsItem = newElement('li');
 	attemptsItem.classList.add('config-item');
 	attemptsItem.innerHTML = `
-        <span class="attempts-title">Tentativas: </span>
-        <span class="attempts-title attempts-amount">${attempts}</span>
-    `;
+	    <span class="attempts-title">Tentativas: </span>
+	    <span class="attempts-title attempts-amount">${maxAttempts}</span>
+	`;
 
 	const timeItem = newElement('li');
 	timeItem.classList.add('config-item');
 	timeItem.innerHTML = `
-        <span class="attempts-title">Tempo Máximo: </span>
-        <span class="attempts-title attempts-amount">${time}</span>
-    `;
+	    <span class="attempts-title">Tempo Máximo: </span>
+	    <span class="attempts-title attempts-amount">${timeMinutes}</span>
+	`;
 
 	const dateItem = newElement('li');
 	dateItem.classList.add('config-item');
 	dateItem.innerHTML = `
-        <span class="attempts-title">Data de entrega: </span>
-        <span class="attempts-title attempts-amount">${date}</span>
-    `;
+	    <span class="attempts-title">Data de entrega: </span>
+	    <span class="attempts-title attempts-amount">${formatDate(submissionDeadline)}</span>
+	`;
 
 	instructionConfigList.appendChild(attemptsItem);
 	instructionConfigList.appendChild(timeItem);

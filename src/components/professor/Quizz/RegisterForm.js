@@ -1,4 +1,7 @@
-import { SaveQuizAsDraft } from '../../../events/quizzes.js';
+import {
+	CreateQuizQuestions,
+	SaveQuizAsDraft,
+} from '../../../events/quizzes.js';
 import newElement from '../../../utils/newElement.js';
 import { professorSubjects } from '../../../utils/professorSubjects.js';
 import { questionsGenerateButton } from '../../Buttons/questionsGenerateButton.js';
@@ -69,6 +72,7 @@ export const RegisterForm = async () => {
 		'Criar Pergunta',
 		'quiz-register-generate-button',
 	);
+	CreateQuizQuestions(createQuestionButton);
 
 	const saveAsDraft = questionsGenerateButton(
 		'Guardar Rascunho',

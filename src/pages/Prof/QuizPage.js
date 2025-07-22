@@ -1,24 +1,20 @@
+import { getQuizzByIdApi } from '../../api/quizzes.js';
 import PageTitle from '../../components/PageTitle.js';
 import { DeleteQuiz } from '../../components/professor/Quizz/DeleteQuiz.js';
 import { instructionsFromTheProfessor } from '../../components/professor/Quizz/InstructionsFromTheProfessor.js';
 import { StudentsResponseAndResumeList } from '../../components/professor/Quizz/StudentsResponseAndResumeList.js';
-import { quizzesData } from '../../data/quizzesData.js';
 import newElement from '../../utils/newElement.js';
 
 const QuizPage = async () => {
-	const quizzes = quizzesData;
 	const quizId = window.location.hash.split('/')[2];
-	const quizData = quizzes.find(quiz => quiz.id === +quizId);
+	const quizData = await getQuizzByIdApi(quizId);
 
 	const quizContent = newElement('div');
 
 	const quizTitleArea = newElement('div');
 	quizTitleArea.classList.add('body-title-area');
 
-	const pageTitle = PageTitle(
-		`${quizData.name}`,
-		'quando quiz estiver cadastrado no back decidir o que fazer aqui',
-	);
+	const pageTitle = PageTitle(`${quizData.title}`, '');
 
 	const instructions = instructionsFromTheProfessor(quizData);
 
