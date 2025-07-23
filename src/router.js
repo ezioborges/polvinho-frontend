@@ -1,18 +1,29 @@
+// router.js
+
+// Importe DashboardMainContent e Login para uso direto no roteador.
+// Certifique-se de que os caminhos estejam corretos no seu projeto.
+import DashboardMainContent from './components/Dashboard/DashboardMainContent.js';
+import Login from './pages/Login.js';
+
+// Importe DashListItems porque DashboardMainContent o espera como parâmetro
+// para renderizar o conteúdo inicial do dashboard.
+import DashListItems from './components/Dashboard/DashListItems.js'; // Ajuste o caminho conforme necessário
+
 export const router = event => {
 	event = event || window.event;
-	event.preventDefault();
+	event.preventDefault(); // Evita o comportamento padrão do link
 	const link = event.currentTarget || event.target.closest('a');
 	if (link && link.getAttribute('href')) {
-		window.location.hash = link.getAttribute('href');
+		window.location.hash = link.getAttribute('href'); // Atualiza a hash na URL
 	}
-	handleLocation();
+	handleLocation(); // Processa a nova hash
 };
 
 const routes = {
-	'/': './pages/Login.js',
+	'/': './pages/Login.js', // Esta rota é tratada de forma especial no handleLocation
 	'/aluno-admin': './pages/Admin/Students.js',
-	'/dashboard-admin': './pages/Admin/Dashboard.js',
-	'/dashboard-professor': './pages/Prof/DashboardProfessor.js',
+	'/dashboard-admin': './pages/Admin/Dashboard.js', // Este módulo chama DashboardMainContent(DashListItems)
+	'/dashboard-professor': './pages/Prof/DashboardProfessor.js', // Presumo que este também chama DashboardMainContent
 	'/disciplines/:id': './pages/Exam.js',
 	'/disciplines': './pages/Disciplines.js',
 	'/disciplines/:id/quizz': './pages/Quizz.js',
@@ -31,44 +42,82 @@ const routes = {
 	'/quiz/create-question/:quizId': './pages/Prof/createQuestion.js',
 };
 
+/**
+ * Função auxiliar para renderizar conteúdo em um elemento DOM específico.
+ * @param {string} targetElementId - O ID do elemento onde o conteúdo será renderizado.
+ * @param {HTMLElement|string} content - O conteúdo a ser renderizado.
+ */
+const renderContent = (targetElementId, content) => {
+	const targetElement = document.getElementById(targetElementId);
+	if (targetElement) {
+		targetElement.innerHTML = ''; // Limpa o conteúdo existente
+		if (content instanceof HTMLElement) {
+			targetElement.appendChild(content);
+		} else if (typeof content === 'string') {
+			targetElement.innerHTML = content;
+		}
+	} else {
+		console.error(
+			`Erro: Elemento com ID '${targetElementId}' não encontrado.`,
+		);
+		document.body.innerHTML =
+			'<h1>Erro Crítico: Container principal #main-content não encontrado!</h1>';
+	}
+};
+
 export const handleLocation = async () => {
 	const hashPath = window.location.hash;
 	const path = hashPath.slice(1) || '/';
 
-	// delay para que possa ver a rota antes de atualizar a página
-	await new Promise(resolve => setTimeout(resolve, 100));
-
-	const userLogin = localStorage.getItem('userLogin');
 	let user = null;
 	let token = null;
 
 	try {
+		const userLogin = localStorage.getItem('userLogin');
 		if (userLogin) {
 			user = JSON.parse(userLogin);
 			token = user?.token;
 		}
 	} catch (error) {
-		console.error('Erro ao parsear userLogin:', error);
+		console.error('Erro ao parsear userLogin do localStorage:', error);
 		localStorage.removeItem('userLogin'); // Remove dados corrompidos
 	}
 
-	// verifica se o usuário tem token de acesso válido
+	// --- Lógica de Autenticação e Redirecionamento ---
+
+	// Cenário 1: Não logado e tentando acessar uma rota protegida
 	if (path !== '/' && !token) {
-		window.location.hash = '/';
-		return;
+		window.location.hash = '/'; // Redireciona para o login
+		return; // Sai desta execução
 	}
 
-	let matchedRoute = null;
-	let params = null;
+	// Cenário 2: Já logado e tentando acessar a rota de login ('/')
+	if (path === '/' && token) {
+		if (user?.role === 'admin') {
+			window.location.hash = '/dashboard-admin';
+		} else if (user?.role === 'professor') {
+			window.location.hash = '/dashboard-professor';
+		} else {
+			console.warn(
+				'Token válido encontrado, mas role desconhecido. Redirecionando para login.',
+			);
+			localStorage.removeItem('userLogin');
+			window.location.hash = '/';
+		}
+		return; // Sai desta execução após redirecionar
+	}
 
+	let matchedRoutePath = null;
+	let params = {};
+
+	// Encontra a rota correspondente e extrai os parâmetros
 	for (const routePattern in routes) {
 		const regexPath = routePattern.replace(/:\w+/g, '(\\w+)');
 		const regex = new RegExp(`^${regexPath}$`);
 		const match = path.match(regex);
 
 		if (match) {
-			matchedRoute = routes[routePattern];
-			params = {};
+			matchedRoutePath = routes[routePattern];
 			const paramNames = routePattern.match(/:\w+/g);
 			if (paramNames) {
 				paramNames.forEach((name, index) => {
@@ -79,92 +128,84 @@ export const handleLocation = async () => {
 		}
 	}
 
-	const route =
-		matchedRoute ||
-		(() => {
-			const newMain = document.getElementById('main-body');
-			if (newMain) {
-				newMain.innerHTML = '<h1>Página não encontrada</h1>';
-			} else {
-				document.getElementById('main-content').innerHTML =
-					'<h1>Página não encontrada</h1>';
-			}
-		});
+	// Se nenhuma rota for encontrada (e não foi redirecionado pela autenticação)
+	if (!matchedRoutePath) {
+		renderContent('main-content', '<h1>Página não encontrada</h1>');
+		return;
+	}
 
-	if (typeof route === 'string' && route.endsWith('.js')) {
-		try {
-			const module = await import(route);
-			if (module.default && typeof module.default === 'function') {
-				const content = await module.default(params);
-
-				if (path === '/') {
-					// Apenas Login: limpa e renderiza na raiz
-					document.getElementById('main-content').innerHTML = '';
-					document
-						.getElementById('main-content')
-						.appendChild(content);
-				} else if (path.includes('/dashboard')) {
-					// Qualquer dashboard: renderiza diretamente
-					document.getElementById('main-content').innerHTML = '';
-					document
-						.getElementById('main-content')
-						.appendChild(content);
-				} else {
-					// Outras rotas: garante que main-body existe
-					let newMain = document.getElementById('main-body');
-					if (!newMain) {
-						// Determina qual dashboard carregar baseado no role do usuário
-						const userLogin = localStorage.getItem('userLogin');
-						const user = userLogin ? JSON.parse(userLogin) : null;
-
-						let dashboardPath;
-						if (user?.role === 'admin') {
-							dashboardPath = './pages/Admin/Dashboard.js';
-						} else if (user?.role === 'professor') {
-							dashboardPath =
-								'./pages/Prof/DashboardProfessor.js';
-						} else {
-							// Se não tem role definido, redireciona para login
-							window.location.hash = '/';
-							return;
-						}
-
-						try {
-							const DashboardModule = await import(dashboardPath);
-							const DashboardContent =
-								await DashboardModule.default();
-							document.getElementById('main-content').innerHTML =
-								'';
-							document
-								.getElementById('main-content')
-								.appendChild(DashboardContent);
-							newMain = document.getElementById('main-body');
-						} catch (error) {
-							console.error('Erro ao carregar dashboard:', error);
-							window.location.hash = '/error';
-							return;
-						}
-					}
-					if (newMain && content instanceof HTMLElement) {
-						newMain.innerHTML = '';
-						newMain.appendChild(content);
-					} else {
-						document.getElementById('main-content').innerHTML =
-							'<h1>Erro: container #main-body não encontrado!</h1>';
-					}
-				}
-			}
-		} catch (error) {
-			console.error('Erro ao importar o módulo:', error);
-			window.location.hash = '/error';
+	try {
+		// --- Tratamento da Rota de Login (apenas quando NÃO logado) ---
+		if (path === '/') {
+			const loginContent = Login(); // Chame diretamente a função Login (já importada)
+			renderContent('main-content', loginContent);
+			return; // Sai da função após renderizar o login
 		}
-	} else if (typeof route === 'function') {
-		route();
+
+		// --- Tratamento para TODAS as Rotas Autenticadas ---
+
+		// 1. **Sempre monte a estrutura do Dashboard no #main-content para rotas autenticadas.**
+		//    Isso garante que a sidebar e o #main-body estejam sempre presentes,
+		//    especialmente no refresh, usando o DashboardMainContent.
+		//    Como DashboardMainContent espera DashListItems, passamos ele aqui.
+		//    Isso significa que, no refresh de '/aluno-admin',
+		//    DashboardMainContent vai renderizar o conteúdo inicial do dashboard por um instante,
+		//    antes de ser substituído pelo conteúdo de Students.js dentro do #main-body.
+		const dashboardLayoutElement =
+			await DashboardMainContent(DashListItems);
+		renderContent('main-content', dashboardLayoutElement);
+
+		// 2. Agora que a estrutura do dashboard (com #main-body) está no DOM,
+		//    determinamos o conteúdo específico da rota atual e o injetamos no #main-body.
+		const mainBodyContainer = document.getElementById('main-body');
+
+		if (mainBodyContainer) {
+			// Se a rota atual é um dos dashboards principais (que já foram preenchidos
+			// pelo DashboardMainContent()), não precisamos importar e injetar nada mais.
+			if (path.includes('/dashboard')) {
+				// O DashboardMainContent já renderizou o DashListItems no main-body.
+				// Não precisamos carregar e injetar Admin/Dashboard.js aqui.
+				// Ele já foi implicitamente "usado" pelo DashboardMainContent.
+				return;
+			}
+
+			// Para todas as OUTRAS rotas autenticadas (ex: /aluno-admin, /disciplines/:id)
+			const pageModule = await import(matchedRoutePath); // Importa o módulo da página específica
+			if (
+				pageModule.default &&
+				typeof pageModule.default === 'function'
+			) {
+				const pageContent = await pageModule.default(params); // Gera o conteúdo da página
+				renderContent('main-body', pageContent); // Injeta no #main-body
+			} else {
+				console.error(
+					`Módulo para a rota autenticada (${path}) não tem um export default function.`,
+				);
+				renderContent(
+					'main-body',
+					'<h1>Erro ao carregar o conteúdo da página.</h1>',
+				);
+			}
+		} else {
+			console.error(
+				'Erro: O elemento #main-body não foi encontrado após carregar a estrutura do dashboard.',
+			);
+			renderContent(
+				'main-content',
+				'<h1>Erro: Estrutura da aplicação autenticada incompleta.</h1>',
+			);
+		}
+	} catch (error) {
+		console.error('Erro geral ao processar rota:', error);
+		// Em caso de erro ao carregar/renderizar um módulo, redireciona para a página de erro genérica.
+		window.location.hash = '/error';
 	}
 };
 
+// Adiciona os event listeners para garantir que o roteamento funcione em diferentes cenários.
 window.addEventListener('hashchange', handleLocation);
-window.addEventListener('load', handleLocation);
-window.onpopstate = handleLocation;
+window.addEventListener('load', handleLocation); // Essencial para o carregamento inicial da página
+window.onpopstate = handleLocation; // Para navegação via botões de voltar/avançar do navegador
 
+// Chama handleLocation uma vez para processar a rota inicial ao carregar o script.
 handleLocation();

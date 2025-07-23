@@ -9,8 +9,6 @@ import newElement from '../../utils/newElement.js';
 const QuizPage = async () => {
 	const quizId = window.location.hash.split('/')[2];
 	const quizData = await getQuizzByIdApi(quizId);
-	console.log('🚀 ~ QuizPage ~ quizData:', quizData);
-
 	const quizContent = newElement('div');
 
 	const quizTitleArea = newElement('div');
