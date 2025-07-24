@@ -1,8 +1,44 @@
+import { getQuizzByIdApi } from '../../api/quizzes.js';
+import { questionsGenerateButton } from '../../components/Buttons/questionsGenerateButton.js';
+import PageTitle from '../../components/PageTitle.js';
+import { CreateQuestionForm } from '../../components/professor/Quizz/CreateQuestionForm.js';
 import newElement from '../../utils/newElement.js';
 
 const createQuestion = async () => {
+	const quizId = window.location.hash.split('/')[3];
+
+	const { title, subjectId } = await getQuizzByIdApi(quizId);
+
 	const createcontent = newElement('div');
-	createcontent.textContent = 'criar página de perguntas';
+
+	const bodyTitleArea = newElement('div');
+	bodyTitleArea.classList.add('body-title-area');
+
+	const pageTitle = PageTitle(`${title}`, `${subjectId.name}`);
+
+	const bodyArea = CreateQuestionForm();
+
+	const buttonArea = newElement('div');
+	buttonArea.classList.add('button-create-question-area');
+
+	const saveAsDraft = questionsGenerateButton(
+		'Guardar Rascunho',
+		'quiz-register-save-draft-button',
+	);
+
+	const postQuizButton = questionsGenerateButton(
+		'Postar',
+		'quiz-register-generate-button',
+	);
+
+	bodyTitleArea.appendChild(pageTitle);
+
+	buttonArea.appendChild(saveAsDraft);
+	buttonArea.appendChild(postQuizButton);
+
+	createcontent.appendChild(bodyTitleArea);
+	createcontent.appendChild(bodyArea);
+	createcontent.appendChild(buttonArea);
 
 	return createcontent;
 };
