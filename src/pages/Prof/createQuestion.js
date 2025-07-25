@@ -2,6 +2,7 @@ import { getQuizzByIdApi } from '../../api/quizzes.js';
 import { questionsGenerateButton } from '../../components/Buttons/questionsGenerateButton.js';
 import PageTitle from '../../components/PageTitle.js';
 import { CreateQuestionForm } from '../../components/professor/Quizz/CreateQuestionForm.js';
+import { createQuestionEvent } from '../../events/quizzes.js';
 import newElement from '../../utils/newElement.js';
 
 const createQuestion = async () => {
@@ -31,6 +32,7 @@ const createQuestion = async () => {
 		'Adicionar pergunta',
 		'quiz-register-generate-button',
 	);
+	createQuestionEvent(postQuizButton, quizId);
 
 	bodyTitleArea.appendChild(pageTitle);
 

@@ -7,17 +7,17 @@ export const CreateQuestionForm = () => {
 	questionsFormContent.classList.add('questions-form-content');
 
 	const question = InputArea(
-		'Pergunta 1',
+		'Pergunta',
 		'quiz-create-question',
 		'Digite aqui a pergunta',
 	);
 	question.classList.add('create-question-form');
 
-	const correctAnswer = InputAnswer(true);
+	const correctAnswer = InputAnswer('correct-answer', true);
 
-	const firstWrongAnswer = InputAnswer(false);
-	const secondWrongAnswer = InputAnswer(false);
-	const thirdWrongAnswer = InputAnswer(false);
+	const firstWrongAnswer = InputAnswer('first-wrong-answer', false);
+	const secondWrongAnswer = InputAnswer('second-wrong-answer', false);
+	const thirdWrongAnswer = InputAnswer('third-wrong-answer', false);
 
 	questionsFormContent.appendChild(question);
 	questionsFormContent.appendChild(correctAnswer);

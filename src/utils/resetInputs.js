@@ -20,3 +20,11 @@ export const resetQuizInputs = () => {
 	document.querySelector('#quiz-register-submission-date').value = '';
 	document.querySelector('#quiz-register-description').value = '';
 };
+
+export const resetCreateQuestionsInput = () => {
+	document.querySelector('#quiz-create-question').value = '';
+	document.querySelector('#correct-answer').value = '';
+	document.querySelector('#first-wrong-answer').value = '';
+	document.querySelector('#second-wrong-answer').value = '';
+	document.querySelector('#third-wrong-answer').value = '';
+};

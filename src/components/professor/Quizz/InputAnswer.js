@@ -1,6 +1,6 @@
 import newElement from '../../../utils/newElement.js';
 
-export const InputAnswer = isCorrect => {
+export const InputAnswer = (id, isCorrect) => {
 	let classResponse = '';
 	let icon = '';
 	let placeHolder = '';
@@ -32,6 +32,7 @@ export const InputAnswer = isCorrect => {
 	inputAnswerArea.classList.add('input-answer-area');
 
 	const inputAnswerOptions = newElement('input');
+	inputAnswerOptions.id = id;
 	inputAnswerOptions.classList.add('input-answer-options');
 	inputAnswerOptions.classList.add(classResponse);
 	inputAnswerOptions.placeholder = placeHolder;

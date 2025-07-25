@@ -1,7 +1,15 @@
+import { createQuestionsApi } from '../api/questions.js';
 import { createQuizApi } from '../api/quizzes.js';
 import ToastBar from '../components/ToastBar/index.js';
+import {
+	toastBarError,
+	toastBarSuccess,
+} from '../components/ToastBar/toastAnswers.js';
 import { createQuizUtil } from '../utils/newQuiz.js';
-import { resetQuizInputs } from '../utils/resetUserInputs.js';
+import {
+	resetCreateQuestionsInput,
+	resetQuizInputs,
+} from '../utils/resetInputs.js';
 import { userDataByLocalStorage } from '../utils/userDataByLocalStorage.js';
 
 const {
@@ -56,6 +64,35 @@ export const CreateQuizQuestions = element => {
 			window.location.hash = `#/quiz/create-question/${quizId}`;
 		} catch (error) {
 			throw new Error('Erro ao Criar quiz', error.message);
+		}
+	});
+};
+
+export const createQuestionEvent = (element, quizId) => {
+	element.addEventListener('click', async () => {
+		try {
+			const newQuestion = {
+				question: document.querySelector('#quiz-create-question').value,
+				correctOption: document.querySelector('#correct-answer').value,
+				firstOption: document.querySelector('#first-wrong-answer')
+					.value,
+				secondOption: document.querySelector('#second-wrong-answer')
+					.value,
+				thirdOption: document.querySelector('#third-wrong-answer')
+					.value,
+			};
+
+			const toastSuccess = toastBarSuccess('Questão criada com sucesso!');
+
+			await createQuestionsApi(newQuestion, quizId);
+
+			resetCreateQuestionsInput();
+
+			ToastBar(toastSuccess, 'success-toast');
+		} catch (error) {
+			const toastError = toastBarError('Erro ao criar nova questão!');
+			ToastBar(toastError, 'Não foi possível criar a pergunta');
+			throw new Error('Erro no evento de criar questão');
 		}
 	});
 };
