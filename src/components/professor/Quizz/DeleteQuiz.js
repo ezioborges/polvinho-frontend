@@ -14,7 +14,7 @@ export const DeleteQuiz = quizData => {
 	QuestionDialog(
 		deleteButton,
 		'Tem Certeza?',
-		`Você irá eliminar o quiz "AQUI VAIO SER O NOME DO QUIZ". Esta ação não pode ser desfeita.`,
+		`Você irá eliminar o quiz "${quizData.title}". Esta ação não pode ser desfeita.`,
 		'Cancelar',
 		clickEventCancelButton,
 		'Eliminar',
