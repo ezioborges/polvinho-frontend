@@ -101,12 +101,14 @@ export const createQuestionEvent = (element, quizId) => {
 export const deleteQuizzButton = element => {
 	element.addEventListener('click', async () => {
 		try {
-			console.log('aqui é dentro do try: ', element.id);
-			const toastSuccess = toastBarSuccess('Quiz O quiz foi removido!');
-
 			await deleteQuizApi(element.id);
 
-			ToastBar(toastSuccess, 'success-toast');
+			window.location.hash = '#/dashboard-admin';
+
+			setTimeout(() => {
+				const toastSuccess = toastBarSuccess('Quiz removido!');
+				ToastBar(toastSuccess, 'success-toast');
+			}, 300);
 		} catch (error) {
 			const toastMessage = toastBarError(
 				'Erro ao deletar o quiz! Disciplina já foi excluida',
