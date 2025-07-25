@@ -76,3 +76,22 @@ export const getQuizzByIdApi = async quizId => {
 
 	return data;
 };
+
+export const deleteQuizApi = async quizId => {
+	const deleteURL = `${urls.quizzes}/${quizId}`;
+
+	const response = await fetch(deleteURL, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error('Não foi possivel deletar o quiz');
+	}
+
+	const data = await response.json();
+
+	return data;
+};

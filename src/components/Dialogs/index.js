@@ -1,58 +1,60 @@
-import newElement from "../../utils/newElement.js";
-import QuizzButton from "../Buttons/QuizzButton.js";
+import newElement from '../../utils/newElement.js';
+import QuizzButton from '../Buttons/QuizzButton.js';
 
 const Dialog = (
-        title, 
-        text, 
-        cancelTitle, 
-        funcCancelButton,
-        startTitle, 
-        funcActionQuiz,
-        buttonColor = 'var(--indigo-500)' 
+	title,
+	text,
+	cancelTitle,
+	funcCancelButton,
+	startTitle,
+	funcActionQuiz,
+	buttonColor = 'var(--indigo-500)',
 ) => {
-    const dialogOverlay = newElement('div')
-    const dialogContent = newElement('div')
-    const dialogTitle = newElement('p')
-    const dialogText = newElement('p')
-    const dialogButtonArea = newElement('div')
-    const dialogTextsArea = newElement('div')
-    
-    const cancelButton = QuizzButton(cancelTitle, 'cancel-button-content', 'textMd')
-    funcCancelButton(cancelButton)
-    cancelButton.style.marginRight = '1rem'
+	const dialogOverlay = newElement('div');
+	const dialogContent = newElement('div');
+	const dialogTitle = newElement('p');
+	const dialogText = newElement('p');
+	const dialogButtonArea = newElement('div');
+	const dialogTextsArea = newElement('div');
 
-    const startButton = QuizzButton(startTitle, 'button-content', 'textMd')
-    startButton.style.backgroundColor = buttonColor
-    startButton.classList.add('start-button')
-    startButton.style.border = `none`
-    startButton.id = 'start-button'
-    funcActionQuiz(startButton)
+	const cancelButton = QuizzButton(
+		cancelTitle,
+		'cancel-button-content',
+		'textMd',
+	);
+	funcCancelButton(cancelButton);
+	cancelButton.style.marginRight = '1rem';
 
-    dialogOverlay.classList.add('dialog-overlay')
-    dialogContent.classList.add('dialog-content')
-    dialogButtonArea.classList.add('dialog-button-area')
-    dialogTitle.classList.add('title3')
-    dialogText.classList.add('textMd')
+	const startButton = QuizzButton(startTitle, 'button-content', 'textMd');
+	startButton.style.backgroundColor = buttonColor;
+	startButton.classList.add('start-button');
+	startButton.style.border = `none`;
+	funcActionQuiz(startButton);
 
-    dialogTitle.textContent = title
-    dialogTitle.style.marginBottom = '1rem'
-    dialogText.style.color = 'var(--stone-900)'
+	dialogOverlay.classList.add('dialog-overlay');
+	dialogContent.classList.add('dialog-content');
+	dialogButtonArea.classList.add('dialog-button-area');
+	dialogTitle.classList.add('title3');
+	dialogText.classList.add('textMd');
 
-    dialogText.textContent = text
-    dialogText.style.color = 'var(--stone-700)'
+	dialogTitle.textContent = title;
+	dialogTitle.style.marginBottom = '1rem';
+	dialogText.style.color = 'var(--stone-900)';
 
-    dialogTextsArea.appendChild(dialogTitle)
-    dialogTextsArea.appendChild(dialogText)
+	dialogText.textContent = text;
+	dialogText.style.color = 'var(--stone-700)';
 
-    dialogButtonArea.appendChild(cancelButton)
-    dialogButtonArea.appendChild(startButton)
-    
-    dialogContent.appendChild(dialogTextsArea);
-    dialogContent.appendChild(dialogButtonArea);
+	dialogTextsArea.appendChild(dialogTitle);
+	dialogTextsArea.appendChild(dialogText);
 
-    document.body.appendChild(dialogOverlay);
-    document.body.appendChild(dialogContent);
+	dialogButtonArea.appendChild(cancelButton);
+	dialogButtonArea.appendChild(startButton);
 
+	dialogContent.appendChild(dialogTextsArea);
+	dialogContent.appendChild(dialogButtonArea);
+
+	document.body.appendChild(dialogOverlay);
+	document.body.appendChild(dialogContent);
 };
 
 export default Dialog;

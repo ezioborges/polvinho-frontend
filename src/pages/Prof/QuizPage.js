@@ -24,7 +24,7 @@ const QuizPage = async () => {
 	const buttonsArea = newElement('div');
 	buttonsArea.classList.add('buttons-quiz-area');
 
-	const deleteButton = DeleteQuiz();
+	const deleteButton = DeleteQuiz(quizData);
 	const createQuestion = CreateQuestionButton('Criar Pergunta');
 	createQuestion.onclick = () =>
 		(window.location.hash = `#/quiz/create-question/${quizData._id}`);

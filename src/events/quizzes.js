@@ -1,10 +1,11 @@
 import { createQuestionsApi } from '../api/questions.js';
-import { createQuizApi } from '../api/quizzes.js';
+import { createQuizApi, deleteQuizApi } from '../api/quizzes.js';
 import ToastBar from '../components/ToastBar/index.js';
 import {
 	toastBarError,
 	toastBarSuccess,
 } from '../components/ToastBar/toastAnswers.js';
+import { clickEventCancelButton } from '../utils/eventListeners.js';
 import { createQuizUtil } from '../utils/newQuiz.js';
 import {
 	resetCreateQuestionsInput,
@@ -95,4 +96,25 @@ export const createQuestionEvent = (element, quizId) => {
 			throw new Error('Erro no evento de criar questão');
 		}
 	});
+};
+
+export const deleteQuizzButton = element => {
+	element.addEventListener('click', async () => {
+		try {
+			console.log('aqui é dentro do try: ', element.id);
+			const toastSuccess = toastBarSuccess('Quiz O quiz foi removido!');
+
+			await deleteQuizApi(element.id);
+
+			ToastBar(toastSuccess, 'success-toast');
+		} catch (error) {
+			const toastMessage = toastBarError('Erro ao deletar o quiz!');
+
+			ToastBar(toastMessage, 'error-toast');
+
+			throw new Error(`Error ao deletar quiz: ${error.message}`);
+		}
+	});
+
+	clickEventCancelButton(element);
 };
