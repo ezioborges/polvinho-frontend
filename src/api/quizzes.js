@@ -95,3 +95,23 @@ export const deleteQuizApi = async quizId => {
 
 	return data;
 };
+
+export const startQuizApi = async (quizId, quizData) => {
+	const startQuizURL = `${urls.quizzes}/start/${quizId}`;
+
+	const response = await fetch(startQuizURL, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(quizData),
+	});
+
+	if (!response.ok) {
+		throw new Error('Não foi possível atualizar o quiz');
+	}
+
+	const data = await response.json();
+
+	return data;
+};

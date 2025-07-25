@@ -1,8 +1,6 @@
 export const createQuestionsApi = async (questionData, quizId) => {
 	const createQuestionsURL = `http://localhost:2424/questions/${quizId}/create`;
 
-	console.log('testando o retorno da api ', createQuestionsURL);
-
 	const response = await fetch(createQuestionsURL, {
 		method: 'POST',
 		headers: {

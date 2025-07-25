@@ -12,10 +12,7 @@ import {
 } from '../api/students.js';
 import ToastBar from '../components/ToastBar/index.js';
 import UserList from '../components/Users/UserList.js';
-import {
-	resetProfessorInputs,
-	resetUserInuts,
-} from '../utils/resetUserInputs.js';
+import { resetProfessorInputs, resetUserInputs } from '../utils/resetInputs.js';
 
 export const createUser = (element, userRole) => {
 	element.addEventListener('click', async () => {
@@ -43,7 +40,7 @@ export const createUser = (element, userRole) => {
 			'success-toast',
 		);
 
-		resetUserInuts();
+		resetUserInputs();
 	});
 };
 

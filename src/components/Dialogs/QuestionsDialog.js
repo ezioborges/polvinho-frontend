@@ -12,7 +12,6 @@ export const QuestionDialog = (
 	buttonColor = 'var(--indigo-500)',
 	quizData = null,
 ) => {
-	console.log('QuestionDialog ===> ', quizData);
 	element.addEventListener('click', async () => {
 		const dialogOverlay = newElement('div');
 		const dialogContent = newElement('div');

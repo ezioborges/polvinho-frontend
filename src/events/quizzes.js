@@ -1,5 +1,10 @@
 import { createQuestionsApi } from '../api/questions.js';
-import { createQuizApi, deleteQuizApi } from '../api/quizzes.js';
+import {
+	createQuizApi,
+	deleteQuizApi,
+	getQuizzByIdApi,
+	startQuizApi,
+} from '../api/quizzes.js';
 import ToastBar from '../components/ToastBar/index.js';
 import {
 	toastBarError,
@@ -20,19 +25,23 @@ const {
 export const SaveQuizAsDraft = element => {
 	element.addEventListener('click', async event => {
 		event.preventDefault();
-
 		const newQuiz = createQuizUtil(name);
 
 		try {
-			await createQuizApi(newQuiz);
-			ToastBar(
-				{
-					iconParam: '../../assets/CheckCircle.png',
-					titleParam: 'Sucesso',
-					msgParam: 'Quiz adicionado aos rascunhos com sucesso!',
-				},
-				'success-toast',
-			);
+			const { quizId } = await createQuizApi(newQuiz);
+
+			const {
+				subjectId: { _id },
+			} = await getQuizzByIdApi(quizId);
+
+			window.location.hash = `#/subject-professor/${_id}`;
+
+			setTimeout(() => {
+				const toastSuccess = toastBarSuccess(
+					'Quiz adicionado aos rascunhos com sucesso!',
+				);
+				ToastBar(toastSuccess, 'success-toast');
+			}, 300);
 
 			resetQuizInputs();
 		} catch (error) {
@@ -120,5 +129,35 @@ export const deleteQuizzButton = element => {
 		}
 	});
 
+	clickEventCancelButton(element);
+};
+
+export const postQuizEvent = element => {
+	element.addEventListener('click', async () => {
+		try {
+			const { subjectId } = await getQuizzByIdApi(element.id);
+
+			const postQuiz = {
+				isPublished: true,
+			};
+
+			await startQuizApi(element.id, postQuiz);
+
+			window.location.hash = `#/subject-professor/${subjectId._id}`;
+
+			setTimeout(() => {
+				const toastSuccess = toastBarSuccess(
+					'Quiz publicado com sucesso!',
+				);
+				ToastBar(toastSuccess, 'success-toast');
+			}, 300);
+		} catch (error) {
+			setTimeout(() => {
+				const toastError = toastBarError('Erro ao publicar quiz!');
+				ToastBar(toastError, 'error-toast');
+			}, 300);
+			throw new Error('Erro no evento para publicar quiz', error.message);
+		}
+	});
 	clickEventCancelButton(element);
 };
