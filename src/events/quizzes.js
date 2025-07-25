@@ -108,7 +108,9 @@ export const deleteQuizzButton = element => {
 
 			ToastBar(toastSuccess, 'success-toast');
 		} catch (error) {
-			const toastMessage = toastBarError('Erro ao deletar o quiz!');
+			const toastMessage = toastBarError(
+				'Erro ao deletar o quiz! Disciplina já foi excluida',
+			);
 
 			ToastBar(toastMessage, 'error-toast');
 
