@@ -22,12 +22,13 @@ const createQuestion = async () => {
 	buttonArea.classList.add('button-create-question-area');
 
 	const saveAsDraft = questionsGenerateButton(
-		'Guardar Rascunho',
+		'Voltar para inicio',
 		'quiz-register-save-draft-button',
 	);
+	saveAsDraft.onclick = () => (window.location.hash = `#/dashboard-admin`);
 
 	const postQuizButton = questionsGenerateButton(
-		'Postar',
+		'Adicionar pergunta',
 		'quiz-register-generate-button',
 	);
 

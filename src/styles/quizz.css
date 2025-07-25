@@ -255,17 +255,17 @@
 	margin-left: 0.75rem;
 }
 
+.quiz-register-generate-button:hover {
+	cursor: pointer;
+	background-color: var(--indigo-700);
+}
+
 .quiz-register-save-draft-button {
 	border-radius: 6px;
 	padding: 0.75rem 1.75rem;
 	border: 1px solid var(--stone-400);
 	color: var(--stone-400);
 	background-color: var(--neutral-50);
-}
-
-.quiz-register-generate-button:hover {
-	cursor: pointer;
-	background-color: var(--indigo-700);
 }
 
 .quiz-register-save-draft-button:hover {
