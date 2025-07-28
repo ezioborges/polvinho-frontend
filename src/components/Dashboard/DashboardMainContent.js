@@ -32,7 +32,6 @@ const DashboardMainContent = async DashListItems => {
 	dashTitleArea.appendChild(dashTitle);
 
 	dashMainBody.appendChild(dashTitleArea);
-	dashMainBody.appendChild(dashTitleArea);
 
 	if (userRole === 'admin') {
 		const dashContent = await DashListItems(entities);

@@ -104,6 +104,11 @@ export const clickFormLogin = element => {
 				if (role === 'professor') {
 					return (window.location.hash = '#/dashboard-professor');
 				}
+
+				if (role === 'aluno') {
+					console.log('role ===> ', role);
+					return (window.location.hash = '#/dashboard-student');
+				}
 			} else {
 				credentialsInput.style.border = ' 2px solid var(--red-500)';
 				passwordInput.style.border = '2px solid var(--red-500)';
