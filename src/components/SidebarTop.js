@@ -12,6 +12,10 @@ const SidebarTop = () => {
 	if (userRole === 'professor') {
 		return SidebarUserTop(userRole, 'Disciplinas', panelDropdown);
 	}
+
+	if (userRole === 'aluno') {
+		return SidebarUserTop(userRole, 'Disciplinas', panelDropdown);
+	}
 };
 
 export default SidebarTop;
