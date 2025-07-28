@@ -1,9 +1,8 @@
-import newElement from '../../utils/newElement.js';
+import DashboardMainContent from '../../components/Dashboard/DashboardMainContent.js';
+import DashListItems from '../../components/Dashboard/DashListItems.js';
 
 const DashboardStudent = async () => {
-	const studentContent = newElement('div');
-
-	return studentContent;
+	return DashboardMainContent(DashListItems);
 };
 
 export default DashboardStudent;
