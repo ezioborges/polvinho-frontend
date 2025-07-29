@@ -30,8 +30,10 @@ const routes = {
 	'/error': './pages/PageError.js',
 	'/professor-admin': './pages/Admin/Professor.js',
 	'/register/:entity': './pages/Admin/Register.js',
+
 	'/subjects-admin': './pages/Admin/Subjects.js',
 	'/subject-professor/:subjectId': './pages/Prof/ProfessorSubjectPage.js',
+	'/subject-student/:subjectId': './pages/Student/StudentSubjectPage.js',
 	'/quiz/:quizId': './pages/Prof/QuizPage.js',
 	'/quiz/quiz-answers/:quizId': './pages/Prof/QuizAnswers.js',
 	'/quiz/register-quiz': './pages/Prof/QuizRegister.js',
