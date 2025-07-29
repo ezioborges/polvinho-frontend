@@ -11,7 +11,6 @@ const DashboardMainContent = async DashListItems => {
 	} = userDataByLocalStorage();
 
 	const userRole = role.toLowerCase();
-	console.log('🚀 ~ userRole:', userRole);
 
 	const dashboardContent = newElement('div');
 	dashboardContent.classList.add('dash-content');
@@ -39,16 +38,7 @@ const DashboardMainContent = async DashListItems => {
 		dashMainBody.appendChild(dashContent);
 	}
 
-	if (userRole === 'professor') {
-		const subjectsOfProfessor = await professorSubjects();
-		const subjectsNameObject = subjectsOfProfessor.map(subject => {
-			return { id: subject._id, entity: subject.name };
-		});
-		const dashContent = await DashListItems(subjectsNameObject);
-		dashMainBody.appendChild(dashContent);
-	}
-
-	if (userRole === 'aluno') {
+	if (role === 'professor') {
 		const subjectsOfProfessor = await professorSubjects();
 		const subjectsNameObject = subjectsOfProfessor.map(subject => {
 			return { id: subject._id, entity: subject.name };
