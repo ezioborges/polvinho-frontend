@@ -1,3 +1,4 @@
+import { getAllSubjectsOfStudentApi } from '../../api/students.js';
 import { entities } from '../../data/adminEntities.js';
 import newElement from '../../utils/newElement.js';
 import { professorSubjects } from '../../utils/professorSubjects.js';
@@ -7,7 +8,7 @@ import { Sidebar } from '../Sidebar.js';
 
 const DashboardMainContent = async DashListItems => {
 	const {
-		user: { name, role },
+		user: { name, role, id },
 	} = userDataByLocalStorage();
 
 	const userRole = role.toLowerCase();
@@ -41,6 +42,15 @@ const DashboardMainContent = async DashListItems => {
 	if (role === 'professor') {
 		const subjectsOfProfessor = await professorSubjects();
 		const subjectsNameObject = subjectsOfProfessor.map(subject => {
+			return { id: subject._id, entity: subject.name };
+		});
+		const dashContent = await DashListItems(subjectsNameObject);
+		dashMainBody.appendChild(dashContent);
+	}
+
+	if (role === 'aluno') {
+		const subjectsOfStudent = await getAllSubjectsOfStudentApi(id);
+		const subjectsNameObject = subjectsOfStudent.map(subject => {
 			return { id: subject._id, entity: subject.name };
 		});
 		const dashContent = await DashListItems(subjectsNameObject);

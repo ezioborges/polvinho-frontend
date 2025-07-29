@@ -22,15 +22,21 @@ const DashListItems = async itemsArr => {
 
 	if (!itemsArr.length) content.appendChild(noContent);
 
+	if (adminRole === 'admin') {
+		itemsArr.forEach(item => {
+			content.appendChild(BarItem(item, true));
+		});
+	}
+
 	if (role === 'professor') {
 		itemsArr.forEach(item => {
 			content.appendChild(BarItem(item, false));
 		});
 	}
 
-	if (adminRole === 'admin') {
+	if (role === 'aluno') {
 		itemsArr.forEach(item => {
-			content.appendChild(BarItem(item, true));
+			content.appendChild(BarItem(item, false));
 		});
 	}
 

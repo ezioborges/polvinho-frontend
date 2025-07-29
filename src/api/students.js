@@ -87,3 +87,22 @@ export const deleteStudentApi = async studentId => {
 	const data = await response.json();
 	return data;
 };
+
+export const getAllSubjectsOfStudentApi = async studentId => {
+	const getAllStudentURL = `${urls.students}/${studentId}/subjects`;
+
+	const response = await fetch(getAllStudentURL, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error('Erro ao buscar disciplinas do aluno');
+	}
+
+	const data = await response.json();
+
+	return data;
+};

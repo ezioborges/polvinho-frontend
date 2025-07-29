@@ -106,19 +106,24 @@ export const clickFormLogin = element => {
 				}
 
 				if (role === 'aluno') {
-					console.log('role ===> ', role);
 					return (window.location.hash = '#/dashboard-student');
 				}
-			} else {
-				credentialsInput.style.border = ' 2px solid var(--red-500)';
-				passwordInput.style.border = '2px solid var(--red-500)';
-				credentialsInput.value = '';
-				passwordInput.value = '';
-				errorArea.style.display = 'flex';
-				errorMessage.textContent =
-					data.message ||
-					'Erro ao fazer login. Verifique suas credenciais.';
-				console.error('Erro no login ', data.message);
+
+				if (
+					role !== 'admin' ||
+					role !== 'professor' ||
+					role !== 'aluno'
+				) {
+					credentialsInput.style.border = ' 2px solid var(--red-500)';
+					passwordInput.style.border = '2px solid var(--red-500)';
+					credentialsInput.value = '';
+					passwordInput.value = '';
+					errorArea.style.display = 'flex';
+					errorMessage.textContent =
+						data.message ||
+						'Erro ao fazer login. Verifique suas credenciais.';
+					console.error('Erro no login ', data.message);
+				}
 			}
 		} catch (error) {
 			throw new Error(`Erro ao buscar usuários: ${error.message}`);
