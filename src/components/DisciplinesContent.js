@@ -1,42 +1,41 @@
-import { quizzesData } from "../data/quizzesData.js";
-import { tableText } from "../utils/disciplineBar.js";
-import newElement from "../utils/newElement.js";
-import BodyWithoutContent from "./BodyWithoutContent.js";
-import disciplineBarDisc from "./DisciplineBarDisc.js";
+import { getQuizzesBySubjectApi } from '../api/quizzes.js';
+import newElement from '../utils/newElement.js';
+import disciplineBarDisc from './DisciplineBarDisc.js';
+import headerEntitiesList from './Headers/headerEntitiesList.js';
 
-const DisciplinesContent = () => {
-    const displinesArr = Object.values(quizzesData);
-    const disciplineContent = newElement('div');
-    disciplineContent.classList.add('discipline-title-table')
+const DisciplinesContent = async () => {
+	const subjectId = window.location.hash.split('/')[2];
+	const subject = await getQuizzesBySubjectApi(subjectId);
+	const subjectQuizzes = subject.quizzes;
 
-    const disciplineHeader = newElement('div')
-    disciplineHeader.classList.add('discipline-header')
+	const headersList = ['Nome', 'Data de Entrega', 'Tipo'];
 
-    const disciplineBody = newElement('div')
+	const disciplineContent = newElement('div');
+	disciplineContent.classList.add('discipline-title-table');
 
-    const nameHeader = tableText('p', 'Nome', 'textSm', '--stone-500');
-    const dateHeader = tableText('p', 'Data de Entrega', 'textSm', '--stone-500');
-    const typeHeader = tableText('p', 'Tipo', 'textSm', '--stone-500');
+	const disciplineHeader = newElement('div');
+	disciplineHeader.classList.add('discipline-header');
 
-    const noContent = BodyWithoutContent()
+	const disciplineBody = newElement('div');
 
-    disciplineContent.appendChild(disciplineHeader);
-    disciplineHeader.appendChild(nameHeader)
-    disciplineHeader.appendChild(dateHeader)
-    disciplineHeader.appendChild(typeHeader)
-    
-    disciplineContent.appendChild(disciplineBody)
+	const headersArea = newElement('div');
+	headersArea.classList.add('headers-area');
 
-    if(!displinesArr.length) {
-        disciplineBody.appendChild(noContent)
-        return disciplineBody
-    } 
+	headerEntitiesList(headersList, headersArea);
 
-    displinesArr.forEach(({name, date, type, id}) => {
-        disciplineBody.appendChild(disciplineBarDisc(name, date, type, id))
-    })    
-    
-    return disciplineContent;
-}
+	disciplineContent.appendChild(headersArea);
+	disciplineContent.appendChild(disciplineBody);
+
+	if (!subject || subject.quizzes.length === 0) {
+		disciplineBody.appendChild(noContent);
+		return disciplineBody;
+	}
+
+	subjectQuizzes.forEach(quiz => {
+		disciplineBody.appendChild(disciplineBarDisc(quiz));
+	});
+
+	return disciplineContent;
+};
 
 export default DisciplinesContent;

@@ -1,33 +1,39 @@
-import { router } from "../router.js";
-import { tableText } from "../utils/disciplineBar.js";
-import newElement from "../utils/newElement.js";
+import { formatDate } from '../utils/formatedDate.js';
+import newElement from '../utils/newElement.js';
+import textGenerator from '../utils/textGenerator.js';
 
-const disciplineBarDisc = (name, date, type, id) => {
-    const linkContent = newElement('a')
-    linkContent.onclick = (event) => router(event)
-    linkContent.href = `/disciplines/${id}`
-    linkContent.classList.add('link-content')
-    const divContent = newElement('div')
-    divContent.classList.add('discipline-bar-table')
+const disciplineBarDisc = quiz => {
+	const date = formatDate(quiz.submissionDeadline);
 
-    const nameBody = tableText('p', name, 'textMd', '--stone-900')
-    nameBody.classList.add('name-body-left')
+	const content = newElement('div');
+	content.classList.add('bar-content');
+	content.classList.add('quiz-bar-content');
 
-    const dateBody = tableText('p', date, 'textSm', '--stone-600')
+	const quizTitleArea = newElement('div');
+	quizTitleArea.classList.add('quiz-bar-content-item');
 
-    const divType = newElement('div')
-    const typeBody = tableText('p', type, 'textSm', '--indigo-50')
-    
-    linkContent.appendChild(divContent)
+	const quizTitle = textGenerator('textMd', quiz.title);
 
-    divType.appendChild(typeBody)
-    divType.classList.add('type-body-right')
+	const quizDateArea = newElement('div');
+	quizDateArea.classList.add('quiz-bar-content-item');
 
-    divContent.appendChild(nameBody);
-    divContent.appendChild(dateBody);
-    divContent.appendChild(divType)
+	const quizDate = textGenerator('textMd', date);
 
-    return linkContent;
-}
+	const quizTypeArea = newElement('div');
+	quizTypeArea.classList.add('quiz-bar-content-item');
+
+	//TODO: COLOCAR O TIPO DE AVALIAÇÃO NO SCHEMMA
+	const quizType = textGenerator('textMd', 'type no schemma');
+
+	quizTitleArea.appendChild(quizTitle);
+	quizDateArea.appendChild(quizDate);
+	quizTypeArea.appendChild(quizType);
+
+	content.appendChild(quizTitleArea);
+	content.appendChild(quizDateArea);
+	content.appendChild(quizTypeArea);
+
+	return content;
+};
 
 export default disciplineBarDisc;

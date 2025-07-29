@@ -109,6 +109,7 @@ export const clickFormLogin = element => {
 					return (window.location.hash = '#/dashboard-student');
 				}
 
+				//TODO: MUDAR ESSA VERIFICAÇÃO PARA QUE SEJA PELAS CREDENCAIS DO USER
 				if (
 					role !== 'admin' ||
 					role !== 'professor' ||
@@ -120,7 +121,6 @@ export const clickFormLogin = element => {
 					passwordInput.value = '';
 					errorArea.style.display = 'flex';
 					errorMessage.textContent =
-						data.message ||
 						'Erro ao fazer login. Verifique suas credenciais.';
 					console.error('Erro no login ', data.message);
 				}

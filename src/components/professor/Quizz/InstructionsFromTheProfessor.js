@@ -1,3 +1,4 @@
+import { formatDate } from '../../../utils/formatedDate.js';
 import newElement from '../../../utils/newElement.js';
 import textGenerator from '../../../utils/textGenerator.js';
 
@@ -9,10 +10,6 @@ export const instructionsFromTheProfessor = quizData => {
 		timeMinutes,
 		submissionDeadline,
 	} = quizData;
-
-	const formatDate = date => {
-		return date.slice(0, 10).split('-').reverse().join('/');
-	};
 
 	const instructionContent = newElement('div');
 	instructionContent.classList.add('instruction-content');

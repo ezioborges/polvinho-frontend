@@ -351,3 +351,15 @@
 	justify-content: flex-end;
 	width: 73.5vw;
 }
+
+.quiz-bar-content {
+	display: flex;
+	justify-content: space-around;
+}
+
+.quiz-bar-content-item {
+	width: 33%;
+	display: flex;
+	justify-content: center;
+	padding: 0.5rem;
+}

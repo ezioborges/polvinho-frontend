@@ -1,11 +1,11 @@
 import newElement from '../../utils/newElement.js';
 import textGenerator from '../../utils/textGenerator.js';
 
-const BarItem = (item, register) => {
+const BarItem = (item, register, role) => {
 	const barItem = newElement('div');
 	barItem.classList.add('bar-content');
 
-	if (register === true) {
+	if (register === true && role === 'admin') {
 		const title = textGenerator('textMd', item.entity);
 		title.classList.add('discipline-text');
 		const newRegister = newElement('a');
@@ -21,12 +21,25 @@ const BarItem = (item, register) => {
 		return barItem;
 	}
 
-	if (register === false) {
+	if (register === false && role === 'professor') {
 		const title = textGenerator('textMd', item.entity);
 		title.classList.add('discipline-text');
 
 		barItem.onclick = () => {
 			window.location.hash = `#/subject-professor/${item.id}`;
+		};
+
+		barItem.appendChild(title);
+
+		return barItem;
+	}
+
+	if (register === false && role === 'aluno') {
+		const title = textGenerator('textMd', item.entity);
+		title.classList.add('discipline-text');
+
+		barItem.onclick = () => {
+			window.location.hash = `#/subject-student/${item.id}`;
 		};
 
 		barItem.appendChild(title);

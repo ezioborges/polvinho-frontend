@@ -24,19 +24,19 @@ const DashListItems = async itemsArr => {
 
 	if (adminRole === 'admin') {
 		itemsArr.forEach(item => {
-			content.appendChild(BarItem(item, true));
+			content.appendChild(BarItem(item, true, adminRole));
 		});
 	}
 
 	if (role === 'professor') {
 		itemsArr.forEach(item => {
-			content.appendChild(BarItem(item, false));
+			content.appendChild(BarItem(item, false, role));
 		});
 	}
 
 	if (role === 'aluno') {
 		itemsArr.forEach(item => {
-			content.appendChild(BarItem(item, false));
+			content.appendChild(BarItem(item, false, role));
 		});
 	}
 
