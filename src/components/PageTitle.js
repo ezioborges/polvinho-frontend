@@ -10,12 +10,8 @@ export const PageTitle = (title, subtitle) => {
 	const subtitleTop = textGenerator('textXL', subtitle);
 	subtitleTop.style.color = 'var(--stone-700)';
 
-	// const timer = Timer() //usar display none pra sumir TODO
-
 	titleArea.appendChild(titleTop);
 	titleArea.appendChild(subtitleTop);
-
-	// content.appendChild(timer)
 
 	return titleArea;
 };

@@ -363,3 +363,27 @@
 	justify-content: center;
 	padding: 0.5rem;
 }
+
+.quiz-type-badge {
+	border-radius: 9999px;
+	padding: 0.2rem 1rem;
+	background-color: var(--indigo-500);
+}
+
+.quiz-type-badge p {
+	color: var(--neutral-50);
+}
+
+.init-button-area {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 2rem;
+}
+
+.quiz-student-content {
+	display: flex;
+}
+/* 
+.info-card-title-area {
+	border: 1px solid red;
+} */

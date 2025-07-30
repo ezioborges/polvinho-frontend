@@ -1,5 +1,6 @@
 import { getQuizzesBySubjectApi } from '../api/quizzes.js';
 import newElement from '../utils/newElement.js';
+import BodyWithoutContent from './BodyWithoutContent.js';
 import disciplineBarDisc from './DisciplineBarDisc.js';
 import headerEntitiesList from './Headers/headerEntitiesList.js';
 
@@ -9,6 +10,10 @@ const DisciplinesContent = async () => {
 	const subjectQuizzes = subject.quizzes;
 
 	const headersList = ['Nome', 'Data de Entrega', 'Tipo'];
+
+	const noContent = BodyWithoutContent(
+		'Nenhum quiz encontrado para esta disciplina.',
+	);
 
 	const disciplineContent = newElement('div');
 	disciplineContent.classList.add('discipline-title-table');

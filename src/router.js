@@ -34,7 +34,9 @@ const routes = {
 	'/subjects-admin': './pages/Admin/Subjects.js',
 	'/subject-professor/:subjectId': './pages/Prof/ProfessorSubjectPage.js',
 	'/subject-student/:subjectId': './pages/Student/StudentSubjectPage.js',
+
 	'/quiz/:quizId': './pages/Prof/QuizPage.js',
+	'/quiz/student/:quizId': './pages/Student/QuizStudentPage.js',
 	'/quiz/quiz-answers/:quizId': './pages/Prof/QuizAnswers.js',
 	'/quiz/register-quiz': './pages/Prof/QuizRegister.js',
 	'/quiz/create-question/:quizId': './pages/Prof/createQuestion.js',

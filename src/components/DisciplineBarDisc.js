@@ -9,10 +9,14 @@ const disciplineBarDisc = quiz => {
 	content.classList.add('bar-content');
 	content.classList.add('quiz-bar-content');
 
+	content.onclick = () =>
+		(window.location.hash = `#/quiz/student/${quiz._id}`);
+
 	const quizTitleArea = newElement('div');
 	quizTitleArea.classList.add('quiz-bar-content-item');
 
 	const quizTitle = textGenerator('textMd', quiz.title);
+	quizTitle.classList.add('textMdBold');
 
 	const quizDateArea = newElement('div');
 	quizDateArea.classList.add('quiz-bar-content-item');
@@ -22,12 +26,18 @@ const disciplineBarDisc = quiz => {
 	const quizTypeArea = newElement('div');
 	quizTypeArea.classList.add('quiz-bar-content-item');
 
+	const quizTypeBadge = newElement('div');
+	quizTypeBadge.classList.add('quiz-type-badge');
+
 	//TODO: COLOCAR O TIPO DE AVALIAÇÃO NO SCHEMMA
 	const quizType = textGenerator('textMd', 'type no schemma');
+	quizType.classList.add('textSm');
+
+	quizTypeBadge.appendChild(quizType);
 
 	quizTitleArea.appendChild(quizTitle);
 	quizDateArea.appendChild(quizDate);
-	quizTypeArea.appendChild(quizType);
+	quizTypeArea.appendChild(quizTypeBadge);
 
 	content.appendChild(quizTitleArea);
 	content.appendChild(quizDateArea);
