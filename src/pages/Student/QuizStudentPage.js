@@ -8,7 +8,6 @@ import newElement from '../../utils/newElement.js';
 const QuizStudentPage = async () => {
 	const quizId = window.location.hash.split('/')[3];
 	const quizData = await getQuizzByIdApi(quizId);
-	console.log('Quiz Data:', quizData);
 
 	const quizStudentContent = newElement('div');
 	quizStudentContent.classList.add('quiz-student-content');
@@ -37,7 +36,7 @@ const QuizStudentPage = async () => {
 		'',
 	);
 
-	const inforCard = InfoCard('Suas tentativas');
+	const inforCard = InfoCard('Suas tentativas', quizData);
 
 	quizTitleArea.appendChild(quizTitle);
 
