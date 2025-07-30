@@ -36,7 +36,7 @@ const QuizStudentPage = async () => {
 		'',
 	);
 
-	const inforCard = InfoCard('Suas tentativas', quizData);
+	const inforCard = await InfoCard('Suas tentativas', quizData);
 
 	quizTitleArea.appendChild(quizTitle);
 
