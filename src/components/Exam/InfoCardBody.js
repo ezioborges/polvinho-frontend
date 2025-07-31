@@ -7,8 +7,6 @@ export const InfoCardBody = async attempts => {
 	//criando um array com os valores de attempts. O parametro é um número inteiro
 	const attemptsArr = [...Array(attempts).keys()].map(i => i + 1);
 
-	console.log('attempts ===> ', attemptsArr);
-
 	const infoCardBodyAttemptsContent = newElement('div');
 	infoCardBodyAttemptsContent.classList.add(
 		'info-card-body-attempts-content',

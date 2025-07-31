@@ -1,8 +1,11 @@
 import { getQuizzByIdApi } from '../../api/quizzes.js';
 import FormButton from '../../components/Buttons/FormButton.js';
+import { QuestionDialog } from '../../components/Dialogs/QuestionsDialog.js';
 import InfoCard from '../../components/Exam/InfoCard.js';
 import PageTitle from '../../components/PageTitle.js';
 import { instructionsFromTheProfessor } from '../../components/professor/Quizz/InstructionsFromTheProfessor.js';
+import { studentStartQuizEvent } from '../../events/quizzes.js';
+import { clickEventCancelButton } from '../../utils/eventListeners.js';
 import newElement from '../../utils/newElement.js';
 
 const QuizStudentPage = async () => {
@@ -34,6 +37,18 @@ const QuizStudentPage = async () => {
 		'create-entity-button',
 		'textMd',
 		'',
+	);
+
+	QuestionDialog(
+		initQuizButton,
+		'Deseja começar agora?',
+		'Ao clica em "Começar", o quiz será inicializado imediatamente e deve ser entregue para poder sair.',
+		'Cancelar',
+		clickEventCancelButton,
+		'Começar',
+		studentStartQuizEvent,
+		'',
+		quizData,
 	);
 
 	const inforCard = await InfoCard('Suas tentativas', quizData);

@@ -161,3 +161,9 @@ export const postQuizEvent = element => {
 	});
 	clickEventCancelButton(element);
 };
+
+export const studentStartQuizEvent = element => {
+	element.addEventListener('click', async () => {
+		console.log('ta batendo aqui');
+	});
+};
