@@ -41,6 +41,8 @@ const routes = {
 	'/quiz/register-quiz': './pages/Prof/QuizRegister.js',
 	'/quiz/create-question/:quizId': './pages/Prof/createQuestion.js',
 	'/dashboard-student': './pages/Student/DashboardStudent.js',
+
+	'/quiz-started/:quizId': './pages/Student/QuizStartedPage.js',
 };
 
 /**

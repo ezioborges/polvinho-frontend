@@ -164,6 +164,9 @@ export const postQuizEvent = element => {
 
 export const studentStartQuizEvent = element => {
 	element.addEventListener('click', async () => {
-		console.log('ta batendo aqui');
+		const quizData = await getQuizzByIdApi(element.id);
+		console.log('ta batendo aqui ===> ', quizData);
+		window.location.hash = `#/quiz-started/${element.id}`;
 	});
+	clickEventCancelButton(element);
 };

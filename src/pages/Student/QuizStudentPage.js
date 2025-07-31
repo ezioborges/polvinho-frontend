@@ -38,7 +38,7 @@ const QuizStudentPage = async () => {
 		'textMd',
 		'',
 	);
-
+	initQuizButton.id = `${quizData._id}`;
 	QuestionDialog(
 		initQuizButton,
 		'Deseja começar agora?',
