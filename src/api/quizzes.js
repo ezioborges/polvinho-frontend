@@ -115,3 +115,22 @@ export const startQuizApi = async (quizId, quizData) => {
 
 	return data;
 };
+
+export const studentStartedQuizApi = async quizId => {
+	const startURL = `http://localhost:2424/quizzes/student-start/${quizId}`;
+
+	const response = await fetch(startURL, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error('Não foi possível iniciar o quiz');
+	}
+
+	const data = await response.json();
+
+	return data;
+};

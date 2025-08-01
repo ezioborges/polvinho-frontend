@@ -14,8 +14,6 @@ const InfoCard = async (title, quiz) => {
 
 	const infoCardBody = await InfoCardBody(quiz.maxAttempts);
 
-	console.log(infoCardBody);
-
 	infoCardTitleArea.appendChild(inforCardTitle);
 
 	//TODO: AQUI EU TENHO PRIMEIRO COLOCAR O 'VC NÃO POSSUI NENHUMA TENTATIVA'

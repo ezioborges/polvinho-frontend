@@ -4,6 +4,7 @@ import {
 	deleteQuizApi,
 	getQuizzByIdApi,
 	startQuizApi,
+	studentStartedQuizApi,
 } from '../api/quizzes.js';
 import ToastBar from '../components/ToastBar/index.js';
 import {
@@ -164,8 +165,8 @@ export const postQuizEvent = element => {
 
 export const studentStartQuizEvent = element => {
 	element.addEventListener('click', async () => {
-		const quizData = await getQuizzByIdApi(element.id);
-		console.log('ta batendo aqui ===> ', quizData);
+		await studentStartedQuizApi(element.id);
+
 		window.location.hash = `#/quiz-started/${element.id}`;
 	});
 	clickEventCancelButton(element);
