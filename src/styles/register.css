@@ -83,11 +83,13 @@
 .success-toast {
 	border-left: 5px solid var(--smerald-400);
 	background-color: var(--smerald-100);
+	z-index: 1000;
 }
 
 .error-toast {
 	border-left: 5px solid var(--red-500);
 	background-color: var(--red-100);
+	z-index: 1000;
 }
 
 .toast.hide {

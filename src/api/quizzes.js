@@ -1,3 +1,5 @@
+import ToastBar from '../components/ToastBar/index.js';
+import { toastBarError } from '../components/ToastBar/toastAnswers.js';
 import urls from '../urls/index.js';
 
 export const createQuizApi = async quizData => {
@@ -119,18 +121,25 @@ export const startQuizApi = async (quizId, quizData) => {
 export const studentStartedQuizApi = async quizId => {
 	const startURL = `${urls.quizzes}/student-start/${quizId}`;
 
-	const response = await fetch(startURL, {
-		method: 'PUT',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	});
+	try {
+		const response = await fetch(startURL, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
 
-	if (!response.ok) {
-		throw new Error('Não foi possível iniciar o quiz');
+		if (!response.ok) {
+			throw new Error('Não foi possível iniciar o quiz');
+		}
+
+		const data = await response.json();
+
+		return data;
+	} catch (error) {
+		const toastError = toastBarError('Quiz já iniciado ou não encontrado');
+
+		ToastBar(toastError, 'error-toast');
+		throw new Error(error.message);
 	}
-
-	const data = await response.json();
-
-	return data;
 };

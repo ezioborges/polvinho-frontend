@@ -165,16 +165,23 @@ export const postQuizEvent = element => {
 
 export const studentStartQuizEvent = element => {
 	element.addEventListener('click', async () => {
-		const quizData = await getQuizzByIdApi(element.id);
+		// const quizData = await getQuizzByIdApi(element.id);
 		const quizStart = await studentStartedQuizApi(element.id);
 
-		console.log('quiz ===> ', quizStart);
+		try {
+			console.log('quiz ===> ', quizStart);
 
-		if (quizData.studentStarted === true) {
-			throw new Error(`O quiz está em andamento ou já foi finalizado.`);
+			const toastSuccess = toastBarSuccess(quizStart.message);
+
+			setTimeout(() => {
+				ToastBar(toastSuccess, 'success-toast');
+			}, 300);
+
+			window.location.hash = `#/quiz-started/${element.id}`;
+		} catch (error) {
+			const toastError = toastBarError(quizStart.message);
+			ToastBar(toastError, 'error-toast');
 		}
-
-		window.location.hash = `#/quiz-started/${element.id}`;
 	});
 	clickEventCancelButton(element);
 };
