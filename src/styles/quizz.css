@@ -459,9 +459,10 @@
 }
 
 .info-card-questions-body {
-	border: 1px solid red;
 	margin-top: 1rem;
 	height: 80%;
+	width: 100%;
+	overflow-y: scroll;
 }
 
 .info-card-finish-button-area {
@@ -496,4 +497,10 @@
 	height: 1rem;
 	border-radius: 999px;
 	margin-right: 0.5rem;
+}
+
+.answers-list-content {
+	display: flex;
+	justify-content: space-around;
+	padding: 0.4rem;
 }
