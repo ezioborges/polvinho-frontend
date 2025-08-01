@@ -449,7 +449,6 @@
 }
 
 .quiz-student-questions-area-component-title {
-	/* border: 1px solid blue; */
 	display: flex;
 	align-items: center;
 }
@@ -457,4 +456,44 @@
 .quiz-student-questions-area-component-body {
 	/* border: 1px solid violet; */
 	padding: 1rem;
+}
+
+.info-card-questions-body {
+	border: 1px solid red;
+	margin-top: 1rem;
+	height: 80%;
+}
+
+.info-card-finish-button-area {
+	margin-top: 1rem;
+}
+
+.question-student-area-answers {
+	margin-top: 1rem;
+}
+
+.options-area {
+	display: flex;
+	align-items: center;
+	padding: 0.5rem;
+	margin-top: 0.5rem;
+}
+
+.options-area:hover {
+	background-color: var(--yellow-100);
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.letter-option {
+	border: 1px solid var(--stone-700);
+	color: var(--stone-700);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.2rem;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 999px;
+	margin-right: 0.5rem;
 }

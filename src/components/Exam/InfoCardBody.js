@@ -24,7 +24,7 @@ export const InfoCardBody = async attempts => {
 
 		const infoCardAmount = newElement('div');
 		infoCardAmount.classList.add('info-card-column');
-		infoCardAmount.textContent = '0/5';
+		infoCardAmount.textContent = `0/${attempts}`;
 		infoCardAmount.classList.add('textMdBold');
 
 		const infoCardResume = newElement('div');

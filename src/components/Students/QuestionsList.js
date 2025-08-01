@@ -1,0 +1,79 @@
+import newElement from '../../utils/newElement.js';
+import textGenerator from '../../utils/textGenerator.js';
+
+export const QuestionsList = async questions => {
+	const questionsContent = newElement('div');
+
+	questions.forEach((quest, i) => {
+		console.log('quest ===> ', quest);
+		const questionArea = newElement('div');
+		questionArea.classList.add('question-student-area-answers');
+
+		const questionTitle = textGenerator('title4', `Pergunta ${i + 1}`);
+		questionTitle.style.color = 'var(--stone-700)';
+
+		const questionDesc = textGenerator('textSm', `${quest.question}`);
+		questionDesc.style.color = 'var(--stone-700)';
+		questionDesc.style.marginTop = '.7rem';
+
+		const optionsAreaA = newElement('div');
+		optionsAreaA.classList.add('options-area');
+
+		const optionsAreaB = newElement('div');
+		optionsAreaB.classList.add('options-area');
+
+		const optionsAreaC = newElement('div');
+		optionsAreaC.classList.add('options-area');
+
+		const optionsAreaD = newElement('div');
+		optionsAreaD.classList.add('options-area');
+
+		const letterA = newElement('div');
+		letterA.textContent = 'a';
+		letterA.classList.add('letter-option');
+		letterA.classList.add('textSm');
+
+		const letterB = newElement('div');
+		letterB.textContent = 'b';
+		letterB.classList.add('letter-option');
+		letterB.classList.add('textSm');
+
+		const letterC = newElement('div');
+		letterC.textContent = 'c';
+		letterC.classList.add('letter-option');
+		letterC.classList.add('textSm');
+
+		const letterD = newElement('div');
+		letterD.textContent = 'd';
+		letterD.classList.add('letter-option');
+		letterD.classList.add('textSm');
+
+		const correctAnswer = textGenerator('textSm', `${quest.correctOption}`);
+		const firstOption = textGenerator('textSm', `${quest.firstOption}`);
+		const secondOption = textGenerator('textSm', `${quest.secondOption}`);
+		const thirdOption = textGenerator('textSm', `${quest.thirdOption}`);
+
+		optionsAreaA.appendChild(letterA);
+		optionsAreaA.appendChild(correctAnswer);
+
+		optionsAreaB.appendChild(letterB);
+		optionsAreaB.appendChild(firstOption);
+
+		optionsAreaC.appendChild(letterC);
+		optionsAreaC.appendChild(secondOption);
+
+		optionsAreaD.appendChild(letterD);
+		optionsAreaD.appendChild(thirdOption);
+
+		questionArea.appendChild(questionTitle);
+		questionArea.appendChild(questionDesc);
+		questionArea.appendChild(optionsAreaA);
+		questionArea.appendChild(optionsAreaB);
+		questionArea.appendChild(optionsAreaC);
+		questionArea.appendChild(optionsAreaD);
+
+		questionsContent.appendChild(questionArea);
+	});
+
+	return questionsContent;
+};

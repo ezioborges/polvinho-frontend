@@ -64,6 +64,11 @@
 	color: var(--neutral-50);
 }
 
+.create-entity-button:hover {
+	background-color: var(--indigo-700) !important;
+	cursor: pointer;
+}
+
 .buttons-quiz-area {
 	display: flex;
 	justify-content: space-around;
