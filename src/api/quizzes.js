@@ -117,7 +117,7 @@ export const startQuizApi = async (quizId, quizData) => {
 };
 
 export const studentStartedQuizApi = async quizId => {
-	const startURL = `http://localhost:2424/quizzes/student-start/${quizId}`;
+	const startURL = `${urls.quizzes}/student-start/${quizId}`;
 
 	const response = await fetch(startURL, {
 		method: 'PUT',

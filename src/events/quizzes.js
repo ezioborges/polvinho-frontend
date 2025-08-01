@@ -165,7 +165,14 @@ export const postQuizEvent = element => {
 
 export const studentStartQuizEvent = element => {
 	element.addEventListener('click', async () => {
-		await studentStartedQuizApi(element.id);
+		const quizData = await getQuizzByIdApi(element.id);
+		const quizStart = await studentStartedQuizApi(element.id);
+
+		console.log('quiz ===> ', quizStart);
+
+		if (quizData.studentStarted === true) {
+			throw new Error(`O quiz está em andamento ou já foi finalizado.`);
+		}
 
 		window.location.hash = `#/quiz-started/${element.id}`;
 	});
