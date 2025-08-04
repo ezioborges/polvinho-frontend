@@ -1,3 +1,8 @@
+import { studentFinishQuizEvent } from '../../events/quizzes.js';
+import {
+	clickEventCancelButton,
+	openDialog,
+} from '../../utils/eventListeners.js';
 import newElement from '../../utils/newElement.js';
 import textGenerator from '../../utils/textGenerator.js';
 import FormButton from '../Buttons/FormButton.js';
@@ -28,6 +33,16 @@ export const StudentAnswers = async () => {
 		'var(--stone-700)',
 	);
 	finishButton.style.backgroundColor = 'var(--indigo-500)';
+	openDialog(
+		finishButton,
+		'Entregar Quiz?',
+		'Você irá entregar o quiz. Esta ação não pode ser desfeita.',
+		'Cancelar',
+		clickEventCancelButton,
+		'Entregar',
+		studentFinishQuizEvent,
+		'var(--indigo-500)',
+	);
 
 	infoCardTitleArea.appendChild(infoCardTitle);
 

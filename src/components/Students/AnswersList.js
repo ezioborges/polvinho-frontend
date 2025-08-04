@@ -6,10 +6,9 @@ export const AnswersList = async () => {
 	const quizId = window.location.hash.split('/')[2];
 	const { questions } = await getQuizzByIdApi(quizId);
 
-	console.log('quizId ===> ', questions);
 	const answersContent = newElement('div');
 
-	questions.forEach((questions, i) => {
+	questions.forEach((question, i) => {
 		const answers = newElement('div');
 		answers.classList.add('answers-list-content');
 

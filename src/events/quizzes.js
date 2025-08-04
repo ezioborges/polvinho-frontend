@@ -169,8 +169,6 @@ export const studentStartQuizEvent = element => {
 		const quizStart = await studentStartedQuizApi(element.id);
 
 		try {
-			console.log('quiz ===> ', quizStart);
-
 			const toastSuccess = toastBarSuccess(quizStart.message);
 
 			setTimeout(() => {
@@ -184,4 +182,10 @@ export const studentStartQuizEvent = element => {
 		}
 	});
 	clickEventCancelButton(element);
+};
+
+export const studentFinishQuizEvent = element => {
+	element.addEventListener('click', async () => {
+		console.log('Finalizando quiz...');
+	});
 };

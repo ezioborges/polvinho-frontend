@@ -11,8 +11,6 @@ export const StudentstudentsQuestions = async quiz => {
 		questions,
 	} = quiz;
 
-	console.log('questions ===> ', questions);
-
 	const questionsContent = newElement('div');
 
 	const quizTitleArea = newElement('div');

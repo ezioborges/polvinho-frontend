@@ -5,7 +5,6 @@ export const QuestionsList = async questions => {
 	const questionsContent = newElement('div');
 
 	questions.forEach((quest, i) => {
-		console.log('quest ===> ', quest);
 		const questionArea = newElement('div');
 		questionArea.classList.add('question-student-area-answers');
 
