@@ -8,7 +8,7 @@ import textGenerator from '../../utils/textGenerator.js';
 import FormButton from '../Buttons/FormButton.js';
 import { AnswersList } from './AnswersList.js';
 
-export const StudentAnswers = async () => {
+export const StudentAnswers = async quizId => {
 	const answersContent = newElement('div');
 	answersContent.classList.add('info-card-area');
 
@@ -33,6 +33,7 @@ export const StudentAnswers = async () => {
 		'var(--stone-700)',
 	);
 	finishButton.style.backgroundColor = 'var(--indigo-500)';
+	finishButton.id = `${quizId}`;
 	openDialog(
 		finishButton,
 		'Entregar Quiz?',
@@ -42,6 +43,7 @@ export const StudentAnswers = async () => {
 		'Entregar',
 		studentFinishQuizEvent,
 		'var(--indigo-500)',
+		`${quizId}`,
 	);
 
 	infoCardTitleArea.appendChild(infoCardTitle);

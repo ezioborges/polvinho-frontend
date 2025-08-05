@@ -9,6 +9,7 @@ const Dialog = (
 	startTitle,
 	funcActionQuiz,
 	buttonColor = 'var(--indigo-500)',
+	id = null,
 ) => {
 	const dialogOverlay = newElement('div');
 	const dialogContent = newElement('div');
@@ -27,6 +28,7 @@ const Dialog = (
 
 	const startButton = QuizzButton(startTitle, 'button-content', 'textMd');
 	startButton.style.backgroundColor = buttonColor;
+	startButton.id = `${id}`;
 	startButton.classList.add('start-button');
 	startButton.style.border = `none`;
 	funcActionQuiz(startButton);

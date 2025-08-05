@@ -14,6 +14,7 @@ export const openDialog = (
 	startTitle,
 	funcStartQuiz,
 	buttonColor,
+	id = null,
 ) => {
 	element.addEventListener('click', () => {
 		Dialog(
@@ -24,6 +25,7 @@ export const openDialog = (
 			startTitle,
 			funcStartQuiz,
 			buttonColor,
+			id,
 		);
 	});
 };

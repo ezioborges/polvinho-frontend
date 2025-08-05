@@ -5,6 +5,7 @@ import textGenerator from '../../utils/textGenerator.js';
 export const AnswersList = async () => {
 	const quizId = window.location.hash.split('/')[2];
 	const { questions } = await getQuizzByIdApi(quizId);
+	console.log('🚀 ~ AnswersList ~ questions:', questions);
 
 	const answersContent = newElement('div');
 

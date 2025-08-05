@@ -6,6 +6,7 @@ import {
 	startQuizApi,
 	studentStartedQuizApi,
 } from '../api/quizzes.js';
+import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
 import ToastBar from '../components/ToastBar/index.js';
 import {
 	toastBarError,
@@ -84,26 +85,39 @@ export const createQuestionEvent = (element, quizId) => {
 		try {
 			const newQuestion = {
 				question: document.querySelector('#quiz-create-question').value,
-				correctOption: document.querySelector('#correct-answer').value,
-				firstOption: document.querySelector('#first-wrong-answer')
-					.value,
-				secondOption: document.querySelector('#second-wrong-answer')
-					.value,
-				thirdOption: document.querySelector('#third-wrong-answer')
-					.value,
+				options: [
+					{
+						option: document.querySelector('#correct-answer').value,
+						isCorrect: true,
+					},
+					{
+						option: document.querySelector('#first-wrong-answer')
+							.value,
+						isCorrect: false,
+					},
+					{
+						option: document.querySelector('#second-wrong-answer')
+							.value,
+						isCorrect: false,
+					},
+					{
+						option: document.querySelector('#third-wrong-answer')
+							.value,
+						isCorrect: false,
+					},
+				],
 			};
 
-			const toastSuccess = toastBarSuccess('Questão criada com sucesso!');
-
 			await createQuestionsApi(newQuestion, quizId);
+
+			const toastSuccess = toastBarSuccess('Questão criada com sucesso!');
 
 			resetCreateQuestionsInput();
 
 			ToastBar(toastSuccess, 'success-toast');
 		} catch (error) {
 			const toastError = toastBarError('Erro ao criar nova questão!');
-			ToastBar(toastError, 'Não foi possível criar a pergunta');
-			throw new Error('Erro no evento de criar questão');
+			ToastBar(toastError, 'error-toast');
 		}
 	});
 };
@@ -186,6 +200,27 @@ export const studentStartQuizEvent = element => {
 
 export const studentFinishQuizEvent = element => {
 	element.addEventListener('click', async () => {
-		console.log('Finalizando quiz...');
+		const dialogContent = document.querySelector('.dialog-content');
+
+		if (dialogContent) {
+			dialogContent.remove();
+		}
+
+		const finishDialog = SendTestFinished(element.id);
+
+		return document.body.appendChild(finishDialog);
+	});
+};
+
+let answersArray = [];
+export const clickedResponse = (element, quest) => {
+	element.addEventListener('click', async ({ target }) => {
+		console.log('🚀 ~ clickedResponse ~ quest:', target);
+
+		console.log('aqui vai ser a quest ===> ', quest);
+
+		answersArray.push(target.id);
+
+		console.log('🚀 ~ clickedResponse ~ answersArray:', answersArray);
 	});
 };

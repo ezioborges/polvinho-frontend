@@ -18,7 +18,7 @@ const QuizStartedPage = async () => {
 	const answersArea = newElement('div');
 	answersArea.classList.add('quiz-student-answers-area');
 
-	const studentAnswers = await StudentAnswers();
+	const studentAnswers = await StudentAnswers(quizId);
 
 	questionsArea.appendChild(examArea);
 	answersArea.appendChild(studentAnswers);

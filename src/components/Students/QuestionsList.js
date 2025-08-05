@@ -1,3 +1,4 @@
+import { clickedResponse } from '../../events/quizzes.js';
 import newElement from '../../utils/newElement.js';
 import textGenerator from '../../utils/textGenerator.js';
 
@@ -5,6 +6,7 @@ export const QuestionsList = async questions => {
 	const questionsContent = newElement('div');
 
 	questions.forEach((quest, i) => {
+		console.log('🚀 ~ QuestionsList ~ quest:', quest);
 		const questionArea = newElement('div');
 		questionArea.classList.add('question-student-area-answers');
 
@@ -16,16 +18,25 @@ export const QuestionsList = async questions => {
 		questionDesc.style.marginTop = '.7rem';
 
 		const optionsAreaA = newElement('div');
+		//TODO: A CORRECT VAI TER O MESMO ID DA QUESTION
+		optionsAreaA.id = 'option-a';
 		optionsAreaA.classList.add('options-area');
+		clickedResponse(optionsAreaA, quest);
 
 		const optionsAreaB = newElement('div');
+		optionsAreaB.id = 'option-b';
 		optionsAreaB.classList.add('options-area');
+		clickedResponse(optionsAreaB, quest);
 
 		const optionsAreaC = newElement('div');
+		optionsAreaC.id = 'option-c';
 		optionsAreaC.classList.add('options-area');
+		clickedResponse(optionsAreaC, quest);
 
 		const optionsAreaD = newElement('div');
+		optionsAreaD.id = 'option-d';
 		optionsAreaD.classList.add('options-area');
+		clickedResponse(optionsAreaD, quest);
 
 		const letterA = newElement('div');
 		letterA.textContent = 'a';
@@ -47,10 +58,26 @@ export const QuestionsList = async questions => {
 		letterD.classList.add('letter-option');
 		letterD.classList.add('textSm');
 
-		const correctAnswer = textGenerator('textSm', `${quest.correctOption}`);
-		const firstOption = textGenerator('textSm', `${quest.firstOption}`);
-		const secondOption = textGenerator('textSm', `${quest.secondOption}`);
-		const thirdOption = textGenerator('textSm', `${quest.thirdOption}`);
+		const correctAnswer = textGenerator(
+			'textSm',
+			`${quest.options[0].option}`,
+		);
+		correctAnswer.id = `${quest._id}`;
+		const firstOption = textGenerator(
+			'textSm',
+			`${quest.options[1].option}`,
+		);
+		firstOption.id = `first-wrong`;
+		const secondOption = textGenerator(
+			'textSm',
+			`${quest.options[2].option}`,
+		);
+		secondOption.id = `second-wrong`;
+		const thirdOption = textGenerator(
+			'textSm',
+			`${quest.options[3].option}`,
+		);
+		thirdOption.id = `third-wrong`;
 
 		optionsAreaA.appendChild(letterA);
 		optionsAreaA.appendChild(correctAnswer);

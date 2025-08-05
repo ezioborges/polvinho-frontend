@@ -23,7 +23,7 @@ const routes = {
 	'/disciplines/:id': './pages/Exam.js',
 	'/disciplines': './pages/Disciplines.js',
 	'/disciplines/:id/quizz': './pages/Quizz.js',
-	'/disciplines/:id/results': './pages/Result.js',
+	'/subjects/:id/results': './pages/Student/Results.js',
 	'/edit/aluno/:userId': './pages/Admin/UserEdit.js',
 	'/edit/subject/:subjectId': './pages/Admin/SubjectEdit.js',
 	'/edit/professor/:userId': './pages/Admin/UserEdit.js',

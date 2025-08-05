@@ -1,7 +1,7 @@
 import newElement from '../../utils/newElement.js';
 import { toastBarTimer } from '../../utils/toastBarTimer.js';
 
-const ToastBar = ({ iconParam, titleParam, msgParam }, cssToast) => {
+const ToastBar = async ({ iconParam, titleParam, msgParam }, cssToast) => {
 	// Verifica se os parâmetros necessários foram fornecidos
 	const mainBody = document.querySelector('#main-body');
 

@@ -28,7 +28,7 @@ const SidebarBottom = () => {
 		clickEventCancelButton,
 		'Encerrar',
 		endSession,
-		'var(--red-500',
+		'var(--red-500)',
 	);
 
 	sidebarBottomContent.classList.add('sidebar-bottom-content');
