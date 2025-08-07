@@ -1,7 +1,6 @@
 import newElement from '../../utils/newElement.js';
 
 export const InfoCardBodyResult = async questions => {
-	console.log('🚀 ~ InfoCardBodyResult ~ questions:', questions);
 	const bodyContent = newElement('div');
 	bodyContent.classList.add('info-card-body-area');
 

@@ -1,4 +1,4 @@
-import { createQuestionsApi } from '../api/questions.js';
+import { createQuestionsApi, studentAnswerApi } from '../api/questions.js';
 import {
 	createQuizApi,
 	deleteQuizApi,
@@ -213,14 +213,20 @@ export const studentFinishQuizEvent = element => {
 };
 
 let answersArray = [];
-export const clickedResponse = (element, quest) => {
-	element.addEventListener('click', async ({ target }) => {
-		console.log('🚀 ~ clickedResponse ~ quest:', target);
+export const clickedResponse = (
+	element,
+	studentId,
+	quizId,
+	questionId,
+	selectedOptionId,
+) => {
+	element.addEventListener('click', async () => {
+		const answer = {
+			studentId,
+			questionId,
+			selectedOptionId,
+		};
 
-		console.log('aqui vai ser a quest ===> ', quest);
-
-		answersArray.push(target.id);
-
-		console.log('🚀 ~ clickedResponse ~ answersArray:', answersArray);
+		await studentAnswerApi(quizId, answer);
 	});
 };
