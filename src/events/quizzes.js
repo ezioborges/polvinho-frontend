@@ -230,9 +230,6 @@ export const clickedResponse = (
 		const answerSelected = currentTarget;
 		answerSelected.classList.add('selected-option');
 
-		console.log('answerSelected ===> ', answerSelected);
-
-		//TODO: aqui já ta pronto é só descomentar que vai ser salvo no banco de dados as respostas
-		// await studentAnswerApi(quizId, answer);
+		await studentAnswerApi(quizId, answer);
 	});
 };
