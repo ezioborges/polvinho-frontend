@@ -504,3 +504,8 @@
 	justify-content: space-around;
 	padding: 0.4rem;
 }
+
+.selected-option {
+	background-color: var(--yellow-200);
+	border-radius: 5px;
+}

@@ -1,4 +1,4 @@
-import { createQuestionsApi, studentAnswerApi } from '../api/questions.js';
+import { createQuestionsApi } from '../api/questions.js';
 import {
 	createQuizApi,
 	deleteQuizApi,
@@ -220,13 +220,19 @@ export const clickedResponse = (
 	questionId,
 	selectedOptionId,
 ) => {
-	element.addEventListener('click', async () => {
+	element.addEventListener('click', async ({ currentTarget }) => {
 		const answer = {
 			studentId,
 			questionId,
 			selectedOptionId,
 		};
 
-		await studentAnswerApi(quizId, answer);
+		const answerSelected = currentTarget;
+		answerSelected.classList.add('selected-option');
+
+		console.log('answerSelected ===> ', answerSelected);
+
+		//TODO: aqui já ta pronto é só descomentar que vai ser salvo no banco de dados as respostas
+		// await studentAnswerApi(quizId, answer);
 	});
 };

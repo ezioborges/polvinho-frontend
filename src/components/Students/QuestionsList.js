@@ -22,7 +22,6 @@ export const QuestionsList = async questions => {
 		questionDesc.style.marginTop = '.7rem';
 
 		const optionsAreaA = newElement('div');
-		optionsAreaA.id = `testando pra ver se vem o id`;
 		optionsAreaA.classList.add('options-area');
 		clickedResponse(
 			optionsAreaA,
@@ -33,7 +32,6 @@ export const QuestionsList = async questions => {
 		);
 
 		const optionsAreaB = newElement('div');
-		optionsAreaB.id = 'option-b';
 		optionsAreaB.classList.add('options-area');
 		clickedResponse(
 			optionsAreaB,
@@ -44,7 +42,6 @@ export const QuestionsList = async questions => {
 		);
 
 		const optionsAreaC = newElement('div');
-		optionsAreaC.id = 'option-c';
 		optionsAreaC.classList.add('options-area');
 		clickedResponse(
 			optionsAreaC,
@@ -55,7 +52,6 @@ export const QuestionsList = async questions => {
 		);
 
 		const optionsAreaD = newElement('div');
-		optionsAreaD.id = 'option-d';
 		optionsAreaD.classList.add('options-area');
 		clickedResponse(
 			optionsAreaD,
