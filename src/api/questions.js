@@ -20,8 +20,6 @@ export const createQuestionsApi = async (questionData, quizId) => {
 
 export const studentAnswerApi = async (quizId, answerData) => {
 	const studentAnswerURL = `http://localhost:2424/questions/${quizId}/student-responses`;
-	console.log('answerData ===> ', answerData);
-	console.log('studentAnswerURL ===> ', studentAnswerURL);
 
 	const response = await fetch(studentAnswerURL, {
 		method: 'POST',
@@ -31,6 +29,25 @@ export const studentAnswerApi = async (quizId, answerData) => {
 
 	if (!response.ok) {
 		throw new Error('Não foi possível registrar a resposta do aluno.');
+	}
+
+	const data = await response.json();
+
+	return data;
+};
+
+export const getAllStudentAnswersByQuizIdApi = async (quizId, studentId) => {
+	const url = `http://localhost:2424/quizzes/${quizId}/student/${studentId}/questions-responses`;
+
+	const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error('Não foi possível recuperar as respostas do aluno.');
 	}
 
 	const data = await response.json();

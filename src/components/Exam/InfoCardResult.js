@@ -2,7 +2,7 @@ import newElement from '../../utils/newElement.js';
 import textGenerator from '../../utils/textGenerator.js';
 import { InfoCardBodyResult } from './InfocardBodyResult.js';
 
-const InfoCardResult = async (title, questions) => {
+const InfoCardResult = async (title, questions, quizId, studentId) => {
 	const infoCardArea = newElement('div');
 	infoCardArea.classList.add('info-card-area');
 
@@ -12,7 +12,7 @@ const InfoCardResult = async (title, questions) => {
 	const inforCardTitle = textGenerator('textXL', title);
 	inforCardTitle.style.color = 'var(--stone-700)';
 
-	const infoCardBody = await InfoCardBodyResult(questions);
+	const infoCardBody = await InfoCardBodyResult(quizId, studentId, questions);
 
 	infoCardTitleArea.appendChild(inforCardTitle);
 

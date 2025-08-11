@@ -1,4 +1,3 @@
-import { getQuizzByIdApi } from '../../api/quizzes.js';
 import newElement from '../../utils/newElement.js';
 import { responsesColor } from '../../utils/responsesColor.js';
 import textGenerator from '../../utils/textGenerator.js';
@@ -7,10 +6,6 @@ export const ResultList = async questions => {
 	const questionsContent = newElement('div');
 
 	questions.forEach(async (quest, i) => {
-		const { user } = JSON.parse(localStorage.getItem('userLogin'));
-		const quizId = window.location.hash.split('/')[2];
-		const quiz = await getQuizzByIdApi(quizId);
-
 		const questionArea = newElement('div');
 		questionArea.classList.add('question-student-area-answers');
 

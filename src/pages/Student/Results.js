@@ -7,6 +7,9 @@ import newElement from '../../utils/newElement.js';
 const Results = async () => {
 	const quizId = window.location.hash.split('/')[2];
 	const quizData = await getQuizzByIdApi(quizId);
+	const student = JSON.parse(localStorage.getItem('userLogin'));
+
+	const studentId = student.user.id;
 
 	const resultContent = newElement('div');
 	resultContent.classList.add('quiz-student-content');
@@ -32,7 +35,12 @@ const Results = async () => {
 
 	resultContent.appendChild(leftArea);
 
-	const infoCard = await InfoCardResult('Nota 8', quizData.questions);
+	const infoCard = await InfoCardResult(
+		'Nota 8',
+		quizData.questions,
+		quizId,
+		studentId,
+	);
 
 	rightArea.appendChild(infoCard);
 
