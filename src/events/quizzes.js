@@ -1,4 +1,4 @@
-import { createQuestionsApi } from '../api/questions.js';
+import { createQuestionsApi, studentAnswerApi } from '../api/questions.js';
 import {
 	createQuizApi,
 	deleteQuizApi,

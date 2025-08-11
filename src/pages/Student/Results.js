@@ -1,7 +1,7 @@
 import { getQuizzByIdApi } from '../../api/quizzes.js';
 import InfoCardResult from '../../components/Exam/InfoCardResult.js';
 import PageTitle from '../../components/PageTitle.js';
-import { QuestionsList } from '../../components/Students/QuestionsList.js';
+import { ResultList } from '../../components/Students/ResultList.js';
 import newElement from '../../utils/newElement.js';
 
 const Results = async () => {
@@ -21,7 +21,7 @@ const Results = async () => {
 
 	titleArea.appendChild(title);
 
-	const questionList = await QuestionsList(quizData.questions);
+	const questionList = await ResultList(quizData.questions);
 
 	const rightArea = newElement('div');
 
