@@ -36,7 +36,10 @@ export const studentAnswerApi = async (quizId, answerData) => {
 	return data;
 };
 
-export const getAllStudentAnswersByQuizIdApi = async (quizId, studentId) => {
+export const getAllStudentAnswersByQuizIdAndStudentIdApi = async (
+	quizId,
+	studentId,
+) => {
 	const url = `http://localhost:2424/quizzes/${quizId}/student/${studentId}/questions-responses`;
 
 	const response = await fetch(url, {

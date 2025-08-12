@@ -1,11 +1,9 @@
-import { getAllStudentAnswersByQuizIdApi } from '../../api/questions.js';
+import { getAllStudentAnswersByQuizIdAndStudentIdApi } from '../../api/questions.js';
 import newElement from '../../utils/newElement.js';
 
 export const InfoCardBodyResult = async (quizId, studentId, questions) => {
-	const studentAnswersResponse = await getAllStudentAnswersByQuizIdApi(
-		quizId,
-		studentId,
-	);
+	const studentAnswersResponse =
+		await getAllStudentAnswersByQuizIdAndStudentIdApi(quizId, studentId);
 	const studentAnswers = studentAnswersResponse.studentAnswers;
 
 	const bodyContent = newElement('div');
@@ -42,16 +40,12 @@ export const InfoCardBodyResult = async (quizId, studentId, questions) => {
 				studentAnswerForQuestion.selectedOptionId === correctAnswer._id;
 
 			if (isCorrect) {
-				StudentResponse.textContent = `✅ Correta`;
+				StudentResponse.textContent = `✅`;
 				StudentResponse.style.color = 'var(--smerald-400)';
 			} else {
-				StudentResponse.textContent = `❌ Incorreta`;
+				StudentResponse.textContent = `❌`;
 				StudentResponse.style.color = 'var(--red-400)';
 			}
-		} else {
-			// Caso não tenha uma resposta do aluno, ou uma resposta correta definida
-			StudentResponse.textContent = `🚫 Sem resposta`;
-			StudentResponse.style.color = 'var(--stone-500)';
 		}
 
 		infoCardRow.appendChild(infoCardQuestionLabel);
