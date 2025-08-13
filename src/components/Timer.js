@@ -4,7 +4,7 @@ const Timer = quiz => {
 	console.log('quiz ===> ', quiz.studentStarted);
 
 	let interval;
-	let seconds = 5;
+	let seconds = 0;
 	let minutes = quiz.timeMinutes;
 
 	const timerContent = newElement('div');
