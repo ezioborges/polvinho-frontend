@@ -1,8 +1,6 @@
 import newElement from '../utils/newElement.js';
 
 const Timer = quiz => {
-	console.log('quiz ===> ', quiz.studentStarted);
-
 	let interval;
 	let seconds = 0;
 	let minutes = quiz.timeMinutes;
