@@ -20,7 +20,7 @@ export const StudentstudentsQuestions = async quiz => {
 
 	const questionsTitle = newElement('div');
 
-	const timer = Timer();
+	const timer = Timer(quiz);
 
 	const quizQuestionsArea = newElement('div');
 	quizQuestionsArea.classList.add(
