@@ -143,3 +143,22 @@ export const studentStartedQuizApi = async quizId => {
 		throw new Error(error.message);
 	}
 };
+
+export const getQuizResultApi = async (quizId, studentId) => {
+	const url = `http://localhost:2424/quizzes/${quizId}/student/${studentId}/result`;
+
+	const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error('Não foi possível obter o resultado do quiz');
+	}
+
+	const data = await response.json();
+
+	return data;
+};
