@@ -4,6 +4,8 @@ export const createQuizUtil = name => {
 		subject: document.querySelector('#quiz-register-subject').value,
 		title: document.querySelector('#quiz-register-name').value,
 		maxAttempts: document.querySelector('#quiz-register-attempts').value,
+		attemptsRemaining: document.querySelector('#quiz-register-attempts')
+			.value,
 		timeMinutes: document.querySelector('#quiz-max-time').value,
 		releaseDate: document.querySelector('#quiz-register-release-date')
 			.value,

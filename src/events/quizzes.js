@@ -179,20 +179,40 @@ export const postQuizEvent = element => {
 
 export const studentStartQuizEvent = element => {
 	element.addEventListener('click', async () => {
-		// const quizData = await getQuizzByIdApi(element.id);
-		const quizStart = await studentStartedQuizApi(element.id);
-
 		try {
-			const toastSuccess = toastBarSuccess(quizStart.message);
+			const quizStart = await studentStartedQuizApi(element.id);
+
+			console.log('quizStart ===> ', quizStart);
+
+			if (quizStart.attemptsRemaining >= 0) {
+				const toastSuccess = toastBarSuccess(quizStart.message);
+
+				setTimeout(() => {
+					ToastBar(toastSuccess, 'success-toast');
+				}, 300);
+
+				window.location.hash = `#/quiz-started/${element.id}`;
+			} else {
+				const toastError = toastBarError(quizStart.message);
+
+				setTimeout(() => {
+					ToastBar(toastError, 'error-toast');
+				}, 300);
+
+				window.location.hash = `#/quiz/student/${element.id}`;
+			}
+		} catch (error) {
+			console.error('Erro ao iniciar quiz:', error.message);
+
+			const quizStart = await studentStartedQuizApi(element.id);
+
+			const toastError = toastBarError(quizStart.message);
 
 			setTimeout(() => {
-				ToastBar(toastSuccess, 'success-toast');
+				ToastBar(toastError, 'error-toast');
 			}, 300);
 
-			window.location.hash = `#/quiz-started/${element.id}`;
-		} catch (error) {
-			const toastError = toastBarError(quizStart.message);
-			ToastBar(toastError, 'error-toast');
+			window.location.hash = `#/quiz/student/${element.id}`;
 		}
 	});
 	clickEventCancelButton(element);

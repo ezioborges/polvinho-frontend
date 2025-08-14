@@ -18,7 +18,7 @@ const InfoCard = async (title, quiz) => {
 
 	//TODO: AQUI EU TENHO PRIMEIRO COLOCAR O 'VC NÃO POSSUI NENHUMA TENTATIVA'
 	// depois o número de tentativas ex: 1 de 5 nesse formato tentativas: 1/5
-	if (!quiz || quiz.maxAttempts <= 0) {
+	if (!quiz || quiz.attemptsRemaining <= 0) {
 		console.warn(
 			'só ta aparecendo aqui por que a ordem ta invertida o certo é "<="',
 		);
