@@ -12,7 +12,7 @@ const InfoCard = async (title, quiz) => {
 	const inforCardTitle = textGenerator('textXL', title);
 	inforCardTitle.style.color = 'var(--stone-700)';
 
-	const infoCardBody = await InfoCardBody(quiz.maxAttempts);
+	const infoCardBody = await InfoCardBody(quiz);
 
 	infoCardTitleArea.appendChild(inforCardTitle);
 

@@ -1,11 +1,16 @@
+import { getQuizResultApi } from '../../api/quizzes.js';
 import newElement from '../../utils/newElement.js';
 
-export const InfoCardBody = async attempts => {
+export const InfoCardBody = async quiz => {
+	const { user } = JSON.parse(localStorage.getItem('userLogin'));
+
+	const { result } = await getQuizResultApi(quiz._id, user.id);
+
 	const bodyContent = newElement('div');
 	bodyContent.classList.add('info-card-body-area');
 
 	//criando um array com os valores de attempts. O parametro é um número inteiro
-	const attemptsArr = [...Array(attempts).keys()].map(i => i + 1);
+	const attemptsArr = [...Array(quiz.maxAttempts).keys()].map(i => i + 1);
 
 	const infoCardBodyAttemptsContent = newElement('div');
 	infoCardBodyAttemptsContent.classList.add(
@@ -24,7 +29,7 @@ export const InfoCardBody = async attempts => {
 
 		const infoCardAmount = newElement('div');
 		infoCardAmount.classList.add('info-card-column');
-		infoCardAmount.textContent = `0/${attempts}`;
+		infoCardAmount.textContent = result ? `${result}/10` : '0/10';
 		infoCardAmount.classList.add('textMdBold');
 
 		const infoCardResume = newElement('div');
