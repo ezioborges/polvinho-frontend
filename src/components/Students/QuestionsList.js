@@ -23,6 +23,7 @@ export const QuestionsList = async questions => {
 
 		const optionsAreaA = newElement('div');
 		optionsAreaA.classList.add('options-area');
+		optionsAreaA.setAttribute('data-question-id', quest._id);
 		clickedResponse(
 			optionsAreaA,
 			user.id,
@@ -33,6 +34,7 @@ export const QuestionsList = async questions => {
 
 		const optionsAreaB = newElement('div');
 		optionsAreaB.classList.add('options-area');
+		optionsAreaB.setAttribute('data-question-id', quest._id);
 		clickedResponse(
 			optionsAreaB,
 			user.id,
@@ -43,6 +45,8 @@ export const QuestionsList = async questions => {
 
 		const optionsAreaC = newElement('div');
 		optionsAreaC.classList.add('options-area');
+		optionsAreaC.setAttribute('data-question-id', quest._id);
+
 		clickedResponse(
 			optionsAreaC,
 			user.id,
@@ -53,6 +57,8 @@ export const QuestionsList = async questions => {
 
 		const optionsAreaD = newElement('div');
 		optionsAreaD.classList.add('options-area');
+		optionsAreaD.setAttribute('data-question-id', quest._id);
+
 		clickedResponse(
 			optionsAreaD,
 			user.id,

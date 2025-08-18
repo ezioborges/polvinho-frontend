@@ -144,6 +144,30 @@ export const studentStartedQuizApi = async quizId => {
 	}
 };
 
+export const studentFinishedAttemptApi = async (
+	quizId,
+	studentId,
+	answersArray,
+) => {
+	const url = `http://localhost:2424/questions/${quizId}/student/${studentId}/student-responses`;
+
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(answersArray),
+	});
+
+	if (!response.ok) {
+		throw new Error('Não foi possível salvar as respostas do aluno.');
+	}
+
+	const data = await response.json();
+
+	return data;
+};
+
 export const getQuizResultApi = async (quizId, studentId) => {
 	const url = `http://localhost:2424/quizzes/${quizId}/student/${studentId}/result`;
 

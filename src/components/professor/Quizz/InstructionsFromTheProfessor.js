@@ -6,7 +6,7 @@ export const instructionsFromTheProfessor = quizData => {
 	const {
 		professorId: { name },
 		description,
-		attemptsRemaining,
+		maxAttempts,
 		timeMinutes,
 		submissionDeadline,
 	} = quizData;
@@ -33,7 +33,7 @@ export const instructionsFromTheProfessor = quizData => {
 	attemptsItem.classList.add('config-item');
 	attemptsItem.innerHTML = `
 	    <span class="attempts-title">Tentativas: </span>
-	    <span class="attempts-title attempts-amount">${attemptsRemaining}</span>
+	    <span class="attempts-title attempts-amount">${maxAttempts}</span>
 	`;
 
 	const timeItem = newElement('li');

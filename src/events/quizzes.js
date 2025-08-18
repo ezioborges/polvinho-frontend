@@ -1,9 +1,10 @@
-import { createQuestionsApi, studentAnswerApi } from '../api/questions.js';
+import { createQuestionsApi } from '../api/questions.js';
 import {
 	createQuizApi,
 	deleteQuizApi,
 	getQuizzByIdApi,
 	startQuizApi,
+	studentFinishedAttemptApi,
 	studentStartedQuizApi,
 } from '../api/quizzes.js';
 import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
@@ -19,6 +20,8 @@ import {
 	resetQuizInputs,
 } from '../utils/resetInputs.js';
 import { userDataByLocalStorage } from '../utils/userDataByLocalStorage.js';
+
+let answersArray = [];
 
 const {
 	user: { name },
@@ -184,7 +187,7 @@ export const studentStartQuizEvent = element => {
 
 			console.log('quizStart ===> ', quizStart);
 
-			if (quizStart.attemptsRemaining >= 0) {
+			if (quizStart.maxAttempts >= 0) {
 				const toastSuccess = toastBarSuccess(quizStart.message);
 
 				setTimeout(() => {
@@ -207,7 +210,6 @@ export const studentStartQuizEvent = element => {
 			const quizStart = await studentStartedQuizApi(element.id);
 
 			const toastError = toastBarError(quizStart.message);
-
 			setTimeout(() => {
 				ToastBar(toastError, 'error-toast');
 			}, 300);
@@ -220,6 +222,24 @@ export const studentStartQuizEvent = element => {
 
 export const studentFinishQuizEvent = element => {
 	element.addEventListener('click', async () => {
+		const quiz = await getQuizzByIdApi(element.id);
+		const { user } = JSON.parse(localStorage.getItem('userLogin'));
+
+		if (answersArray.length === 0) {
+			const toastError = toastBarError(
+				'O estudante não tem respostas cadastradas',
+			);
+
+			ToastBar(toastError, 'error-toast');
+			return;
+		}
+
+		console.log('deixa eu ver o que vem aqui', answersArray);
+
+		await studentFinishedAttemptApi(quiz._id, user.id, answersArray);
+
+		console.log('answersArray ===> ', answersArray);
+
 		const dialogContent = document.querySelector('.dialog-content');
 
 		if (dialogContent) {
@@ -232,7 +252,7 @@ export const studentFinishQuizEvent = element => {
 	});
 };
 
-let answersArray = [];
+//TODO: MONTAR AS RESPOSTAS NO FRONT E DEPOIS ARMAZENAR NO MONGO
 export const clickedResponse = (
 	element,
 	studentId,
@@ -241,15 +261,24 @@ export const clickedResponse = (
 	selectedOptionId,
 ) => {
 	element.addEventListener('click', async ({ currentTarget }) => {
+		// Remove 'selected-option' de todas as opções da mesma pergunta
+		const allOptions = document.querySelectorAll(
+			`[data-question-id="${questionId}]`,
+		);
+		allOptions.forEach(opt => opt.classList.remove('selected-option'));
+
+		// Adiciona 'selected-option' apenas ao clicado
+		currentTarget.classList.add('selected-option');
+
 		const answer = {
 			studentId,
 			questionId,
 			selectedOptionId,
 		};
 
-		const answerSelected = currentTarget;
-		answerSelected.classList.add('selected-option');
-
-		await studentAnswerApi(quizId, answer);
+		answersArray = answersArray.filter(
+			ans => ans.questionId !== questionId,
+		);
+		answersArray.push(answer);
 	});
 };
