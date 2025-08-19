@@ -234,11 +234,7 @@ export const studentFinishQuizEvent = element => {
 			return;
 		}
 
-		console.log('deixa eu ver o que vem aqui', answersArray);
-
 		await studentFinishedAttemptApi(quiz._id, user.id, answersArray);
-
-		console.log('answersArray ===> ', answersArray);
 
 		const dialogContent = document.querySelector('.dialog-content');
 
@@ -280,5 +276,12 @@ export const clickedResponse = (
 			ans => ans.questionId !== questionId,
 		);
 		answersArray.push(answer);
+	});
+};
+
+export const goToResume = (element, quizId, studentId) => {
+	element.addEventListener('click', () => {
+		console.log(window.location.hash);
+		window.location.hash = `#/quizzes/${quizId}/student/${studentId}/result`;
 	});
 };

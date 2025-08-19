@@ -2,11 +2,13 @@ import { formatDate } from '../../../utils/formatedDate.js';
 import newElement from '../../../utils/newElement.js';
 import textGenerator from '../../../utils/textGenerator.js';
 
-export const instructionsFromTheProfessor = quizData => {
+export const instructionsFromTheProfessor = async (
+	quizData,
+	quizAttemptsRemaining,
+) => {
 	const {
 		professorId: { name },
 		description,
-		maxAttempts,
 		timeMinutes,
 		submissionDeadline,
 	} = quizData;
@@ -31,10 +33,17 @@ export const instructionsFromTheProfessor = quizData => {
 
 	const attemptsItem = newElement('li');
 	attemptsItem.classList.add('config-item');
-	attemptsItem.innerHTML = `
+	if (quizAttemptsRemaining <= 0) {
+		attemptsItem.innerHTML = `
 	    <span class="attempts-title">Tentativas: </span>
-	    <span class="attempts-title attempts-amount">${maxAttempts}</span>
+	    <span class="attempts-title attempts-amount">0</span>
 	`;
+	} else {
+		attemptsItem.innerHTML = `
+	    <span class="attempts-title">Tentativas: </span>
+	    <span class="attempts-title attempts-amount">${quizAttemptsRemaining}</span>
+	`;
+	}
 
 	const timeItem = newElement('li');
 	timeItem.classList.add('config-item');

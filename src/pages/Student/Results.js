@@ -10,6 +10,9 @@ const Results = async () => {
 	const student = JSON.parse(localStorage.getItem('userLogin'));
 	const studentId = student.user.id;
 	const { result } = await getQuizResultApi(quizId, studentId);
+	const scores = result.map(res => res.score);
+
+	const bestScore = Math.max(...scores);
 
 	const resultContent = newElement('div');
 	resultContent.classList.add('quiz-student-content');
@@ -36,7 +39,7 @@ const Results = async () => {
 	resultContent.appendChild(leftArea);
 
 	const infoCard = await InfoCardResult(
-		`Nota ${result}`,
+		`Nota ${bestScore}`,
 		quizData.questions,
 		quizId,
 		studentId,

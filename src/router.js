@@ -24,6 +24,7 @@ const routes = {
 	'/disciplines': './pages/Disciplines.js',
 	'/disciplines/:id/quizz': './pages/Quizz.js',
 	'/subjects/:id/results': './pages/Student/Results.js',
+	'/quizzes/:quizId/student/:studentId/result': './pages/Student/Results.js',
 	'/edit/aluno/:userId': './pages/Admin/UserEdit.js',
 	'/edit/subject/:subjectId': './pages/Admin/SubjectEdit.js',
 	'/edit/professor/:userId': './pages/Admin/UserEdit.js',

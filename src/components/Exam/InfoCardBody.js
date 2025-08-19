@@ -1,4 +1,5 @@
 import { getQuizResultApi } from '../../api/quizzes.js';
+import { goToResume } from '../../events/quizzes.js';
 import newElement from '../../utils/newElement.js';
 
 export const InfoCardBody = async quiz => {
@@ -10,15 +11,12 @@ export const InfoCardBody = async quiz => {
 	const bodyContent = newElement('div');
 	bodyContent.classList.add('info-card-body-area');
 
-	//criando um array com os valores de attempts. O parametro é um número inteiro
-	const attemptsArr = [...Array(quiz.maxAttempts).keys()].map(i => i + 1);
-
 	const infoCardBodyAttemptsContent = newElement('div');
 	infoCardBodyAttemptsContent.classList.add(
 		'info-card-body-attempts-content',
 	);
 
-	attemptsArr.forEach((_, i) => {
+	result.forEach((res, i) => {
 		const infoCardRow = newElement('div');
 		infoCardRow.classList.add('info-card-row');
 
@@ -30,7 +28,7 @@ export const InfoCardBody = async quiz => {
 
 		const infoCardAmount = newElement('div');
 		infoCardAmount.classList.add('info-card-column');
-		infoCardAmount.textContent = result ? `${result}/10` : '0/10';
+		infoCardAmount.textContent = result ? `${res.score}/10` : '0/10';
 		infoCardAmount.classList.add('textMdBold');
 
 		const infoCardResume = newElement('div');
@@ -39,6 +37,7 @@ export const InfoCardBody = async quiz => {
 		infoCardResume.classList.add('textMd');
 		infoCardResume.style.color = 'var(--indigo-700';
 		infoCardResume.style.cursor = 'pointer';
+		goToResume(infoCardResume, quiz._id, user.id);
 
 		infoCardRow.appendChild(infoCardAttempts);
 		infoCardRow.appendChild(infoCardAmount);

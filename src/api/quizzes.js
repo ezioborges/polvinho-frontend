@@ -168,6 +168,27 @@ export const studentFinishedAttemptApi = async (
 	return data;
 };
 
+export const getAllStudentAnswersApi = async (quizId, studentId) => {
+	const url = `http://localhost:2424/quizzes/${quizId}/student/${studentId}/questions-responses`;
+
+	const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error(
+			'Não foi possível buscar as respostas do banco de dados.',
+		);
+	}
+
+	const data = await response.json();
+
+	return data;
+};
+
 export const getQuizResultApi = async (quizId, studentId) => {
 	const url = `http://localhost:2424/quizzes/${quizId}/student/${studentId}/result`;
 
