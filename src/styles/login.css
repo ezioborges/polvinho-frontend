@@ -46,8 +46,6 @@
 }
 
 .credentials input {
-	width: 100%;
-	height: 1.5rem;
 	margin-top: 1rem;
 	padding: 0.75rem 0.5rem;
 	border-radius: 0.5rem;
@@ -64,4 +62,11 @@
 	text-align: center;
 	color: var(--indigo-900);
 	font-weight: 500;
+}
+
+#password {
+    background-image: url('../../assets/password-eye-open.png');
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center; /* Mantenha uma pequena margem da borda */
+    background-size: 1.3rem; /* Tamanho do ícone */
 }

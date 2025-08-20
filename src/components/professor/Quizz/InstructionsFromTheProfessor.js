@@ -10,6 +10,7 @@ export const instructionsFromTheProfessor = async (
 		professorId: { name },
 		description,
 		timeMinutes,
+		maxAttempts,
 		submissionDeadline,
 	} = quizData;
 
@@ -41,7 +42,7 @@ export const instructionsFromTheProfessor = async (
 	} else {
 		attemptsItem.innerHTML = `
 	    <span class="attempts-title">Tentativas: </span>
-	    <span class="attempts-title attempts-amount">${quizAttemptsRemaining}</span>
+	    <span class="attempts-title attempts-amount">${quizAttemptsRemaining !== undefined ? quizAttemptsRemaining : maxAttempts}</span>
 	`;
 	}
 

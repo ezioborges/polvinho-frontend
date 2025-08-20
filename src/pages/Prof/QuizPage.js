@@ -20,9 +20,9 @@ const QuizPage = async () => {
 
 	const pageTitle = PageTitle(`${quizData.title}`, '');
 
-	const instructions = instructionsFromTheProfessor(quizData);
+	const instructions = await instructionsFromTheProfessor(quizData);
 
-	const responses = await StudentsResponseAndResumeList();
+	const responses = await StudentsResponseAndResumeList(quizId);
 
 	const publishQuizButton = createEntityButtonRoute(
 		'Postar Quizz',

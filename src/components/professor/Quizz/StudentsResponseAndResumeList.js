@@ -1,8 +1,9 @@
+import { getQuizResultApi } from '../../../api/quizzes.js';
 import { getAllStudenstsApi } from '../../../api/students.js';
 import newElement from '../../../utils/newElement.js';
 import textGenerator from '../../../utils/textGenerator.js';
 
-export const StudentsResponseAndResumeList = async () => {
+export const StudentsResponseAndResumeList = async quizId => {
 	const students = await getAllStudenstsApi();
 	const studentResponseContent = newElement('div');
 	studentResponseContent.classList.add('student-response-content');
@@ -11,7 +12,11 @@ export const StudentsResponseAndResumeList = async () => {
 
 	studentResponseContent.appendChild(responseTitle);
 
-	students.forEach(student => {
+	students.forEach(async student => {
+		const { result } = await getQuizResultApi(quizId, student._id);
+		const scores = result.map(res => res.score);
+		const bestScore = Math.max(...scores);
+		console.log('🚀 ~ StudentsResponseAndResumeList ~ scores:', bestScore);
 		const studentContent = newElement('div');
 		studentContent.classList.add('bar-content');
 
@@ -31,7 +36,7 @@ export const StudentsResponseAndResumeList = async () => {
 			(window.location.hash = `#/quiz/quiz-answers/${student._id}`);
 
 		const gradeArea = newElement('div');
-		gradeArea.textContent = '10/10';
+		gradeArea.textContent = `${bestScore}/10`;
 		gradeArea.classList.add('textMd');
 		gradeArea.classList.add('action-area');
 		gradeArea.style.color = 'var(--stone-600)';

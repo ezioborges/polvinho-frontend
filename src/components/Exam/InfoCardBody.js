@@ -6,7 +6,6 @@ export const InfoCardBody = async quiz => {
 	const { user } = JSON.parse(localStorage.getItem('userLogin'));
 
 	const { result } = await getQuizResultApi(quiz._id, user.id);
-	console.log('result ===> ', result);
 
 	const bodyContent = newElement('div');
 	bodyContent.classList.add('info-card-body-area');
