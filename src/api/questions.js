@@ -1,5 +1,5 @@
 export const createQuestionsApi = async (questionData, quizId) => {
-	const createQuestionsURL = `http://localhost:2424/questions/${quizId}/create`;
+	const createQuestionsURL = `${BASE_URL}/questions/${quizId}/create`;
 
 	const response = await fetch(createQuestionsURL, {
 		method: 'POST',
@@ -19,7 +19,7 @@ export const createQuestionsApi = async (questionData, quizId) => {
 };
 
 export const studentAnswerApi = async (quizId, answerData) => {
-	const studentAnswerURL = `http://localhost:2424/questions/${quizId}/student-responses`;
+	const studentAnswerURL = `${BASE_URL}/questions/${quizId}/student-responses`;
 
 	const response = await fetch(studentAnswerURL, {
 		method: 'POST',
@@ -40,7 +40,7 @@ export const getAllStudentAnswersByQuizIdAndStudentIdApi = async (
 	quizId,
 	studentId,
 ) => {
-	const url = `http://localhost:2424/quizzes/${quizId}/student/${studentId}/questions-responses`;
+	const url = `${BASE_URL}/quizzes/${quizId}/student/${studentId}/questions-responses`;
 
 	const response = await fetch(url, {
 		method: 'GET',

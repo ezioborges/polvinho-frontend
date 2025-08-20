@@ -1,16 +1,18 @@
+export const BASE_URL = 'https://little-octopus-api.onrender.com';
+
 const urls = {
-	login: 'http://localhost:2424/login',
+	login: `${BASE_URL}/login`,
 
-	professors: 'http://localhost:2424/professors',
+	professors: `${BASE_URL}//professors`,
 
-	students: 'http://localhost:2424/students',
+	students: `${BASE_URL}/students`,
 
-	users: 'http://localhost:2424/users',
+	users: `${BASE_URL}/users`,
 
-	subjects: 'http://localhost:2424/subjects',
+	subjects: `${BASE_URL}/subjects`,
 
-	quizzes: 'http://localhost:2424/quizzes',
-	quizById: 'http://localhost:2424/quizzes/quiz',
+	quizzes: `${BASE_URL}/quizzes`,
+	quizById: `${BASE_URL}/quizzes/quiz`,
 };
 
 export default urls;

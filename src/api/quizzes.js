@@ -149,7 +149,7 @@ export const studentFinishedAttemptApi = async (
 	studentId,
 	answersArray,
 ) => {
-	const url = `http://localhost:2424/questions/${quizId}/student/${studentId}/student-responses`;
+	const url = `${BASE_URL}/questions/${quizId}/student/${studentId}/student-responses`;
 
 	const response = await fetch(url, {
 		method: 'POST',
@@ -169,7 +169,7 @@ export const studentFinishedAttemptApi = async (
 };
 
 export const getAllStudentAnswersApi = async (quizId, studentId) => {
-	const url = `http://localhost:2424/quizzes/${quizId}/student/${studentId}/questions-responses`;
+	const url = `${BASE_URL}/quizzes/${quizId}/student/${studentId}/questions-responses`;
 
 	const response = await fetch(url, {
 		method: 'GET',
@@ -190,7 +190,7 @@ export const getAllStudentAnswersApi = async (quizId, studentId) => {
 };
 
 export const getQuizResultApi = async (quizId, studentId) => {
-	const url = `http://localhost:2424/quizzes/${quizId}/student/${studentId}/result`;
+	const url = `${BASE_URL}/quizzes/${quizId}/student/${studentId}/result`;
 
 	const response = await fetch(url, {
 		method: 'GET',
