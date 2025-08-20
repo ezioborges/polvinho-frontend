@@ -3,7 +3,7 @@ import Dialog from '../components/Dialogs/index.js';
 import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
 import SubjectsPanelList from '../components/Panel/SubjectsPanelList.js';
 import { fetchLogin } from '../data/userData.js';
-import urls from '../urls/index.js';
+import { BASE_URL } from '../urls/index.js';
 
 export const openDialog = (
 	element,
@@ -85,7 +85,7 @@ export const clickFormLogin = element => {
 		const errorMessage = document.querySelector('#error-message');
 
 		try {
-			const response = await fetchLogin(urls.login);
+			const response = await fetchLogin(`${BASE_URL}/login`);
 
 			const data = await response.json();
 
