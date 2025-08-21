@@ -12,12 +12,11 @@ const BarItem = (item, register, role) => {
 		newRegister.href = `#/register/${item.entity}`;
 		newRegister.classList.add('new-register');
 		newRegister.classList.add('textMd');
-		newRegister.textContent = 'Novo Registro';
+		newRegister.textContent = 'Cadastrar Novo';
 
 		barItem.appendChild(title);
 		barItem.appendChild(newRegister);
 
-		barItem.appendChild(title);
 		return barItem;
 	}
 
