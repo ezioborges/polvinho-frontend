@@ -1,8 +1,8 @@
-import urls from '../urls/index.js';
+import { BASE_URL } from '../urls/index.js';
 import { validToken } from '../utils/validateAdminJWT.js';
 
 export const createSubject = async subjectData => {
-	const createSubjectURL = `${urls.subjects}`;
+	const createSubjectURL = `${BASE_URL}/subjects`;
 
 	const token = validToken();
 
@@ -25,7 +25,7 @@ export const createSubject = async subjectData => {
 };
 
 export const updateSubject = async (subjectID, subjectdata) => {
-	const upodateSubjectURL = `${urls.subjects}/${subjectID}`;
+	const upodateSubjectURL = `${BASE_URL}/subjects/${subjectID}`;
 
 	const token = validToken();
 
@@ -48,7 +48,7 @@ export const updateSubject = async (subjectID, subjectdata) => {
 };
 
 export const getAllSubjectsApi = async () => {
-	const getAllURL = `${urls.subjects}`;
+	const getAllURL = `${BASE_URL}/subjects`;
 
 	const token = validToken();
 
@@ -70,7 +70,7 @@ export const getAllSubjectsApi = async () => {
 };
 
 export const getSubjectByIdApi = async subjectId => {
-	const getByIdURL = `${urls.subjects}/${subjectId}`;
+	const getByIdURL = `${BASE_URL}/subjects/${subjectId}`;
 
 	const token = validToken();
 
@@ -92,7 +92,7 @@ export const getSubjectByIdApi = async subjectId => {
 };
 
 export const deleteSubjectApi = async subjectID => {
-	const deleteSubjectURL = `${urls.subjects}/${subjectID}`;
+	const deleteSubjectURL = `${BASE_URL}/subjects/${subjectID}`;
 
 	const token = validToken();
 

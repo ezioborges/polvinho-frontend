@@ -1,8 +1,8 @@
-import urls from '../urls/index.js';
+import { BASE_URL } from '../urls/index.js';
 import { validToken } from '../utils/validateAdminJWT.js';
 
 export const createProfessorApi = async profData => {
-	const createProfessorURL = urls.professors;
+	const createProfessorURL = `${BASE_URL}/professors`;
 
 	const token = validToken();
 
@@ -25,7 +25,7 @@ export const createProfessorApi = async profData => {
 };
 
 export const getAllProfessorsApi = async () => {
-	const getAllURL = `${urls.professors}`;
+	const getAllURL = `${BASE_URL}/professors`;
 
 	const token = validToken();
 
@@ -47,7 +47,7 @@ export const getAllProfessorsApi = async () => {
 };
 
 export const getProfessorByIdApi = async professorId => {
-	const getByIdURL = `${urls.professors}/${professorId}`;
+	const getByIdURL = `${BASE_URL}/professors/${professorId}`;
 
 	const token = validToken();
 
@@ -69,7 +69,7 @@ export const getProfessorByIdApi = async professorId => {
 };
 
 export const updateProfessorApi = async (professorId, professorData) => {
-	const updateURL = `${urls.professors}/${professorId}`;
+	const updateURL = `${BASE_URL}/professors/${professorId}`;
 
 	const token = validToken();
 
@@ -92,7 +92,7 @@ export const updateProfessorApi = async (professorId, professorData) => {
 };
 
 export const deleteProfessorApi = async professorId => {
-	const deleteURL = `${urls.professors}/${professorId}`;
+	const deleteURL = `${BASE_URL}/professors/${professorId}`;
 
 	const token = validToken();
 
