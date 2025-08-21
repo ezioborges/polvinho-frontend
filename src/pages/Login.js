@@ -51,18 +51,12 @@ const Login = () => {
 	eyeIcon.src = '/assets/password-eye-open.png'; // Use caminho absoluto
 	eyeIcon.alt = 'Mostrar senha';
 	eyeIcon.classList.add('eye-icon');
-	eyeIcon.style.position = 'absolute';
-	eyeIcon.style.right = '10px';
-	eyeIcon.style.top = '50%';
-	eyeIcon.style.transform = 'translateY(-50%)';
-	eyeIcon.style.cursor = 'pointer';
-	eyeIcon.style.width = '1.3rem';
 
 	// Evento para alternar a senha
 	eyeIcon.addEventListener('click', () => {
 		if (passwordInput.type === 'password') {
 			passwordInput.type = 'text';
-			eyeIcon.src = '/assets/password-eye-closed.png'; // Troque para o ícone de olho fechado
+			eyeIcon.src = '/assets/password-eye-close.svg'; // Troque para o ícone de olho fechado
 		} else {
 			passwordInput.type = 'password';
 			eyeIcon.src = '/assets/password-eye-open.png'; // Volte para o ícone de olho aberto

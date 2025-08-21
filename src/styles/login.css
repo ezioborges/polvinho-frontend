@@ -43,6 +43,7 @@
 .credentials {
 	display: flex;
 	flex-direction: column;
+	position: relative; /* Adicione isso para servir como referência */
 }
 
 .credentials input {
@@ -65,8 +66,19 @@
 }
 
 #password {
-    background-image: url('../../assets/password-eye-open.png');
-    background-repeat: no-repeat;
-    background-position: right 0.5rem center; /* Mantenha uma pequena margem da borda */
-    background-size: 1.3rem; /* Tamanho do ícone */
+	background-image: url('../../assets/password-eye-open.png');
+	background-repeat: no-repeat;
+	background-position: right 0.5rem center; /* Mantenha uma pequena margem da borda */
+	background-size: 1.3rem; /* Tamanho do ícone */
+	padding-right: 2.5rem;
+}
+
+.eye-icon {
+	position: absolute;
+	top: 70%;
+	right: 0.75rem; /* Margem da borda direita */
+	transform: translateY(-50%);
+	cursor: pointer;
+	width: 1.3rem;
+	z-index: 10;
 }
