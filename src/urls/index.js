@@ -1,5 +1,4 @@
-export const BASE_URL = 'http://localhost:2424';
-// 'https://little-octopus-api.onrender.com'
+export const BASE_URL = 'https://little-octopus-api.onrender.com';
 
 const urls = {
 	login: `${BASE_URL}/login`,
