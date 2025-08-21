@@ -3,7 +3,7 @@ export const BASE_URL = 'https://little-octopus-api.onrender.com';
 const urls = {
 	login: `${BASE_URL}/login`,
 
-	professors: `${BASE_URL}//professors`,
+	professors: `${BASE_URL}/professors`,
 
 	students: `${BASE_URL}/students`,
 
