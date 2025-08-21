@@ -1,6 +1,6 @@
 import ToastBar from '../components/ToastBar/index.js';
 import { toastBarError } from '../components/ToastBar/toastAnswers.js';
-import urls from '../urls/index.js';
+import urls, { BASE_URL } from '../urls/index.js';
 
 export const createQuizApi = async quizData => {
 	const createQuizURL = `${urls.quizzes}`;
