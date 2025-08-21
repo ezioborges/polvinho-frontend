@@ -1,8 +1,8 @@
-import urls from '../urls/index.js';
+import { BASE_URL } from '../urls/index.js';
 import { validToken } from '../utils/validateAdminJWT.js';
 
 export const getAllUsersApi = async () => {
-	const usersURL = `${urls.users}`;
+	const usersURL = `${BASE_URL}/users`;
 
 	const token = validToken();
 

@@ -1,8 +1,8 @@
-import urls from '../urls/index.js';
+import { BASE_URL } from '../urls/index.js';
 import { validToken } from '../utils/validateAdminJWT.js';
 
 export const getAllStudenstsApi = async () => {
-	const getallStudentsURL = `${urls.students}`;
+	const getallStudentsURL = `${BASE_URL}/students`;
 
 	const token = validToken();
 
@@ -24,7 +24,7 @@ export const getAllStudenstsApi = async () => {
 };
 
 export const createStudentApi = async studentData => {
-	const createStudentUrl = `${urls.students}`;
+	const createStudentUrl = `${BASE_URL}/students`;
 
 	const token = validToken();
 
@@ -47,7 +47,7 @@ export const createStudentApi = async studentData => {
 };
 
 export const updateStudentApi = async (studentId, studentData) => {
-	const updateStudentURL = `${urls.students}/${studentId}`;
+	const updateStudentURL = `${BASE_URL}/students/${studentId}`;
 
 	const token = validToken();
 
@@ -70,7 +70,7 @@ export const updateStudentApi = async (studentId, studentData) => {
 };
 
 export const deleteStudentApi = async studentId => {
-	const deleteStudentURL = `${urls.students}/${studentId}`;
+	const deleteStudentURL = `${BASE_URL}/students/${studentId}`;
 
 	const token = validToken();
 
@@ -89,7 +89,7 @@ export const deleteStudentApi = async studentId => {
 };
 
 export const getAllSubjectsOfStudentApi = async studentId => {
-	const getAllStudentURL = `${urls.students}/${studentId}/subjects`;
+	const getAllStudentURL = `${BASE_URL}/students/${studentId}/subjects`;
 
 	const response = await fetch(getAllStudentURL, {
 		method: 'GET',
