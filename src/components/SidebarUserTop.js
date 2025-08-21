@@ -45,6 +45,11 @@ export const SidebarUserTop = (userRole, subjectName, panelDropdown) => {
 	disciplineText.textContent = subjectName;
 	disciplineText.classList.add('sidebar-menu-text');
 
+	const dropArrowIcon = newElement('img');
+	dropArrowIcon.src = '/assets/arrow-right.svg';
+	dropArrowIcon.alt = 'Arrow icon rigth';
+	dropArrowIcon.classList.add('drop-arrow-icon');
+
 	// Configurações de texto
 	const sidebarH1 = newElement('a');
 	sidebarH1.textContent = 'Polvo';
@@ -63,6 +68,7 @@ export const SidebarUserTop = (userRole, subjectName, panelDropdown) => {
 
 	sidebarDiscipline.appendChild(disciplineLogo);
 	sidebarDiscipline.appendChild(disciplineText);
+	sidebarDiscipline.appendChild(dropArrowIcon);
 
 	if (userRole === 'admin')
 		panelDropdown(sidebarDiscipline, SidebarPanelAdmin);

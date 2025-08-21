@@ -148,10 +148,13 @@ export const panelDropdown = (element, sidebarDropFunc) => {
 	element.addEventListener('click', async () => {
 		isVisible = !isVisible;
 		const panel = document.querySelector('#panel-dropdown');
+		const arrowPanel = document.querySelector('.drop-arrow-icon');
 
 		if (!isVisible) {
 			panel.classList.remove('panel-dropdown-open');
 			panel.classList.add('panel-dropdown-close');
+
+			arrowPanel.src = '/assets/arrow-right.svg';
 		} else {
 			const dropdown = await sidebarDropFunc();
 			panel.innerHTML = '';
@@ -159,6 +162,7 @@ export const panelDropdown = (element, sidebarDropFunc) => {
 
 			panel.classList.remove('panel-dropdown-close');
 			panel.classList.add('panel-dropdown-open');
+			arrowPanel.src = '/assets/arrow-down.svg';
 		}
 	});
 };
