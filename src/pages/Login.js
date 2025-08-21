@@ -48,7 +48,7 @@ const Login = () => {
 	passwordInput.id = 'password';
 
 	const eyeIcon = newElement('img');
-	eyeIcon.src = '/assets/password-eye-open.png'; // Use caminho absoluto
+	eyeIcon.src = '/assets/password-eye-open.png';
 	eyeIcon.alt = 'Mostrar senha';
 	eyeIcon.classList.add('eye-icon');
 

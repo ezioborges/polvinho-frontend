@@ -28,7 +28,7 @@ const DashboardMainContent = async DashListItems => {
 	const dashBody = newElement('div');
 	dashBody.classList.add('dashboard-body');
 
-	const dashTitle = PageTitle('Dashboard', `Bem vindo, ${name}`);
+	const dashTitle = PageTitle('Dashboard', `Bem vindo, ${name}!`);
 
 	dashTitleArea.appendChild(dashTitle);
 
