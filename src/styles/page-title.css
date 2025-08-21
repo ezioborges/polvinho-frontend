@@ -1,0 +1,23 @@
+.title-area-content {
+	display: flex;
+}
+
+.page-title-area {
+	display: flex;
+	flex-direction: column;
+}
+
+.back-page {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	height: 100%;
+	cursor: pointer;
+}
+
+.arrow-left-icon {
+	width: 1.688rem;
+	height: 1.688rem;
+	padding: 0.25rem;
+	gap: 0.625rem;
+}

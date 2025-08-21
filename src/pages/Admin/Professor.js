@@ -27,7 +27,7 @@ const Professor = async () => {
 
 	const professorRegisterButton = createEntityButtonRoute(
 		'Cadastrar',
-		'textLG',
+		'textMd',
 		'create-entity-button',
 	);
 	professorRegisterButton.onclick = () =>
