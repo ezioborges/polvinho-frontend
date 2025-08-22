@@ -15,55 +15,20 @@
 .headers-area {
 	display: flex;
 	justify-content: space-around;
-	align-items: center;
-	width: 95%;
-	height: 3vh;
+	align-items: flex-start;
+	width: 100%;
+	width: 74vw;
 }
 
 .body-area {
-	height: 57vh;
 	width: 100%;
 	overflow-y: scroll;
 }
 
 .header-item {
 	color: var(--stone-500);
-	width: 20vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-left: 2rem;
-}
-
-.student-box-area {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	width: 20vw;
-	z-index: 1;
-}
-
-.actions-click-area {
 	width: 100%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-start;
 	align-items: center;
-	padding: 0 2rem;
-}
-
-.student-subjects-amount {
-	display: flex;
-	justify-content: end;
-	align-self: center;
-	transform: translateX(2rem);
-}
-
-.student-subjects-amount div {
-	padding: 0 5px;
-	border-radius: 5px;
-}
-
-.student-subjects-amount div:hover {
-	background-color: var(--stone-400);
 }

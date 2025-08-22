@@ -11,6 +11,7 @@ import {
 	updateStudentApi,
 } from '../api/students.js';
 import ToastBar from '../components/ToastBar/index.js';
+import { toastBarSuccess } from '../components/ToastBar/toastAnswers.js';
 import UserList from '../components/Users/UserList.js';
 import { resetProfessorInputs, resetUserInputs } from '../utils/resetInputs.js';
 
@@ -66,15 +67,11 @@ export const updateProfessor = async (element, professorId) => {
 		}
 
 		await updateProfessorApi(professorId, professorUpdated);
-
-		ToastBar(
-			{
-				iconParam: '../../assets/CheckCircle.svg',
-				titleParam: 'Sucesso',
-				msgParam: 'Professor(a) atualizado com sucesso!',
-			},
-			'success-toast',
+		const toastSucces = toastBarSuccess(
+			'Professor(a) cadastrado(a) com sucesso!',
 		);
+
+		ToastBar(toastSucces, 'success-toast');
 
 		resetProfessorInputs();
 	});

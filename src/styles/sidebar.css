@@ -100,3 +100,9 @@ a {
 .dropdown-prof-items:hover {
 	color: var(--yellow-200);
 }
+
+.drop-arrow-icon {
+	margin-left: 5rem;
+	height: 1.2rem;
+	width: 1.2rem;
+}

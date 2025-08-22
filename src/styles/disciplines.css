@@ -2,7 +2,9 @@
     os tamaanhos de tela estão mudando os posionamentos
 */
 .subjects-dropdown-open {
-	transform: translateY(2rem) translateX(2rem);
+	position: absolute;
+	top: 1rem;
+	left: 31rem;
 	z-index: 1;
 	display: flex;
 }
@@ -15,27 +17,29 @@
 }
 
 .subjects-panel-content {
-	background-color: var(--neutral-200);
+	background-color: var(--neutral-50);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid var(--neutral-50);
+	border: 1px solid var(--neutral-200);
 	border-radius: 1rem;
-	padding: 1rem;
+	padding: 0.5rem;
+	padding: 0.5rem 1rem;
 }
 
 .subject-panel-list-item {
 	color: var(--stone-700);
 	line-height: 1.5rem;
 	width: 100%;
-	padding: 0 0.3rem;
+	padding: 0.5rem;
 	border-radius: 0.5rem;
 	text-align: center;
+	gap: 10px;
 }
 
 .subject-panel-list-item:hover {
-	background-color: var(--neutral-50);
+	background-color: var(--neutral-300);
 	transition: none;
 }
 

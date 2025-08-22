@@ -1,6 +1,6 @@
 .button-content {
 	width: 6.688rem;
-	height: 3rem;
+	padding: 0.5rem 1.125rem;
 	background-color: var(--indigo-500);
 	border-radius: 9px;
 	color: var(--neutral-50);
@@ -57,11 +57,14 @@
 .create-entity-button {
 	display: flex;
 	align-items: center;
-	padding: 0.75rem 1.75rem;
+	width: 10.563rem;
+	height: 3.5rem;
+	justify-content: center;
 	background-color: var(--indigo-500);
 	border: 1px solid var(--indigo-500);
 	border-radius: 6px;
 	color: var(--neutral-50);
+	gap: 0.5rem;
 }
 
 .create-entity-button:hover {

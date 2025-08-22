@@ -1,9 +1,9 @@
 import ToastBar from '../components/ToastBar/index.js';
 import { toastBarError } from '../components/ToastBar/toastAnswers.js';
-import urls, { BASE_URL } from '../urls/index.js';
+import { BASE_URL } from '../urls/index.js';
 
 export const createQuizApi = async quizData => {
-	const createQuizURL = `${urls.quizzes}`;
+	const createQuizURL = `${BASE_URL}/quizzes`;
 
 	const response = await fetch(createQuizURL, {
 		method: 'POST',
@@ -23,7 +23,7 @@ export const createQuizApi = async quizData => {
 };
 
 export const getAllQuizzesApi = async () => {
-	const getAllURL = `${urls.quizzes}`;
+	const getAllURL = `${BASE_URL}/quizzes`;
 
 	const response = await fetch(getAllURL, {
 		method: 'GET',
@@ -42,7 +42,7 @@ export const getAllQuizzesApi = async () => {
 };
 
 export const getQuizzesBySubjectApi = async subjectId => {
-	const getQuizzesBySubjectURL = `${urls.quizzes}/${subjectId}`;
+	const getQuizzesBySubjectURL = `${BASE_URL}/quizzes/${subjectId}`;
 
 	const response = await fetch(getQuizzesBySubjectURL, {
 		method: 'GET',
@@ -61,7 +61,7 @@ export const getQuizzesBySubjectApi = async subjectId => {
 };
 
 export const getQuizzByIdApi = async quizId => {
-	const getQuizzURL = `${urls.quizById}/${quizId}`;
+	const getQuizzURL = `${BASE_URL}/quizzes/quiz/${quizId}`;
 
 	const response = await fetch(getQuizzURL, {
 		method: 'GET',
@@ -80,7 +80,7 @@ export const getQuizzByIdApi = async quizId => {
 };
 
 export const deleteQuizApi = async quizId => {
-	const deleteURL = `${urls.quizzes}/${quizId}`;
+	const deleteURL = `${BASE_URL}/quizzes/${quizId}`;
 
 	const response = await fetch(deleteURL, {
 		method: 'DELETE',
@@ -99,7 +99,7 @@ export const deleteQuizApi = async quizId => {
 };
 
 export const startQuizApi = async (quizId, quizData) => {
-	const startQuizURL = `${urls.quizzes}/start/${quizId}`;
+	const startQuizURL = `${BASE_URL}/quizzes/start/${quizId}`;
 
 	const response = await fetch(startQuizURL, {
 		method: 'PUT',
@@ -119,7 +119,7 @@ export const startQuizApi = async (quizId, quizData) => {
 };
 
 export const studentStartedQuizApi = async quizId => {
-	const startURL = `${urls.quizzes}/student-start/${quizId}`;
+	const startURL = `${BASE_URL}/quizzes/student-start/${quizId}`;
 
 	try {
 		const response = await fetch(startURL, {

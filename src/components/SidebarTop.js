@@ -6,7 +6,7 @@ const SidebarTop = () => {
 	const userRole = userLogin ? userLogin.user.role.toLowerCase() : null;
 
 	if (userRole === 'admin') {
-		return SidebarUserTop(userRole, 'Dashboard', panelDropdown);
+		return SidebarUserTop(userRole, 'Painel', panelDropdown);
 	}
 
 	if (userRole === 'professor') {

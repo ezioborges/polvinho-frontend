@@ -18,14 +18,14 @@ const SubjectsList = async subjectsArray => {
 		);
 
 		const subjectNameArea = newElement('div');
-		subjectNameArea.classList.add('student-box-area');
+		subjectNameArea.classList.add('entity-box-area');
 
 		const subjectName = newElement('p');
 		subjectName.textContent = subject.name;
 		subjectName.classList.add('textMd');
 
 		const professorNameArea = newElement('div');
-		professorNameArea.classList.add('student-box-area');
+		professorNameArea.classList.add('entity-box-area');
 
 		const professorName = newElement('p');
 		professorName.textContent = findedProfessorName
@@ -34,7 +34,7 @@ const SubjectsList = async subjectsArray => {
 		professorName.classList.add('textMd');
 
 		const quizAmountArea = newElement('div');
-		quizAmountArea.classList.add('student-box-area');
+		quizAmountArea.classList.add('entity-box-area');
 
 		const quizAmount = newElement('p');
 		//TODO: aqui eu tenho que substituir pela quantidade de quizzes depois
@@ -42,7 +42,7 @@ const SubjectsList = async subjectsArray => {
 		quizAmount.classList.add('textMd');
 
 		const studentActionsArea = newElement('div');
-		studentActionsArea.classList.add('student-box-area');
+		studentActionsArea.classList.add('entity-box-area');
 
 		const actionsClickArea = newElement('div');
 		actionsClickArea.classList.add('actions-click-area');
@@ -57,7 +57,7 @@ const SubjectsList = async subjectsArray => {
 		const deleteArea = newElement('a');
 		deleteArea.id = `${subject._id}`;
 		deleteArea.classList.add('delete-area');
-		deleteArea.textContent = 'Excluir';
+		deleteArea.textContent = 'Remover';
 		deleteArea.classList.add('textSm');
 		deleteSubjectEvent(deleteArea);
 
