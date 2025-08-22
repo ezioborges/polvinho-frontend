@@ -5,7 +5,6 @@ import BodyWithoutContent from '../BodyWithoutContent.js';
 
 const UserListComponent = (users, listContent) => {
 	const bodyArea = newElement('div');
-	bodyArea.classList.add('body-area');
 
 	const local = window.location.hash;
 
@@ -16,16 +15,16 @@ const UserListComponent = (users, listContent) => {
 		listRow.classList.add('bar-content');
 
 		const studentRegisterArea = newElement('div');
-		studentRegisterArea.classList.add('student-box-area');
+		studentRegisterArea.classList.add('entity-box-area');
 
 		const studentNameArea = newElement('div');
-		studentNameArea.classList.add('student-box-area');
+		studentNameArea.classList.add('entity-box-area');
 
 		const studentSubjectsAmountArea = newElement('div');
-		studentSubjectsAmountArea.classList.add('student-box-area');
-		studentSubjectsAmountArea.classList.add('student-subjects-amount');
+		studentSubjectsAmountArea.classList.add('entity-box-area');
 
 		const studentSubjectsAmount = newElement('div');
+		studentSubjectsAmount.classList.add('entity-subjects-amount');
 		studentSubjectsAmount.textContent =
 			user.subject.length > 0 ? user.subject.length : '0';
 		studentSubjectsAmount.classList.add('textMd');
@@ -34,16 +33,17 @@ const UserListComponent = (users, listContent) => {
 		studentSubjectsAmountArea.dataset.userId = user._id;
 		studentSubjectsAmountArea.dataset.userRegistration = user.registration;
 
-		subjectsAmountDropdown(studentSubjectsAmountArea);
+		let isVisible = false;
+		subjectsAmountDropdown(studentSubjectsAmountArea, isVisible);
 
 		const studentDropdownList = newElement('div');
 		studentDropdownList.id = `user-register-${user.registration}`;
-		studentDropdownList.classList.add('student-box-area');
-		listContent.appendChild(studentDropdownList);
-		//TODO: essa listContent vem da StudentList (elemento pai)
+		studentDropdownList.classList.add('textMd');
+		// listContent.appendChild(studentDropdownList);
+		// TODO: essa listContent vem da StudentList (elemento pai)
 
 		const studentActionsArea = newElement('div');
-		studentActionsArea.classList.add('student-box-area');
+		studentActionsArea.classList.add('entity-box-area');
 
 		const actionsClickArea = newElement('div');
 		actionsClickArea.classList.add('actions-click-area');
@@ -57,7 +57,7 @@ const UserListComponent = (users, listContent) => {
 		studentName.classList.add('textMd');
 
 		const editArea = newElement('a');
-		editArea.classList.add('edit-area');
+		editArea.classList.add('entity-action-area');
 		editArea.textContent = 'Editar';
 		editArea.classList.add('textSm');
 		editArea.href =
@@ -67,8 +67,8 @@ const UserListComponent = (users, listContent) => {
 
 		const deleteArea = newElement('a');
 		deleteArea.id = `delete-user-${user._id}`;
-		deleteArea.classList.add('delete-area');
-		deleteArea.textContent = 'Excluir';
+		deleteArea.classList.add('entity-action-area');
+		deleteArea.textContent = 'Remover';
 		deleteArea.classList.add('textSm');
 		deleteUser(deleteArea, user.role);
 
@@ -83,11 +83,11 @@ const UserListComponent = (users, listContent) => {
 
 		// Anexamos apenas o número de disciplinas, o painel global já foi criado acima.
 		studentSubjectsAmountArea.appendChild(studentSubjectsAmount);
+		studentSubjectsAmountArea.appendChild(studentDropdownList);
 
 		listRow.appendChild(studentRegisterArea);
 		listRow.appendChild(studentNameArea);
 		listRow.appendChild(studentSubjectsAmountArea);
-		listRow.appendChild(studentDropdownList);
 		listRow.appendChild(studentActionsArea);
 
 		bodyArea.appendChild(listRow);

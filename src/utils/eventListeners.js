@@ -143,14 +143,14 @@ export const endSession = event => {
 	clickEventCancelButton(event);
 };
 
-let isVisible = false;
+let isVisiblePanel = false;
 export const panelDropdown = (element, sidebarDropFunc) => {
 	element.addEventListener('click', async () => {
-		isVisible = !isVisible;
+		isVisiblePanel = !isVisiblePanel;
 		const panel = document.querySelector('#panel-dropdown');
 		const arrowPanel = document.querySelector('.drop-arrow-icon');
 
-		if (!isVisible) {
+		if (!isVisiblePanel) {
 			panel.classList.remove('panel-dropdown-open');
 			panel.classList.add('panel-dropdown-close');
 
@@ -167,7 +167,7 @@ export const panelDropdown = (element, sidebarDropFunc) => {
 	});
 };
 
-export const subjectsAmountDropdown = element => {
+export const subjectsAmountDropdown = (element, isVisible) => {
 	element.addEventListener('click', async () => {
 		const userId = element.dataset.userId;
 		const userRegistration = element.dataset.userRegistration;

@@ -1,0 +1,28 @@
+.entity-box-area {
+	display: flex;
+	width: 100%;
+}
+
+.entity-action-area {
+	color: var(--indigo-700);
+	width: 100%;
+	padding-left: 0.3rem;
+}
+
+.actions-click-area {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.entity-subjects-amount {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	width: 10%;
+}
+
+.entity-subjects-amount:hover {
+	background-color: var(--stone-400);
+}

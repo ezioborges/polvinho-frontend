@@ -1,12 +1,15 @@
 .bar-content {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid var(--neutral-200);
-	border-radius: 0.5rem;
-	padding: 16px 20px;
+	gap: 0.5rem;
 	background-color: var(--neutral-100);
-	margin-top: 0.4rem;
+	border: 1px solid var(--stone-200);
+	border-radius: 0.75rem;
+	width: 70.2vw;
+	margin: 0.4rem 0;
+	padding: 1rem 1.25rem;
 }
 
 .bar-content:hover {
