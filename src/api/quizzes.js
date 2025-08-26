@@ -1,9 +1,12 @@
 import ToastBar from '../components/ToastBar/index.js';
 import { toastBarError } from '../components/ToastBar/toastAnswers.js';
 import { BASE_URL } from '../urls/index.js';
+import { toggleLoadingOverlay } from '../utils/toggleLoadingOverlay.js';
 
 export const createQuizApi = async quizData => {
 	const createQuizURL = `${BASE_URL}/quizzes`;
+
+	toggleLoadingOverlay(true);
 
 	const response = await fetch(createQuizURL, {
 		method: 'POST',
@@ -14,16 +17,21 @@ export const createQuizApi = async quizData => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi possível criar o quiz');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const getAllQuizzesApi = async () => {
 	const getAllURL = `${BASE_URL}/quizzes`;
+
+	toggleLoadingOverlay(true);
 
 	const response = await fetch(getAllURL, {
 		method: 'GET',
@@ -33,16 +41,21 @@ export const getAllQuizzesApi = async () => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi possível obter os quizzes');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const getQuizzesBySubjectApi = async subjectId => {
 	const getQuizzesBySubjectURL = `${BASE_URL}/quizzes/${subjectId}`;
+
+	toggleLoadingOverlay(true);
 
 	const response = await fetch(getQuizzesBySubjectURL, {
 		method: 'GET',
@@ -52,16 +65,21 @@ export const getQuizzesBySubjectApi = async subjectId => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi possível obtar os quizes da disciplina');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const getQuizzByIdApi = async quizId => {
 	const getQuizzURL = `${BASE_URL}/quizzes/quiz/${quizId}`;
+
+	toggleLoadingOverlay(true);
 
 	const response = await fetch(getQuizzURL, {
 		method: 'GET',
@@ -71,16 +89,21 @@ export const getQuizzByIdApi = async quizId => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi poddível obter o quiz');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const deleteQuizApi = async quizId => {
 	const deleteURL = `${BASE_URL}/quizzes/${quizId}`;
+
+	toggleLoadingOverlay(true);
 
 	const response = await fetch(deleteURL, {
 		method: 'DELETE',
@@ -90,16 +113,21 @@ export const deleteQuizApi = async quizId => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi possivel deletar o quiz');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const startQuizApi = async (quizId, quizData) => {
 	const startQuizURL = `${BASE_URL}/quizzes/start/${quizId}`;
+
+	toggleLoadingOverlay(true);
 
 	const response = await fetch(startQuizURL, {
 		method: 'PUT',
@@ -110,16 +138,21 @@ export const startQuizApi = async (quizId, quizData) => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi possível atualizar o quiz');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const studentStartedQuizApi = async quizId => {
 	const startURL = `${BASE_URL}/quizzes/student-start/${quizId}`;
+
+	toggleLoadingOverlay(true);
 
 	try {
 		const response = await fetch(startURL, {
@@ -130,13 +163,17 @@ export const studentStartedQuizApi = async quizId => {
 		});
 
 		if (!response.ok) {
+			toggleLoadingOverlay(false);
 			throw new Error('Não foi possível iniciar o quiz');
 		}
 
 		const data = await response.json();
 
+		toggleLoadingOverlay(false);
+
 		return data;
 	} catch (error) {
+		toggleLoadingOverlay(false);
 		const toastError = toastBarError('Quiz já iniciado ou não encontrado');
 
 		ToastBar(toastError, 'error-toast');
@@ -151,6 +188,8 @@ export const studentFinishedAttemptApi = async (
 ) => {
 	const url = `${BASE_URL}/questions/${quizId}/student/${studentId}/student-responses`;
 
+	toggleLoadingOverlay(true);
+
 	const response = await fetch(url, {
 		method: 'POST',
 		headers: {
@@ -160,10 +199,13 @@ export const studentFinishedAttemptApi = async (
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi possível salvar as respostas do aluno.');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
@@ -171,6 +213,8 @@ export const studentFinishedAttemptApi = async (
 export const getAllStudentAnswersApi = async (quizId, studentId) => {
 	const url = `${BASE_URL}/quizzes/${quizId}/student/${studentId}/questions-responses`;
 
+	toggleLoadingOverlay(true);
+
 	const response = await fetch(url, {
 		method: 'GET',
 		headers: {
@@ -179,6 +223,7 @@ export const getAllStudentAnswersApi = async (quizId, studentId) => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error(
 			'Não foi possível buscar as respostas do banco de dados.',
 		);
@@ -186,11 +231,15 @@ export const getAllStudentAnswersApi = async (quizId, studentId) => {
 
 	const data = await response.json();
 
+	toggleLoadingOverlay(false);
+
 	return data;
 };
 
 export const getQuizResultApi = async (quizId, studentId) => {
 	const url = `${BASE_URL}/quizzes/${quizId}/student/${studentId}/result`;
+
+	toggleLoadingOverlay(true);
 
 	const response = await fetch(url, {
 		method: 'GET',
@@ -200,10 +249,13 @@ export const getQuizResultApi = async (quizId, studentId) => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi possível obter o resultado do quiz');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };

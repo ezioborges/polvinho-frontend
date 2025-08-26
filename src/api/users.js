@@ -1,8 +1,11 @@
 import { BASE_URL } from '../urls/index.js';
+import { toggleLoadingOverlay } from '../utils/toggleLoadingOverlay.js';
 import { validToken } from '../utils/validateAdminJWT.js';
 
 export const getAllUsersApi = async () => {
 	const usersURL = `${BASE_URL}/users`;
+
+	toggleLoadingOverlay(true);
 
 	const token = validToken();
 
@@ -15,6 +18,8 @@ export const getAllUsersApi = async () => {
 	});
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };

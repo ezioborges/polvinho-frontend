@@ -1,4 +1,5 @@
 import { BASE_URL } from '../urls/index.js';
+import { toggleLoadingOverlay } from '../utils/toggleLoadingOverlay.js';
 import { validToken } from '../utils/validateAdminJWT.js';
 
 export const getAllStudenstsApi = async () => {
@@ -25,6 +26,7 @@ export const getAllStudenstsApi = async () => {
 
 export const createStudentApi = async studentData => {
 	const createStudentUrl = `${BASE_URL}/students`;
+	toggleLoadingOverlay(true);
 
 	const token = validToken();
 
@@ -38,16 +40,21 @@ export const createStudentApi = async studentData => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Erro ao criar aluno');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const updateStudentApi = async (studentId, studentData) => {
 	const updateStudentURL = `${BASE_URL}/students/${studentId}`;
+
+	toggleLoadingOverlay(true);
 
 	const token = validToken();
 
@@ -61,16 +68,20 @@ export const updateStudentApi = async (studentId, studentData) => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Erro ao atualizar aluno');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const deleteStudentApi = async studentId => {
 	const deleteStudentURL = `${BASE_URL}/students/${studentId}`;
+	toggleLoadingOverlay(true);
 
 	const token = validToken();
 
@@ -82,14 +93,19 @@ export const deleteStudentApi = async studentId => {
 		},
 	});
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Erro ao deletar aluno');
 	}
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
+
 	return data;
 };
 
 export const getAllSubjectsOfStudentApi = async studentId => {
 	const getAllStudentURL = `${BASE_URL}/students/${studentId}/subjects`;
+	toggleLoadingOverlay(true);
 
 	const response = await fetch(getAllStudentURL, {
 		method: 'GET',
@@ -99,10 +115,13 @@ export const getAllSubjectsOfStudentApi = async studentId => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Erro ao buscar disciplinas do aluno');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
