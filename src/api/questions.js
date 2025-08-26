@@ -1,3 +1,4 @@
+import { BASE_URL } from '../urls/index.js';
 import { toggleLoadingOverlay } from '../utils/toggleLoadingOverlay.js';
 
 export const createQuestionsApi = async (questionData, quizId) => {

@@ -1,6 +1,6 @@
 import newElement from '../utils/newElement.js';
 
-const Timer = quiz => {
+const Timer = async quiz => {
 	let interval;
 	let seconds = 0;
 	let minutes = quiz.timeMinutes;
@@ -11,7 +11,7 @@ const Timer = quiz => {
 	timerContent.textContent = `${minutes} : 00`;
 
 	const startQuiz = () => {
-		interval = setInterval(() => {
+		interval = setInterval(async () => {
 			if (quiz.studentStarted === true) {
 				if (seconds === 0) {
 					if (minutes === 0) {
