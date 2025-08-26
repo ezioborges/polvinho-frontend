@@ -44,6 +44,7 @@ const routes = {
 	'/dashboard-student': './pages/Student/DashboardStudent.js',
 
 	'/quiz-started/:quizId': './pages/Student/QuizStartedPage.js',
+	'/loading-page': './pages/Loading/index.js',
 };
 
 /**

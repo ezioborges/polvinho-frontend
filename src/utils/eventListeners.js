@@ -4,6 +4,7 @@ import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
 import SubjectsPanelList from '../components/Panel/SubjectsPanelList.js';
 import { fetchLogin } from '../data/userData.js';
 import { BASE_URL } from '../urls/index.js';
+import { isLoading } from './isLoading.js';
 
 export const openDialog = (
 	element,
@@ -79,6 +80,7 @@ export const clickFinishTest = element => {
 export const clickFormLogin = element => {
 	element.addEventListener('submit', async event => {
 		event.preventDefault();
+
 		const credentialsInput = document.querySelector('#credentials');
 		const passwordInput = document.querySelector('#password');
 		const errorArea = document.querySelector('#error-area');
@@ -86,7 +88,6 @@ export const clickFormLogin = element => {
 
 		try {
 			const response = await fetchLogin(`${BASE_URL}/login`);
-
 			const data = await response.json();
 
 			const userLogin = {
@@ -95,39 +96,52 @@ export const clickFormLogin = element => {
 			};
 
 			if (response.ok) {
+				isLoading(true, '#/loading-page');
 				const role = data.user.role.toLowerCase();
 
 				localStorage.setItem('userLogin', JSON.stringify(userLogin));
 
 				if (role === 'admin') {
-					return (window.location.hash = '#/dashboard-admin');
+					isLoading(false, '#/dashboard-admin');
+					return;
 				}
-
 				if (role === 'professor') {
-					return (window.location.hash = '#/dashboard-professor');
+					isLoading(false, '#/dashboard-professor');
+					return;
 				}
-
 				if (role === 'aluno') {
-					return (window.location.hash = '#/dashboard-student');
+					isLoading(false, '#/dashboard-student');
+					return;
 				}
 
-				//TODO: MUDAR ESSA VERIFICAÇÃO PARA QUE SEJA PELAS CREDENCAIS DO USER
-				if (
-					role !== 'admin' ||
-					role !== 'professor' ||
-					role !== 'aluno'
-				) {
-					credentialsInput.style.border = ' 2px solid var(--red-500)';
-					passwordInput.style.border = '2px solid var(--red-500)';
+				// Se não for nenhum dos papéis válidos, mostra erro e remove loading
+				isLoading(false, '#/');
+				if (credentialsInput) {
+					credentialsInput.style.border = '2px solid var(--red-500)';
 					credentialsInput.value = '';
+				}
+				if (passwordInput) {
+					passwordInput.style.border = '2px solid var(--red-500)';
 					passwordInput.value = '';
+				}
+				if (errorArea) {
 					errorArea.style.display = 'flex';
+				}
+				if (errorMessage) {
 					errorMessage.textContent =
 						'Erro ao fazer login. Verifique suas credenciais.';
-					console.error('Erro no login ', data.message);
 				}
+				console.error('Erro no login ', data.message);
+			} else {
+				// Se response.ok for false, também remova o loading e mostre erro
+				isLoading(false, '#/');
+				if (errorArea) errorArea.style.display = 'flex';
+				if (errorMessage)
+					errorMessage.textContent =
+						'Erro ao fazer login. Verifique suas credenciais.';
 			}
 		} catch (error) {
+			isLoading(false, '#/');
 			throw new Error(`Erro ao buscar usuários: ${error.message}`);
 		}
 	});
