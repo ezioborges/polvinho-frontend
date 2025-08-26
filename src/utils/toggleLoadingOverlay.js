@@ -6,7 +6,7 @@ export const toggleLoadingOverlay = isLoad => {
 	if (isLoad) {
 		if (!loadingOverlay) {
 			loadingOverlay = LoadingComponent();
-			loadingOverlay.id = 'loading-overlay'; // Adiciona um ID para fácil remoção
+			loadingOverlay.id = 'loading-overlay';
 			document.body.appendChild(loadingOverlay);
 		}
 	} else {
