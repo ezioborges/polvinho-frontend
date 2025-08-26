@@ -4,6 +4,7 @@ import SendTestFinished from '../components/Dialogs/SendTestFinished.js';
 import SubjectsPanelList from '../components/Panel/SubjectsPanelList.js';
 import { fetchLogin } from '../data/userData.js';
 import { BASE_URL } from '../urls/index.js';
+import { toggleLoadingOverlay } from './toggleLoadingOverlay.js';
 
 export const openDialog = (
 	element,
@@ -79,60 +80,69 @@ export const clickFinishTest = element => {
 export const clickFormLogin = element => {
 	element.addEventListener('submit', async event => {
 		event.preventDefault();
+
 		const credentialsInput = document.querySelector('#credentials');
 		const passwordInput = document.querySelector('#password');
 		const errorArea = document.querySelector('#error-area');
 		const errorMessage = document.querySelector('#error-message');
 
 		try {
-			const response = await fetchLogin(`${BASE_URL}/login`);
+			// função responsável por exibir e remover o overlay do
+			toggleLoadingOverlay(true);
 
+			const response = await fetchLogin(`${BASE_URL}/login`);
 			const data = await response.json();
 
-			const userLogin = {
-				token: data.token,
-				user: data.user,
-			};
+			toggleLoadingOverlay(false);
 
 			if (response.ok) {
+				const userLogin = {
+					token: data.token,
+					user: data.user,
+				};
 				const role = data.user.role.toLowerCase();
 
 				localStorage.setItem('userLogin', JSON.stringify(userLogin));
 
 				if (role === 'admin') {
-					return (window.location.hash = '#/dashboard-admin');
-				}
-
-				if (role === 'professor') {
-					return (window.location.hash = '#/dashboard-professor');
-				}
-
-				if (role === 'aluno') {
-					return (window.location.hash = '#/dashboard-student');
-				}
-
-				//TODO: MUDAR ESSA VERIFICAÇÃO PARA QUE SEJA PELAS CREDENCAIS DO USER
-				if (
-					role !== 'admin' ||
-					role !== 'professor' ||
-					role !== 'aluno'
-				) {
-					credentialsInput.style.border = ' 2px solid var(--red-500)';
+					window.location.hash = '#/dashboard-admin';
+				} else if (role === 'professor') {
+					window.location.hash = '#/dashboard-professor';
+				} else if (role === 'aluno') {
+					window.location.hash = '#/dashboard-student';
+				} else {
+					credentialsInput.style.border = '2px solid var(--red-500)';
 					passwordInput.style.border = '2px solid var(--red-500)';
 					credentialsInput.value = '';
 					passwordInput.value = '';
 					errorArea.style.display = 'flex';
 					errorMessage.textContent =
-						'Erro ao fazer login. Verifique suas credenciais.';
-					console.error('Erro no login ', data.message);
+						'Erro de autenticação. Verifique seu usuário.';
+					console.error(
+						'Erro no login: role desconhecido.',
+						data.message,
+					);
 				}
+			} else {
+				credentialsInput.style.border = '2px solid var(--red-500)';
+				passwordInput.style.border = '2px solid var(--red-500)';
+				credentialsInput.value = '';
+				passwordInput.value = '';
+				errorArea.style.display = 'flex';
+				errorMessage.textContent =
+					'Erro ao fazer login. Verifique suas credenciais.';
+				console.error('Erro no login ', data.message);
 			}
 		} catch (error) {
-			throw new Error(`Erro ao buscar usuários: ${error.message}`);
+			toggleLoadingOverlay(false);
+			credentialsInput.style.border = '2px solid var(--red-500)';
+			passwordInput.style.border = '2px solid var(--red-500)';
+			errorArea.style.display = 'flex';
+			errorMessage.textContent = 'Erro ao se conectar com o servidor.';
+			console.error(`Erro ao buscar usuários: ${error.message}`);
 		}
 	});
 };
-
 export const endSession = event => {
 	event.addEventListener('click', () => {
 		localStorage.removeItem('userLogin');

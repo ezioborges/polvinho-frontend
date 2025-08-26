@@ -3,7 +3,7 @@ import { clickFormLogin } from '../utils/eventListeners.js';
 import newElement from '../utils/newElement.js';
 
 const Login = () => {
-	const LoginContent = newElement('div');
+	const LoginContent = newElement('div', { id: 'login-page' });
 	LoginContent.classList.add('login-background');
 
 	const logoArea = newElement('div');
