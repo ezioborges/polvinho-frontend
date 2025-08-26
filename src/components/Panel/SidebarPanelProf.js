@@ -1,10 +1,8 @@
 import newElement from '../../utils/newElement.js';
 import { professorSubjects } from '../../utils/professorSubjects.js';
-import { toggleLoadingOverlay } from '../../utils/toggleLoadingOverlay.js';
 import { panelItem } from './panelItem.js';
 
 export const SidebarPanelProf = async () => {
-	toggleLoadingOverlay(true);
 	const subjectsOfProfessor = await professorSubjects();
 
 	const content = newElement('div');
@@ -20,8 +18,6 @@ export const SidebarPanelProf = async () => {
 
 		content.appendChild(subjectItem);
 	});
-
-	toggleLoadingOverlay(false);
 
 	return content;
 };

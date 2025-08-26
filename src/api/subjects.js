@@ -1,8 +1,10 @@
 import { BASE_URL } from '../urls/index.js';
+import { toggleLoadingOverlay } from '../utils/toggleLoadingOverlay.js';
 import { validToken } from '../utils/validateAdminJWT.js';
 
 export const createSubject = async subjectData => {
 	const createSubjectURL = `${BASE_URL}/subjects`;
+	toggleLoadingOverlay(true);
 
 	const token = validToken();
 
@@ -16,16 +18,21 @@ export const createSubject = async subjectData => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Erro ao criar disciplina');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const updateSubject = async (subjectID, subjectdata) => {
 	const upodateSubjectURL = `${BASE_URL}/subjects/${subjectID}`;
+
+	toggleLoadingOverlay(true);
 
 	const token = validToken();
 
@@ -39,16 +46,21 @@ export const updateSubject = async (subjectID, subjectdata) => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Erro ao atualizar disciplina');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const getAllSubjectsApi = async () => {
 	const getAllURL = `${BASE_URL}/subjects`;
+
+	toggleLoadingOverlay(true);
 
 	const token = validToken();
 
@@ -61,16 +73,21 @@ export const getAllSubjectsApi = async () => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Erro ao buscar disciplinas');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const getSubjectByIdApi = async subjectId => {
 	const getByIdURL = `${BASE_URL}/subjects/${subjectId}`;
+
+	toggleLoadingOverlay(true);
 
 	const token = validToken();
 
@@ -83,16 +100,21 @@ export const getSubjectByIdApi = async subjectId => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Erro ao buscar disciplina por ID');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const deleteSubjectApi = async subjectID => {
 	const deleteSubjectURL = `${BASE_URL}/subjects/${subjectID}`;
+
+	toggleLoadingOverlay(true);
 
 	const token = validToken();
 
@@ -105,10 +127,13 @@ export const deleteSubjectApi = async subjectID => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Erro ao excluir disciplina');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };

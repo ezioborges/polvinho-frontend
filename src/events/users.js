@@ -14,11 +14,9 @@ import ToastBar from '../components/ToastBar/index.js';
 import { toastBarSuccess } from '../components/ToastBar/toastAnswers.js';
 import UserList from '../components/Users/UserList.js';
 import { resetProfessorInputs, resetUserInputs } from '../utils/resetInputs.js';
-import { toggleLoadingOverlay } from '../utils/toggleLoadingOverlay.js';
 
 export const createUser = (element, userRole) => {
 	element.addEventListener('click', async () => {
-		toggleLoadingOverlay(true);
 		const newUser = {
 			name: document.querySelector('#input-user-name').value,
 			email: document.querySelector('#input-user-email').value,
@@ -28,12 +26,10 @@ export const createUser = (element, userRole) => {
 		};
 
 		if (userRole === 'professor') {
-			toggleLoadingOverlay(false);
 			await createProfessorApi(newUser);
 		}
 
 		if (userRole === 'aluno') {
-			toggleLoadingOverlay(false);
 			await createStudentApi(newUser);
 		}
 		ToastBar(

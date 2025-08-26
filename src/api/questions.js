@@ -1,5 +1,9 @@
+import { toggleLoadingOverlay } from '../utils/toggleLoadingOverlay.js';
+
 export const createQuestionsApi = async (questionData, quizId) => {
 	const createQuestionsURL = `${BASE_URL}/questions/${quizId}/create`;
+
+	toggleLoadingOverlay(true);
 
 	const response = await fetch(createQuestionsURL, {
 		method: 'POST',
@@ -10,16 +14,21 @@ export const createQuestionsApi = async (questionData, quizId) => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi possível criar a questão');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
 
 export const studentAnswerApi = async (quizId, answerData) => {
 	const studentAnswerURL = `${BASE_URL}/questions/${quizId}/student-responses`;
+
+	toggleLoadingOverlay(true);
 
 	const response = await fetch(studentAnswerURL, {
 		method: 'POST',
@@ -28,10 +37,13 @@ export const studentAnswerApi = async (quizId, answerData) => {
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi possível registrar a resposta do aluno.');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
@@ -42,6 +54,8 @@ export const getAllStudentAnswersByQuizIdAndStudentIdApi = async (
 ) => {
 	const url = `${BASE_URL}/quizzes/${quizId}/student/${studentId}/questions-responses`;
 
+	toggleLoadingOverlay(true);
+
 	const response = await fetch(url, {
 		method: 'GET',
 		headers: {
@@ -50,10 +64,13 @@ export const getAllStudentAnswersByQuizIdAndStudentIdApi = async (
 	});
 
 	if (!response.ok) {
+		toggleLoadingOverlay(false);
 		throw new Error('Não foi possível recuperar as respostas do aluno.');
 	}
 
 	const data = await response.json();
+
+	toggleLoadingOverlay(false);
 
 	return data;
 };
