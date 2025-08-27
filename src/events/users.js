@@ -13,6 +13,7 @@ import {
 import ToastBar from '../components/ToastBar/index.js';
 import { toastBarSuccess } from '../components/ToastBar/toastAnswers.js';
 import UserList from '../components/Users/UserList.js';
+import { clickEventCancelButton } from '../utils/eventListeners.js';
 import { resetProfessorInputs, resetUserInputs } from '../utils/resetInputs.js';
 
 export const createUser = (element, userRole) => {
@@ -121,12 +122,16 @@ export const updateUser = (element, userRole, userId) => {
 	});
 };
 
-export const deleteUser = async (element, userRole) => {
+export const deleteUser = element => {
 	element.addEventListener('click', async event => {
+		const userRole = element.id.split('-')[1];
+
+		console.log('userRole delete ===> ', userRole);
 		try {
 			const headerUrl = window.location.href.split('/')[4];
-			const userTargetId = event.target.id;
-			const userId = userTargetId.split('-')[2];
+			const userId = element.id.split('-')[2];
+
+			console.log('userId ===> ', userId);
 
 			if (userRole === 'professor') {
 				await deleteProfessorApi(userId);
@@ -177,4 +182,5 @@ export const deleteUser = async (element, userRole) => {
 			console.error(error);
 		}
 	});
+	clickEventCancelButton(element);
 };
