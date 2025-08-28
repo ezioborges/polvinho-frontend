@@ -1,5 +1,9 @@
 import { deleteUser } from '../../events/users.js';
-import { subjectsAmountDropdown } from '../../utils/eventListeners.js';
+import {
+	clickEventCancelButton,
+	openDialog,
+	subjectsAmountDropdown,
+} from '../../utils/eventListeners.js';
 import newElement from '../../utils/newElement.js';
 import BodyWithoutContent from '../BodyWithoutContent.js';
 
@@ -70,7 +74,17 @@ const UserListComponent = (users, listContent) => {
 		deleteArea.classList.add('entity-action-area');
 		deleteArea.textContent = 'Remover';
 		deleteArea.classList.add('textSm');
-		deleteUser(deleteArea, user.role);
+		openDialog(
+			deleteArea,
+			'Tem Certeza?',
+			`Você irá eliminar o ${user.role} "${user.name}". Esta ação não pode ser desfeita.`,
+			'Cancelar',
+			clickEventCancelButton,
+			'Eliminar',
+			deleteUser,
+			'var(--red-500)',
+			`id-${user.role}-${user._id}`,
+		);
 
 		actionsClickArea.appendChild(editArea);
 		actionsClickArea.appendChild(deleteArea);

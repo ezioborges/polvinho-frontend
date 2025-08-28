@@ -5,6 +5,7 @@ import {
 import newElement from '../../../utils/newElement.js';
 import { professorSubjects } from '../../../utils/professorSubjects.js';
 import { questionsGenerateButton } from '../../Buttons/questionsGenerateButton.js';
+import InputDate from '../../Input/InputDate.js';
 import selectInput from '../../Input/selectInput.js';
 import InputArea from '../../Input/textInput.js';
 
@@ -45,17 +46,11 @@ export const RegisterForm = async () => {
 	const thirdRow = newElement('div');
 	thirdRow.classList.add('quiz-register-third-row');
 
-	// TODO: CRIAR UMA FUNÇÃO PARA CRIAR AS DATAS
-	const releaseDate = InputArea(
-		'',
-		'quiz-register-release-date',
-		'00 / 00 / 2025 Data de inicio',
-	);
+	const releaseDate = InputDate('Inicio', 'quiz-register-release-date');
 
-	const submissionDeadline = InputArea(
-		'',
+	const submissionDeadline = InputDate(
+		'Termino',
 		'quiz-register-submission-date',
-		'12 / 12 / 2025 Data de entrega',
 	);
 
 	const fourthRow = newElement('div');

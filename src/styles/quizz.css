@@ -206,24 +206,20 @@
 
 .quiz-register-first-row {
 	display: flex;
-	margin-bottom: 0.5rem;
 }
 
 .quiz-register-second-row {
 	display: flex;
-	margin-bottom: 0.5rem;
 }
 
 .quiz-register-third-row {
 	display: flex;
-	margin-bottom: 1rem;
 }
 
 .quiz-register-fourth-row {
 	display: flex;
 	justify-content: center;
 	height: 28vh;
-	margin-bottom: 0.5rem;
 }
 
 .quiz-register-description {
@@ -508,4 +504,15 @@
 .selected-option {
 	background-color: var(--yellow-200);
 	border-radius: 5px;
+}
+
+.quiz-input-date-column {
+	display: flex;
+	width: 100%;
+	margin-bottom: 2rem;
+}
+
+.quiz-input-date-label {
+	display: flex;
+	align-items: center;
 }
