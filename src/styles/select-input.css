@@ -1,0 +1,22 @@
+.select-item-area {
+    position: relative;
+}
+
+.select-list {
+    position: absolute;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--neutral-50);
+    border: 1px solid var(--neutral-200);
+    border-radius: 1rem;
+}
+
+.select-list li {
+    border-radius: .5rem;
+    padding: .5rem;
+    margin-bottom: 0.1rem;
+}
+
+.select-list li:hover {
+    background-color: var(--indigo-100);
+}

@@ -1,4 +1,5 @@
 import newElement from '../../utils/newElement.js';
+import { SelectItems } from '../SelectItems.js';
 
 const selectInput = (labelTitle, inputId, arr) => {
 	const selectInputArea = newElement('div');
@@ -16,18 +17,19 @@ const selectInput = (labelTitle, inputId, arr) => {
 	nameLabel.classList.add('textMd');
 	nameLabel.classList.add('select-label-register');
 
-	const select = newElement('select');
+	const select = SelectItems();
 	select.classList.add('select-area');
-	select.id = inputId;
 
-	arr.forEach(discipline => {
-		const option = newElement('option');
-		option.value = discipline;
-		option.textContent = discipline;
-		select.appendChild(option);
-	});
+	// arr.forEach(discipline => {
+	// 	const option = newElement('option');
+	// 	option.value = discipline;
+	// 	option.textContent = discipline;
 
-	labelTitle === '' ? null : nameLabel.appendChild(questionIcon);
+	// 	selectOptionsArea.appendChild(option);
+	// 	select.appendChild(selectOptionsArea);
+	// });
+
+	// labelTitle === '' ? null : nameLabel.appendChild(questionIcon);
 
 	selectInputArea.appendChild(nameLabel);
 	selectInputArea.appendChild(select);

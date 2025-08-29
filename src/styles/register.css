@@ -13,8 +13,7 @@
 .label-input-column {
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
-	flex-direction: column;
+	align-items: center;
 	width: 100%;
 	margin-bottom: 2rem;
 }
@@ -45,6 +44,11 @@
 	border: none;
 	border-bottom: 1px solid var(--neutral-200);
 	padding: 0.75rem 0.5rem;
+	appearance: none;
+}
+
+.select-area:open {
+	background-color: var(--indigo-100);
 }
 
 .select-area:focus {
@@ -136,4 +140,12 @@
 	font-size: 0.8rem !important;
 	font-weight: bolder;
 	margin-bottom: 0.5rem;
+}
+
+.label-input-column-date {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 47%;
+	margin-bottom: 2rem;
 }

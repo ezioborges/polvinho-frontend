@@ -206,14 +206,17 @@
 
 .quiz-register-first-row {
 	display: flex;
+	justify-content: center;
 }
 
 .quiz-register-second-row {
 	display: flex;
+	justify-content: center;
 }
 
 .quiz-register-third-row {
 	display: flex;
+	justify-content: space-around;
 }
 
 .quiz-register-fourth-row {
@@ -435,7 +438,6 @@
 }
 
 .quiz-student-questions-area {
-	/* border: 1px solid red; */
 	width: 55vw;
 }
 
@@ -506,13 +508,17 @@
 	border-radius: 5px;
 }
 
-.quiz-input-date-column {
+/* .quiz-input-date-column {
 	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
 	margin-bottom: 2rem;
-}
+} */
 
 .quiz-input-date-label {
 	display: flex;
+	border: 1px solid blue;
 	align-items: center;
 }
