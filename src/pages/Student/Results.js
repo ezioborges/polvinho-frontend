@@ -2,6 +2,7 @@ import { getQuizResultApi, getQuizzByIdApi } from '../../api/quizzes.js';
 import InfoCardResult from '../../components/Exam/InfoCardResult.js';
 import PageTitle from '../../components/PageTitle.js';
 import { ResultList } from '../../components/Students/ResultList.js';
+import { maxScore } from '../../utils/maxScore.js';
 import newElement from '../../utils/newElement.js';
 
 const Results = async () => {
@@ -12,7 +13,7 @@ const Results = async () => {
 	const { result } = await getQuizResultApi(quizId, studentId);
 	const scores = result.map(res => res.score);
 
-	const bestScore = Math.max(...scores);
+	const bestScore = maxScore(scores);
 
 	const resultContent = newElement('div');
 	resultContent.classList.add('quiz-student-content');

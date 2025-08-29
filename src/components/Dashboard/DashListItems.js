@@ -9,28 +9,31 @@ const DashListItems = async itemsArr => {
 		user: { role },
 	} = userDataByLocalStorage();
 
-	const adminRole = role.toLowerCase();
+	const userRole = role.toLowerCase();
 
 	const content = newElement('div');
 
 	content.classList.add('dash-content-body');
 
-	const title = textGenerator('title3', 'Entidades');
+	const adminTitle = textGenerator('title3', 'Entidades');
+	const usersTitle = textGenerator('title3', 'Disciplinas');
+
+	const title = userRole === 'admin' ? adminTitle : usersTitle;
 	content.appendChild(title);
 
 	const noContent = BodyWithoutContent('Nenhum conteúdo disponível');
 
 	if (!itemsArr.length) content.appendChild(noContent);
 
-	if (adminRole === 'admin') {
+	if (userRole === 'admin') {
 		itemsArr.forEach(item => {
-			content.appendChild(BarItem(item, true, adminRole));
+			content.appendChild(BarItem(item, true, userRole));
 		});
 	}
 
-	if (role === 'professor') {
+	if (userRole === 'professor') {
 		itemsArr.forEach(item => {
-			content.appendChild(BarItem(item, false, role));
+			content.appendChild(BarItem(item, false, userRole));
 		});
 	}
 

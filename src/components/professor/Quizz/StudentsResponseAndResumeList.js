@@ -1,5 +1,6 @@
 import { getQuizResultApi } from '../../../api/quizzes.js';
 import { getAllStudenstsApi } from '../../../api/students.js';
+import { maxScore } from '../../../utils/maxScore.js';
 import newElement from '../../../utils/newElement.js';
 import textGenerator from '../../../utils/textGenerator.js';
 
@@ -15,8 +16,7 @@ export const StudentsResponseAndResumeList = async quizId => {
 	students.forEach(async student => {
 		const { result } = await getQuizResultApi(quizId, student._id);
 		const scores = result.map(res => res.score);
-		const bestScore = Math.max(...scores);
-		console.log('🚀 ~ StudentsResponseAndResumeList ~ scores:', bestScore);
+		const bestScore = maxScore(scores);
 		const studentContent = newElement('div');
 		studentContent.classList.add('bar-content');
 
