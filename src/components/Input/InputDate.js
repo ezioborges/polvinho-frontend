@@ -2,13 +2,13 @@ import newElement from '../../utils/newElement.js';
 
 const InputDate = (text, inputId) => {
 	const content = newElement('div');
-	content.classList.add('quiz-input-date-column');
+	content.classList.add('label-input-column-date');
 
 	const dateLabel = newElement('label');
 	dateLabel.htmlFor = inputId;
 	dateLabel.textContent = `Data de ${text}`;
-	dateLabel.classList.add('textMd', 'quiz-input-date-label');
-	dateLabel.style.width = '70%';
+	dateLabel.classList.add('textMd');
+	dateLabel.style.width = '20%';
 	dateLabel.style.marginLeft = '.5rem';
 
 	const dateInput = newElement('input');
@@ -17,8 +17,8 @@ const InputDate = (text, inputId) => {
 	dateInput.type = 'date';
 	dateInput.id = inputId;
 
-	content.appendChild(dateInput);
 	content.appendChild(dateLabel);
+	content.appendChild(dateInput);
 
 	return content;
 };

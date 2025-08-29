@@ -8,7 +8,7 @@ export const DeleteQuiz = quizData => {
 	// deleteContent.classList.add('delete-button-content');
 
 	const deleteButton = newElement('div');
-	deleteButton.textContent = 'Deletar Quiz';
+	deleteButton.textContent = 'Elinimar Quiz';
 	deleteButton.classList.add('textMd');
 	deleteButton.classList.add('delete-quiz-button');
 	QuestionDialog(

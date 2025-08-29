@@ -28,7 +28,7 @@ export const StudentsResponseAndResumeList = async quizId => {
 		studentInfo.classList.add('student-info');
 
 		const responseViewButton = newElement('div');
-		responseViewButton.textContent = 'Ver Resposta';
+		responseViewButton.textContent = 'Ver Respostas';
 		responseViewButton.classList.add('textMd');
 		responseViewButton.classList.add('action-area');
 		responseViewButton.style.color = 'var(--indigo-900)';
