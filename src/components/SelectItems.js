@@ -1,6 +1,10 @@
+import { getAllSubjectsApi } from '../api/subjects.js';
 import newElement from '../utils/newElement.js';
 
-export const SelectItems = () => {
+export const SelectItems = async () => {
+	const subjects = await getAllSubjectsApi();
+	const subjectNames = subjects.map(subject => subject.name);
+	console.log('🚀 ~ SelectItems ~ subjects:', subjectNames);
 	// 1. Crie o contêiner principal para o componente.
 	const selectItemsContent = newElement('div');
 	selectItemsContent.classList.add('select-items-content');

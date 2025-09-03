@@ -30,7 +30,7 @@ const SubjectEdit = async () => {
 	subjectNameLabelInput.querySelector('#input-edit-subject').value =
 		`${subject.name}`;
 
-	const subjectProfessorLabelInput = selectInput(
+	const subjectProfessorLabelInput = await selectInput(
 		'Professor',
 		'input-edit-professor',
 		professorArray,

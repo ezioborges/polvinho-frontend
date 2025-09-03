@@ -40,7 +40,7 @@ const UserRegister = async (role, createUser) => {
 		'email@email.com',
 	);
 
-	const subjectsComponent = selectInput(
+	const subjectsComponent = await selectInput(
 		'Disciplinas',
 		'input-user-subjects',
 		subjectArray,

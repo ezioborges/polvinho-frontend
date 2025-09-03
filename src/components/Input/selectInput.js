@@ -1,7 +1,8 @@
 import newElement from '../../utils/newElement.js';
 import { SelectItems } from '../SelectItems.js';
 
-const selectInput = (labelTitle, inputId, arr) => {
+const selectInput = async (labelTitle, inputId, arr) => {
+	console.log('arr ===> ', arr);
 	const selectInputArea = newElement('div');
 	selectInputArea.classList.add('label-input-column');
 
@@ -17,19 +18,7 @@ const selectInput = (labelTitle, inputId, arr) => {
 	nameLabel.classList.add('textMd');
 	nameLabel.classList.add('select-label-register');
 
-	const select = SelectItems();
-	select.classList.add('select-area');
-
-	// arr.forEach(discipline => {
-	// 	const option = newElement('option');
-	// 	option.value = discipline;
-	// 	option.textContent = discipline;
-
-	// 	selectOptionsArea.appendChild(option);
-	// 	select.appendChild(selectOptionsArea);
-	// });
-
-	// labelTitle === '' ? null : nameLabel.appendChild(questionIcon);
+	const select = await SelectItems();
 
 	selectInputArea.appendChild(nameLabel);
 	selectInputArea.appendChild(select);

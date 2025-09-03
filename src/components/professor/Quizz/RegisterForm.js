@@ -26,7 +26,11 @@ export const RegisterForm = async () => {
 
 	const quizName = InputArea('', 'quiz-register-name', 'Nome do quiz');
 
-	const quizSubject = selectInput('', 'quiz-register-subject', subjectsNames);
+	const quizSubject = await selectInput(
+		'',
+		'quiz-register-subject',
+		subjectsNames,
+	);
 
 	const secondRow = newElement('div');
 	secondRow.classList.add('quiz-register-second-row');
