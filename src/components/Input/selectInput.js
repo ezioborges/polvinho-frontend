@@ -1,8 +1,7 @@
 import newElement from '../../utils/newElement.js';
 import { SelectItems } from '../SelectItems.js';
 
-const selectInput = async (labelTitle, inputId, arr) => {
-	console.log('arr ===> ', arr);
+const selectInput = async (labelTitle, inputId) => {
 	const selectInputArea = newElement('div');
 	selectInputArea.classList.add('label-input-column');
 
@@ -15,8 +14,7 @@ const selectInput = async (labelTitle, inputId, arr) => {
 	const nameLabel = newElement('label');
 	nameLabel.htmlFor = inputId;
 	nameLabel.textContent = labelTitle;
-	nameLabel.classList.add('textMd');
-	nameLabel.classList.add('select-label-register');
+	nameLabel.classList.add('textMd', 'input-label-name');
 
 	const select = await SelectItems();
 

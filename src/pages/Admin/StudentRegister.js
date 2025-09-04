@@ -21,9 +21,6 @@ const UserRegister = async (role, createUser) => {
 	const title = textGenerator('title1', `Cadastro de ${role}`);
 	title.style.marginBottom = '3rem';
 
-	const registerArea = newElement('div');
-	registerArea.classList.add('register-area');
-
 	const nameLabelInput = InputArea(
 		'Nome Completo',
 		'input-user-name',
@@ -41,7 +38,7 @@ const UserRegister = async (role, createUser) => {
 	);
 
 	const subjectsComponent = await selectInput(
-		'Disciplinas',
+		'Selecionar Disciplina(s)',
 		'input-user-subjects',
 		subjectArray,
 	);

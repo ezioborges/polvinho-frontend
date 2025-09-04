@@ -13,7 +13,6 @@ const UserEdit = async () => {
 
 	const userToEdit = await getProfessorByIdApi(userId);
 	const subjects = await getAllSubjectsApi();
-	console.log('🚀 ~ UserEdit ~ subjects:', subjects);
 
 	const editContent = newElement('div');
 
@@ -70,7 +69,7 @@ const UserEdit = async () => {
 		const subjectsOptions = subjectsList.map(subject => subject.name);
 
 		const userSubject = await selectInput(
-			'Disciplinas',
+			'Selecionar displina(s)',
 			'select-edit-subjects',
 			subjectsOptions,
 		);
@@ -103,7 +102,7 @@ const UserEdit = async () => {
 		const subjectsOptions = subjectsList.map(subject => subject.name);
 
 		const userSubject = await selectInput(
-			'Disciplinas',
+			'Selecinar Disciplina(s)',
 			'select-edit-subjects',
 			subjectsOptions,
 		);

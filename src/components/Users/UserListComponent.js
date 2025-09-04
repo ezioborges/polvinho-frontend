@@ -11,12 +11,10 @@ const UserListComponent = (users, listContent) => {
 	const bodyArea = newElement('div');
 
 	const local = window.location.hash;
-	console.log('🚀 ~ UserListComponent ~ local:', local);
 
 	const activeUsers = users.filter(user => user.isDeleted === false);
 
 	activeUsers.forEach(user => {
-		console.log('user ====> ', user);
 		const listRow = newElement('div');
 		listRow.classList.add('bar-content');
 
@@ -67,7 +65,6 @@ const UserListComponent = (users, listContent) => {
 		editArea.href = local.includes('#/aluno-admin')
 			? `#/edit/aluno/${user._id}`
 			: `#/edit/professor/${user._id}`;
-		console.log('🚀 ~ UserListComponent ~ local:', window.location);
 
 		const deleteArea = newElement('a');
 		deleteArea.id = `delete-user-${user._id}`;

@@ -7,7 +7,8 @@ const InputArea = (labelTitle, inputId, placeholder) => {
 	const nameLabel = newElement('label');
 	nameLabel.htmlFor = inputId;
 	nameLabel.textContent = labelTitle;
-	nameLabel.classList.add('textMd');
+	nameLabel.classList.add('textMd', 'input-label-name');
+	nameLabel.style.alignSelf = 'start';
 
 	const nameInput = newElement('input');
 	nameInput.classList.add('input-area');
