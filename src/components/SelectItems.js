@@ -1,5 +1,6 @@
 import { getAllSubjectsApi } from '../api/subjects.js';
 import newElement from '../utils/newElement.js';
+import { DropdownList } from './DropdownList.js';
 
 export const SelectItems = async () => {
 	const subjects = await getAllSubjectsApi();
@@ -37,15 +38,7 @@ export const SelectItems = async () => {
 	// Definir o estilo inicial como 'none' para que o dropdown não apareça
 	dropdownSubjectsName.style.display = 'none';
 
-	const itemsToSelectList = newElement('ul');
-
-	subjectNames.forEach(name => {
-		const subjectItem = newElement('li');
-		subjectItem.classList.add('textSm', 'select-subject-item');
-		subjectItem.textContent = name;
-
-		itemsToSelectList.appendChild(subjectItem);
-	});
+	const itemsToSelectList = await DropdownList(selectedItemsAmount);
 
 	selectedItemHeader.appendChild(selectedItemsAmount);
 
